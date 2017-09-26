@@ -5,6 +5,7 @@ AngebotZumAntrag                          ;                                     
                                           ;bewertungDesAngebots                             ;enum                                               ;
                                           ;                                                 ;                                                   ;ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS
                                           ;                                                 ;                                                   ;ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN
+                                          ;bonitaet                                         ;array of Bonitaet                                  ;
                                           ;darlehen                                         ;array of Darlehen                                  ;
                                           ;erzeugtAm                                        ;string(date-time)                                  ;
                                           ;kennung                                          ;string                                             ;
@@ -13,11 +14,7 @@ AngebotZumAntrag                          ;                                     
                                           ;                                                 ;                                                   ;UNTER_VORBEHALT_PRODUZENT
                                           ;                                                 ;                                                   ;NICHT_MACHBAR
                                           ;meldungen                                        ;array of Meldung                                   ;
-                                          ;pruefungsErgebnisse                              ;array of AngebotsPruefungsErgebnis                 ;
                                           ;_links                                           ;Links                                              ;
-AngebotsPruefungsErgebnis                 ;                                                 ;                                                   ;
-                                          ;produktAnbieter                                  ;ProduktAnbieter                                    ;
-                                          ;weitereAngaben                                   ;string                                             ;
 Antraege                                  ;                                                 ;                                                   ;
                                           ;antraege                                         ;array of Antrag                                    ;
                                           ;_links                                           ;PaginationLinks                                    ;
@@ -132,6 +129,21 @@ Bankverbindung                            ;                                     
                                           ;kontoinhaberIds                                  ;array of < string > array                          ;
                                           ;kontoinhaberName                                 ;string                                             ;
                                           ;kreditinstitut                                   ;string                                             ;
+BausparAngebot                            ;                                                 ;                                                   ;
+                                          ;abschlussGebuehr                                 ;number                                             ;
+                                          ;angebotsHinweisFuerAntragsteller                 ;string                                             ;
+                                          ;bausparSumme                                     ;number                                             ;
+                                          ;einmalzahlung                                    ;number                                             ;
+                                          ;id                                               ;string                                             ;
+                                          ;produktAnbieter                                  ;ProduktAnbieter                                    ;
+                                          ;sparPhase                                        ;SparPhase                                          ;
+                                          ;tarif                                            ;string                                             ;
+                                          ;tilgungsPhase                                    ;TilgungsPhase                                      ;
+                                          ;typ                                              ;string                                             ;
+                                          ;vertragsBeginn                                   ;string(date)                                       ;
+                                          ;vertragsNummer                                   ;string                                             ;
+                                          ;verwaltungsgebuehrenJaehrlich                    ;number                                             ;
+                                          ;zuteilungsDatum                                  ;string(date)                                       ;
 Bausparvertrag                            ;                                                 ;                                                   ;
                                           ;abschlussGebuehr                                 ;number                                             ;
                                           ;angebotsHinweisFuerAntragsteller                 ;string                                             ;
@@ -249,6 +261,11 @@ BestehendesDarlehenDesFinanzierungsObjekts;                                     
                                           ;                                                 ;                                                   ;TRITT_IM_RANG_ZURUECK
                                           ;                                                 ;                                                   ;TRITT_NICHT_IM_RANG_ZURUECK
                                           ;zinsBindungEndetAm                               ;string(date)                                       ;
+Bonitaet                                  ;                                                 ;                                                   ;
+                                          ;haushaltsUeberschuss                             ;number                                             ;
+                                          ;kreditEntscheider                                ;ProduktAnbieter                                    ;
+                                          ;produktAnbieter                                  ;_Typ_ : object                                     ;
+CharSequence                              ;                                                 ;                                                   ;
 Darlehen                                  ;                                                 ;                                                   ;
                                           ;auszahlungsBetrag                                ;number                                             ;
                                           ;auszahlungsDatum                                 ;string(date)                                       ;
@@ -274,6 +291,7 @@ Darlehen                                  ;                                     
                                           ;laufzeitInMonaten                                ;integer(int32)                                     ;
                                           ;maximaleLaufzeitInMonaten                        ;integer(int32)                                     ;
                                           ;produktAnbieter                                  ;ProduktAnbieter                                    ;
+                                          ;provision                                        ;Provision                                          ;
                                           ;rateMonatlich                                    ;number                                             ;
                                           ;rateMonatlichInDerTilgungsfreienAnlaufzeit       ;number                                             ;
                                           ;sollZins                                         ;number                                             ;
@@ -529,6 +547,10 @@ ProduktAnbieter                           ;                                     
                                           ;email                                            ;string                                             ;
                                           ;telefonnummer                                    ;string                                             ;
                                           ;externerKreditSachbearbeiterId                   ;string                                             ;
+Provision                                 ;                                                 ;                                                   ;
+                                          ;europaceGebuehren                                ;number                                             ;
+                                          ;kundenbetreuerProvision                          ;number                                             ;
+                                          ;vertriebsProvisionGesamt                         ;number                                             ;
 RechteAbteilung2                          ;                                                 ;                                                   ;
                                           ;beschreibung                                     ;string                                             ;
                                           ;betrag                                           ;number                                             ;
@@ -559,6 +581,14 @@ Staat                                     ;                                     
                                           ;isoCountryCode                                   ;string                                             ;
                                           ;name                                             ;string                                             ;
 StatusDTO                                 ;                                                 ;                                                   ;
+                                          ;ablehnungsgrund                                  ;enum                                               ;
+                                          ;                                                 ;                                                   ;FINANZIELLE_SITUATION
+                                          ;                                                 ;                                                   ;NEGATIV_MERKMAL
+                                          ;                                                 ;                                                   ;WERTERMITTLUNG
+                                          ;                                                 ;                                                   ;KRITERIEN
+                                          ;                                                 ;                                                   ;UNTERLAGEN_UNVOLLSTAENDIG
+                                          ;                                                 ;                                                   ;GEGENANGEBOT
+                                          ;                                                 ;                                                   ;KEINE_ANGABE
                                           ;antragsteller                                    ;enum                                               ;
                                           ;                                                 ;                                                   ;BEANTRAGT
                                           ;                                                 ;                                                   ;UNTERSCHRIEBEN
@@ -609,6 +639,7 @@ Vermoegen                                 ;                                     
                                           ;                                                 ;                                                   ;VERMOEGEN
                                           ;                                                 ;                                                   ;VERBINDLICHKEIT
 Vorhaben                                  ;                                                 ;                                                   ;
+                                          ;externeBausparAngebote                           ;array of BausparAngebot                            ;
                                           ;finanzbedarf                                     ;Finanzbedarf                                       ;
                                           ;nachrangigeExterneDarlehen                       ;array of NachrangigesExternesDarlehen              ;
                                           ;verwendungszweck                                 ;enum                                               ;

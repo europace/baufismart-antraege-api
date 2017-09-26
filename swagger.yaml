@@ -4,20 +4,20 @@ info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
   version: "2.1"
-  title: "Auslesen API"
+  title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
     url: "www.europace2.de"
     email: "helpdesk@europace2.de"
 host: "baufismart.api.europace.de"
-basePath: "/v2"
+basePath: "/"
 tags:
 - name: "Antraege"
   description: "Dieser Endpunkt repräsentiert die Produktanbietersicht."
 schemes:
 - "https"
 paths:
-  /antraege:
+  /v2/antraege:
     get:
       tags:
       - "Antraege"
@@ -58,6 +58,11 @@ paths:
         type: "integer"
         default: 10
         format: "int32"
+      - name: "produktAnbieter"
+        in: "query"
+        description: "produktAnbieter"
+        required: false
+        type: "string"
       - name: "X-TraceId"
         in: "header"
         required: false
@@ -90,7 +95,7 @@ paths:
       security:
       - oauth2:
         - "API"
-  /antraege/{vorgang}:
+  /v2/antraege/{vorgang}:
     get:
       tags:
       - "Antraege"
@@ -139,7 +144,7 @@ paths:
       security:
       - oauth2:
         - "API"
-  /antraege/{vorgang}/{antrag}:
+  /v2/antraege/{vorgang}/{antrag}:
     get:
       tags:
       - "Antraege"
@@ -195,7 +200,7 @@ paths:
       security:
       - oauth2:
         - "API"
-  /antraege/{vorgang}/{antrag}/angebot:
+  /v2/antraege/{vorgang}/{antrag}/angebot:
     get:
       tags:
       - "Antraege"
@@ -251,7 +256,7 @@ paths:
       security:
       - oauth2:
         - "API"
-  /antraege/{vorgang}/{antrag}/{teilantrag}:
+  /v2/antraege/{vorgang}/{antrag}/{teilantrag}:
     get:
       tags:
       - "Antraege"
@@ -313,7 +318,7 @@ paths:
       security:
       - oauth2:
         - "API"
-  /antraege/{vorgang}/{antrag}/{teilantrag}/status:
+  /v2/antraege/{vorgang}/{antrag}/{teilantrag}/status:
     post:
       tags:
       - "Antraege"
@@ -620,6 +625,10 @@ definitions:
         enum:
         - "ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS"
         - "ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN"
+      bonitaet:
+        type: "array"
+        items:
+          $ref: "#/definitions/Bonitaet"
       darlehen:
         type: "array"
         items:
@@ -640,10 +649,6 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/Meldung"
-      pruefungsErgebnisse:
-        type: "array"
-        items:
-          $ref: "#/definitions/AngebotsPruefungsErgebnis"
       _links:
         $ref: "#/definitions/Links"
   Bausparvertrag:
@@ -798,6 +803,8 @@ definitions:
         description: "nur bei darlehensArt==ZWISCHEN_FINANZIERUNG"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
+      provision:
+        $ref: "#/definitions/Provision"
       rateMonatlich:
         type: "number"
         example: 123.34
@@ -880,15 +887,6 @@ definitions:
         enum:
         - "EINNAHME"
         - "AUSGABE"
-  AngebotsPruefungsErgebnis:
-    type: "object"
-    properties:
-      produktAnbieter:
-        $ref: "#/definitions/ProduktAnbieter"
-      weitereAngaben:
-        type: "string"
-        description: "Vom Produktanbieter bei der Angebotsprüfung ergänzte Daten.\
-          \ Das Format entspricht der Definition des Produktanbieters."
   Finanzbedarf:
     type: "object"
     properties:
@@ -965,6 +963,40 @@ definitions:
         - "UNTERSCHRIEBEN"
         - "ABGELEHNT"
         - "ZURUECKGESTELLT"
+  BausparAngebot:
+    type: "object"
+    properties:
+      abschlussGebuehr:
+        type: "number"
+      angebotsHinweisFuerAntragsteller:
+        type: "string"
+        description: "nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten"
+      bausparSumme:
+        type: "number"
+      einmalzahlung:
+        type: "number"
+      id:
+        type: "string"
+      produktAnbieter:
+        $ref: "#/definitions/ProduktAnbieter"
+      sparPhase:
+        $ref: "#/definitions/SparPhase"
+      tarif:
+        type: "string"
+      tilgungsPhase:
+        $ref: "#/definitions/TilgungsPhase"
+      typ:
+        type: "string"
+      vertragsBeginn:
+        type: "string"
+        format: "date"
+      vertragsNummer:
+        type: "string"
+      verwaltungsgebuehrenJaehrlich:
+        type: "number"
+      zuteilungsDatum:
+        type: "string"
+        format: "date"
   Flurstueck:
     type: "object"
     properties:
@@ -976,6 +1008,8 @@ definitions:
         type: "string"
       groesse:
         type: "number"
+  CharSequence:
+    type: "object"
   MietAusgaben:
     type: "object"
     properties:
@@ -1011,6 +1045,10 @@ definitions:
   Vorhaben:
     type: "object"
     properties:
+      externeBausparAngebote:
+        type: "array"
+        items:
+          $ref: "#/definitions/BausparAngebot"
       finanzbedarf:
         $ref: "#/definitions/Finanzbedarf"
       nachrangigeExterneDarlehen:
@@ -1204,6 +1242,15 @@ definitions:
         type: "string"
       betrag:
         type: "number"
+  Bonitaet:
+    type: "object"
+    properties:
+      haushaltsUeberschuss:
+        type: "number"
+      kreditEntscheider:
+        $ref: "#/definitions/ProduktAnbieter"
+      produktAnbieter:
+        $ref: "#/definitions/ProduktAnbieter"
   EffektivZinsKosten:
     type: "object"
     properties:
@@ -1571,9 +1618,32 @@ definitions:
         enum:
         - "EINNAHME"
         - "AUSGABE"
-  StatusDTO:
+  Provision:
     type: "object"
     properties:
+      europaceGebuehren:
+        type: "number"
+        description: "Beinhaltet nur den selbst aufzubringenden Betrag"
+      kundenbetreuerProvision:
+        type: "number"
+      vertriebsProvisionGesamt:
+        type: "number"
+  StatusDTO:
+    type: "object"
+    required:
+    - "antragsteller"
+    - "produktAnbieter"
+    properties:
+      ablehnungsgrund:
+        type: "string"
+        enum:
+        - "FINANZIELLE_SITUATION"
+        - "NEGATIV_MERKMAL"
+        - "WERTERMITTLUNG"
+        - "KRITERIEN"
+        - "UNTERLAGEN_UNVOLLSTAENDIG"
+        - "GEGENANGEBOT"
+        - "KEINE_ANGABE"
       antragsteller:
         type: "string"
         enum:

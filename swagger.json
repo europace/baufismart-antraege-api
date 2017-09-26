@@ -3,7 +3,7 @@
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
     "version": "2.1",
-    "title": "Auslesen API",
+    "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
       "url": "www.europace2.de",
@@ -11,7 +11,7 @@
     }
   },
   "host": "baufismart.api.europace.de",
-  "basePath": "/v2",
+  "basePath": "/",
   "tags": [
     {
       "name": "Antraege",
@@ -22,7 +22,7 @@
     "https"
   ],
   "paths": {
-    "/antraege": {
+    "/v2/antraege": {
       "get": {
         "tags": [
           "Antraege"
@@ -73,6 +73,13 @@
             "type": "integer",
             "default": 10,
             "format": "int32"
+          },
+          {
+            "name": "produktAnbieter",
+            "in": "query",
+            "description": "produktAnbieter",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "X-TraceId",
@@ -128,7 +135,7 @@
         ]
       }
     },
-    "/antraege/{vorgang}": {
+    "/v2/antraege/{vorgang}": {
       "get": {
         "tags": [
           "Antraege"
@@ -204,7 +211,7 @@
         ]
       }
     },
-    "/antraege/{vorgang}/{antrag}": {
+    "/v2/antraege/{vorgang}/{antrag}": {
       "get": {
         "tags": [
           "Antraege"
@@ -288,7 +295,7 @@
         ]
       }
     },
-    "/antraege/{vorgang}/{antrag}/angebot": {
+    "/v2/antraege/{vorgang}/{antrag}/angebot": {
       "get": {
         "tags": [
           "Antraege"
@@ -372,7 +379,7 @@
         ]
       }
     },
-    "/antraege/{vorgang}/{antrag}/{teilantrag}": {
+    "/v2/antraege/{vorgang}/{antrag}/{teilantrag}": {
       "get": {
         "tags": [
           "Antraege"
@@ -464,7 +471,7 @@
         ]
       }
     },
-    "/antraege/{vorgang}/{antrag}/{teilantrag}/status": {
+    "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/status": {
       "post": {
         "tags": [
           "Antraege"
@@ -903,6 +910,12 @@
             "ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN"
           ]
         },
+        "bonitaet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Bonitaet"
+          }
+        },
         "darlehen": {
           "type": "array",
           "items": {
@@ -929,12 +942,6 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Meldung"
-          }
-        },
-        "pruefungsErgebnisse": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AngebotsPruefungsErgebnis"
           }
         },
         "_links": {
@@ -1146,6 +1153,9 @@
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
         },
+        "provision": {
+          "$ref": "#/definitions/Provision"
+        },
         "rateMonatlich": {
           "type": "number",
           "example": 123.34,
@@ -1262,18 +1272,6 @@
         }
       }
     },
-    "AngebotsPruefungsErgebnis": {
-      "type": "object",
-      "properties": {
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "weitereAngaben": {
-          "type": "string",
-          "description": "Vom Produktanbieter bei der Angebotsprüfung ergänzte Daten. Das Format entspricht der Definition des Produktanbieters."
-        }
-      }
-    },
     "Finanzbedarf": {
       "type": "object",
       "properties": {
@@ -1380,6 +1378,56 @@
         }
       }
     },
+    "BausparAngebot": {
+      "type": "object",
+      "properties": {
+        "abschlussGebuehr": {
+          "type": "number"
+        },
+        "angebotsHinweisFuerAntragsteller": {
+          "type": "string",
+          "description": "nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten"
+        },
+        "bausparSumme": {
+          "type": "number"
+        },
+        "einmalzahlung": {
+          "type": "number"
+        },
+        "id": {
+          "type": "string"
+        },
+        "produktAnbieter": {
+          "$ref": "#/definitions/ProduktAnbieter"
+        },
+        "sparPhase": {
+          "$ref": "#/definitions/SparPhase"
+        },
+        "tarif": {
+          "type": "string"
+        },
+        "tilgungsPhase": {
+          "$ref": "#/definitions/TilgungsPhase"
+        },
+        "typ": {
+          "type": "string"
+        },
+        "vertragsBeginn": {
+          "type": "string",
+          "format": "date"
+        },
+        "vertragsNummer": {
+          "type": "string"
+        },
+        "verwaltungsgebuehrenJaehrlich": {
+          "type": "number"
+        },
+        "zuteilungsDatum": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
     "Flurstueck": {
       "type": "object",
       "properties": {
@@ -1396,6 +1444,9 @@
           "type": "number"
         }
       }
+    },
+    "CharSequence": {
+      "type": "object"
     },
     "MietAusgaben": {
       "type": "object",
@@ -1447,6 +1498,12 @@
     "Vorhaben": {
       "type": "object",
       "properties": {
+        "externeBausparAngebote": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BausparAngebot"
+          }
+        },
         "finanzbedarf": {
           "$ref": "#/definitions/Finanzbedarf"
         },
@@ -1714,6 +1771,20 @@
         },
         "betrag": {
           "type": "number"
+        }
+      }
+    },
+    "Bonitaet": {
+      "type": "object",
+      "properties": {
+        "haushaltsUeberschuss": {
+          "type": "number"
+        },
+        "kreditEntscheider": {
+          "$ref": "#/definitions/ProduktAnbieter"
+        },
+        "produktAnbieter": {
+          "$ref": "#/definitions/ProduktAnbieter"
         }
       }
     },
@@ -2192,9 +2263,40 @@
         }
       }
     },
-    "StatusDTO": {
+    "Provision": {
       "type": "object",
       "properties": {
+        "europaceGebuehren": {
+          "type": "number",
+          "description": "Beinhaltet nur den selbst aufzubringenden Betrag"
+        },
+        "kundenbetreuerProvision": {
+          "type": "number"
+        },
+        "vertriebsProvisionGesamt": {
+          "type": "number"
+        }
+      }
+    },
+    "StatusDTO": {
+      "type": "object",
+      "required": [
+        "antragsteller",
+        "produktAnbieter"
+      ],
+      "properties": {
+        "ablehnungsgrund": {
+          "type": "string",
+          "enum": [
+            "FINANZIELLE_SITUATION",
+            "NEGATIV_MERKMAL",
+            "WERTERMITTLUNG",
+            "KRITERIEN",
+            "UNTERLAGEN_UNVOLLSTAENDIG",
+            "GEGENANGEBOT",
+            "KEINE_ANGABE"
+          ]
+        },
         "antragsteller": {
           "type": "string",
           "enum": [
