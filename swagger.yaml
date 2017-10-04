@@ -1519,6 +1519,9 @@ definitions:
       antragsNummer:
         type: "string"
         description: "Nummer des Antrags auf der Europace Plattform"
+      antragsReferenz:
+        type: "string"
+        description: "Nummer des Antrags in Ihrem System (ändernbar)"
       beratung:
         description: "Informationen zum Geschäftsabschluss"
         $ref: "#/definitions/Beratung"
@@ -1547,6 +1550,9 @@ definitions:
       vermittler:
         description: "Partner auf Seite des Vertriebs"
         $ref: "#/definitions/Partner"
+      vorgangsReferenz:
+        type: "string"
+        description: "Nummer des Vorgangs im System des Vertriebs"
       zeitpunktDerAnnahme:
         type: "string"
         format: "date-time"
@@ -1675,7 +1681,8 @@ definitions:
         format: "int32"
       ausstattung:
         type: "string"
-        description: "Angaben zur Ausstattung für alle verschiedene Produktanbieter,\
+        description: "Angaben zur Ausstattung für alle verschiedene Produktanbieter\
+          \ und für die  für die automatische Objektbewertungs-Schnittstelle (VDP),\
           \ aber nicht für ING-DiBa. Erlaubte Werte sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
@@ -1734,6 +1741,16 @@ definitions:
           \ mit unbekannten Werten umgehen können."
       wohnflaeche:
         $ref: "#/definitions/GebaeudeFlaeche"
+      zustand:
+        type: "string"
+        description: "Angaben zum Zustand der Immobilie für die automatische Objektbewertungs-Schnittstelle\
+          \ (VDP)"
+        enum:
+        - "SEHR_GUT"
+        - "GUT"
+        - "MITTEL"
+        - "MAESSIG"
+        - "SCHLECHT"
   FinanzierungsObjekt:
     type: "object"
     properties:
