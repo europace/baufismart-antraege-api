@@ -22,6 +22,7 @@ Antrag                                    ;                                     
                                           ;angebot                                          ;AngebotZumAntrag                                   ;
                                           ;ansprechpartner                                  ;Partner                                            ;
                                           ;antragsNummer                                    ;string                                             ;
+                                          ;antragsReferenz                                  ;string                                             ;
                                           ;beratung                                         ;Beratung                                           ;
                                           ;datenKontext                                     ;enum                                               ;
                                           ;                                                 ;                                                   ;TEST_MODUS
@@ -31,6 +32,7 @@ Antrag                                    ;                                     
                                           ;produktAnbieter                                  ;ProduktAnbieter                                    ;
                                           ;status                                           ;AntragsStatus                                      ;
                                           ;vermittler                                       ;Partner                                            ;
+                                          ;vorgangsReferenz                                 ;string                                             ;
                                           ;zeitpunktDerAnnahme                              ;string(date-time)                                  ;
                                           ;zugrundeliegendeDaten                            ;ZugrundeliegendeDatenZumAntrag                     ;
                                           ;_links                                           ;Links                                              ;
@@ -400,6 +402,12 @@ Gebaeude                                  ;                                     
                                           ;modernisierungsAngaben                           ;ModernisierungsAngaben                             ;
                                           ;unterkellerung                                   ;string                                             ;
                                           ;wohnflaeche                                      ;GebaeudeFlaeche                                    ;
+                                          ;zustand                                          ;enum                                               ;
+                                          ;                                                 ;                                                   ;SEHR_GUT
+                                          ;                                                 ;                                                   ;GUT
+                                          ;                                                 ;                                                   ;MITTEL
+                                          ;                                                 ;                                                   ;MAESSIG
+                                          ;                                                 ;                                                   ;SCHLECHT
 GebaeudeFlaeche                           ;                                                 ;                                                   ;
                                           ;gesamtGroesse                                    ;number                                             ;
                                           ;vermietungsInformationen                         ;VermietungsInformationen                           ;
@@ -500,7 +508,8 @@ Meldung                                   ;                                     
                                           ;kategorie                                        ;string                                             ;
                                           ;kreditEntscheider                                ;ProduktAnbieter                                    ;
                                           ;produktAnbieter                                  ;ProduktAnbieter                                    ;
-                                          ;text                                             ;string                                             ;
+                                          ;text                                             ;_Typ_ : object                                     ;
+MetaClass                                 ;                                                 ;                                                   ;
 MietAusgaben                              ;                                                 ;                                                   ;
                                           ;ausgabenMonatlich                                ;number                                             ;
                                           ;entfallenMitFinanzierung                         ;boolean                                            ;
@@ -533,6 +542,18 @@ Partner                                   ;                                     
                                           ;telefonnummer                                    ;string                                             ;
                                           ;externerKreditSachbearbeiterId                   ;string                                             ;
                                           ;_links                                           ;Links                                              ;
+PatchOperation                            ;                                                 ;                                                   ;
+                                          ;from                                             ;string                                             ;
+                                          ;metaClass                                        ;MetaClass                                          ;
+                                          ;op                                               ;enum                                               ;
+                                          ;                                                 ;                                                   ;add
+                                          ;                                                 ;                                                   ;remove
+                                          ;                                                 ;                                                   ;replace
+                                          ;                                                 ;                                                   ;copy
+                                          ;                                                 ;                                                   ;move
+                                          ;                                                 ;                                                   ;test
+                                          ;path                                             ;string                                             ;
+                                          ;value                                            ;object                                             ;
 Postadresse                               ;                                                 ;                                                   ;
                                           ;hausnummer                                       ;string                                             ;
                                           ;ort                                              ;string                                             ;
