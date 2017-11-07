@@ -88,12 +88,12 @@ Body:
 ```
 [
 	{ "op": "replace", "path": "/status", "value": 
-	  {
-      "antragsteller": "BEANTRAGT",
-      "produktAnbieter": "ABGELEHNT",
-      "ablehnungsgrund": "Unterlagen fehlen"
-    }
-  }
+		{
+			"antragsteller": "BEANTRAGT",
+			"produktAnbieter": "ABGELEHNT",
+			"ablehnungsgrund": "Unterlagen fehlen"
+		}
+	}
 ]
 ```
 
