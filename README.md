@@ -82,9 +82,9 @@ Die URL zum Aufruf des Patch-Kommandos ist immer die gleiche:
 PATCH https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
-#### Den Status eines Antrags neu setzen
+Im folgenden werden die Patch-Operationen als Body dargestellt.
 
-Body:
+##### Den Status eines Antrags neu setzen
 ```
 [
 	{ "op": "replace", "path": "/status", "value": 
@@ -98,40 +98,32 @@ Body:
 ```
 
 Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der Subressource aufrufen.
-
-Body:
 ```
 [
 	{ "op": "replace", "path": "/status/produktAnbieter", "value": "ABGELEHNT" }
 ]
 ```
 
-#### Die Antragsreferenz eines Antrags setzen:
-
-Body:
+##### Die Antragsreferenz eines Antrags setzen:
 ```
 [
 	{ "op": "add", "path": "/antragsReferenz", "value": "<IHRE_VORGANGSNUMMER>" }
 ]
 ```
 
-#### Die Antragsreferenz eines Antrags löschen:
-
-Body:
+##### Die Antragsreferenz eines Antrags löschen:
 ```
 [
 	{ "op": "remove", "path": "/antragsReferenz" }
 ]
 ```
 
-#### Das voraussichtliche Bearbeitungsdatum eines Antrags setzen:
-
-Body:
+##### Das voraussichtliche Bearbeitungsdatum eines Antrags setzen:
 ```
 [
 	{ "op": "add", "path": "/voraussichtlicheBearbeitung", "value": "2017-11-12" }
 ]
 ```
-#### Wechsel des Bearbeiters 
+##### Wechsel des Bearbeiters 
 
 _noch nicht implementiert_
