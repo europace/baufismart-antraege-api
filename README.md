@@ -72,9 +72,9 @@ GET https://baufismart.api.europace.de/v2/antraege
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
-### PATCH Operationen mit JsonPatch
+### Mögliche PATCH Operationen eines Antrags
 
-Details zu JSON Patch finden Sie unter http://jsonpatch.com/
+Details zu JSON Patch finden Sie unter [jsonpatch.com](http://jsonpatch.com/).
 Es sind mehrere Operationen mit einem PATCH Aufruf möglich. 
 
 Die URL zum Aufruf des Patch-Kommandos ist immer die gleiche:
