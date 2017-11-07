@@ -72,18 +72,66 @@ GET https://baufismart.api.europace.de/v2/antraege
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
+### PATCH Operationen mit JsonPatch
+
+Details zu JSON Patch finden Sie unter http://jsonpatch.com/
+Es sind mehrere Operationen mit einem PATCH Aufruf möglich. 
+
+Die URL zum Aufruf des Patch-Kommandos ist immer die gleiche:
+```
+PATCH https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
+```
+
 #### Den Status eines Antrags neu setzen
 
+Body:
 ```
-POST https://baufismart.api.europace.de/v2/antraege/AB1234/1/1/status
-```
-mit
-```
-{
-	"antragsteller": "BEANTRAGT",
-	"produktAnbieter": "ABGELEHNT",
-	"kommentar": "Unterlagen fehlen"
-}
+[
+	{ "op": "replace", "path": "/status", "value": 
+	  {
+      "antragsteller": "BEANTRAGT",
+      "produktAnbieter": "ABGELEHNT",
+      "ablehnungsgrund": "Unterlagen fehlen"
+    }
+  }
+]
 ```
 
-im Body.
+Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der Subressource aufrufen.
+
+Body:
+```
+[
+	{ "op": "replace", "path": "/status/produktAnbieter", "value": "ABGELEHNT" }
+]
+```
+
+#### Die Antragsreferenz eines Antrags setzen:
+
+Body:
+```
+[
+	{ "op": "add", "path": "/antragsReferenz", "value": "<IHRE_VORGANGSNUMMER>" }
+]
+```
+
+#### Die Antragsreferenz eines Antrags löschen:
+
+Body:
+```
+[
+	{ "op": "remove", "path": "/antragsReferenz" }
+]
+```
+
+#### Das voraussichtliche Bearbeitungsdatum eines Antrags setzen:
+
+Body:
+```
+[
+	{ "op": "add", "path": "/voraussichtlicheBearbeitung", "value": "2017-11-12" }
+]
+```
+#### Wechsel des Bearbeiters 
+
+_noch nicht implementiert_
