@@ -13,11 +13,11 @@ werden. Dazu empfehlen wir das Tool [Swagger Codegen](https://github.com/swagger
 ### Dokumentation
 
  - [RELEASE NOTES](https://github.com/hypoport/antraege-auslesen-api/releases)
- - [statische HTML Seite](http://htmlpreview.github.io?https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/antraege-v2.4/Dokumentation/index.html)
+ - [statische HTML Seite](http://htmlpreview.github.io?https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/Dokumentation/index.html)
 
 Zur Unterstützung für das Mapping werden folgende Dateien bereit gestellt:
-  - [CSV Datei](https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/antraege-v2.4/definitions.csv)
-  - [Excel Datei](https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/antraege-v2.4/definitions.xls)
+  - [CSV Datei](https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/definitions.csv)
+  - [Excel Datei](https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/definitions.xls)
 
 ### Generierung des Clients
 ##### JAVA mit Retrofit
