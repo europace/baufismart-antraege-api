@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.3"
+  version: "2.4"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -49,6 +49,12 @@ paths:
         description: "Suche nach Ihrer antragsReferenz"
         required: false
         type: "string"
+      - name: "sort"
+        in: "query"
+        description: "Sortierung der Anträge, aufsteigend oder absteigend"
+        required: false
+        type: "string"
+        default: "absteigend"
       - name: "page"
         in: "query"
         description: "page"
@@ -613,6 +619,10 @@ definitions:
         - "HAUS"
       verkehrswert:
         type: "number"
+      vorlaeufigerVerkehrswert:
+        type: "number"
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
   Haushalt:
     type: "object"
     properties:
@@ -623,15 +633,13 @@ definitions:
       anzahlErwachseneImHaushalt:
         type: "integer"
         format: "int32"
-        description: "Dieses Feld ist eine produktanbieterspezifische Zusatzangabe,\
-          \ sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berü\
-          cksichtigt."
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
       anzahlKinderNichtImHaushalt:
         type: "integer"
         format: "int32"
-        description: "Dieses Feld ist eine produktanbieterspezifische Zusatzangabe,\
-          \ sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berü\
-          cksichtigt."
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
       bestehendeImmobilien:
         type: "array"
         items:
@@ -639,18 +647,19 @@ definitions:
       kfzAnzahl:
         type: "integer"
         format: "int32"
-        description: "Dieses Feld ist eine produktanbieterspezifische Zusatzangabe,\
-          \ sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berü\
-          cksichtigt."
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
       kinder:
         type: "array"
         items:
           $ref: "#/definitions/Kind"
       lebenshaltungsKostenMonatlich:
         type: "number"
-        description: "Dieses Feld ist eine produktanbieterspezifische Zusatzangabe,\
-          \ sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berü\
-          cksichtigt. (DSL Bank)"
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL\
+          \ Bank)"
+      obligo:
+        $ref: "#/definitions/VermoegenVerbindlichkeiten"
       positionen:
         $ref: "#/definitions/HaushaltsPositionen"
   AusgabenMonatlich:
@@ -1098,6 +1107,8 @@ definitions:
   Vorhaben:
     type: "object"
     properties:
+      eigenleistungWennNeubauOderModernisierungsmassnahmen:
+        type: "number"
       externeBausparAngebote:
         type: "array"
         items:
@@ -1288,6 +1299,22 @@ definitions:
         format: "int32"
       restschuldNachZinsBindungsEnde:
         type: "number"
+  VermoegenVerbindlichkeit:
+    type: "object"
+    properties:
+      aktuellerWert:
+        type: "number"
+      anrechnungFuerBlankoAnteil:
+        type: "number"
+      bezeichner:
+        type: "string"
+      kontonummer:
+        type: "string"
+      vermoegensTyp:
+        type: "string"
+        enum:
+        - "VERMOEGEN"
+        - "VERBINDLICHKEIT"
   RechteAbteilung2:
     type: "object"
     properties:
@@ -1385,9 +1412,9 @@ definitions:
         description: "wenn Aufenthaltstitel befristet"
       berufsgruppeBeiIngDiba:
         type: "string"
-        description: "Berufsgruppe des Antragstellers (ING-DiBa) Dieses Feld ist eine\
-          \ produktanbieterspezifische Zusatzangabe, sie wird nicht von allen Produktanbietern\
-          \ bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:  ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTSTAENDIG,RENTNER,HAUSMANN,PRIVATIER,SOLDAT,SCHUELER,AZUBI,STUDENT,OHNE.\
+        description: "Berufsgruppe des Antragstellers (ING-DiBa) Diese Angabe ist\
+          \ produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei\
+          \ der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:  ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTSTAENDIG,RENTNER,HAUSMANN,PRIVATIER,SOLDAT,SCHUELER,AZUBI,STUDENT,OHNE.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
       beschaeftigung:
@@ -1395,25 +1422,22 @@ definitions:
       brancheBeiIngDiba:
         type: "string"
         description: "Branche, in welcher der Antragsteller tätig ist. (ING-DiBa)\
-          \ Dieses Feld ist eine produktanbieterspezifische Zusatzangabe, sie wird\
-          \ nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt..\
-          \ Erlaubte Werte sind: BANKEN_VERSICHERUNGEN,BAUGEWERBE,DIENSTLEISTUNGEN_SONSTIGE,EDV_BERATUNG,ENERGIE,ERZIEHUNG_UNTERRICHT,GESUNDHEITSWESEN,HANDEL,HANDWERK,HOTEL_GASTRONOMIE,LANDWIRTSCHAFT,OEFFENTLICHER_DIENST,PRODUKTION_INDUSTRIE,VERKEHR.\
+          \ Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern\
+          \ bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN,BAUGEWERBE,DIENSTLEISTUNGEN_SONSTIGE,EDV_BERATUNG,ENERGIE,ERZIEHUNG_UNTERRICHT,GESUNDHEITSWESEN,HANDEL,HANDWERK,HOTEL_GASTRONOMIE,LANDWIRTSCHAFT,OEFFENTLICHER_DIENST,PRODUKTION_INDUSTRIE,VERKEHR.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
       brancheBeiMhb:
         type: "string"
-        description: "Branche, in welcher der Antragsteller tätig ist. (MHB) Dieses\
-          \ Feld ist eine produktanbieterspezifische Zusatzangabe, sie wird nicht\
-          \ von allen Produktanbietern bei der Angebotsermittlung berücksichtigt..\
-          \ Erlaubte Werte sind: VERARBEITENDES_GEWERBE,BAU,HANDEL,VERKEHR_INFORMATION,DIENSTLEISTUNG,SONSTIGES.\
+        description: "Branche, in welcher der Antragsteller tätig ist. (MHB) Diese\
+          \ Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern\
+          \ bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE,BAU,HANDEL,VERKEHR_INFORMATION,DIENSTLEISTUNG,SONSTIGES.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
       brancheBeiSRating:
         type: "string"
         description: "Branche, in welcher der Antragsteller tätig ist. (Sparkassen)\
-          \ Dieses Feld ist eine produktanbieterspezifische Zusatzangabe, sie wird\
-          \ nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt..\
-          \ Erlaubte Werte sind: BAUGEWERBE,DIENSTLEISTUNGEN,ENERGIE_UND_WASSERVERSORGUNG_BERGBAU,GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN,GESUNDHEITSWESEN,HANDEL,HOTEL_UND_GASTRONOMIE,KREDITINSTITUTE,LAND_UND_FORSTWIRTSCHAFT_FISCHEREI,OEFFENTLICHER_DIENST,ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,VERARBEITENDES_GEWERBE,VERKEHR_UND_NACHRICHTENUEBERMITTLUNG,VERSICHERUNGEN,SONSTIGE.\
+          \ Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern\
+          \ bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE,DIENSTLEISTUNGEN,ENERGIE_UND_WASSERVERSORGUNG_BERGBAU,GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN,GESUNDHEITSWESEN,HANDEL,HOTEL_UND_GASTRONOMIE,KREDITINSTITUTE,LAND_UND_FORSTWIRTSCHAFT_FISCHEREI,OEFFENTLICHER_DIENST,ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,VERARBEITENDES_GEWERBE,VERKEHR_UND_NACHRICHTENUEBERMITTLUNG,VERSICHERUNGEN,SONSTIGE.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
       email:
@@ -1434,9 +1458,9 @@ definitions:
         format: "date"
       geburtsort:
         type: "string"
-        description: "Dieses Feld ist eine produktanbieterspezifische Zusatzangabe,\
-          \ sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berü\
-          cksichtigt. Relevant für Sparprodukte (Bausparkassen)."
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt. Relevant\
+          \ für Sparprodukte (Bausparkassen)."
       guetertrennungVereinbartWennVerheiratet:
         type: "boolean"
         example: false
@@ -1444,9 +1468,8 @@ definitions:
       id:
         type: "string"
       legitimationsDaten:
-        description: "Dieses Feld ist eine produktanbieterspezifische Zusatzangabe,\
-          \ sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berü\
-          cksichtigt."
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
         $ref: "#/definitions/LegitimationsDaten"
       nachname:
         type: "string"
@@ -1483,6 +1506,7 @@ definitions:
         $ref: "#/definitions/MetaClass"
       op:
         type: "string"
+        description: "Auszuführende Operation"
         enum:
         - "add"
         - "remove"
@@ -1492,9 +1516,15 @@ definitions:
         - "test"
       path:
         type: "string"
+        description: "JSON-Path im Antrag"
       value:
         type: "object"
+        description: "Zu setzender oder auszutauschender Wert. Erlaubt sind string,\
+          \ number oder JSON object"
         properties: {}
+    description: "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/).\
+      \ Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\"\
+      : \"123-ABC\"\" }"
   Partner:
     type: "object"
     properties:
@@ -1858,6 +1888,10 @@ definitions:
         type: "number"
         description: "Nur relevant bei Finanzbedarf AnschlussFinanzierung, Modernisierung\
           \ und Kapitalbeschaffung"
+      vorlaeufigerVerkehrswert:
+        type: "number"
+        description: "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von\
+          \ allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
   Error:
     type: "object"
     properties:
@@ -1908,8 +1942,14 @@ definitions:
         type: "string"
       name:
         type: "string"
+        description: "Originaler Dateiname mit Präfix"
+      titel:
+        type: "string"
+        description: "Name des Dokuments"
       type:
         type: "string"
+        description: "Mediatype des Dokuments, siehe <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\"\
+          >HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
   SituationNachRenteneintritt:
     type: "object"
     properties:
@@ -1953,7 +1993,7 @@ definitions:
         description: "nur wenn wirdAbgeloest==true"
       darlehensArt:
         type: "string"
-        description: "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,SONSTIGES_DARLEHEN.\
+        description: "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
       darlehensGeber:
@@ -1979,7 +2019,7 @@ definitions:
         description: "nur wenn wirdAbgeloest==true"
       darlehensArt:
         type: "string"
-        description: "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,SONSTIGES_DARLEHEN.\
+        description: "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN.\
           \ Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher\
           \ mit unbekannten Werten umgehen können."
       darlehensGeber:
@@ -2138,3 +2178,10 @@ definitions:
           \ mit unbekannten Werten umgehen können."
       zinsBindung:
         $ref: "#/definitions/ZinsBindung"
+  VermoegenVerbindlichkeiten:
+    type: "object"
+    properties:
+      vermoegenOderVerbindlichkeiten:
+        type: "array"
+        items:
+          $ref: "#/definitions/VermoegenVerbindlichkeit"
