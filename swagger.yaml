@@ -898,6 +898,9 @@ definitions:
       zinsZahlungsBeginnAm:
         type: "string"
         format: "date"
+        description: "Die Zinszahlung beginnt zum Abruf des Darlehensbetrages, spä\
+          testens jedoch nach Ablauf der zinsfreien Zeit. 'zinsZahlungsBeginnAm' liefert\
+          \ das Datum des spätensten Zinszahlungsbeginn."
   Vermoegen:
     type: "object"
     properties:
