@@ -1,6 +1,6 @@
 # Anträge Auslesen API
 
-##### Aktuelle Version: 2.4
+##### Aktuelle Version: 2.5
 
 API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters.
 
