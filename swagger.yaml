@@ -1644,8 +1644,7 @@ definitions:
       dokumente:
         type: "array"
         description: "Enthält alle Plattformdokumente, freigegebene Dokumente des\
-          \ Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters. **Aktuell\
-          \ sind nur Selbstauskunft und Kreditentscheidungsinformation enthalten.**"
+          \ Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters."
         items:
           $ref: "#/definitions/Dokument"
       kreditSachbearbeiter:
