@@ -122,6 +122,12 @@
               "$ref": "#/definitions/Error"
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
           "403": {
             "description": "Forbidden",
             "schema": {
@@ -130,12 +136,6 @@
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/Error"
             }
@@ -198,6 +198,12 @@
               "$ref": "#/definitions/Error"
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
           "403": {
             "description": "Forbidden",
             "schema": {
@@ -206,12 +212,6 @@
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/Error"
             }
@@ -282,6 +282,12 @@
               "$ref": "#/definitions/Error"
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
           "403": {
             "description": "Forbidden",
             "schema": {
@@ -290,12 +296,6 @@
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/Error"
             }
@@ -366,6 +366,12 @@
               "$ref": "#/definitions/Error"
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
           "403": {
             "description": "Forbidden",
             "schema": {
@@ -374,12 +380,6 @@
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/Error"
             }
@@ -458,6 +458,12 @@
               "$ref": "#/definitions/Error"
             }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
           "403": {
             "description": "Forbidden",
             "schema": {
@@ -466,12 +472,6 @@
           },
           "404": {
             "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
             "schema": {
               "$ref": "#/definitions/Error"
             }
@@ -537,11 +537,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
           "401": {
             "description": "Unauthorized"
+          },
+          "204": {
+            "description": "No Content"
           },
           "403": {
             "description": "Forbidden"
@@ -2142,9 +2142,8 @@
         },
         "value": {
           "type": "object",
-          "description": "Zu setzender oder auszutauschender Wert. Erlaubt sind string, number oder JSON object",
-          "properties": {
-          }
+          "example": "\"WER123\", 1234, {\"antragsteller\": \"BEANTRAGT\"}",
+          "description": "Zu setzender oder auszutauschender Wert. Erlaubt sind string, number oder JSON object"
         }
       },
       "description": "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/). Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\": \"123-ABC\"\" }"
