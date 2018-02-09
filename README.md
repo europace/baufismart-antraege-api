@@ -1,6 +1,6 @@
 # Anträge Auslesen API
 
-##### Aktuelle Version: 2.6 
+##### Aktuelle Version: 2.6
 
 API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters.
 
@@ -22,7 +22,7 @@ Zur Unterstützung für das Mapping werden folgende Dateien bereit gestellt:
 ### Generierung des Clients
 ##### JAVA mit Retrofit
 
-1. Die aktuelle Swagger-Codegen Version, mindestens 2.2.2, downloaden 
+1. Die aktuelle Swagger-Codegen Version, mindestens 2.2.2, downloaden
 2. Client mit folgendem Kommando generieren:
 
 Example:
@@ -52,11 +52,11 @@ https://tools.ietf.org/html/rfc6749#section-1.3.3
 ##### Credentials
 Um die Credentials zu erhalten, erfagen Sie beim Helpdesk der Plattform die Zugangsdaten zur Auslesen API, bzw. bitten Ihren Auftraggeber dies zu tun.
 
-##### Schritte 
+##### Schritte
 1. Absenden eines POST Requests auf den [Login-Endpunkt](https://htmlpreview.github.io/?https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/Dokumentation/index.html#_oauth2) mit Username und Password. Der Username entspricht der PartnerId und das Password ist der API-Key. Auf dem Testsystem können diese Werte frei gewählt werden. Alternativ kann ein Login auch über einen GET Aufruf mit HTTP Basic Auth auf den Login-Endpunkt erfolgen.
 2. Aus der JSON-Antwort das JWToken (access_token) entnehmen
 3. Bei weiteren Requests muss dieses JWToken als Authorization Header mitgeschickt werden.
-   
+
 ### Quickstart
 
 ##### Liste aller meiner Anträge abrufen
@@ -74,7 +74,7 @@ GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ### Mögliche PATCH Operationen eines Antrags
 
 Details zu JSON Patch finden Sie unter [jsonpatch.com](http://jsonpatch.com/).
-Es sind mehrere Operationen mit einem PATCH Aufruf möglich. 
+Es sind mehrere Operationen mit einem PATCH Aufruf möglich.
 
 Die URL zum Aufruf des Patch-Kommandos ist immer die gleiche:
 ```
@@ -87,7 +87,7 @@ Im folgenden werden die Patch-Operationen als Body dargestellt.
 
 ```
 [
-	{ "op": "replace", "path": "/status", "value": 
+	{ "op": "replace", "path": "/status", "value":
 		{
 			"antragsteller": "BEANTRAGT",
 			"produktAnbieter": "ABGELEHNT",
@@ -127,6 +127,9 @@ Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der
 	{ "op": "add", "path": "/voraussichtlicheBearbeitung", "value": "2017-11-12" }
 ]
 ```
-##### Wechsel des Bearbeiters 
+##### Wechsel des Bearbeiters
 
 _noch nicht implementiert_
+
+## Fragen und Anregungen
+Bei Fragen und Anregungen entweder ein Issue in GitHub anlegen oder an [helpdesk@europace2.de](mailto:helpdesk@europace2.de) schreiben.
