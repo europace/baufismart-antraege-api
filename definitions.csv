@@ -316,6 +316,7 @@ Dokument                                  ;                                     
 EffektivZinsKosten                        ;                                                    ;                                                   ;
                                           ;beratungsHonorar                                    ;number                                             ;
                                           ;grundbuchKosten                                     ;number                                             ;
+                                          ;laufendeVerwaltungskostenJaehrlich                  ;number                                             ;
                                           ;sonstigeKosten                                      ;number                                             ;
                                           ;tilgungsErsatzProduktKosten                         ;number                                             ;
                                           ;wohnGebaeudeVersicherungsKosten                     ;number                                             ;
