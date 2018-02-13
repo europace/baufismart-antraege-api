@@ -26,7 +26,7 @@ paths:
         \ Partner sehen darf. Offen: Sortierung, Pagination, Filterung"
       operationId: "getAlleAntraege"
       consumes:
-      - "*/*"
+      - "application/json"
       produces:
       - "application/json;charset=UTF-8"
       parameters:
@@ -114,7 +114,7 @@ paths:
       description: "Als Parameter wird die Vorgangsnummer in der Form 'AB1234' verwendet."
       operationId: "getAntraegeByVorgangNummer"
       consumes:
-      - "*/*"
+      - "application/json"
       produces:
       - "application/json;charset=UTF-8"
       parameters:
@@ -164,7 +164,7 @@ paths:
         \ 'AB1234/1' verwendet."
       operationId: "getAntrag"
       consumes:
-      - "*/*"
+      - "application/json"
       produces:
       - "application/json;charset=UTF-8"
       parameters:
@@ -220,7 +220,7 @@ paths:
         \ geführt hat."
       operationId: "getAngebot"
       consumes:
-      - "*/*"
+      - "application/json"
       produces:
       - "application/json;charset=UTF-8"
       parameters:
@@ -276,7 +276,7 @@ paths:
         \ verwendet."
       operationId: "getAntrag_1"
       consumes:
-      - "*/*"
+      - "application/json"
       produces:
       - "application/json;charset=UTF-8"
       parameters:
@@ -384,7 +384,7 @@ paths:
       summary: "Zum Setzen des Antragsstatus"
       operationId: "setAntragsStatus_1"
       consumes:
-      - "*/*"
+      - "application/json"
       produces:
       - "application/json;charset=UTF-8"
       parameters:

@@ -31,7 +31,7 @@
         "description": "Es werden alle Anträge ausgeliefert, die der authentifizierten Partner sehen darf. Offen: Sortierung, Pagination, Filterung",
         "operationId": "getAlleAntraege",
         "consumes": [
-          "*/*"
+          "application/json"
         ],
         "produces": [
           "application/json;charset=UTF-8"
@@ -159,7 +159,7 @@
         "description": "Als Parameter wird die Vorgangsnummer in der Form 'AB1234' verwendet.",
         "operationId": "getAntraegeByVorgangNummer",
         "consumes": [
-          "*/*"
+          "application/json"
         ],
         "produces": [
           "application/json;charset=UTF-8"
@@ -235,7 +235,7 @@
         "description": "Als Parameter wird die Vorgangs- und Antragsnummer in der Form 'AB1234/1' verwendet.",
         "operationId": "getAntrag",
         "consumes": [
-          "*/*"
+          "application/json"
         ],
         "produces": [
           "application/json;charset=UTF-8"
@@ -319,7 +319,7 @@
         "description": "Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.",
         "operationId": "getAngebot",
         "consumes": [
-          "*/*"
+          "application/json"
         ],
         "produces": [
           "application/json;charset=UTF-8"
@@ -403,7 +403,7 @@
         "description": "Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.",
         "operationId": "getAntrag_1",
         "consumes": [
-          "*/*"
+          "application/json"
         ],
         "produces": [
           "application/json;charset=UTF-8"
@@ -564,7 +564,7 @@
         "summary": "Zum Setzen des Antragsstatus",
         "operationId": "setAntragsStatus_1",
         "consumes": [
-          "*/*"
+          "application/json"
         ],
         "produces": [
           "application/json;charset=UTF-8"
