@@ -31,6 +31,12 @@ Example:
 java -jar swagger-codegen-cli-2.2.2.jar generate -i swagger.yaml -l java -c codegen-config-file.json -o europace-api-client
 ```
 
+Für Retrofit2
+
+```
+java -jar swagger-codegen-cli-2.2.2.jar generate -i swagger.yaml -l java --library retrofit2 -c codegen-config-file.json -o europace-api-client
+```
+
 Example **codegen-config-file.json**:
 
 ```
@@ -57,7 +63,13 @@ Um die Credentials zu erhalten, erfagen Sie beim Helpdesk der Plattform die Zuga
 2. Aus der JSON-Antwort das JWToken (access_token) entnehmen
 3. Bei weiteren Requests muss dieses JWToken als Authorization Header mitgeschickt werden.
 
-##### Beispiel Implementierung für 
+##### Beispiel Implementierung für die Authentifizierung mit einem Java Client und Retrofit
+
+Den API client nicht mit dem Default Konstruktor, sondern dem credentials Kontruktor erzeugen. Z.B:
+
+```
+ api = new ApiClient("oauth2","partnerID", "api-key").createService(AntraegeApi.class);
+```
 
 ### Quickstart
 
