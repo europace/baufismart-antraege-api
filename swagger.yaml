@@ -1661,6 +1661,10 @@ definitions:
       vermittler:
         description: "Partner auf Seite des Vertriebs"
         $ref: "#/definitions/Partner"
+      voraussichtlicheBearbeitung:
+        type: "string"
+        format: "date"
+        description: "Das Datum, zu dem der Antrag vorrausichtlich bearbeitet wird."
       vorgangsReferenz:
         type: "string"
         description: "Nummer des Vorgangs im System des Vertriebs"

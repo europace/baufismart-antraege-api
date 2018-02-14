@@ -32,6 +32,7 @@ Antrag                                    ;                                     
                                           ;produktAnbieter                                     ;ProduktAnbieter                                    ;
                                           ;status                                              ;AntragsStatus                                      ;
                                           ;vermittler                                          ;Partner                                            ;
+                                          ;voraussichtlicheBearbeitung                         ;string(date)                                       ;
                                           ;vorgangsReferenz                                    ;string                                             ;
                                           ;zeitpunktDerAnnahme                                 ;string(date-time)                                  ;
                                           ;zugrundeliegendeDaten                               ;ZugrundeliegendeDatenZumAntrag                     ;
