@@ -247,20 +247,42 @@ BestehenderBausparvertrag                 ;                                     
 BestehendesDarlehen                       ;                                                    ;                                                   ;
                                           ;abzuloesendeRestschuld                              ;number                                             ;
                                           ;aktuelleRestschuldWennNichtAbzuloesen               ;number                                             ;
-                                          ;darlehensArt                                        ;string                                             ;
+                                          ;darlehensArt                                        ;enum                                               ;
+                                          ;                                                    ;                                                   ;BAUSPARDARLEHEN
+                                          ;                                                    ;                                                   ;FOERDERDARLEHEN
+                                          ;                                                    ;                                                   ;IMMOBILIENDARLEHEN
+                                          ;                                                    ;                                                   ;PRIVATDARLEHEN
+                                          ;                                                    ;                                                   ;SONSTIGES_DARLEHEN
+                                          ;darlehensBetrag                                     ;number                                             ;
                                           ;darlehensGeber                                      ;ProduktAnbieter                                    ;
+                                          ;darlehensKontonummer                                ;string                                             ;
                                           ;eingetrageneGrundschuld                             ;number                                             ;
+                                          ;hauptKontonummerDslBank                             ;string                                             ;
                                           ;id                                                  ;string                                             ;
+                                          ;laufzeitEnde                                        ;string(date)                                       ;
                                           ;rateMonatlich                                       ;number                                             ;
+                                          ;sollZins                                            ;number                                             ;
+                                          ;sondertilgungZumZinsBindungsEnde                    ;number                                             ;
                                           ;zinsBindungEndetAm                                  ;string(date)                                       ;
 BestehendesDarlehenDesFinanzierungsObjekts;                                                    ;                                                   ;
                                           ;abzuloesendeRestschuld                              ;number                                             ;
                                           ;aktuelleRestschuldWennNichtAbzuloesen               ;number                                             ;
-                                          ;darlehensArt                                        ;string                                             ;
+                                          ;darlehensArt                                        ;enum                                               ;
+                                          ;                                                    ;                                                   ;BAUSPARDARLEHEN
+                                          ;                                                    ;                                                   ;FOERDERDARLEHEN
+                                          ;                                                    ;                                                   ;IMMOBILIENDARLEHEN
+                                          ;                                                    ;                                                   ;PRIVATDARLEHEN
+                                          ;                                                    ;                                                   ;SONSTIGES_DARLEHEN
+                                          ;darlehensBetrag                                     ;number                                             ;
                                           ;darlehensGeber                                      ;ProduktAnbieter                                    ;
+                                          ;darlehensKontonummer                                ;string                                             ;
                                           ;eingetrageneGrundschuld                             ;number                                             ;
+                                          ;hauptKontonummerDslBank                             ;string                                             ;
                                           ;id                                                  ;string                                             ;
+                                          ;laufzeitEnde                                        ;string(date)                                       ;
                                           ;rateMonatlich                                       ;number                                             ;
+                                          ;sollZins                                            ;number                                             ;
+                                          ;sondertilgungZumZinsBindungsEnde                    ;number                                             ;
                                           ;verwendenAls                                        ;enum                                               ;
                                           ;                                                    ;                                                   ;ABLOESEN
                                           ;                                                    ;                                                   ;TRITT_IM_RANG_ZURUECK
@@ -680,6 +702,7 @@ Vorhaben                                  ;                                     
                                           ;eigenleistungWennNeubauOderModernisierungsmassnahmen;number                                             ;
                                           ;externeBausparAngebote                              ;array of BausparAngebot                            ;
                                           ;finanzbedarf                                        ;Finanzbedarf                                       ;
+                                          ;nachfinanzierung                                    ;boolean                                            ;
                                           ;nachrangigeExterneDarlehen                          ;array of NachrangigesExternesDarlehen              ;
                                           ;verwendungszweck                                    ;enum                                               ;
                                           ;                                                    ;                                                   ;ANSCHLUSSFINANZIERUNG

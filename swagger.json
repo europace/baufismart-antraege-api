@@ -489,7 +489,7 @@
         "tags": [
           "Antraege"
         ],
-        "summary": "einen Antrag aktualisieren",
+        "summary": "einen Antrag aktualisie ren",
         "description": "Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.",
         "operationId": "updateAntrag",
         "consumes": [
@@ -1602,6 +1602,9 @@
         },
         "finanzbedarf": {
           "$ref": "#/definitions/Finanzbedarf"
+        },
+        "nachfinanzierung": {
+          "type": "boolean"
         },
         "nachrangigeExterneDarlehen": {
           "type": "array",
@@ -2780,19 +2783,50 @@
         },
         "darlehensArt": {
           "type": "string",
-          "description": "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
+          "enum": [
+            "BAUSPARDARLEHEN",
+            "FOERDERDARLEHEN",
+            "IMMOBILIENDARLEHEN",
+            "PRIVATDARLEHEN",
+            "SONSTIGES_DARLEHEN"
+          ]
+        },
+        "darlehensBetrag": {
+          "type": "number",
+          "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
         "darlehensGeber": {
           "$ref": "#/definitions/ProduktAnbieter"
         },
+        "darlehensKontonummer": {
+          "type": "string",
+          "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
+        },
         "eingetrageneGrundschuld": {
           "type": "number"
+        },
+        "hauptKontonummerDslBank": {
+          "type": "string",
+          "description": "für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
         "id": {
           "type": "string"
         },
+        "laufzeitEnde": {
+          "type": "string",
+          "format": "date",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)"
+        },
         "rateMonatlich": {
           "type": "number"
+        },
+        "sollZins": {
+          "type": "number"
+        },
+        "sondertilgungZumZinsBindungsEnde": {
+          "type": "number",
+          "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
         "zinsBindungEndetAm": {
           "type": "string",
@@ -2815,19 +2849,50 @@
         },
         "darlehensArt": {
           "type": "string",
-          "description": "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
+          "enum": [
+            "BAUSPARDARLEHEN",
+            "FOERDERDARLEHEN",
+            "IMMOBILIENDARLEHEN",
+            "PRIVATDARLEHEN",
+            "SONSTIGES_DARLEHEN"
+          ]
+        },
+        "darlehensBetrag": {
+          "type": "number",
+          "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
         "darlehensGeber": {
           "$ref": "#/definitions/ProduktAnbieter"
         },
+        "darlehensKontonummer": {
+          "type": "string",
+          "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
+        },
         "eingetrageneGrundschuld": {
           "type": "number"
+        },
+        "hauptKontonummerDslBank": {
+          "type": "string",
+          "description": "für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
         "id": {
           "type": "string"
         },
+        "laufzeitEnde": {
+          "type": "string",
+          "format": "date",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)"
+        },
         "rateMonatlich": {
           "type": "number"
+        },
+        "sollZins": {
+          "type": "number"
+        },
+        "sondertilgungZumZinsBindungsEnde": {
+          "type": "number",
+          "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
         "verwendenAls": {
           "type": "string",
