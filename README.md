@@ -105,12 +105,22 @@ Im folgenden werden die Patch-Operationen als Body dargestellt.
 		{
 			"antragsteller": "BEANTRAGT",
 			"produktAnbieter": "ABGELEHNT",
-			"ablehnungsgrund": "Unterlagen fehlen"
+			"ablehnungsgrund": "FINANZIELLE_SITUATION",
+			"kommentar": "Kommentar zum Statuswechsel"
 		}
 	}
 ]
 ```
+Der Ablehnungsgrund kann lauten:
 
+* FINANZIELLE_SITUATION
+* NEGATIV_MERKMAL
+* WERTERMITTLUNG
+* KRITERIEN
+* UNTERLAGEN_UNVOLLSTAENDIG
+* GEGENANGEBOT
+* KEINE_ANGABE
+                                       
 Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der Subressource aufrufen.
 ```
 [
