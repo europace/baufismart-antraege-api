@@ -2309,7 +2309,7 @@
         },
         "dokumente": {
           "type": "array",
-          "description": "Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters. **Aktuell sind nur Selbstauskunft und Kreditentscheidungsinformation enthalten.**",
+          "description": "Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.",
           "items": {
             "$ref": "#/definitions/Dokument"
           }
@@ -2704,14 +2704,14 @@
       "properties": {
         "art": {
           "type": "string",
-          "description": "ist nicht immer vorhanden"
+          "description": "Der Typ des Dokuments. Aktuelle Ausprägungen sind: 'Antragsdokument' oder 'Freigegebenes Dokument'"
         },
         "href": {
           "type": "string"
         },
         "name": {
           "type": "string",
-          "description": "Originaler Dateiname mit Präfix"
+          "description": "Originaler Dateiname"
         },
         "titel": {
           "type": "string",
