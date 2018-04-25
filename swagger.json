@@ -489,7 +489,7 @@
         "tags": [
           "Antraege"
         ],
-        "summary": "einen Antrag aktualisie ren",
+        "summary": "einen Antrag aktualisieren",
         "description": "Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.",
         "operationId": "updateAntrag",
         "consumes": [

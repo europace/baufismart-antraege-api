@@ -2024,6 +2024,13 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_partner">Partner</a></p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>voraussichtlicheBearbeitung</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Das Datum, zu dem der Antrag vorrausichtlich bearbeitet wird.</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string(date)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vorgangsReferenz</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Nummer des Vorgangs im System des Vertriebs</p></td>
@@ -3187,7 +3194,16 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensArt</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">enum (BAUSPARDARLEHEN, FOERDERDARLEHEN, IMMOBILIENDARLEHEN, PRIVATDARLEHEN, SONSTIGES_DARLEHEN)</p>
+    </td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensBetrag</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensGeber</strong><br>
@@ -3196,10 +3212,25 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensKontonummer</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>eingetrageneGrundschuld</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hauptKontonummerDslBank</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>id</strong><br>
@@ -3208,10 +3239,31 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>laufzeitEnde</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string(date)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>rateMonatlich</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sollZins</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sondertilgungZumZinsBindungsEnde</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>zinsBindungEndetAm</strong><br>
@@ -3254,7 +3306,16 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensArt</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">enum (BAUSPARDARLEHEN, FOERDERDARLEHEN, IMMOBILIENDARLEHEN, PRIVATDARLEHEN, SONSTIGES_DARLEHEN)</p>
+    </td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensBetrag</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensGeber</strong><br>
@@ -3263,10 +3324,25 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensKontonummer</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>eingetrageneGrundschuld</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hauptKontonummerDslBank</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>id</strong><br>
@@ -3275,10 +3351,31 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>laufzeitEnde</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string(date)</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>rateMonatlich</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sollZins</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sondertilgungZumZinsBindungsEnde</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>verwendenAls</strong><br>
@@ -5771,6 +5868,11 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_finanzbedarf">Finanzbedarf</a></p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>nachfinanzierung</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>nachrangigeExterneDarlehen</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_nachrangigesexternesdarlehen">NachrangigesExternesDarlehen</a> &gt; array</p></td>
@@ -5947,7 +6049,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-    Last updated 2018-02-13 16:25:14 MEZ
+    Last updated 2018-04-06 14:33:02 MESZ
 </div>
 </div>
 </body>
