@@ -1,4 +1,4 @@
-# "Anträge Auslesen" API - English Dokumentation 🇺🇸🇬🇧
+# "Anträge Auslesen" API - English Documentation 🇺🇸🇬🇧
 
 ##### Current version: 2.6
 
