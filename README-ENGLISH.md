@@ -1,17 +1,16 @@
 # "Anträge Auslesen" API - English Dokumentation 🇺🇸🇬🇧
 
-##### Aktuelle Version: 2.6
+##### Current version: 2.6
 
 API documentation for exporting mortage application data from the EUROPACE platform from the point-of-view of a lender/bank.
 
-**Please note: unlike the german documentation, this documenation is not guaranteed to be up to date. Please check before you implement anything based on this documenation. If you are unsure, write to devsupport@europace.de**
+**Please note:** unlike the german documentation, this documentation is not guaranteed to be up to date. Please check before you implement anything. If you are unsure, write to devsupport@europace.de.
 
 
 ### Swagger spcification
 
-This API is fully specified in Swagger. They specification is available as a JSON ([swagger.json](swagger.json)) and as YAML ([swagger.yaml](swagger.yaml)).
+This API is fully specified in Swagger. The specification is available as JSON ([swagger.json](swagger.json)) and as as YAML ([swagger.yaml](swagger.yaml)).
 
-Die API ist vollständig in Swagger definiert. Die Swagger Definitionen werden sowohl im JSON   als auch im YAML-Format  zur Verfügung gestellt.
 
 ### Documentation
 
