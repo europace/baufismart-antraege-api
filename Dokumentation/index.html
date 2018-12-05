@@ -532,6 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_getangebot">Angebot des Antrags abrufen</a></li>
 <li><a href="#_getantrag_1">einen Antrag abrufen</a></li>
 <li><a href="#_updateantrag">einen Antrag aktualisieren</a></li>
+    <li><a href="#_getansprechpartner">Den Ansprechpartner (Vertrieb) des Teilantrags abrufen.</a></li>
 <li><a href="#_setantragsstatus_1">Zum Setzen des Antragsstatus</a></li>
 </ul>
 </li>
@@ -540,6 +541,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_definitions">Definitionen</a>
 <ul class="sectlevel2">
 <li><a href="#_angebotzumantrag">AngebotZumAntrag</a></li>
+    <li><a href="#_anschrift">Anschrift</a></li>
 <li><a href="#_antraege">Antraege</a></li>
 <li><a href="#_antrag">Antrag</a></li>
 <li><a href="#_antragsstatus">AntragsStatus</a></li>
@@ -1658,6 +1660,178 @@ table.CodeRay td.code>pre{padding:0}
 <h5 id="_sicherheit_6">Sicherheit</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
+    <col style="width: 15%;">
+    <col style="width: 20%;">
+    <col style="width: 65%;">
+</colgroup>
+    <thead>
+    <tr>
+        <th class="tableblock halign-left valign-middle">Typ</th>
+        <th class="tableblock halign-left valign-middle">Name</th>
+        <th class="tableblock halign-left valign-middle">Scopes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>oauth2</strong></p></td>
+        <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong><a href="#_oauth2">oauth2</a></strong></p>
+        </td>
+        <td class="tableblock halign-left valign-middle"><p class="tableblock">API</p></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</div>
+    <div class="sect3">
+        <h4 id="_getansprechpartner">Den Ansprechpartner (Vertrieb) des Teilantrags abrufen.</h4>
+        <div class="literalblock">
+            <div class="content">
+                <pre>GET /v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner</pre>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_beschreibung_7">Beschreibung</h5>
+            <div class="paragraph">
+                <p>Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.</p>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_parameter_7">Parameter</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 11%;">
+                    <col style="width: 16%;">
+                    <col style="width: 50%;">
+                    <col style="width: 22%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                    <th class="tableblock halign-left valign-middle">Name</th>
+                    <th class="tableblock halign-left valign-middle">Beschreibung</th>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Authorization</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>X-Authentication</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>X-TraceId</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>antrag</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">antrag</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>teilantrag</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">teilantrag</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vorgang</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Nummer des Antrags</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sect4">
+            <h5 id="_antworten_7">Antworten</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 10%;">
+                    <col style="width: 70%;">
+                    <col style="width: 20%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                    <th class="tableblock halign-left valign-middle">Beschreibung</th>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_partner">Partner</a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>400</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Client Error</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>500</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Internal Server Error</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sect4">
+            <h5 id="_verarbeitet_7">Verarbeitet</h5>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p><code>application/json</code></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_erzeugt_7">Erzeugt</h5>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p><code>application/json;charset=UTF-8</code></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_sicherheit_7">Sicherheit</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
 <col style="width: 15%;">
 <col style="width: 20%;">
 <col style="width: 65%;">
@@ -1687,7 +1861,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect4">
-<h5 id="_parameter_7">Parameter</h5>
+    <h5 id="_parameter_8">Parameter</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11%;">
@@ -1736,7 +1910,7 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect4">
-<h5 id="_antworten_7">Antworten</h5>
+    <h5 id="_antworten_8">Antworten</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1780,7 +1954,7 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect4">
-<h5 id="_verarbeitet_7">Verarbeitet</h5>
+    <h5 id="_verarbeitet_8">Verarbeitet</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1790,7 +1964,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect4">
-<h5 id="_erzeugt_7">Erzeugt</h5>
+    <h5 id="_erzeugt_8">Erzeugt</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1800,7 +1974,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect4">
-<h5 id="_sicherheit_7">Sicherheit</h5>
+    <h5 id="_sicherheit_8">Sicherheit</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 15%;">
@@ -1909,6 +2083,43 @@ table.CodeRay td.code>pre{padding:0}
 </tbody>
 </table>
 </div>
+    <div class="sect2">
+        <h3 id="_anschrift">Anschrift</h3>
+        <table class="tableblock frame-all grid-all spread">
+            <colgroup>
+                <col style="width: 42%;">
+                <col style="width: 57%;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="tableblock halign-left valign-middle">Name</th>
+                <th class="tableblock halign-left valign-middle">Typ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>hausnummer</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>ort</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>plz</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>strasse</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_antraege">Antraege</h3>
 <table class="tableblock frame-all grid-all spread">
@@ -1964,7 +2175,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>ansprechpartner</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Für Rückfragen auf Seite des Vertriebs, kann mit dem Vermittler identisch sein</p></td>
+    <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_partner">Partner</a></p></td>
 </tr>
 <tr>
@@ -1995,14 +2206,14 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>dokumente</strong><br>
 <em>optional</em></p></td>
     <td class="tableblock halign-left valign-middle">
-        <p class="tableblock">Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.</p>
-    </td>
+        <p class="tableblock">Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.
+            <strong>Aktuell sind nur Selbstauskunft und Kreditentscheidungsinformation enthalten.</strong></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_dokument">Dokument</a> &gt; array</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>kreditSachbearbeiter</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Gewählter Sachbearbeiter aus Seite des Kreditvertriebs</p></td>
+    <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_partner">Partner</a></p></td>
 </tr>
 <tr>
@@ -2010,6 +2221,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>prolongation</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>status</strong><br>
@@ -2020,7 +2237,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vermittler</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Partner auf Seite des Vertriebs</p></td>
+    <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_partner">Partner</a></p></td>
 </tr>
 <tr>
@@ -2073,6 +2290,14 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 </thead>
 <tbody>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>ablehnungsgrund</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">Ablehnungsgrund des Produktanbieters</p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">enum (FINANZIELLE_SITUATION, NEGATIV_MERKMAL, WERTERMITTLUNG, KRITERIEN, UNTERLAGEN_UNVOLLSTAENDIG, GEGENANGEBOT, KEINE_ANGABE)</p>
+    </td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>antragsteller</strong><br>
 <em>optional</em></p></td>
@@ -2178,6 +2403,18 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bruttoJahresEinkommenErwartet</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bruttoVorjahresEinkommen</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>email</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
@@ -2237,6 +2474,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_schufaergebnis">SchufaErgebnis</a></p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sozialversicherungsnummer</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>staatsangehoerigkeit</strong><br>
@@ -2979,6 +3222,14 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_bestehendesdarlehen">BestehendesDarlehen</a> &gt; array</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bodenRichtwert</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>erbbaurecht</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
@@ -3015,6 +3266,22 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">enum (KEIN_EINSATZ, VERKAUFEN, ALS_ZUSATZSICHERHEIT)</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>keinBaulandFlaecheInQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>marktueblicherKaufpreisProQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>maximalEinzusetzenderBetragWennVerkauf</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
@@ -3027,6 +3294,23 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">enum (GRUNDSTUECK, EIGENTUMSWOHNUNG, HAUS)</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vergleichsmieteFuerGewerbeflaecheProQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+        <strong>vergleichsmieteFuerWohnflaecheProQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>verkehrswert</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
@@ -3037,6 +3321,14 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>wohnlage</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: GEHOBEN,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 </tbody>
 </table>
@@ -3407,6 +3699,17 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>angerechneteLebensHaltungsKosten</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+        <strong>bewirtschaftungsKostenAllerFremdgenutzerFlaechen</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>haushaltsUeberschuss</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
@@ -3415,6 +3718,12 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>kreditEntscheider</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+        <strong>nebenkostenAllerEigengenutzterWohnflaechen</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>produktAnbieter</strong><br>
@@ -3499,6 +3808,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_effektivzinskosten">EffektivZinsKosten</a></p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>einstandsDatum</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">Datum des Konditionseinstand</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string(date-time)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>forwardPeriodeInMonaten</strong><br>
@@ -3632,9 +3947,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>art</strong><br>
 <em>optional</em></p></td>
-    <td class="tableblock halign-left valign-middle">
-        <p class="tableblock">Der Typ des Dokuments. Aktuelle Ausprägungen sind: 'Antragsdokument' oder 'Freigegebenes Dokument'</p>
-    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">ist nicht immer vorhanden</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
@@ -3646,7 +3959,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>name</strong><br>
 <em>optional</em></p></td>
-    <td class="tableblock halign-left valign-middle"><p class="tableblock">Originaler Dateiname</p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">Originaler Dateiname mit Präfix</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
@@ -4014,6 +4327,14 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_bestehendesdarlehendesfinanzierungsobjekts">BestehendesDarlehenDesFinanzierungsObjekts</a> &gt; array</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bodenRichtwert</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>erbbaurecht</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
@@ -4044,10 +4365,43 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>keinBaulandFlaecheInQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>marktueblicherKaufpreisProQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>objektArt</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">enum (GRUNDSTUECK, EIGENTUMSWOHNUNG, HAUS)</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vergleichsmieteFuerGewerbeflaecheProQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+        <strong>vergleichsmieteFuerWohnflaecheProQm</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>verkehrswert</strong><br>
@@ -4060,6 +4414,14 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>wohnlage</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: GEHOBEN,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 </tbody>
 </table>
@@ -4197,6 +4559,14 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Nur bei ObjektArt == HAUS.<br>
 <strong>Beispiel</strong> : <code>false</code></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>kubatur</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle">
+        <p class="tableblock">Angabe in Kubikmetern. Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+    </td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>miteigentumsAnteil</strong><br>
@@ -5046,9 +5416,6 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div class="sect2">
 <h3 id="_partner">Partner</h3>
-<div class="paragraph">
-<p>Minimale Informationen zum Partner der EP2 Plattform, weitere Informationen können über die HAL-Relation abgerufen werden.</p>
-</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 42%;">
@@ -5062,9 +5429,39 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>anrede</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>anschrift</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_anschrift">Anschrift</a></p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>aufsichtsBehoerde</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>partnerId</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>registrierungsNummer</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vertriebsOrganisation</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>webseite</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vorname</strong><br>
@@ -5095,11 +5492,6 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>externerKreditSachbearbeiterId</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>_links</strong><br>
-<em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_links">Links</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -5208,6 +5600,21 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>anrede</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>anschrift</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_anschrift">Anschrift</a></p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>aufsichtsBehoerde</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>partnerId</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
@@ -5216,6 +5623,21 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>produktAnbieterId</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>registrierungsNummer</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vertriebsOrganisation</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>webseite</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vorname</strong><br>
@@ -6051,7 +6473,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-    Last updated 2018-04-25 10:01:19 MESZ
+    Last updated 2018-12-05 14:58:38 MEZ
 </div>
 </div>
 </body>

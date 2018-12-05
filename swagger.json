@@ -556,6 +556,98 @@
         ]
       }
     },
+    "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner": {
+      "get": {
+        "tags": [
+          "Antraege"
+        ],
+        "summary": "Den Ansprechpartner (Vertrieb) des  Teilantrags abrufen.",
+        "description": "Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.",
+        "operationId": "getAnsprechpartner",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "vorgang",
+            "in": "path",
+            "description": "Nummer des Antrags",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "antrag",
+            "in": "path",
+            "description": "antrag",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "teilantrag",
+            "in": "path",
+            "description": "teilantrag",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Partner"
+            }
+          },
+          "400": {
+            "description": "Client Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "API"
+            ]
+          }
+        ]
+      }
+    },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/status": {
       "post": {
         "tags": [
@@ -876,6 +968,10 @@
             "$ref": "#/definitions/BestehendesDarlehen"
           }
         },
+        "bodenRichtwert": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "erbbaurecht": {
           "$ref": "#/definitions/Erbbaurecht"
         },
@@ -899,6 +995,14 @@
             "ALS_ZUSATZSICHERHEIT"
           ]
         },
+        "keinBaulandFlaecheInQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
+        "marktueblicherKaufpreisProQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "maximalEinzusetzenderBetragWennVerkauf": {
           "type": "number"
         },
@@ -910,12 +1014,24 @@
             "HAUS"
           ]
         },
+        "vergleichsmieteFuerGewerbeflaecheProQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
+        "vergleichsmieteFuerWohnflaecheProQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "verkehrswert": {
           "type": "number"
         },
         "vorlaeufigerVerkehrswert": {
           "type": "number",
           "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
+        "wohnlage": {
+          "type": "string",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: GEHOBEN,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         }
       }
     },
@@ -1207,6 +1323,11 @@
         "effektivZinsRelevanteKosten": {
           "$ref": "#/definitions/EffektivZinsKosten"
         },
+        "einstandsDatum": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Datum des Konditionseinstand"
+        },
         "forwardPeriodeInMonaten": {
           "type": "integer",
           "format": "int32",
@@ -1424,6 +1545,23 @@
         }
       }
     },
+    "Anschrift": {
+      "type": "object",
+      "properties": {
+        "hausnummer": {
+          "type": "string"
+        },
+        "ort": {
+          "type": "string"
+        },
+        "plz": {
+          "type": "string"
+        },
+        "strasse": {
+          "type": "string"
+        }
+      }
+    },
     "BeleihungsWert": {
       "type": "object",
       "properties": {
@@ -1438,6 +1576,19 @@
     "AntragsStatus": {
       "type": "object",
       "properties": {
+        "ablehnungsgrund": {
+          "type": "string",
+          "description": "Ablehnungsgrund des Produktanbieters",
+          "enum": [
+            "FINANZIELLE_SITUATION",
+            "NEGATIV_MERKMAL",
+            "WERTERMITTLUNG",
+            "KRITERIEN",
+            "UNTERLAGEN_UNVOLLSTAENDIG",
+            "GEGENANGEBOT",
+            "KEINE_ANGABE"
+          ]
+        },
         "antragsteller": {
           "type": "string",
           "description": "Willenserklärung des Antragstellers",
@@ -1732,10 +1883,28 @@
     "ProduktAnbieter": {
       "type": "object",
       "properties": {
+        "anrede": {
+          "type": "string"
+        },
+        "anschrift": {
+          "$ref": "#/definitions/Anschrift"
+        },
+        "aufsichtsBehoerde": {
+          "type": "string"
+        },
         "partnerId": {
           "type": "string"
         },
         "produktAnbieterId": {
+          "type": "string"
+        },
+        "registrierungsNummer": {
+          "type": "string"
+        },
+        "vertriebsOrganisation": {
+          "type": "string"
+        },
+        "webseite": {
           "type": "string"
         },
         "vorname": {
@@ -1900,11 +2069,20 @@
     "Bonitaet": {
       "type": "object",
       "properties": {
+        "angerechneteLebensHaltungsKosten": {
+          "type": "number"
+        },
+        "bewirtschaftungsKostenAllerFremdgenutzerFlaechen": {
+          "type": "number"
+        },
         "haushaltsUeberschuss": {
           "type": "number"
         },
         "kreditEntscheider": {
           "$ref": "#/definitions/ProduktAnbieter"
+        },
+        "nebenkostenAllerEigengenutzterWohnflaechen": {
+          "type": "number"
         },
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
@@ -2041,6 +2219,12 @@
           "type": "string",
           "description": "Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE,DIENSTLEISTUNGEN,ENERGIE_UND_WASSERVERSORGUNG_BERGBAU,GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN,GESUNDHEITSWESEN,HANDEL,HOTEL_UND_GASTRONOMIE,KREDITINSTITUTE,LAND_UND_FORSTWIRTSCHAFT_FISCHEREI,OEFFENTLICHER_DIENST,ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,VERARBEITENDES_GEWERBE,VERKEHR_UND_NACHRICHTENUEBERMITTLUNG,VERSICHERUNGEN,SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         },
+        "bruttoJahresEinkommenErwartet": {
+          "type": "number"
+        },
+        "bruttoVorjahresEinkommen": {
+          "type": "number"
+        },
         "email": {
           "type": "string"
         },
@@ -2083,6 +2267,9 @@
         },
         "schufaErgebnis": {
           "$ref": "#/definitions/SchufaErgebnis"
+        },
+        "sozialversicherungsnummer": {
+          "type": "string"
         },
         "staatsangehoerigkeit": {
           "$ref": "#/definitions/Staat"
@@ -2157,7 +2344,25 @@
     "Partner": {
       "type": "object",
       "properties": {
+        "anrede": {
+          "type": "string"
+        },
+        "anschrift": {
+          "$ref": "#/definitions/Anschrift"
+        },
+        "aufsichtsBehoerde": {
+          "type": "string"
+        },
         "partnerId": {
+          "type": "string"
+        },
+        "registrierungsNummer": {
+          "type": "string"
+        },
+        "vertriebsOrganisation": {
+          "type": "string"
+        },
+        "webseite": {
           "type": "string"
         },
         "vorname": {
@@ -2177,12 +2382,8 @@
         },
         "externerKreditSachbearbeiterId": {
           "type": "string"
-        },
-        "_links": {
-          "$ref": "#/definitions/Links"
         }
-      },
-      "description": "Minimale Informationen zum Partner der EP2 Plattform, weitere Informationen können über die HAL-Relation abgerufen werden."
+      }
     },
     "VermietungsInformationen": {
       "type": "object",
@@ -2284,7 +2485,6 @@
           "$ref": "#/definitions/AngebotZumAntrag"
         },
         "ansprechpartner": {
-          "description": "Für Rückfragen auf Seite des Vertriebs, kann mit dem Vermittler identisch sein",
           "$ref": "#/definitions/Partner"
         },
         "antragsNummer": {
@@ -2309,24 +2509,25 @@
         },
         "dokumente": {
           "type": "array",
-          "description": "Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.",
+          "description": "Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters. **Aktuell sind nur Selbstauskunft und Kreditentscheidungsinformation enthalten.**",
           "items": {
             "$ref": "#/definitions/Dokument"
           }
         },
         "kreditSachbearbeiter": {
-          "description": "Gewählter Sachbearbeiter aus Seite des Kreditvertriebs",
           "$ref": "#/definitions/Partner"
         },
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
+        },
+        "prolongation": {
+          "type": "boolean"
         },
         "status": {
           "description": "Bearbeitungsfortschritt des Antrags",
           "$ref": "#/definitions/AntragsStatus"
         },
         "vermittler": {
-          "description": "Partner auf Seite des Vertriebs",
           "$ref": "#/definitions/Partner"
         },
         "voraussichtlicheBearbeitung": {
@@ -2564,6 +2765,10 @@
           "example": false,
           "description": "Nur bei ObjektArt == HAUS."
         },
+        "kubatur": {
+          "type": "number",
+          "description": "Angabe in Kubikmetern. Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "miteigentumsAnteil": {
           "description": "Nur bei ObjektArt == EIGENTUMSWOHNUNG.",
           "$ref": "#/definitions/MiteigentumsAnteil"
@@ -2609,6 +2814,10 @@
             "$ref": "#/definitions/BestehendesDarlehenDesFinanzierungsObjekts"
           }
         },
+        "bodenRichtwert": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "erbbaurecht": {
           "$ref": "#/definitions/Erbbaurecht"
         },
@@ -2624,6 +2833,14 @@
         "id": {
           "type": "string"
         },
+        "keinBaulandFlaecheInQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
+        "marktueblicherKaufpreisProQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "objektArt": {
           "type": "string",
           "enum": [
@@ -2632,6 +2849,14 @@
             "HAUS"
           ]
         },
+        "vergleichsmieteFuerGewerbeflaecheProQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
+        "vergleichsmieteFuerWohnflaecheProQm": {
+          "type": "number",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
         "verkehrswert": {
           "type": "number",
           "description": "Nur relevant bei Finanzbedarf AnschlussFinanzierung, Modernisierung und Kapitalbeschaffung"
@@ -2639,6 +2864,10 @@
         "vorlaeufigerVerkehrswert": {
           "type": "number",
           "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt."
+        },
+        "wohnlage": {
+          "type": "string",
+          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: GEHOBEN,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         }
       }
     },
@@ -2704,14 +2933,14 @@
       "properties": {
         "art": {
           "type": "string",
-          "description": "Der Typ des Dokuments. Aktuelle Ausprägungen sind: 'Antragsdokument' oder 'Freigegebenes Dokument'"
+          "description": "ist nicht immer vorhanden"
         },
         "href": {
           "type": "string"
         },
         "name": {
           "type": "string",
-          "description": "Originaler Dateiname"
+          "description": "Originaler Dateiname mit Präfix"
         },
         "titel": {
           "type": "string",
