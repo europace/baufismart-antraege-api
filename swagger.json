@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.6",
+    "version": "2.7",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -315,9 +315,9 @@
         "tags": [
           "Antraege"
         ],
-        "summary": "Angebot des Antrags abrufen",
-        "description": "Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.",
-        "operationId": "getAngebot",
+        "summary": "Angebot des Antrags abrufen. ",
+        "description": "Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.  Nutzen sie den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot",
+        "operationId": "getAngebot_1",
         "consumes": [
           "application/json"
         ],
@@ -391,7 +391,8 @@
               "API"
             ]
           }
-        ]
+        ],
+        "deprecated": true
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}": {
@@ -545,6 +546,190 @@
           },
           "403": {
             "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "API"
+            ]
+          }
+        ]
+      }
+    },
+    "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot": {
+      "get": {
+        "tags": [
+          "Antraege"
+        ],
+        "summary": "Angebot des Antrags abrufen",
+        "description": "Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.",
+        "operationId": "getAngebot",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "vorgang",
+            "in": "path",
+            "description": "Nummer des Antrags, bestehend aus Vorgangsnummer und Antragnummer.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "antrag",
+            "in": "path",
+            "description": "antrag",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "teilantrag",
+            "in": "path",
+            "description": "teilantrag",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AngebotZumAntrag"
+            }
+          },
+          "400": {
+            "description": "Client Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "API"
+            ]
+          }
+        ]
+      }
+    },
+    "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene": {
+      "get": {
+        "tags": [
+          "Antraege"
+        ],
+        "summary": "Die Zahlungsplaene (Tilgungs- & Sparpläne) des angenommenen Angebots.",
+        "description": "Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.",
+        "operationId": "getZahlungsplaene",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json;charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "vorgang",
+            "in": "path",
+            "description": "Nummer des Vorgangs",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "antrag",
+            "in": "path",
+            "description": "Nummer des Antrags",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "teilantrag",
+            "in": "path",
+            "description": "Nummer des Teilantrags",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Zahlungsplaene"
+            }
+          },
+          "400": {
+            "description": "Client Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
           }
         },
         "security": [
@@ -1295,6 +1480,9 @@
         "auszahlungsKurs": {
           "type": "number"
         },
+        "bausteinId": {
+          "type": "string"
+        },
         "bereitstellung": {
           "description": "nicht bei darlehensArt==PRIVAT_DARLEHEN",
           "$ref": "#/definitions/Bereitstellung"
@@ -1565,6 +1753,9 @@
     "BeleihungsWert": {
       "type": "object",
       "properties": {
+        "adresse": {
+          "$ref": "#/definitions/Postadresse"
+        },
         "beleihungsWert": {
           "type": "number"
         },
@@ -1689,6 +1880,20 @@
         }
       }
     },
+    "Zahlungsplaene": {
+      "type": "object",
+      "properties": {
+        "zahlungsplaene": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/zahlungsplan"
+          }
+        },
+        "_links": {
+          "$ref": "#/definitions/Links"
+        }
+      }
+    },
     "CharSequence": {
       "type": "object"
     },
@@ -1773,6 +1978,54 @@
             "NEUBAU",
             "KAPITALBESCHAFFUNG"
           ]
+        }
+      }
+    },
+    "Eintrag": {
+      "type": "object",
+      "properties": {
+        "abgeltungssteuer": {
+          "type": "number"
+        },
+        "datum": {
+          "type": "string",
+          "format": "date"
+        },
+        "kontofuehrungsGebuehr": {
+          "type": "number"
+        },
+        "laufendeGebuehr": {
+          "type": "number"
+        },
+        "riesterZulage": {
+          "type": "number"
+        },
+        "saldo": {
+          "type": "number"
+        },
+        "tilgung": {
+          "type": "number"
+        },
+        "typ": {
+          "type": "string",
+          "enum": [
+            "EINTRAG",
+            "AGGREGIERTER_EINTRAG",
+            "SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE"
+          ]
+        },
+        "zahlung": {
+          "type": "number"
+        },
+        "zahlungsTyp": {
+          "type": "string",
+          "enum": [
+            "EINZAHLUNG",
+            "AUSZAHLUNG"
+          ]
+        },
+        "zinsen": {
+          "type": "number"
         }
       }
     },
@@ -2999,6 +3252,36 @@
           ]
         }
       }
+    },
+    "zahlungsplan": {
+      "type": "object",
+      "properties": {
+        "bausteinId": {
+          "type": "string"
+        },
+        "eintraege": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Eintrag"
+          }
+        },
+        "gesamtSumme": {
+          "$ref": "#/definitions/Eintrag"
+        },
+        "sparplanSummenEintragZumZuteilungsZeitpunkt": {
+          "$ref": "#/definitions/Eintrag"
+        },
+        "summeEndeDerZinsbindung": {
+          "$ref": "#/definitions/Eintrag"
+        },
+        "typ": {
+          "type": "string",
+          "enum": [
+            "TILGUNGSPLAN"
+          ]
+        }
+      },
+      "description": "Diese Resource repräsentiert einen Zahlungsplan."
     },
     "BestehendesDarlehen": {
       "type": "object",

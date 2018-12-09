@@ -187,6 +187,7 @@ BeleihungsRechnung                        ;                                     
                                           ;beleihungsWerteSumme                                ;number                                             ;
                                           ;produktAnbieter                                     ;ProduktAnbieter                                    ;
 BeleihungsWert                            ;                                                    ;                                                   ;
+                                          ;adresse                                             ;Postadresse                                        ;
                                           ;beleihungsWert                                      ;number                                             ;
                                           ;immobilie                                           ;ImmobilieVerknuepfung                              ;
 Beratung                                  ;                                                    ;                                                   ;
@@ -323,6 +324,7 @@ Darlehen                                  ;                                     
                                           ;auszahlungsBetrag                                   ;number                                             ;
                                           ;auszahlungsDatum                                    ;string(date)                                       ;
                                           ;auszahlungsKurs                                     ;number                                             ;
+                                          ;bausteinId                                          ;string                                             ;
                                           ;bereitstellung                                      ;Bereitstellung                                     ;
                                           ;darlehensBetrag                                     ;number                                             ;
                                           ;darlehensTyp                                        ;enum                                               ;
@@ -383,6 +385,23 @@ EinnahmenMonatlich                        ;                                     
                                           ;zahlungsTyp                                         ;enum                                               ;
                                           ;                                                    ;                                                   ;EINNAHME
                                           ;                                                    ;                                                   ;AUSGABE
+Eintrag                                   ;                                                    ;                                                   ;
+                                          ;abgeltungssteuer                                    ;number                                             ;
+                                          ;datum                                               ;string(date)                                       ;
+                                          ;kontofuehrungsGebuehr                               ;number                                             ;
+                                          ;laufendeGebuehr                                     ;number                                             ;
+                                          ;riesterZulage                                       ;number                                             ;
+                                          ;saldo                                               ;number                                             ;
+                                          ;tilgung                                             ;number                                             ;
+                                          ;typ                                                 ;enum                                               ;
+                                          ;                                                    ;                                                   ;EINTRAG
+                                          ;                                                    ;                                                   ;AGGREGIERTER_EINTRAG
+                                          ;                                                    ;                                                   ;SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE
+                                          ;zahlung                                             ;number                                             ;
+                                          ;zahlungsTyp                                         ;enum                                               ;
+                                          ;                                                    ;                                                   ;EINZAHLUNG
+                                          ;                                                    ;                                                   ;AUSZAHLUNG
+                                          ;zinsen                                              ;number                                             ;
 Erbbaurecht                               ;                                                    ;                                                   ;
                                           ;erbbauzinsJaehrlich                                 ;number                                             ;
                                           ;grundstuecksEigentuemer                             ;enum                                               ;
@@ -766,6 +785,9 @@ Wertpapiere                               ;                                     
                                           ;zahlungsTyp                                         ;enum                                               ;
                                           ;                                                    ;                                                   ;EINNAHME
                                           ;                                                    ;                                                   ;AUSGABE
+Zahlungsplaene                            ;                                                    ;                                                   ;
+                                          ;zahlungsplaene                                      ;array of zahlungsplan                              ;
+                                          ;_links                                              ;Links                                              ;
 ZinsBindung                               ;                                                    ;                                                   ;
                                           ;endetAm                                             ;string(date)                                       ;
                                           ;jahre                                               ;integer(int32)                                     ;
@@ -777,3 +799,11 @@ ZugrundeliegendeDatenZumAntrag            ;                                     
                                           ;haushalte                                           ;array of Haushalt                                  ;
                                           ;vorhaben                                            ;Vorhaben                                           ;
                                           ;_links                                              ;Links                                              ;
+zahlungsplan                              ;                                                    ;                                                   ;
+                                          ;bausteinId                                          ;string                                             ;
+                                          ;eintraege                                           ;array of Eintrag                                   ;
+                                          ;gesamtSumme                                         ;Eintrag                                            ;
+                                          ;sparplanSummenEintragZumZuteilungsZeitpunkt         ;Eintrag                                            ;
+                                          ;summeEndeDerZinsbindung                             ;Eintrag                                            ;
+                                          ;typ                                                 ;enum                                               ;
+                                          ;                                                    ;                                                   ;TILGUNGSPLAN

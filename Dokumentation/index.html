@@ -529,9 +529,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_getalleantraege">alle Anträge abrufen</a></li>
 <li><a href="#_getantraegebyvorgangnummer">Alle Anträg eines Vorgangs abrufen</a></li>
 <li><a href="#_getantrag">Teilanträge eines Antrags abrufen</a></li>
-<li><a href="#_getangebot">Angebot des Antrags abrufen</a></li>
+    <li><a href="#_getangebot_1">Angebot des Antrags abrufen.</a></li>
 <li><a href="#_getantrag_1">einen Antrag abrufen</a></li>
 <li><a href="#_updateantrag">einen Antrag aktualisieren</a></li>
+    <li><a href="#_getangebot">Angebot des Antrags abrufen</a></li>
+    <li><a href="#_getzahlungsplaene">Die Zahlungsplaene (Tilgungs- &amp; Sparpläne) des angenommenen Angebots.</a></li>
     <li><a href="#_getansprechpartner">Den Ansprechpartner (Vertrieb) des Teilantrags abrufen.</a></li>
 <li><a href="#_setantragsstatus_1">Zum Setzen des Antragsstatus</a></li>
 </ul>
@@ -569,6 +571,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_effektivzinskosten">EffektivZinsKosten</a></li>
 <li><a href="#_einkuenfteausnebentaetigkeit">EinkuenfteAusNebentaetigkeit</a></li>
 <li><a href="#_einnahmenmonatlich">EinnahmenMonatlich</a></li>
+    <li><a href="#_eintrag">Eintrag</a></li>
 <li><a href="#_erbbaurecht">Erbbaurecht</a></li>
 <li><a href="#_error">Error</a></li>
 <li><a href="#_finanzbedarf">Finanzbedarf</a></li>
@@ -615,8 +618,10 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_vermoegenverbindlichkeiten">VermoegenVerbindlichkeiten</a></li>
 <li><a href="#_vorhaben">Vorhaben</a></li>
 <li><a href="#_wertpapiere">Wertpapiere</a></li>
+    <li><a href="#_zahlungsplaene">Zahlungsplaene</a></li>
 <li><a href="#_zinsbindung">ZinsBindung</a></li>
 <li><a href="#_zugrundeliegendedatenzumantrag">ZugrundeliegendeDatenZumAntrag</a></li>
+    <li><a href="#_zahlungsplan">zahlungsplan</a></li>
 </ul>
 </li>
 <li><a href="#_securityscheme">Sicherheit</a>
@@ -637,7 +642,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-    <p><em>Version</em> : 2.6</p>
+    <p><em>Version</em> : 2.7</p>
 </div>
 </div>
 <div class="sect2">
@@ -1202,10 +1207,24 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 </tbody>
 </table>
+    <div class="admonitionblock caution">
+        <table>
+            <tr>
+                <td class="icon">
+                    <div class="title">Caution</div>
+                </td>
+                <td class="content">
+                    <div class="paragraph">
+                        <p>Diese Operation ist veraltet.</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getangebot">Angebot des Antrags abrufen</h4>
+    <h4 id="_getangebot_1">Angebot des Antrags abrufen.</h4>
 <div class="literalblock">
 <div class="content">
 <pre>GET /v2/antraege/{vorgang}/{antrag}/angebot</pre>
@@ -1214,7 +1233,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect4">
 <h5 id="_beschreibung_4">Beschreibung</h5>
 <div class="paragraph">
-<p>Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.</p>
+    <p>Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat. Nutzen sie den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot</p>
 </div>
 </div>
 <div class="sect4">
@@ -1683,6 +1702,351 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
     <div class="sect3">
+        <h4 id="_getangebot">Angebot des Antrags abrufen</h4>
+        <div class="literalblock">
+            <div class="content">
+                <pre>GET /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot</pre>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_beschreibung_7">Beschreibung</h5>
+            <div class="paragraph">
+                <p>Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.</p>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_parameter_7">Parameter</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 11%;">
+                    <col style="width: 16%;">
+                    <col style="width: 50%;">
+                    <col style="width: 22%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                    <th class="tableblock halign-left valign-middle">Name</th>
+                    <th class="tableblock halign-left valign-middle">Beschreibung</th>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Authorization</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>X-Authentication</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>X-TraceId</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>antrag</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">antrag</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>teilantrag</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">teilantrag</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vorgang</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle">
+                        <p class="tableblock">Nummer des Antrags, bestehend aus Vorgangsnummer und Antragnummer.</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sect4">
+            <h5 id="_antworten_7">Antworten</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 10%;">
+                    <col style="width: 70%;">
+                    <col style="width: 20%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                    <th class="tableblock halign-left valign-middle">Beschreibung</th>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                        <a href="#_angebotzumantrag">AngebotZumAntrag</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>400</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Client Error</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>500</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Internal Server Error</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sect4">
+            <h5 id="_verarbeitet_7">Verarbeitet</h5>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p><code>application/json</code></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_erzeugt_7">Erzeugt</h5>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p><code>application/json;charset=UTF-8</code></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_sicherheit_7">Sicherheit</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 15%;">
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                    <th class="tableblock halign-left valign-middle">Name</th>
+                    <th class="tableblock halign-left valign-middle">Scopes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>oauth2</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                        <strong><a href="#_oauth2">oauth2</a></strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">API</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="sect3">
+        <h4 id="_getzahlungsplaene">Die Zahlungsplaene (Tilgungs- &amp; Sparpläne) des angenommenen Angebots.</h4>
+        <div class="literalblock">
+            <div class="content">
+                <pre>GET /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene</pre>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_beschreibung_8">Beschreibung</h5>
+            <div class="paragraph">
+                <p>Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.</p>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_parameter_8">Parameter</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 11%;">
+                    <col style="width: 16%;">
+                    <col style="width: 50%;">
+                    <col style="width: 22%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                    <th class="tableblock halign-left valign-middle">Name</th>
+                    <th class="tableblock halign-left valign-middle">Beschreibung</th>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Authorization</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>X-Authentication</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Header</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>X-TraceId</strong><br>
+                        <em>optional</em></p></td>
+                    <td class="tableblock halign-left valign-middle"></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>antrag</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Nummer des Antrags</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>teilantrag</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Nummer des Teilantrags</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>Path</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>vorgang</strong><br>
+                        <em>verpflichtend</em></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Nummer des Vorgangs</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sect4">
+            <h5 id="_antworten_8">Antworten</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 10%;">
+                    <col style="width: 70%;">
+                    <col style="width: 20%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">HTTP Code</th>
+                    <th class="tableblock halign-left valign-middle">Beschreibung</th>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>200</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">OK</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                        <a href="#_zahlungsplaene">Zahlungsplaene</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>400</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Client Error</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>401</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Unauthorized</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>403</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Forbidden</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>404</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Not Found</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>500</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">Internal Server Error</p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_error">Error</a></p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sect4">
+            <h5 id="_verarbeitet_8">Verarbeitet</h5>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p><code>application/json</code></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_erzeugt_8">Erzeugt</h5>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <p><code>application/json;charset=UTF-8</code></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sect4">
+            <h5 id="_sicherheit_8">Sicherheit</h5>
+            <table class="tableblock frame-all grid-all spread">
+                <colgroup>
+                    <col style="width: 15%;">
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th class="tableblock halign-left valign-middle">Typ</th>
+                    <th class="tableblock halign-left valign-middle">Name</th>
+                    <th class="tableblock halign-left valign-middle">Scopes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>oauth2</strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                        <strong><a href="#_oauth2">oauth2</a></strong></p></td>
+                    <td class="tableblock halign-left valign-middle"><p class="tableblock">API</p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="sect3">
         <h4 id="_getansprechpartner">Den Ansprechpartner (Vertrieb) des Teilantrags abrufen.</h4>
         <div class="literalblock">
             <div class="content">
@@ -1690,13 +2054,13 @@ table.CodeRay td.code>pre{padding:0}
             </div>
         </div>
         <div class="sect4">
-            <h5 id="_beschreibung_7">Beschreibung</h5>
+            <h5 id="_beschreibung_9">Beschreibung</h5>
             <div class="paragraph">
                 <p>Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.</p>
             </div>
         </div>
         <div class="sect4">
-            <h5 id="_parameter_7">Parameter</h5>
+            <h5 id="_parameter_9">Parameter</h5>
             <table class="tableblock frame-all grid-all spread">
                 <colgroup>
                     <col style="width: 11%;">
@@ -1759,7 +2123,7 @@ table.CodeRay td.code>pre{padding:0}
             </table>
         </div>
         <div class="sect4">
-            <h5 id="_antworten_7">Antworten</h5>
+            <h5 id="_antworten_9">Antworten</h5>
             <table class="tableblock frame-all grid-all spread">
                 <colgroup>
                     <col style="width: 10%;">
@@ -1809,7 +2173,7 @@ table.CodeRay td.code>pre{padding:0}
             </table>
         </div>
         <div class="sect4">
-            <h5 id="_verarbeitet_7">Verarbeitet</h5>
+            <h5 id="_verarbeitet_9">Verarbeitet</h5>
             <div class="ulist">
                 <ul>
                     <li>
@@ -1819,7 +2183,7 @@ table.CodeRay td.code>pre{padding:0}
             </div>
         </div>
         <div class="sect4">
-            <h5 id="_erzeugt_7">Erzeugt</h5>
+            <h5 id="_erzeugt_9">Erzeugt</h5>
             <div class="ulist">
                 <ul>
                     <li>
@@ -1829,7 +2193,7 @@ table.CodeRay td.code>pre{padding:0}
             </div>
         </div>
         <div class="sect4">
-            <h5 id="_sicherheit_7">Sicherheit</h5>
+            <h5 id="_sicherheit_9">Sicherheit</h5>
             <table class="tableblock frame-all grid-all spread">
                 <colgroup>
 <col style="width: 15%;">
@@ -1861,7 +2225,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect4">
-    <h5 id="_parameter_8">Parameter</h5>
+    <h5 id="_parameter_10">Parameter</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11%;">
@@ -1910,7 +2274,7 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect4">
-    <h5 id="_antworten_8">Antworten</h5>
+    <h5 id="_antworten_10">Antworten</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -1954,7 +2318,7 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect4">
-    <h5 id="_verarbeitet_8">Verarbeitet</h5>
+    <h5 id="_verarbeitet_10">Verarbeitet</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1964,7 +2328,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect4">
-    <h5 id="_erzeugt_8">Erzeugt</h5>
+    <h5 id="_erzeugt_10">Erzeugt</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1974,7 +2338,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect4">
-    <h5 id="_sicherheit_8">Sicherheit</h5>
+    <h5 id="_sicherheit_10">Sicherheit</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 15%;">
@@ -3005,6 +3369,11 @@ table.CodeRay td.code>pre{padding:0}
 </thead>
 <tbody>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>adresse</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_postadresse">Postadresse</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>beleihungsWert</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
@@ -3774,6 +4143,12 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bausteinId</strong><br>
+        <em>optional</em></p></td>
+    <td class="tableblock halign-left valign-middle"></td>
+    <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bereitstellung</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">nicht bei darlehensArt==PRIVAT_DARLEHEN</p></td>
@@ -4103,6 +4478,79 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect2">
+    <h3 id="_eintrag">Eintrag</h3>
+    <table class="tableblock frame-all grid-all spread">
+        <colgroup>
+            <col style="width: 42%;">
+            <col style="width: 57%;">
+        </colgroup>
+        <thead>
+        <tr>
+            <th class="tableblock halign-left valign-middle">Name</th>
+            <th class="tableblock halign-left valign-middle">Typ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>abgeltungssteuer</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>datum</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">string(date)</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>kontofuehrungsGebuehr</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>laufendeGebuehr</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>riesterZulage</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>saldo</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>tilgung</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>typ</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle">
+                <p class="tableblock">enum (EINTRAG, AGGREGIERTER_EINTRAG, SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE)</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>zahlung</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>zahlungsTyp</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">enum (EINZAHLUNG, AUSZAHLUNG)</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>zinsen</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="sect2">
 <h3 id="_erbbaurecht">Erbbaurecht</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -6359,6 +6807,34 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect2">
+    <h3 id="_zahlungsplaene">Zahlungsplaene</h3>
+    <table class="tableblock frame-all grid-all spread">
+        <colgroup>
+            <col style="width: 42%;">
+            <col style="width: 57%;">
+        </colgroup>
+        <thead>
+        <tr>
+            <th class="tableblock halign-left valign-middle">Name</th>
+            <th class="tableblock halign-left valign-middle">Typ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>zahlungsplaene</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt;
+                <a href="#_zahlungsplan">zahlungsplan</a> &gt; array</p></td>
+        </tr>
+        <tr>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>_links</strong><br>
+                <em>optional</em></p></td>
+            <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_links">Links</a></p></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="sect2">
 <h3 id="_zinsbindung">ZinsBindung</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -6437,6 +6913,59 @@ table.CodeRay td.code>pre{padding:0}
 </tbody>
 </table>
 </div>
+    <div class="sect2">
+        <h3 id="_zahlungsplan">zahlungsplan</h3>
+        <div class="paragraph">
+            <p>Diese Resource repräsentiert einen Zahlungsplan.</p>
+        </div>
+        <table class="tableblock frame-all grid-all spread">
+            <colgroup>
+                <col style="width: 42%;">
+                <col style="width: 57%;">
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="tableblock halign-left valign-middle">Name</th>
+                <th class="tableblock halign-left valign-middle">Typ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bausteinId</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>eintraege</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt;
+                    <a href="#_eintrag">Eintrag</a> &gt; array</p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>gesamtSumme</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_eintrag">Eintrag</a></p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                    <strong>sparplanSummenEintragZumZuteilungsZeitpunkt</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_eintrag">Eintrag</a></p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">
+                    <strong>summeEndeDerZinsbindung</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_eintrag">Eintrag</a></p></td>
+            </tr>
+            <tr>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>typ</strong><br>
+                    <em>optional</em></p></td>
+                <td class="tableblock halign-left valign-middle"><p class="tableblock">enum (TILGUNGSPLAN)</p></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </div>
 <div class="sect1">
@@ -6473,7 +7002,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-    Last updated 2018-12-05 14:58:38 MEZ
+    Last updated 2018-12-09 22:47:07 MEZ
 </div>
 </div>
 </body>
