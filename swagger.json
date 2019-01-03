@@ -1245,6 +1245,9 @@
             "$ref": "#/definitions/BestehendeImmobilie"
           }
         },
+        "id": {
+          "type": "string"
+        },
         "kfzAnzahl": {
           "type": "integer",
           "format": "int32",

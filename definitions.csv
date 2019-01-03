@@ -511,6 +511,7 @@ Haushalt                                  ;                                     
                                           ;anzahlErwachseneImHaushalt                          ;integer(int32)                                     ;
                                           ;anzahlKinderNichtImHaushalt                         ;integer(int32)                                     ;
                                           ;bestehendeImmobilien                                ;array of BestehendeImmobilie                       ;
+                                          ;id                                                  ;string                                             ;
                                           ;kfzAnzahl                                           ;integer(int32)                                     ;
                                           ;kinder                                              ;array of Kind                                      ;
                                           ;lebenshaltungsKostenMonatlich                       ;number                                             ;

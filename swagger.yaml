@@ -857,6 +857,8 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/BestehendeImmobilie"
+      id:
+        type: "string"
       kfzAnzahl:
         type: "integer"
         format: "int32"
