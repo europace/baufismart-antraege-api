@@ -642,7 +642,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-    <p><em>Version</em> : 2.8</p>
+    <p><em>Version</em> : 2.9</p>
 </div>
 </div>
 <div class="sect2">
@@ -3852,6 +3852,12 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bausteinId</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensArt</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p></td>
@@ -3962,6 +3968,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">nur wenn wirdAbgeloest==true</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>bausteinId</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>darlehensArt</strong><br>
@@ -4670,6 +4682,13 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Nebenkosten</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>grundstueckBereitsBezahlt</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">'null' wenn nicht 'Neubau', anderenfalls: true -&gt; bereits bezahlt, false - noch nicht bezahlt<br>
+<strong>Beispiel</strong> : <code>false</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>grundstuecksKaufpreis</strong><br>
@@ -7008,7 +7027,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-    Last updated 2019-01-04 13:11:14 MEZ
+Last updated 2019-02-21 09:33:38 MEZ
 </div>
 </div>
 </body>

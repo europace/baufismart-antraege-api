@@ -271,6 +271,7 @@ BestehenderBausparvertrag                 ;                                     
 BestehendesDarlehen                       ;                                                    ;                                                   ;
                                           ;abzuloesendeRestschuld                              ;number                                             ;
                                           ;aktuelleRestschuldWennNichtAbzuloesen               ;number                                             ;
+                                          ;bausteinId                                          ;string                                             ;
                                           ;darlehensArt                                        ;enum                                               ;
                                           ;                                                    ;                                                   ;BAUSPARDARLEHEN
                                           ;                                                    ;                                                   ;FOERDERDARLEHEN
@@ -291,6 +292,7 @@ BestehendesDarlehen                       ;                                     
 BestehendesDarlehenDesFinanzierungsObjekts;                                                    ;                                                   ;
                                           ;abzuloesendeRestschuld                              ;number                                             ;
                                           ;aktuelleRestschuldWennNichtAbzuloesen               ;number                                             ;
+                                          ;bausteinId                                          ;string                                             ;
                                           ;darlehensArt                                        ;enum                                               ;
                                           ;                                                    ;                                                   ;BAUSPARDARLEHEN
                                           ;                                                    ;                                                   ;FOERDERDARLEHEN
@@ -419,6 +421,7 @@ Finanzbedarf                              ;                                     
                                           ;bereitsBeglichen                                    ;number                                             ;
                                           ;erschliessung                                       ;number                                             ;
                                           ;grunderwerbsteuer                                   ;number                                             ;
+                                          ;grundstueckBereitsBezahlt                           ;boolean                                            ;
                                           ;grundstuecksKaufpreis                               ;number                                             ;
                                           ;herstellung                                         ;number                                             ;
                                           ;kapitalBeschaffung                                  ;number                                             ;

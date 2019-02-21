@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.8",
+    "version": "2.9",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1696,6 +1696,11 @@
           "type": "number",
           "description": "Nebenkosten"
         },
+        "grundstueckBereitsBezahlt": {
+          "description": "'null' wenn nicht 'Neubau', anderenfalls: true -> bereits bezahlt, false - noch nicht bezahlt",
+          "example": false,
+          "type": "boolean"
+        },
         "grundstuecksKaufpreis": {
           "type": "number"
         },
@@ -3296,6 +3301,9 @@
           "type": "number",
           "description": "nur wenn wirdAbgeloest==true"
         },
+        "bausteinId": {
+          "type": "string"
+        },
         "darlehensArt": {
           "type": "string",
           "description": "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
@@ -3361,6 +3369,9 @@
         "aktuelleRestschuldWennNichtAbzuloesen": {
           "type": "number",
           "description": "nur wenn wirdAbgeloest==true"
+        },
+        "bausteinId": {
+          "type": "string"
         },
         "darlehensArt": {
           "type": "string",

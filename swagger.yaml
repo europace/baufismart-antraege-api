@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.8"
+  version: "2.9"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -1187,6 +1187,11 @@ definitions:
       grunderwerbsteuer:
         type: "number"
         description: "Nebenkosten"
+      grundstueckBereitsBezahlt:
+        type: "boolean"
+        example: false
+        description: "'null' wenn nicht 'Neubau', anderenfalls: true -> bereits bezahlt,\
+          \ false - noch nicht bezahlt"
       grundstuecksKaufpreis:
         type: "number"
       herstellung:
@@ -2372,6 +2377,8 @@ definitions:
       aktuelleRestschuldWennNichtAbzuloesen:
         type: "number"
         description: "nur wenn wirdAbgeloest==true"
+      bausteinId:
+        type: "string"
       darlehensArt:
         type: "string"
         description: "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN.\
@@ -2425,6 +2432,8 @@ definitions:
       aktuelleRestschuldWennNichtAbzuloesen:
         type: "number"
         description: "nur wenn wirdAbgeloest==true"
+      bausteinId:
+        type: "string"
       darlehensArt:
         type: "string"
         description: "Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN.\
