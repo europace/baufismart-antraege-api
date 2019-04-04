@@ -1,6 +1,6 @@
 # "Anträge Auslesen" API - English Documentation 🇺🇸🇬🇧
 
-##### Current version: 2.9
+##### Current version: 2.10
 
 API documentation for exporting mortage application data from the EUROPACE platform from the point-of-view of a lender/bank.
 

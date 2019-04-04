@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.9",
+    "version": "2.10",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -2157,6 +2157,9 @@
           "type": "string"
         },
         "produktAnbieterId": {
+          "type": "string"
+        },
+        "produktAnbieterKurzName": {
           "type": "string"
         },
         "registrierungsNummer": {

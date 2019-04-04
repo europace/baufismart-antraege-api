@@ -656,6 +656,7 @@ ProduktAnbieter                           ;                                     
                                           ;aufsichtsBehoerde                                   ;string                                             ;
                                           ;partnerId                                           ;string                                             ;
                                           ;produktAnbieterId                                   ;string                                             ;
+                                          ;produktAnbieterKurzName                             ;string                                             ;
                                           ;registrierungsNummer                                ;string                                             ;
                                           ;vertriebsOrganisation                               ;string                                             ;
                                           ;webseite                                            ;string                                             ;
