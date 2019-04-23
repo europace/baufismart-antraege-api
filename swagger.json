@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.10",
+    "version": "2.11",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1290,6 +1290,12 @@
     "AngebotZumAntrag": {
       "type": "object",
       "properties": {
+        "absicherungen": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Absicherung"
+          }
+        },
         "bausparvertraege": {
           "type": "array",
           "items": {
@@ -1697,9 +1703,9 @@
           "description": "Nebenkosten"
         },
         "grundstueckBereitsBezahlt": {
-          "description": "'null' wenn nicht 'Neubau', anderenfalls: true -> bereits bezahlt, false - noch nicht bezahlt",
+          "type": "boolean",
           "example": false,
-          "type": "boolean"
+          "description": "'null' wenn nicht 'Neubau', anderenfalls: true -> bereits bezahlt, false - noch nicht bezahlt"
         },
         "grundstuecksKaufpreis": {
           "type": "number"
@@ -1904,6 +1910,45 @@
     },
     "CharSequence": {
       "type": "object"
+    },
+    "Absicherung": {
+      "type": "object",
+      "properties": {
+        "abgesicherteRisiken": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RisikoAbsicherung"
+          }
+        },
+        "gesamtPraemie": {
+          "type": "number"
+        },
+        "praemienZahlungsweise": {
+          "type": "string",
+          "enum": [
+            "EINMALIG",
+            "MONATLICH"
+          ]
+        },
+        "tarifBezeichnung": {
+          "type": "string"
+        },
+        "tarifKennung": {
+          "type": "string"
+        },
+        "versichertePersonId": {
+          "type": "string"
+        },
+        "versicherungsArt": {
+          "type": "string"
+        },
+        "versicherungsNummer": {
+          "type": "string"
+        },
+        "versicherungsZeitraum": {
+          "$ref": "#/definitions/VersicherungsZeitraum"
+        }
+      }
     },
     "MietAusgaben": {
       "type": "object",
@@ -2393,6 +2438,23 @@
           "type": "string",
           "example": "2016",
           "description": "Jahr der Modernisierung der Immobilie. Vierstellige Jahresangabe"
+        }
+      }
+    },
+    "VersicherungsZeitraum": {
+      "type": "object",
+      "properties": {
+        "beginn": {
+          "type": "string",
+          "format": "date"
+        },
+        "dauerInMonaten": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ende": {
+          "type": "string",
+          "format": "date"
         }
       }
     },
@@ -3150,6 +3212,33 @@
         },
         "traceId": {
           "type": "string"
+        }
+      }
+    },
+    "RisikoAbsicherung": {
+      "type": "object",
+      "properties": {
+        "abgesichertesRisiko": {
+          "type": "string",
+          "enum": [
+            "TODESFALL",
+            "ARBEITSLOSIGKEIT",
+            "ARBEITSUNFAEHIGKEIT",
+            "INVALIDITAET"
+          ]
+        },
+        "auszahlungsBetrag": {
+          "type": "number"
+        },
+        "auszahlungsTurnus": {
+          "type": "string",
+          "enum": [
+            "EINMALIG",
+            "MONATLICH"
+          ]
+        },
+        "praemienAnteil": {
+          "type": "number"
         }
       }
     },

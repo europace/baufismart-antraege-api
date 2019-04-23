@@ -1,5 +1,18 @@
 Definition Name                           ;Attribut Name                                       ;Attribut Type                                      ;Moegliche Enum Werte
+Absicherung                               ;                                                    ;                                                   ;
+                                          ;abgesicherteRisiken                                 ;array of RisikoAbsicherung                         ;
+                                          ;gesamtPraemie                                       ;number                                             ;
+                                          ;praemienZahlungsweise                               ;enum                                               ;
+                                          ;                                                    ;                                                   ;EINMALIG
+                                          ;                                                    ;                                                   ;MONATLICH
+                                          ;tarifBezeichnung                                    ;string                                             ;
+                                          ;tarifKennung                                        ;string                                             ;
+                                          ;versichertePersonId                                 ;string                                             ;
+                                          ;versicherungsArt                                    ;string                                             ;
+                                          ;versicherungsNummer                                 ;string                                             ;
+                                          ;versicherungsZeitraum                               ;VersicherungsZeitraum                              ;
 AngebotZumAntrag                          ;                                                    ;                                                   ;
+                                          ;absicherungen                                       ;array of Absicherung                               ;
                                           ;bausparvertraege                                    ;array of Bausparvertrag                            ;
                                           ;beleihungsRechnung                                  ;BeleihungsRechnung                                 ;
                                           ;bewertungDesAngebots                                ;enum                                               ;
@@ -673,6 +686,17 @@ Provision                                 ;                                     
 RechteAbteilung2                          ;                                                    ;                                                   ;
                                           ;beschreibung                                        ;string                                             ;
                                           ;betrag                                              ;number                                             ;
+RisikoAbsicherung                         ;                                                    ;                                                   ;
+                                          ;abgesichertesRisiko                                 ;enum                                               ;
+                                          ;                                                    ;                                                   ;TODESFALL
+                                          ;                                                    ;                                                   ;ARBEITSLOSIGKEIT
+                                          ;                                                    ;                                                   ;ARBEITSUNFAEHIGKEIT
+                                          ;                                                    ;                                                   ;INVALIDITAET
+                                          ;auszahlungsBetrag                                   ;number                                             ;
+                                          ;auszahlungsTurnus                                   ;enum                                               ;
+                                          ;                                                    ;                                                   ;EINMALIG
+                                          ;                                                    ;                                                   ;MONATLICH
+                                          ;praemienAnteil                                      ;number                                             ;
 SchufaErgebnis                            ;                                                    ;                                                   ;
                                           ;antragstellerUnbekannt                              ;boolean                                            ;
                                           ;inManuellerNachbehandlung                           ;boolean                                            ;
@@ -767,6 +791,10 @@ VermoegenVerbindlichkeit                  ;                                     
                                           ;                                                    ;                                                   ;VERBINDLICHKEIT
 VermoegenVerbindlichkeiten                ;                                                    ;                                                   ;
                                           ;vermoegenOderVerbindlichkeiten                      ;array of VermoegenVerbindlichkeit                  ;
+VersicherungsZeitraum                     ;                                                    ;                                                   ;
+                                          ;beginn                                              ;string(date)                                       ;
+                                          ;dauerInMonaten                                      ;integer(int32)                                     ;
+                                          ;ende                                                ;string(date)                                       ;
 Vorhaben                                  ;                                                    ;                                                   ;
                                           ;eigenleistungWennNeubauOderModernisierungsmassnahmen;number                                             ;
                                           ;externeBausparAngebote                              ;array of BausparAngebot                            ;

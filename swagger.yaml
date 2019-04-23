@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.10"
+  version: "2.11"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -891,6 +891,10 @@ definitions:
   AngebotZumAntrag:
     type: "object"
     properties:
+      absicherungen:
+        type: "array"
+        items:
+          $ref: "#/definitions/Absicherung"
       bausparvertraege:
         type: "array"
         items:
@@ -1334,6 +1338,32 @@ definitions:
         $ref: "#/definitions/Links"
   CharSequence:
     type: "object"
+  Absicherung:
+    type: "object"
+    properties:
+      abgesicherteRisiken:
+        type: "array"
+        items:
+          $ref: "#/definitions/RisikoAbsicherung"
+      gesamtPraemie:
+        type: "number"
+      praemienZahlungsweise:
+        type: "string"
+        enum:
+        - "EINMALIG"
+        - "MONATLICH"
+      tarifBezeichnung:
+        type: "string"
+      tarifKennung:
+        type: "string"
+      versichertePersonId:
+        type: "string"
+      versicherungsArt:
+        type: "string"
+      versicherungsNummer:
+        type: "string"
+      versicherungsZeitraum:
+        $ref: "#/definitions/VersicherungsZeitraum"
   MietAusgaben:
     type: "object"
     properties:
@@ -1678,6 +1708,18 @@ definitions:
         type: "string"
         example: "2016"
         description: "Jahr der Modernisierung der Immobilie. Vierstellige Jahresangabe"
+  VersicherungsZeitraum:
+    type: "object"
+    properties:
+      beginn:
+        type: "string"
+        format: "date"
+      dauerInMonaten:
+        type: "integer"
+        format: "int32"
+      ende:
+        type: "string"
+        format: "date"
   BankUndSparguthaben:
     type: "object"
     properties:
@@ -2272,6 +2314,25 @@ definitions:
         type: "string"
       traceId:
         type: "string"
+  RisikoAbsicherung:
+    type: "object"
+    properties:
+      abgesichertesRisiko:
+        type: "string"
+        enum:
+        - "TODESFALL"
+        - "ARBEITSLOSIGKEIT"
+        - "ARBEITSUNFAEHIGKEIT"
+        - "INVALIDITAET"
+      auszahlungsBetrag:
+        type: "number"
+      auszahlungsTurnus:
+        type: "string"
+        enum:
+        - "EINMALIG"
+        - "MONATLICH"
+      praemienAnteil:
+        type: "number"
   Autostellplatz:
     type: "object"
     properties:

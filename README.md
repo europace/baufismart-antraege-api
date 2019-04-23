@@ -1,6 +1,8 @@
 # Anträge Auslesen API
 
-##### Aktuelle Version: 2.10
+##### Aktuelle Version: 2.11
+
+[Aktuelles RELEASE](https://github.com/hypoport/antraege-auslesen-api/releases/)
 
 API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters.
 
