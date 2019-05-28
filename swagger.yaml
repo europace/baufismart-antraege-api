@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.11"
+  version: "2.12"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -72,6 +72,16 @@ paths:
       - name: "produktAnbieter"
         in: "query"
         description: "produktAnbieter"
+        required: false
+        type: "string"
+      - name: "aenderungSeit"
+        in: "query"
+        description: "Datum im ISO Format UTC - Zulu"
+        required: false
+        type: "string"
+      - name: "aenderungBis"
+        in: "query"
+        description: "Datum im ISO Format UTC - Zulu"
         required: false
         type: "string"
       - name: "X-TraceId"
@@ -1316,6 +1326,20 @@ definitions:
       zuteilungsDatum:
         type: "string"
         format: "date"
+  PartnerKennzeichenDesProduktAnbieters:
+    type: "object"
+    properties:
+      kennzeichen:
+        type: "array"
+        description: "Liste aller Partnerkennzeichen"
+        items:
+          $ref: "#/definitions/PartnerKennzeichen"
+      partnerId:
+        type: "string"
+        description: "PartnerId des Vermittlers/Ansprechpartners"
+      produktAnbieterId:
+        type: "string"
+        description: "ID des Produktanbieters"
   Flurstueck:
     type: "object"
     properties:
@@ -1548,6 +1572,8 @@ definitions:
         type: "string"
       vertriebsOrganisation:
         type: "string"
+      vertriebsOrganisationsId:
+        type: "string"
       webseite:
         type: "string"
       vorname:
@@ -1708,6 +1734,15 @@ definitions:
         type: "string"
         example: "2016"
         description: "Jahr der Modernisierung der Immobilie. Vierstellige Jahresangabe"
+  PartnerKennzeichen:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        description: "Name des Partnerkennzeichens"
+      wert:
+        type: "string"
+        description: "Wert des Partnerkennzeichenss"
   VersicherungsZeitraum:
     type: "object"
     properties:
@@ -1909,6 +1944,8 @@ definitions:
         type: "string"
       vertriebsOrganisation:
         type: "string"
+      vertriebsOrganisationsId:
+        type: "string"
       webseite:
         type: "string"
       vorname:
@@ -2020,6 +2057,16 @@ definitions:
           $ref: "#/definitions/Dokument"
       kreditSachbearbeiter:
         $ref: "#/definitions/Partner"
+      letzteAenderung:
+        type: "string"
+        format: "date-time"
+        description: "Zeitpunkt der letzten Änderung des Antrags"
+      partnerkennzeichen:
+        type: "array"
+        description: "Enthält alle Partnerkennzeichen des Vermittlers/Ansprechpartners\
+          \ für den Produktanbieters/Kreditentscheiders des Antrags"
+        items:
+          $ref: "#/definitions/PartnerKennzeichenDesProduktAnbieters"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
       prolongation:
