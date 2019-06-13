@@ -1,10 +1,10 @@
-# Anträge Auslesen API
+# Anträge API
 
 ##### Aktuelle Version: 2.12
 
 [Aktuelles RELEASE](https://github.com/hypoport/antraege-auslesen-api/releases/)
 
-API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters.
+API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters. Außerdem erlaubt die API das Setzen des Antragsstatus und des Kreditsachbearbeiters.
 
 ### Swagger Spezifikationen
 Die API ist vollständig in Swagger definiert. Die Swagger Definitionen werden sowohl im JSON- ([swagger.json](swagger.json)) als auch im YAML-Format ([swagger.yaml](https://github.com/europace/baufismart-antraege-api/blob/master/swagger.yaml)) zur Verfügung gestellt.
