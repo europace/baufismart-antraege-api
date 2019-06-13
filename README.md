@@ -5,7 +5,7 @@
 [Aktuelles RELEASE](https://github.com/hypoport/antraege-auslesen-api/releases/)
 
 API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters.
-.
+
 ### Swagger Spezifikationen
 Die API ist vollständig in Swagger definiert. Die Swagger Definitionen werden sowohl im JSON- ([swagger.json](swagger.json)) als auch im YAML-Format ([swagger.yaml](https://github.com/europace/baufismart-antraege-api/blob/master/swagger.yaml)) zur Verfügung gestellt.
 
@@ -58,7 +58,7 @@ Die Authentifizierung läuft über den [OAuth2](https://oauth.net/2/) Flow vom T
 https://tools.ietf.org/html/rfc6749#section-1.3.3
 
 ##### Credentials
-Um die Credentials zu erhalten, erfagen Sie beim Helpdesk der Plattform die Zugangsdaten zur Auslesen API, bzw. bitten Ihren Auftraggeber dies zu tun.
+Um die Credentials zu erhalten, erfragen Sie beim Helpdesk der Plattform die Zugangsdaten zur Auslesen API, bzw. bitten Ihren Auftraggeber dies zu tun.
 
 ##### Schritte
 1. Absenden eines POST Requests auf den [Login-Endpunkt](https://htmlpreview.github.io/?https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/Dokumentation/index.html#_oauth2) mit Username und Password. Der Username entspricht der PartnerId und das Password ist der API-Key. Alternativ kann ein Login auch über einen GET Aufruf mit HTTP Basic Auth auf den Login-Endpunkt erfolgen.
