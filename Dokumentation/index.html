@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<title>Anträge auslesen API</title>
+<title>Antraege Auslesen API Mock</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -510,7 +510,7 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Anträge auslesen API</h1>
+<h1>Antraege Auslesen API Mock</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -608,6 +608,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_risikoabsicherung">RisikoAbsicherung</a></li>
 <li><a href="#_schufaergebnis">SchufaErgebnis</a></li>
 <li><a href="#_situationnachrenteneintritt">SituationNachRenteneintritt</a></li>
+<li><a href="#_sonderzahlung">SonderZahlung</a></li>
 <li><a href="#_sparphase">SparPhase</a></li>
 <li><a href="#_sparplaene">Sparplaene</a></li>
 <li><a href="#_staat">Staat</a></li>
@@ -647,7 +648,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.12</p>
+<p><em>Version</em> : 2.13</p>
 </div>
 </div>
 <div class="sect2">
@@ -2409,7 +2410,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>praemienZahlungsweise</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">enum (EINMALIG, MONATLICH)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">enum (EINMALIG, MONATLICH, VIERTELJAEHRLICH, HALBJAEHRLICH, JAEHRLICH)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>tarifBezeichnung</strong><br>
@@ -3241,6 +3242,12 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sonderZahlungen</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_sonderzahlung">SonderZahlung</a> &gt; array</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sparPhase</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
@@ -3348,6 +3355,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sonderZahlungen</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_sonderzahlung">SonderZahlung</a> &gt; array</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sparPhase</strong><br>
@@ -3835,6 +3848,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sonderZahlungen</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_sonderzahlung">SonderZahlung</a> &gt; array</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sparBeitragMonatlich</strong><br>
@@ -6359,7 +6378,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>auszahlungsTurnus</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">enum (EINMALIG, MONATLICH)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">enum (EINMALIG, MONATLICH, VIERTELJAEHRLICH, HALBJAEHRLICH, JAEHRLICH)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>praemienAnteil</strong><br>
@@ -6441,6 +6460,43 @@ table.CodeRay td.code>pre{padding:0}
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>sonstigesEinkommenMonatlich</strong><br>
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_sonderzahlung">SonderZahlung</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 42%;">
+<col style="width: 57%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Typ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>anzahl</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">integer(int32)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>betrag</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>termin</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string(date)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>zahlweise</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">enum (EINMALIG, MONATLICH, VIERTELJAEHRLICH, HALBJAEHRLICH, JAEHRLICH)</p></td>
 </tr>
 </tbody>
 </table>
@@ -7215,7 +7271,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-28 09:30:15 MESZ
+Last updated 2019-06-19 16:24:53 MESZ
 </div>
 </div>
 </body>
