@@ -607,7 +607,6 @@
           <li><a href="#_paginationlinks">PaginationLinks</a></li>
           <li><a href="#_partner">Partner</a></li>
           <li><a href="#_partnerkennzeichen">PartnerKennzeichen</a></li>
-          <li><a href="#_partnerkennzeichendesproduktanbieters">PartnerKennzeichenDesProduktAnbieters</a></li>
           <li><a href="#_patchoperation">PatchOperation</a></li>
           <li><a href="#_postadresse">Postadresse</a></li>
           <li><a href="#_produktanbieter">ProduktAnbieter</a></li>
@@ -616,6 +615,7 @@
           <li><a href="#_risikoabsicherung">RisikoAbsicherung</a></li>
           <li><a href="#_schufaergebnis">SchufaErgebnis</a></li>
           <li><a href="#_situationnachrenteneintritt">SituationNachRenteneintritt</a></li>
+          <li><a href="#_sonderzahlung">SonderZahlung</a></li>
           <li><a href="#_sparphase">SparPhase</a></li>
           <li><a href="#_sparplaene">Sparplaene</a></li>
           <li><a href="#_staat">Staat</a></li>
@@ -656,7 +656,7 @@
       <div class="sect2">
         <h3 id="_aktuelle_version">Aktuelle Version</h3>
         <div class="paragraph">
-          <p><em>Version</em> : 2.12</p>
+          <p><em>Version</em> : 2.13</p>
         </div>
       </div>
       <div class="sect2">
@@ -3312,7 +3312,7 @@
               </p>
             </td>
             <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">enum (EINMALIG, MONATLICH)</p>
+              <p class="tableblock">enum (EINMALIG, MONATLICH, VIERTELJAEHRLICH, HALBJAEHRLICH, JAEHRLICH)</p>
             </td>
           </tr>
           <tr>
@@ -3744,19 +3744,6 @@
             </td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string(date-time)</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock"><strong>partnerkennzeichen</strong><br>
-                <em>optional</em>
-              </p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">Enthält alle Partnerkennzeichen des Vermittlers/Ansprechpartners für den Produktanbieters/Kreditentscheiders des Antrags</p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">&lt; <a href="#_partnerkennzeichendesproduktanbieters">PartnerKennzeichenDesProduktAnbieters</a> &gt; array</p>
             </td>
           </tr>
           <tr>
@@ -4738,6 +4725,17 @@
           </tr>
           <tr>
             <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>sonderZahlungen</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle"></td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">&lt; <a href="#_sonderzahlung">SonderZahlung</a> &gt; array</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
               <p class="tableblock"><strong>sparPhase</strong><br>
                 <em>optional</em>
               </p>
@@ -4920,6 +4918,17 @@
             <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>sonderZahlungen</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle"></td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">&lt; <a href="#_sonderzahlung">SonderZahlung</a> &gt; array</p>
             </td>
           </tr>
           <tr>
@@ -5760,6 +5769,17 @@
             <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock"><a href="#_produktanbieter">ProduktAnbieter</a></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>sonderZahlungen</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle"></td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">&lt; <a href="#_sonderzahlung">SonderZahlung</a> &gt; array</p>
             </td>
           </tr>
           <tr>
@@ -9321,12 +9341,14 @@
         <h3 id="_partner">Partner</h3>
         <table class="tableblock frame-all grid-all spread">
           <colgroup>
-            <col style="width: 42%;">
-            <col style="width: 57%;">
+            <col style="width: 16%;">
+            <col style="width: 61%;">
+            <col style="width: 22%;">
           </colgroup>
           <thead>
           <tr>
             <th class="tableblock halign-left valign-middle">Name</th>
+            <th class="tableblock halign-left valign-middle">Beschreibung</th>
             <th class="tableblock halign-left valign-middle">Typ</th>
           </tr>
           </thead>
@@ -9337,6 +9359,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9347,6 +9370,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock"><a href="#_anschrift">Anschrift</a></p>
             </td>
@@ -9357,6 +9381,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9367,8 +9392,22 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>partnerKennzeichen</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">Liste aller Partnerkennzeichen</p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">&lt; <a href="#_partnerkennzeichen">PartnerKennzeichen</a> &gt; array</p>
             </td>
           </tr>
           <tr>
@@ -9377,6 +9416,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9387,6 +9427,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9397,6 +9438,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9407,6 +9449,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9417,6 +9460,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9427,6 +9471,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9437,6 +9482,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9447,6 +9493,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9457,6 +9504,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9467,6 +9515,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9511,64 +9560,6 @@
             </td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">Wert des Partnerkennzeichenss</p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">string</p>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="sect2">
-        <h3 id="_partnerkennzeichendesproduktanbieters">PartnerKennzeichenDesProduktAnbieters</h3>
-        <table class="tableblock frame-all grid-all spread">
-          <colgroup>
-            <col style="width: 16%;">
-            <col style="width: 61%;">
-            <col style="width: 22%;">
-          </colgroup>
-          <thead>
-          <tr>
-            <th class="tableblock halign-left valign-middle">Name</th>
-            <th class="tableblock halign-left valign-middle">Beschreibung</th>
-            <th class="tableblock halign-left valign-middle">Typ</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock"><strong>kennzeichen</strong><br>
-                <em>optional</em>
-              </p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">Liste aller Partnerkennzeichen</p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">&lt; <a href="#_partnerkennzeichen">PartnerKennzeichen</a> &gt; array</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock"><strong>partnerId</strong><br>
-                <em>optional</em>
-              </p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">PartnerId des Vermittlers/Ansprechpartners</p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">string</p>
-            </td>
-          </tr>
-          <tr>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock"><strong>produktAnbieterId</strong><br>
-                <em>optional</em>
-              </p>
-            </td>
-            <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">ID des Produktanbieters</p>
             </td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
@@ -9721,12 +9712,14 @@
         <h3 id="_produktanbieter">ProduktAnbieter</h3>
         <table class="tableblock frame-all grid-all spread">
           <colgroup>
-            <col style="width: 42%;">
-            <col style="width: 57%;">
+            <col style="width: 16%;">
+            <col style="width: 61%;">
+            <col style="width: 22%;">
           </colgroup>
           <thead>
           <tr>
             <th class="tableblock halign-left valign-middle">Name</th>
+            <th class="tableblock halign-left valign-middle">Beschreibung</th>
             <th class="tableblock halign-left valign-middle">Typ</th>
           </tr>
           </thead>
@@ -9737,6 +9730,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9747,6 +9741,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock"><a href="#_anschrift">Anschrift</a></p>
             </td>
@@ -9757,6 +9752,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9767,8 +9763,22 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>partnerKennzeichen</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">Liste aller Partnerkennzeichen</p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">&lt; <a href="#_partnerkennzeichen">PartnerKennzeichen</a> &gt; array</p>
             </td>
           </tr>
           <tr>
@@ -9777,6 +9787,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9787,6 +9798,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9797,6 +9809,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9807,6 +9820,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9817,6 +9831,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9827,6 +9842,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9837,6 +9853,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9847,6 +9864,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9857,6 +9875,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9867,6 +9886,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9877,6 +9897,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -9887,6 +9908,7 @@
                 <em>optional</em>
               </p>
             </td>
+            <td class="tableblock halign-left valign-middle"></td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">string</p>
             </td>
@@ -10026,7 +10048,7 @@
               </p>
             </td>
             <td class="tableblock halign-left valign-middle">
-              <p class="tableblock">enum (EINMALIG, MONATLICH)</p>
+              <p class="tableblock">enum (EINMALIG, MONATLICH, VIERTELJAEHRLICH, HALBJAEHRLICH, JAEHRLICH)</p>
             </td>
           </tr>
           <tr>
@@ -10154,6 +10176,63 @@
             </td>
             <td class="tableblock halign-left valign-middle">
               <p class="tableblock">number</p>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sect2">
+        <h3 id="_sonderzahlung">SonderZahlung</h3>
+        <table class="tableblock frame-all grid-all spread">
+          <colgroup>
+            <col style="width: 42%;">
+            <col style="width: 57%;">
+          </colgroup>
+          <thead>
+          <tr>
+            <th class="tableblock halign-left valign-middle">Name</th>
+            <th class="tableblock halign-left valign-middle">Typ</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>anzahl</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">integer(int32)</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>betrag</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">number</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>termin</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">string(date)</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock"><strong>zahlweise</strong><br>
+                <em>optional</em>
+              </p>
+            </td>
+            <td class="tableblock halign-left valign-middle">
+              <p class="tableblock">enum (EINMALIG, MONATLICH, VIERTELJAEHRLICH, HALBJAEHRLICH, JAEHRLICH)</p>
             </td>
           </tr>
           </tbody>
@@ -11330,7 +11409,7 @@
 </div>
 <div id="footer">
   <div id="footer-text">
-    Last updated 2019-05-28 09:30:15 MESZ
+    Last updated 2019-06-21 15:24:51 MESZ
   </div>
 </div>
 </body>

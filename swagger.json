@@ -4,7 +4,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.12",
+    "version": "2.13",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1393,6 +1393,12 @@
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
         },
+        "sonderZahlungen": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SonderZahlung"
+          }
+        },
         "sparPhase": {
           "$ref": "#/definitions/SparPhase"
         },
@@ -1865,6 +1871,12 @@
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
         },
+        "sonderZahlungen": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SonderZahlung"
+          }
+        },
         "sparPhase": {
           "$ref": "#/definitions/SparPhase"
         },
@@ -1890,26 +1902,6 @@
         "zuteilungsDatum": {
           "type": "string",
           "format": "date"
-        }
-      }
-    },
-    "PartnerKennzeichenDesProduktAnbieters": {
-      "type": "object",
-      "properties": {
-        "kennzeichen": {
-          "type": "array",
-          "description": "Liste aller Partnerkennzeichen",
-          "items": {
-            "$ref": "#/definitions/PartnerKennzeichen"
-          }
-        },
-        "partnerId": {
-          "type": "string",
-          "description": "PartnerId des Vermittlers/Ansprechpartners"
-        },
-        "produktAnbieterId": {
-          "type": "string",
-          "description": "ID des Produktanbieters"
         }
       }
     },
@@ -1963,7 +1955,10 @@
           "type": "string",
           "enum": [
             "EINMALIG",
-            "MONATLICH"
+            "MONATLICH",
+            "VIERTELJAEHRLICH",
+            "HALBJAEHRLICH",
+            "JAEHRLICH"
           ]
         },
         "tarifBezeichnung": {
@@ -2236,6 +2231,13 @@
         },
         "partnerId": {
           "type": "string"
+        },
+        "partnerKennzeichen": {
+          "type": "array",
+          "description": "Liste aller Partnerkennzeichen",
+          "items": {
+            "$ref": "#/definitions/PartnerKennzeichen"
+          }
         },
         "produktAnbieterId": {
           "type": "string"
@@ -2719,6 +2721,32 @@
       },
       "description": "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/). Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\": \"123-ABC\"\" }"
     },
+    "SonderZahlung": {
+      "type": "object",
+      "properties": {
+        "anzahl": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "betrag": {
+          "type": "number"
+        },
+        "termin": {
+          "type": "string",
+          "format": "date"
+        },
+        "zahlweise": {
+          "type": "string",
+          "enum": [
+            "EINMALIG",
+            "MONATLICH",
+            "VIERTELJAEHRLICH",
+            "HALBJAEHRLICH",
+            "JAEHRLICH"
+          ]
+        }
+      }
+    },
     "Partner": {
       "type": "object",
       "properties": {
@@ -2733,6 +2761,13 @@
         },
         "partnerId": {
           "type": "string"
+        },
+        "partnerKennzeichen": {
+          "type": "array",
+          "description": "Liste aller Partnerkennzeichen",
+          "items": {
+            "$ref": "#/definitions/PartnerKennzeichen"
+          }
         },
         "registrierungsNummer": {
           "type": "string"
@@ -2808,6 +2843,12 @@
         },
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
+        },
+        "sonderZahlungen": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SonderZahlung"
+          }
         },
         "sparBeitragMonatlich": {
           "type": "number"
@@ -2902,13 +2943,6 @@
           "type": "string",
           "format": "date-time",
           "description": "Zeitpunkt der letzten Änderung des Antrags"
-        },
-        "partnerkennzeichen": {
-          "type": "array",
-          "description": "Enthält alle Partnerkennzeichen des Vermittlers/Ansprechpartners für den Produktanbieters/Kreditentscheiders des Antrags",
-          "items": {
-            "$ref": "#/definitions/PartnerKennzeichenDesProduktAnbieters"
-          }
         },
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
@@ -3301,7 +3335,10 @@
           "type": "string",
           "enum": [
             "EINMALIG",
-            "MONATLICH"
+            "MONATLICH",
+            "VIERTELJAEHRLICH",
+            "HALBJAEHRLICH",
+            "JAEHRLICH"
           ]
         },
         "praemienAnteil": {
@@ -3368,7 +3405,7 @@
         },
         "type": {
           "type": "string",
-          "description": "Mediatype des Dokuments, siehe <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\">HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
+          "description": "Mediatype des Dokuments, siehe <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\">HTTP 1.1: Semantics and Content, section 3.1.1.1<\/a>"
         }
       }
     },

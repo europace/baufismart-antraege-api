@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.12"
+  version: "2.13"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -961,6 +961,10 @@ definitions:
         type: "string"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
+      sonderZahlungen:
+        type: "array"
+        items:
+          $ref: "#/definitions/SonderZahlung"
       sparPhase:
         $ref: "#/definitions/SparPhase"
       tarif:
@@ -1308,6 +1312,10 @@ definitions:
         type: "string"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
+      sonderZahlungen:
+        type: "array"
+        items:
+          $ref: "#/definitions/SonderZahlung"
       sparPhase:
         $ref: "#/definitions/SparPhase"
       tarif:
@@ -1326,20 +1334,6 @@ definitions:
       zuteilungsDatum:
         type: "string"
         format: "date"
-  PartnerKennzeichenDesProduktAnbieters:
-    type: "object"
-    properties:
-      kennzeichen:
-        type: "array"
-        description: "Liste aller Partnerkennzeichen"
-        items:
-          $ref: "#/definitions/PartnerKennzeichen"
-      partnerId:
-        type: "string"
-        description: "PartnerId des Vermittlers/Ansprechpartners"
-      produktAnbieterId:
-        type: "string"
-        description: "ID des Produktanbieters"
   Flurstueck:
     type: "object"
     properties:
@@ -1376,6 +1370,9 @@ definitions:
         enum:
         - "EINMALIG"
         - "MONATLICH"
+        - "VIERTELJAEHRLICH"
+        - "HALBJAEHRLICH"
+        - "JAEHRLICH"
       tarifBezeichnung:
         type: "string"
       tarifKennung:
@@ -1564,6 +1561,11 @@ definitions:
         type: "string"
       partnerId:
         type: "string"
+      partnerKennzeichen:
+        type: "array"
+        description: "Liste aller Partnerkennzeichen"
+        items:
+          $ref: "#/definitions/PartnerKennzeichen"
       produktAnbieterId:
         type: "string"
       produktAnbieterKurzName:
@@ -1929,6 +1931,25 @@ definitions:
     description: "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/).\
       \ Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\"\
       : \"123-ABC\"\" }"
+  SonderZahlung:
+    type: "object"
+    properties:
+      anzahl:
+        type: "integer"
+        format: "int32"
+      betrag:
+        type: "number"
+      termin:
+        type: "string"
+        format: "date"
+      zahlweise:
+        type: "string"
+        enum:
+        - "EINMALIG"
+        - "MONATLICH"
+        - "VIERTELJAEHRLICH"
+        - "HALBJAEHRLICH"
+        - "JAEHRLICH"
   Partner:
     type: "object"
     properties:
@@ -1940,6 +1961,11 @@ definitions:
         type: "string"
       partnerId:
         type: "string"
+      partnerKennzeichen:
+        type: "array"
+        description: "Liste aller Partnerkennzeichen"
+        items:
+          $ref: "#/definitions/PartnerKennzeichen"
       registrierungsNummer:
         type: "string"
       vertriebsOrganisation:
@@ -1990,6 +2016,10 @@ definitions:
         type: "number"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
+      sonderZahlungen:
+        type: "array"
+        items:
+          $ref: "#/definitions/SonderZahlung"
       sparBeitragMonatlich:
         type: "number"
       tarif:
@@ -2061,12 +2091,6 @@ definitions:
         type: "string"
         format: "date-time"
         description: "Zeitpunkt der letzten Änderung des Antrags"
-      partnerkennzeichen:
-        type: "array"
-        description: "Enthält alle Partnerkennzeichen des Vermittlers/Ansprechpartners\
-          \ für den Produktanbieters/Kreditentscheiders des Antrags"
-        items:
-          $ref: "#/definitions/PartnerKennzeichenDesProduktAnbieters"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
       prolongation:
@@ -2378,6 +2402,9 @@ definitions:
         enum:
         - "EINMALIG"
         - "MONATLICH"
+        - "VIERTELJAEHRLICH"
+        - "HALBJAEHRLICH"
+        - "JAEHRLICH"
       praemienAnteil:
         type: "number"
   Autostellplatz:

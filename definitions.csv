@@ -5,6 +5,9 @@ Absicherung                               ;                                     
                                           ;praemienZahlungsweise                               ;enum                                               ;
                                           ;                                                    ;                                                   ;EINMALIG
                                           ;                                                    ;                                                   ;MONATLICH
+                                          ;                                                    ;                                                   ;VIERTELJAEHRLICH
+                                          ;                                                    ;                                                   ;HALBJAEHRLICH
+                                          ;                                                    ;                                                   ;JAEHRLICH
                                           ;tarifBezeichnung                                    ;string                                             ;
                                           ;tarifKennung                                        ;string                                             ;
                                           ;versichertePersonId                                 ;string                                             ;
@@ -48,7 +51,6 @@ Antrag                                    ;                                     
                                           ;dokumente                                           ;array of Dokument                                  ;
                                           ;kreditSachbearbeiter                                ;Partner                                            ;
                                           ;letzteAenderung                                     ;string(date-time)                                  ;
-                                          ;partnerkennzeichen                                  ;array of PartnerKennzeichenDesProduktAnbieters     ;
                                           ;produktAnbieter                                     ;ProduktAnbieter                                    ;
                                           ;prolongation                                        ;boolean                                            ;
                                           ;status                                              ;AntragsStatus                                      ;
@@ -172,6 +174,7 @@ BausparAngebot                            ;                                     
                                           ;einmalzahlung                                       ;number                                             ;
                                           ;id                                                  ;string                                             ;
                                           ;produktAnbieter                                     ;ProduktAnbieter                                    ;
+                                          ;sonderZahlungen                                     ;array of SonderZahlung                             ;
                                           ;sparPhase                                           ;SparPhase                                          ;
                                           ;tarif                                               ;string                                             ;
                                           ;tilgungsPhase                                       ;TilgungsPhase                                      ;
@@ -188,6 +191,7 @@ Bausparvertrag                            ;                                     
                                           ;gesamtLaufzeitInJahren                              ;integer(int32)                                     ;
                                           ;id                                                  ;string                                             ;
                                           ;produktAnbieter                                     ;ProduktAnbieter                                    ;
+                                          ;sonderZahlungen                                     ;array of SonderZahlung                             ;
                                           ;sparPhase                                           ;SparPhase                                          ;
                                           ;tarif                                               ;string                                             ;
                                           ;tilgungsPhase                                       ;TilgungsPhase                                      ;
@@ -266,6 +270,7 @@ BestehenderBausparvertrag                 ;                                     
                                           ;id                                                  ;string                                             ;
                                           ;maximalAufzuloesenderBetrag                         ;number                                             ;
                                           ;produktAnbieter                                     ;ProduktAnbieter                                    ;
+                                          ;sonderZahlungen                                     ;array of SonderZahlung                             ;
                                           ;sparBeitragMonatlich                                ;number                                             ;
                                           ;tarif                                               ;string                                             ;
                                           ;typ                                                 ;string                                             ;
@@ -639,6 +644,7 @@ Partner                                   ;                                     
                                           ;anschrift                                           ;Anschrift                                          ;
                                           ;aufsichtsBehoerde                                   ;string                                             ;
                                           ;partnerId                                           ;string                                             ;
+                                          ;partnerKennzeichen                                  ;array of PartnerKennzeichen                        ;
                                           ;registrierungsNummer                                ;string                                             ;
                                           ;vertriebsOrganisation                               ;string                                             ;
                                           ;vertriebsOrganisationsId                            ;string                                             ;
@@ -652,10 +658,6 @@ Partner                                   ;                                     
 PartnerKennzeichen                        ;                                                    ;                                                   ;
                                           ;name                                                ;string                                             ;
                                           ;wert                                                ;string                                             ;
-PartnerKennzeichenDesProduktAnbieters     ;                                                    ;                                                   ;
-                                          ;kennzeichen                                         ;array of PartnerKennzeichen                        ;
-                                          ;partnerId                                           ;string                                             ;
-                                          ;produktAnbieterId                                   ;string                                             ;
 PatchOperation                            ;                                                    ;                                                   ;
                                           ;from                                                ;string                                             ;
                                           ;metaClass                                           ;MetaClass                                          ;
@@ -678,6 +680,7 @@ ProduktAnbieter                           ;                                     
                                           ;anschrift                                           ;Anschrift                                          ;
                                           ;aufsichtsBehoerde                                   ;string                                             ;
                                           ;partnerId                                           ;string                                             ;
+                                          ;partnerKennzeichen                                  ;array of PartnerKennzeichen                        ;
                                           ;produktAnbieterId                                   ;string                                             ;
                                           ;produktAnbieterKurzName                             ;string                                             ;
                                           ;registrierungsNummer                                ;string                                             ;
@@ -707,6 +710,9 @@ RisikoAbsicherung                         ;                                     
                                           ;auszahlungsTurnus                                   ;enum                                               ;
                                           ;                                                    ;                                                   ;EINMALIG
                                           ;                                                    ;                                                   ;MONATLICH
+                                          ;                                                    ;                                                   ;VIERTELJAEHRLICH
+                                          ;                                                    ;                                                   ;HALBJAEHRLICH
+                                          ;                                                    ;                                                   ;JAEHRLICH
                                           ;praemienAnteil                                      ;number                                             ;
 SchufaErgebnis                            ;                                                    ;                                                   ;
                                           ;antragstellerUnbekannt                              ;boolean                                            ;
@@ -717,6 +723,16 @@ SituationNachRenteneintritt               ;                                     
                                           ;privateRenteMonatlich                               ;number                                             ;
                                           ;rentenBeginn                                        ;string(date)                                       ;
                                           ;sonstigesEinkommenMonatlich                         ;number                                             ;
+SonderZahlung                             ;                                                    ;                                                   ;
+                                          ;anzahl                                              ;integer(int32)                                     ;
+                                          ;betrag                                              ;number                                             ;
+                                          ;termin                                              ;string(date)                                       ;
+                                          ;zahlweise                                           ;enum                                               ;
+                                          ;                                                    ;                                                   ;EINMALIG
+                                          ;                                                    ;                                                   ;MONATLICH
+                                          ;                                                    ;                                                   ;VIERTELJAEHRLICH
+                                          ;                                                    ;                                                   ;HALBJAEHRLICH
+                                          ;                                                    ;                                                   ;JAEHRLICH
 SparPhase                                 ;                                                    ;                                                   ;
                                           ;guthabenBeiZuteilung                                ;number                                             ;
                                           ;sparBeitragMonatlich                                ;number                                             ;
