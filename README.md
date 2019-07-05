@@ -75,37 +75,42 @@ Den API client nicht mit dem Default Konstruktor, sondern dem credentials Kontru
 
 # Häufige Frage
 
-##### Wie bekomme ich eine Liste alle meiner Anträge?
-Dieses Liste kommt Seiten weise.
+### Wie bekomme ich eine Liste alle meiner Anträge?
+
 ```
 GET https://baufismart.api.europace.de/v2/antraege
 ```
+Diese Liste kommt Seiten weise.
 
-##### Wie rufe ich einen konkreten Antrag ab?
+
+### Wie rufe ich einen konkreten Antrag ab?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
-#### Kann ich nach letzte Änderung filtern?
+
+### Kann ich nach letzte Änderung filtern?
 
 Am Antrag (Liste und Einzelabruf) wird im Feld `letzteAenderung` das Datum der letzten Änderung des Antrags ausgegeben.
 
-Für die Abfrage aller Anträge gibt es zwei neue Parameter zur Einschränkung der Suchergebnisse:
+Für die Abfrage aller Anträge gibt es zwei Parameter zur Einschränkung der Suchergebnisse:
 
 * `aenderungSeit`
 * `aenderungBis`
+
 Für beide Parameter wird ein Datum erwartet, wenn gesetzt
 
 
-#### Was ist relevante Änderungen am Antrag?
+#### Was ist eine elevante Änderungen am Antrag?
 
-Welche Ereignisse führen zum Setzen des `letzteAenderung` Felds?
+Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
+
 * Statusänderung des Antrags 
 * Änderung des Kreditsachbearbeiters
 * Freigabe Dokument für den Kreditbetrieb
 
-##### Welche PATCH Operationen sind möglich?
+### Welche PATCH Operationen sind möglich?
 
 Details zu JSON Patch finden Sie unter [jsonpatch.com](http://jsonpatch.com/).
 Es sind mehrere Operationen mit einem PATCH Aufruf möglich.
@@ -117,7 +122,7 @@ PATCH https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 
 Im folgenden werden die Patch-Operationen als Body dargestellt.
 
-##### Wie setze ich den Status eines Antrags neu?
+### Wie setze ich den Status eines Antrags neu?
 
 ```
 [
@@ -148,7 +153,7 @@ Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der
 ]
 ```
 
-##### Kann ich meine eigene Referenz am Antrag hinterlegen?
+### Kann ich meine eigene Referenz am Antrag hinterlegen?
 Ja!
 
 ```
@@ -157,7 +162,7 @@ Ja!
 ]
 ```
 
-##### Wie kann ich die Antragsreferenz eines Antrags wieder löschen?
+### Wie kann ich die Antragsreferenz eines Antrags wieder löschen?
 
 ```
 [
@@ -165,16 +170,16 @@ Ja!
 ]
 ```
 
-##### Wie kann ich die voraussichtliche Bearbeitungsdatum eines Antrags setzen?
+### Wie kann ich die voraussichtliche Bearbeitungsdatum eines Antrags setzen?
 
 ```
 [
 	{ "op": "add", "path": "/voraussichtlicheBearbeitung", "value": "2017-11-12" }
 ]
 ```
-##### Wechsel des Bearbeiters
+### Wechsel des Bearbeiters
 
-_noch nicht implementiert_
+⚠️ _noch nicht implementiert_
 
 ## Fragen und Anregungen
 Bei Fragen und Anregungen entweder ein Issue in GitHub anlegen oder an [helpdesk@europace2.de](mailto:helpdesk@europace2.de) schreiben.
