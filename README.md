@@ -73,21 +73,39 @@ Den API client nicht mit dem Default Konstruktor, sondern dem credentials Kontru
  api = new ApiClient("oauth2","partnerID", "api-key").createService(AntraegeApi.class);
 ```
 
-### Quickstart
+# Häufige Frage
 
-##### Liste aller meiner Anträge abrufen
-
+##### Wie bekomme ich eine Liste alle meiner Anträge?
+Dieses Liste kommt Seiten weise.
 ```
 GET https://baufismart.api.europace.de/v2/antraege
 ```
 
-##### Einen konkreten Antrag abrufen
+##### Wie rufe ich einen konkreten Antrag ab?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
-### Mögliche PATCH Operationen eines Antrags
+#### Kann ich nach letzte Änderung filtern?
+
+Am Antrag (Liste und Einzelabruf) wird im Feld `letzteAenderung` das Datum der letzten Änderung des Antrags ausgegeben.
+
+Für die Abfrage aller Anträge gibt es zwei neue Parameter zur Einschränkung der Suchergebnisse:
+
+* `aenderungSeit`
+* `aenderungBis`
+Für beide Parameter wird ein Datum erwartet, wenn gesetzt
+
+
+#### Was ist relevante Änderungen am Antrag?
+
+Welche Ereignisse führen zum Setzen des `letzteAenderung` Felds?
+* Statusänderung des Antrags 
+* Änderung des Kreditsachbearbeiters
+* Freigabe Dokument für den Kreditbetrieb
+
+##### Welche PATCH Operationen sind möglich?
 
 Details zu JSON Patch finden Sie unter [jsonpatch.com](http://jsonpatch.com/).
 Es sind mehrere Operationen mit einem PATCH Aufruf möglich.
@@ -99,7 +117,7 @@ PATCH https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 
 Im folgenden werden die Patch-Operationen als Body dargestellt.
 
-##### Den Status eines Antrags neu setzen
+##### Wie setze ich den Status eines Antrags neu?
 
 ```
 [
@@ -130,15 +148,16 @@ Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der
 ]
 ```
 
-##### Die Antragsreferenz eines Antrags setzen
+##### Kann ich meine eigene Referenz am Antrag hinterlegen?
+Ja!
 
 ```
 [
-	{ "op": "add", "path": "/antragsReferenz", "value": "<IHRE_VORGANGSNUMMER>" }
+	{ "op": "add", "path": "/antragsReferenz", "value": "<DEINE_REFERENZ>" }
 ]
 ```
 
-##### Die Antragsreferenz eines Antrags löschen
+##### Wie kann ich die Antragsreferenz eines Antrags wieder löschen?
 
 ```
 [
@@ -146,7 +165,7 @@ Sollen nur Teile des Status aktualisiert werden, kann man auch ein Patch auf der
 ]
 ```
 
-##### Das voraussichtliche Bearbeitungsdatum eines Antrags setzen
+##### Wie kann ich die voraussichtliche Bearbeitungsdatum eines Antrags setzen?
 
 ```
 [
