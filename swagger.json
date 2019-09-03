@@ -1,10 +1,8 @@
-
-
 {
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.13",
+    "version": "2.14",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -3405,7 +3403,7 @@
         },
         "type": {
           "type": "string",
-          "description": "Mediatype des Dokuments, siehe <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\">HTTP 1.1: Semantics and Content, section 3.1.1.1<\/a>"
+          "description": "Mediatype des Dokuments, siehe <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\">HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
         }
       }
     },
