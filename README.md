@@ -112,6 +112,7 @@ Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 
 ### Welche PATCH Operationen sind möglich?
 
+
 Details zu JSON Patch finden Sie unter [jsonpatch.com](http://jsonpatch.com/).
 Es sind mehrere Operationen mit einem PATCH Aufruf möglich.
 
