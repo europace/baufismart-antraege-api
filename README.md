@@ -16,6 +16,7 @@ werden. Dazu empfehlen wir das Tool [Swagger Codegen](https://github.com/swagger
 
  - [RELEASE NOTES](https://github.com/hypoport/antraege-auslesen-api/releases)
  - [statische HTML Seite](http://htmlpreview.github.io?https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/Dokumentation/index.html)
+ - [API DOCS](https://antraege-auslesen-api-5.api-docs.io/2.14/v2/einen-antrag-aktualisieren)
 
 Zur Unterstützung für das Mapping werden folgende Dateien bereit gestellt:
   - [CSV Datei](https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/definitions.csv)
