@@ -51,7 +51,6 @@ Example **codegen-config-file.json**:
 }
 
 ```
-
 ### Authentifizierung
 
 Die Authentifizierung läuft über den [OAuth2](https://oauth.net/2/) Flow vom Typ *ressource owner password credentials flow*.
@@ -82,13 +81,11 @@ GET https://baufismart.api.europace.de/v2/antraege
 ```
 Diese Liste kommt Seiten weise.
 
-
 ### Wie rufe ich einen konkreten Antrag ab?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
-
 
 ### Kann ich nach letzte Änderung filtern?
 
@@ -100,7 +97,6 @@ Für die Abfrage aller Anträge gibt es zwei Parameter zur Einschränkung der Su
 * `aenderungBis`
 
 Für beide Parameter wird ein Datum erwartet, wenn gesetzt
-
 
 #### Was ist eine elevante Änderungen am Antrag?
 
@@ -178,9 +174,14 @@ Ja!
 	{ "op": "add", "path": "/voraussichtlicheBearbeitung", "value": "2017-11-12" }
 ]
 ```
-### Wechsel des Bearbeiters
+### Wechsel des Kreditsachbearbeiters / Ansprechpartner mit seiner Europace PartnerId.
 
-⚠️ _noch nicht implementiert_
+```
+[
+	{ "op": "replace", "path": "/ansprechpartner/partnerId", "value": "AB123"
+
+]
+```
 
 ## Fragen und Anregungen
 Bei Fragen und Anregungen entweder ein Issue in GitHub anlegen oder an [helpdesk@europace2.de](mailto:helpdesk@europace2.de) schreiben.
