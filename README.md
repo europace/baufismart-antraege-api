@@ -1,6 +1,6 @@
 # Anträge API
 
-##### Aktuelle Version: 2.14
+##### Aktuelle Version: 2.15
 
 [Aktuelles RELEASE](https://github.com/hypoport/antraege-auslesen-api/releases/)
 
@@ -179,8 +179,7 @@ Ja!
 
 ```
 [
-	{ "op": "replace", "path": "/ansprechpartner/partnerId", "value": "AB123"
-
+	{ "op": "replace", "path": "/ansprechpartner/partnerId", "value": "AB123" }
 ]
 ```
 

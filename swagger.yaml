@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.14"
+  version: "2.15"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -1039,13 +1039,13 @@ definitions:
       auszahlungsDatum:
         type: "string"
         format: "date"
-        description: "nur bei darlehensArt==FORWARD_DARLEHEN"
+        description: "nur bei darlehensTyp IN [FORWARD_DARLEHEN,ANNUITAETEN_DARLEHEN]"
       auszahlungsKurs:
         type: "number"
       bausteinId:
         type: "string"
       bereitstellung:
-        description: "nicht bei darlehensArt==PRIVAT_DARLEHEN"
+        description: "nicht bei darlehensTyp==PRIVAT_DARLEHEN"
         $ref: "#/definitions/Bereitstellung"
       darlehensBetrag:
         type: "number"
@@ -1060,7 +1060,7 @@ definitions:
         - "VARIABLES_DARLEHEN"
       detailsZurVerwendung:
         type: "string"
-        description: "nur bei darlehensArt==ZWISCHEN_FINANZIERUNG"
+        description: "nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG"
       effektivZins:
         type: "number"
       effektivZinsRelevanteKosten:
@@ -1072,16 +1072,16 @@ definitions:
       forwardPeriodeInMonaten:
         type: "integer"
         format: "int32"
-        description: "nur bei darlehensArt==FORWARD_DARLEHEN"
+        description: "nur bei darlehensTyp==FORWARD_DARLEHEN"
       kfwEnergieEffizienzStandard:
         type: "string"
-        description: "nur bei darlehensArt==KFW_DARLEHEN. Mögliche Werte: STANDARD_40_PLUS,\
+        description: "nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: STANDARD_40_PLUS,\
           \ STANDARD_40, STANDARD_55,STANDARD_70. Nur bei KfW-Programm 153 relevant.\
           \ Bei neuen Energieeffizienzstandards können auch weitere Werte zulässig\
           \ werden."
       kfwProgramm:
         type: "string"
-        description: "nur bei darlehensArt==KFW_DARLEHEN. Mögiche Werte: PROGRAMM_124,\
+        description: "nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124,\
           \ PROGRAMM_141, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155,\
           \ PROGRAMM_159, PROGRAMM_167. Bei neu aufgelegten KfW-Programmen können\
           \ auch weitere Werte zulässig werden."
@@ -1093,15 +1093,15 @@ definitions:
       laufZeitInJahren:
         type: "integer"
         format: "int32"
-        description: "nur bei darlehensArt==KFW_DARLEHEN"
+        description: "nur bei darlehensTyp==KFW_DARLEHEN"
       laufzeitInMonaten:
         type: "integer"
         format: "int32"
-        description: "nur bei darlehensArt==PRIVAT_DARLEHEN"
+        description: "nur bei darlehensTyp==PRIVAT_DARLEHEN"
       maximaleLaufzeitInMonaten:
         type: "integer"
         format: "int32"
-        description: "nur bei darlehensArt==ZWISCHEN_FINANZIERUNG"
+        description: "nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG"
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
       provision:
@@ -1112,27 +1112,27 @@ definitions:
         description: "Die monatliche Rate in Euro"
       rateMonatlichInDerTilgungsfreienAnlaufzeit:
         type: "number"
-        description: "nur bei darlehensArt==KFW_DARLEHEN"
+        description: "nur bei darlehensTyp==KFW_DARLEHEN"
       sollZins:
         type: "number"
         example: 2.05
         description: "Der Sollzinssatz in Prozent"
       tilgung:
-        description: "nicht bei darlehensArt==ZWISCHEN_FINANZIERUNG"
+        description: "nicht bei darlehensTyp==ZWISCHEN_FINANZIERUNG"
         $ref: "#/definitions/Tilgung"
       tilgungsFreieAnlaufJahre:
         type: "integer"
         format: "int32"
-        description: "nur bei darlehensArt==KFW_DARLEHEN"
+        description: "nur bei darlehensTyp==KFW_DARLEHEN"
       verwendungsZweck:
         type: "string"
-        description: "nur bei darlehensArt==ZWISCHEN_FINANZIERUNG"
+        description: "nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG"
         enum:
         - "VORFINANZIERUNG_OEFFENTLICHER_MITTEL"
         - "VERKAUF_EINES_ANDEREN_OBJEKTS"
         - "SONSTIGE_VERWENDUNG"
       zinsBindung:
-        description: "nicht bei darlehensArt IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]"
+        description: "nicht bei darlehensTyp IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]"
         $ref: "#/definitions/ZinsBindung"
       zinsZahlungsBeginnAm:
         type: "string"
@@ -1923,8 +1923,8 @@ definitions:
       path:
         type: "string"
         description: "JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz',\
-          \ '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter',\
-          \ '/voraussichtlicheBearbeitung'."
+           \ '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter',\
+           \ '/voraussichtlicheBearbeitung'."
       value:
         type: "object"
         description: "Zu setzender oder auszutauschender Wert. Erlaubt sind string,\
