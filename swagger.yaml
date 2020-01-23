@@ -1924,7 +1924,9 @@ definitions:
         - "test"
       path:
         type: "string"
-        description: "JSON-Path im Antrag"
+        description: "JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz',\
+          \ '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter',\
+          \ '/voraussichtlicheBearbeitung'."
       value:
         type: "object"
         description: "Zu setzender oder auszutauschender Wert. Erlaubt sind string,\
