@@ -336,6 +336,7 @@ BestehendesDarlehenDesFinanzierungsObjekts;                                     
                                           ;zinsBindungEndetAm                                  ;string(date)                                       ;
 Bonitaet                                  ;                                                    ;                                                   ;
                                           ;angerechneteLebensHaltungsKosten                    ;number                                             ;
+                                          ;angerechneteRatenAllerFinanzierungsDarlehen         ;number                                             ;
                                           ;bewirtschaftungsKostenAllerFremdgenutzerFlaechen    ;number                                             ;
                                           ;haushaltsUeberschuss                                ;number                                             ;
                                           ;kreditEntscheider                                   ;ProduktAnbieter                                    ;
