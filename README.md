@@ -109,7 +109,7 @@ Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 
 ## Welche PATCH Operationen sind möglich?
 
-Die folgenden Felber können an einem Antrag verändert werden:
+Die folgenden Felder können an einem Antrag verändert werden:
 
 * Antragsstatus inklusive Ablehnungsgrund
 * Eigene Referenz setzten und löschen
