@@ -73,22 +73,22 @@ Den API client nicht mit dem Default Konstruktor, sondern dem credentials Kontru
  api = new ApiClient("oauth2","partnerID", "api-key").createService(AntraegeApi.class);
 ```
 
-# Häufige Frage
+# Häufige Fragen
 
-### Wie bekomme ich eine Liste alle meiner Anträge?
+## Wie bekomme ich eine Liste alle meiner Anträge?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege
 ```
 Diese Liste kommt Seiten weise.
 
-### Wie rufe ich einen konkreten Antrag ab?
+## Wie rufe ich einen konkreten Antrag ab?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
-### Kann ich nach letzte Änderung filtern?
+## Kann ich nach letzte Änderung filtern?
 
 Am Antrag (Liste und Einzelabruf) wird im Feld `letzteAenderung` das Datum der letzten Änderung des Antrags ausgegeben.
 
@@ -99,7 +99,7 @@ Für die Abfrage aller Anträge gibt es zwei Parameter zur Einschränkung der Su
 
 Für beide Parameter wird ein Datum erwartet, wenn gesetzt
 
-#### Was ist eine elevante Änderungen am Antrag?
+### Was ist eine elevante Änderungen am Antrag?
 
 Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 
@@ -107,7 +107,13 @@ Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 * Änderung des Kreditsachbearbeiters
 * Freigabe Dokument für den Kreditbetrieb
 
-### Welche PATCH Operationen sind möglich?
+## Welche PATCH Operationen sind möglich?
+
+Die folgenden Felber können an einem Antrag verändert werden:
+
+* Antragsstatus inklusive Ablehnungsgrund
+* Eigene Referenz setzten und löschen
+* Kreditsachbearbeiters / Ansprechpartner setzen und ändern
 
 
 Details zu JSON Patch finden Sie unter [jsonpatch.com](http://jsonpatch.com/).
