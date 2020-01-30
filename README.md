@@ -67,7 +67,7 @@ Um die Credentials zu erhalten, erfragen Sie beim Helpdesk der Plattform die Zug
 
 ##### Beispiel Implementierung für die Authentifizierung mit einem Java Client und Retrofit
 
-Den API client nicht mit dem Default Konstruktor, sondern dem credentials Kontruktor erzeugen. Z.B:
+Den API-Client nicht mit dem Default-Konstruktor, sondern dem Credentials-Kontruktor erzeugen. Z.B:
 
 ```
  api = new ApiClient("oauth2","partnerID", "api-key").createService(AntraegeApi.class);
@@ -75,12 +75,12 @@ Den API client nicht mit dem Default Konstruktor, sondern dem credentials Kontru
 
 # Häufige Fragen
 
-## Wie bekomme ich eine Liste alle meiner Anträge?
+## Wie bekomme ich eine Liste aller meiner Anträge?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege
 ```
-Diese Liste kommt Seiten weise.
+Diese Liste kommt seitenweise.
 
 ## Wie rufe ich einen konkreten Antrag ab?
 
@@ -88,7 +88,7 @@ Diese Liste kommt Seiten weise.
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
 ```
 
-## Kann ich nach letzte Änderung filtern?
+## Wie erkenne ich, dass sich der Antrag geändert hat?
 
 Am Antrag (Liste und Einzelabruf) wird im Feld `letzteAenderung` das Datum der letzten Änderung des Antrags ausgegeben.
 
@@ -97,22 +97,22 @@ Für die Abfrage aller Anträge gibt es zwei Parameter zur Einschränkung der Su
 * `aenderungSeit`
 * `aenderungBis`
 
-Für beide Parameter wird ein Datum erwartet, wenn gesetzt
+Für beide Parameter wird ein Datum erwartet, wenn gesetzt.
 
-### Was ist eine elevante Änderungen am Antrag?
+### Was ist eine relevante Änderung am Antrag?
 
 Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 
 * Statusänderung des Antrags 
 * Änderung des Kreditsachbearbeiters
-* Freigabe Dokument für den Kreditbetrieb
+* Freigabe eines Dokumentes für den Kreditbetrieb
 
 ## Welche PATCH Operationen sind möglich?
 
 Die folgenden Felder können an einem Antrag verändert werden:
 
 * Antragsstatus inklusive Ablehnungsgrund
-* Eigene Referenz setzten und löschen
+* Eigene Referenz setzen und löschen
 * Kreditsachbearbeiters / Ansprechpartner setzen und ändern
 
 
