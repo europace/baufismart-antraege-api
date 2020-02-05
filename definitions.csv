@@ -100,6 +100,7 @@ Antragsteller                             ;                                     
                                           ;aufenthaltsTitelBefristetBis                        ;string(date)                                       ;
                                           ;berufsgruppeBeiIngDiba                              ;string                                             ;
                                           ;beschaeftigung                                      ;Beschaeftigung                                     ;
+                                          ;beschaeftigungImOeffentlichenDienstBeiDsl           ;boolean                                            ;
                                           ;brancheBeiIngDiba                                   ;string                                             ;
                                           ;brancheBeiMhb                                       ;string                                             ;
                                           ;brancheBeiSRating                                   ;string                                             ;
