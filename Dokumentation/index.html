@@ -2651,7 +2651,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>dokumente</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters. <strong>Aktuell sind nur Selbstauskunft und Kreditentscheidungsinformation enthalten.</strong></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">&lt; <a href="#_dokument">Dokument</a> &gt; array</p></td>
 </tr>
 <tr>
@@ -2830,6 +2830,12 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="#_beschaeftigung">Beschaeftigung</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>beschaeftigungImOeffentlichenDienstBeiDsl</strong><br>
+<em>optional</em></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>brancheBeiIngDiba</strong><br>
@@ -6124,7 +6130,7 @@ table.CodeRay td.code>pre{padding:0}
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><strong>path</strong><br>
 <em>optional</em></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">JSON-Path im Antrag</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung'.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
 </tr>
 <tr>
@@ -7278,7 +7284,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-01-22 15:48:45 MEZ
+Last updated 2020-02-05 16:37:35 MEZ
 </div>
 </div>
 </body>
