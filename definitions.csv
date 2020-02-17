@@ -657,6 +657,7 @@ Partner                                   ;                                     
                                           ;email                                               ;string                                             ;
                                           ;telefonnummer                                       ;string                                             ;
                                           ;externerKreditSachbearbeiterId                      ;string                                             ;
+                                          ;_links                                              ;Links                                              ;
 PartnerKennzeichen                        ;                                                    ;                                                   ;
                                           ;name                                                ;string                                             ;
                                           ;wert                                                ;string                                             ;

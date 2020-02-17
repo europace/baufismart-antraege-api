@@ -3,7 +3,7 @@ swagger: "2.0"
 info:
   description: "Mit dieser API können die Anträge durch die Produktanbieter abgerufen\
     \ werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen."
-  version: "2.16"
+  version: "2.17"
   title: "Anträge auslesen API"
   contact:
     name: "Europace AG"
@@ -1992,6 +1992,10 @@ definitions:
         type: "string"
       externerKreditSachbearbeiterId:
         type: "string"
+      _links:
+        $ref: "#/definitions/Links"
+    description: "Minimale Informationen zum Partner der EP2 Plattform, weitere Informationen\
+      \ können über die HAL-Relation abgerufen werden."
   VermietungsInformationen:
     type: "object"
     properties:
@@ -2067,6 +2071,8 @@ definitions:
         description: "Das angenommene Angebot, auf dem dieser Antrag basiert"
         $ref: "#/definitions/AngebotZumAntrag"
       ansprechpartner:
+        description: "Für Rückfragen auf Seite des Vertriebs, kann mit dem Vermittler\
+          \ identisch sein"
         $ref: "#/definitions/Partner"
       antragsNummer:
         type: "string"
@@ -2091,6 +2097,7 @@ definitions:
         items:
           $ref: "#/definitions/Dokument"
       kreditSachbearbeiter:
+        description: "Gewählter Sachbearbeiter aus Seite des Kreditvertriebs"
         $ref: "#/definitions/Partner"
       letzteAenderung:
         type: "string"
@@ -2104,6 +2111,7 @@ definitions:
         description: "Bearbeitungsfortschritt des Antrags"
         $ref: "#/definitions/AntragsStatus"
       vermittler:
+        description: "Partner auf Seite des Vertriebs"
         $ref: "#/definitions/Partner"
       voraussichtlicheBearbeitung:
         type: "string"
