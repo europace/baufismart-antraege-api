@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.17",
+    "version": "2.18",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1397,6 +1397,10 @@
             "$ref": "#/definitions/SonderZahlung"
           }
         },
+        "sparBeginn": {
+          "type": "string",
+          "format": "date"
+        },
         "sparPhase": {
           "$ref": "#/definitions/SparPhase"
         },
@@ -1874,6 +1878,10 @@
           "items": {
             "$ref": "#/definitions/SonderZahlung"
           }
+        },
+        "sparBeginn": {
+          "type": "string",
+          "format": "date"
         },
         "sparPhase": {
           "$ref": "#/definitions/SparPhase"
