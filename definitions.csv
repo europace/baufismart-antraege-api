@@ -119,6 +119,7 @@ Antragsteller                             ;                                     
                                           ;*geburtsort*                                          ;string                                             ;
                                           ;*guetertrennungVereinbartWennVerheiratet*             ;boolean                                            ;
                                           ;*id*                                                  ;string                                             ;
+                                          ;*inDeutschlandSeit*                                   ;string (date)                                      ;
                                           ;*legitimationsDaten*                                  ;LegitimationsDaten                                 ;
                                           ;*nachname*                                            ;string                                             ;
                                           ;*schufaErgebnis*                                      ;SchufaErgebnis                                     ;

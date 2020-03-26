@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.
-  version: "2.19"
+  version: "2.20"
   title: Anträge auslesen API
   contact:
     name: Europace AG
@@ -846,14 +846,14 @@ definitions:
         $ref: '#/definitions/Postadresse'
       arbeitserlaubnis:
         type: boolean
-        description: wenn keine deutsche Staatsangehörigkeit
+        description: wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat
       arbeitserlaubnisBefristetBis:
         type: string
         format: date
         description: wenn Arbeitserlaubnis befristet
       aufenthaltsTitel:
         type: string
-        description: wenn keine deutsche Staatsangehörigkeit
+        description: wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat
         enum:
           - VISUM
           - AUFENTHALTS_ERLAUBNIS
@@ -865,20 +865,20 @@ definitions:
         description: wenn Aufenthaltstitel befristet
       berufsgruppeBeiIngDiba:
         type: string
-        description: 'Berufsgruppe des Antragstellers (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:  ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTSTAENDIG,RENTNER,HAUSMANN,PRIVATIER,SOLDAT,SCHUELER,AZUBI,STUDENT,OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        description: 'Berufsgruppe des Antragstellers (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:  ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
       beschaeftigung:
         $ref: '#/definitions/Beschaeftigung'
       beschaeftigungImOeffentlichenDienstBeiDsl:
         type: boolean
       brancheBeiIngDiba:
         type: string
-        description: 'Branche, in welcher der Antragsteller tätig ist. (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN,BAUGEWERBE,DIENSTLEISTUNGEN_SONSTIGE,EDV_BERATUNG,ENERGIE,ERZIEHUNG_UNTERRICHT,GESUNDHEITSWESEN,HANDEL,HANDWERK,HOTEL_GASTRONOMIE,LANDWIRTSCHAFT,OEFFENTLICHER_DIENST,PRODUKTION_INDUSTRIE,VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        description: 'Branche, in welcher der Antragsteller tätig ist. (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
       brancheBeiMhb:
         type: string
-        description: 'Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE,BAU,HANDEL,VERKEHR_INFORMATION,DIENSTLEISTUNG,SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        description: 'Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
       brancheBeiSRating:
         type: string
-        description: 'Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE,DIENSTLEISTUNGEN,ENERGIE_UND_WASSERVERSORGUNG_BERGBAU,GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN,GESUNDHEITSWESEN,HANDEL,HOTEL_UND_GASTRONOMIE,KREDITINSTITUTE,LAND_UND_FORSTWIRTSCHAFT_FISCHEREI,OEFFENTLICHER_DIENST,ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,VERARBEITENDES_GEWERBE,VERKEHR_UND_NACHRICHTENUEBERMITTLUNG,VERSICHERUNGEN,SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        description: 'Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
       bruttoJahresEinkommenErwartet:
         type: number
       bruttoVorjahresEinkommen:
@@ -907,6 +907,10 @@ definitions:
         description: nur wenn verheiratet
       id:
         type: string
+      inDeutschlandSeit:
+        type: string
+        format: date
+        description: wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat
       legitimationsDaten:
         description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.
         $ref: '#/definitions/LegitimationsDaten'
