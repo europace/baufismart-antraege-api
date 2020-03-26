@@ -1,0 +1,1014 @@
+@startuml
+hide empty members
+set namespaceSeparator none
+skinparam dpi 300
+left to right direction
+
+skinparam class {
+	BackgroundColor PaleGreen
+	ArrowColor RoyalBlue
+	BorderColor DimGray
+}
+
+class  Bankverbindung {
+		 - bic :String
+		 - iban :String
+		 - id :String
+		 - kontoinhaberIds :String[]
+		 - kontoinhaberName :String
+		 - kreditinstitut :String
+}
+
+class  HaushaltsPositionen {
+		 - bankUndSparguthaben :BankUndSparguthaben[]
+		 - bausparvertraege :BestehenderBausparvertrag[]
+		 - ehegattenUnterhalt :EinnahmenMonatlich[]
+		 - einkuenfteAusNebentaetigkeit :EinkuenfteAusNebentaetigkeit[]
+		 - kindergeld :EinnahmenMonatlich[]
+		 - lebensUndRentenVersicherungen :LebensOderRentenversicherungVermoegen[]
+		 - mietAusgaben :MietAusgaben[]
+		 - privateDarlehen :Verbindlichkeit[]
+		 - privateKrankenversicherung :AusgabenMonatlich[]
+		 - ratenkredite :Verbindlichkeit[]
+		 - sonstigeAusgaben :AusgabenMonatlich[]
+		 - sonstigeEinnahmen :EinnahmenMonatlich[]
+		 - sonstigeVerbindlichkeiten :Verbindlichkeit[]
+		 - sonstigeVermoegen :Vermoegen[]
+		 - sparplaene :Sparplaene[]
+		 - unbefristeteZusatzRenten :EinnahmenMonatlich[]
+		 - unterhaltsVerpflichtungen :AusgabenMonatlich[]
+		 - variableEinkuenfte :EinnahmenMonatlich[]
+		 - versicherungsAusgaben :AusgabenMonatlich[]
+		 - wertpapiere :Wertpapiere[]
+}
+
+class  Postadresse {
+		 - hausnummer :String
+		 - ort :String
+		 - postleitzahl :String
+		 - strasse :String
+}
+
+class  TilgungsPhase {
+		 - bausparDarlehenSumme :Number
+		 - sollZinsNachZuteilung :Number
+		 - tilgungsBeitragMonatlich :Number
+		 - tilgungsPhaseInJahren :Int32
+}
+
+class  Bereitstellung {
+		 - bereitstellungsZins :Number
+		 - bereitstellungsZinsFreieZeitInMonaten :Int32
+}
+
+class  Meldung {
+		 - kategorie :String
+		 - kreditEntscheider :ProduktAnbieter[]
+		 - produktAnbieter :ProduktAnbieter[]
+		 - text :String
+}
+
+class  BestehendeImmobilie {
+		 - adresse :Postadresse[]
+		 - autostellplaetze :Autostellplatz[]
+		 - bestehendeDarlehen :BestehendesDarlehen[]
+		 - bodenRichtwert :Number
+		 - erbbaurecht :Erbbaurecht[]
+		 - gebaeude :Gebaeude[]
+		 - grundbuchAngabe :GrundbuchAngabe[]
+		 - grundstueck :Grundstueck[]
+		 - id :String
+		 - immobilienEinsatz :String
+		 - keinBaulandFlaecheInQm :Number
+		 - marktueblicherKaufpreisProQm :Number
+		 - maximalEinzusetzenderBetragWennVerkauf :Number
+		 - objektArt :String
+		 - vergleichsmieteFuerGewerbeflaecheProQm :Number
+		 - vergleichsmieteFuerWohnflaecheProQm :Number
+		 - verkehrswert :Number
+		 - vorlaeufigerVerkehrswert :Number
+		 - wohnlage :String
+}
+
+class  Haushalt {
+		 - antragsteller :Antragsteller[]
+		 - anzahlErwachseneImHaushalt :Int32
+		 - anzahlKinderNichtImHaushalt :Int32
+		 - bestehendeImmobilien :BestehendeImmobilie[]
+		 - id :String
+		 - kfzAnzahl :Int32
+		 - kinder :Kind[]
+		 - lebenshaltungsKostenMonatlich :Number
+		 - obligo :VermoegenVerbindlichkeiten[]
+		 - positionen :HaushaltsPositionen[]
+}
+
+class  AusgabenMonatlich {
+		 - ausgabenMonatlich :Number
+		 - zahlungsTyp :String
+}
+
+class  AngebotZumAntrag {
+		 - absicherungen :Absicherung[]
+		 - bausparvertraege :Bausparvertrag[]
+		 - beleihungsRechnung :BeleihungsRechnung[]
+		 - bewertungDesAngebots :String
+		 - bonitaet :Bonitaet[]
+		 - darlehen :Darlehen[]
+		 - erzeugtAm :Date-time
+		 - kennung :String
+		 - machbarkeitsStatus :String
+		 - meldungen :Meldung[]
+		 - _links :Links[]
+}
+
+class  Bausparvertrag {
+		 - abschlussGebuehr :Number
+		 - angebotsHinweisFuerAntragsteller :String
+		 - bausparSumme :Number
+		 - einmalzahlung :Number
+		 - gesamtLaufzeitInJahren :Int32
+		 - id :String
+		 - produktAnbieter :ProduktAnbieter[]
+		 - sonderZahlungen :SonderZahlung[]
+		 - sparPhase :SparPhase[]
+		 - tarif :String
+		 - tilgungsPhase :TilgungsPhase[]
+		 - typ :String
+		 - vertragsBeginn :Date
+		 - vertragsNummer :String
+		 - verwaltungsgebuehrenJaehrlich :Number
+		 - zuteilungsDatum :Date
+}
+
+class  AntragstellerVerknuepfung {
+		 - id :String
+		 - name :String
+}
+
+class  Antraege {
+		 - antraege :Antrag[]
+		 - _links :PaginationLinks[]
+}
+
+class  PaginationLinks {
+		 - next :Link[]
+		 - prev :Link[]
+		 - self :Link[]
+}
+
+class  Sparplaene {
+		 - aktuellerWert :Number
+		 - beitragMonatlich :Number
+		 - maximalAufzuloesenderWert :Number
+		 - vermoegensTyp :String
+		 - zahlungsTyp :String
+}
+
+class  Darlehen {
+		 - auszahlungsBetrag :Number
+		 - auszahlungsDatum :Date
+		 - auszahlungsKurs :Number
+		 - bausteinId :String
+		 - bereitstellung :Bereitstellung[]
+		 - darlehensBetrag :Number
+		 - darlehensTyp :String
+		 - detailsZurVerwendung :String
+		 - effektivZins :Number
+		 - effektivZinsRelevanteKosten :EffektivZinsKosten[]
+		 - einstandsDatum :Date-time
+		 - forwardPeriodeInMonaten :Int32
+		 - kfwEnergieEffizienzStandard :String
+		 - kfwProgramm :String
+		 - konditionWurdeManuellAngepasst :Boolean
+		 - konditionsAnpassungsBegruendung :String
+		 - laufZeitInJahren :Int32
+		 - laufzeitInMonaten :Int32
+		 - maximaleLaufzeitInMonaten :Int32
+		 - produktAnbieter :ProduktAnbieter[]
+		 - provision :Provision[]
+		 - rateMonatlich :Number
+		 - rateMonatlichInDerTilgungsfreienAnlaufzeit :Number
+		 - sollZins :Number
+		 - tilgung :Tilgung[]
+		 - tilgungsFreieAnlaufJahre :Int32
+		 - verwendungsZweck :String
+		 - zinsBindung :ZinsBindung[]
+		 - zinsZahlungsBeginnAm :Date
+}
+
+class  Vermoegen {
+		 - aktuellerWert :Number
+		 - maximalAufzuloesenderWert :Number
+		 - vermoegensTyp :String
+}
+
+class  Kind {
+		 - geburtsdatum :Date
+		 - kindergeldWirdBezogen :Boolean
+		 - name :String
+		 - unterhaltsEinnahmenBetragMonatlich :Number
+}
+
+class  Verbindlichkeit {
+		 - glaeubiger :String
+		 - laufzeitEnde :Date
+		 - rateMonatlich :Number
+		 - restschuld :Number
+		 - vermoegensTyp :String
+		 - wirdAbgeloest :Boolean
+		 - zahlungsTyp :String
+}
+
+class  Finanzbedarf {
+		 - aussenAnlagen :Number
+		 - bauNebenkosten :Number
+		 - bereitsBeglichen :Number
+		 - erschliessung :Number
+		 - grunderwerbsteuer :Number
+		 - grundstueckBereitsBezahlt :Boolean
+		 - grundstuecksKaufpreis :Number
+		 - herstellung :Number
+		 - kapitalBeschaffung :Number
+		 - kaufpreis :Number
+		 - maklergebuehr :Number
+		 - mobiliar :Number
+		 - modernisierung :Number
+		 - notargebuehr :Number
+		 - renovierung :Number
+		 - sonstigeKosten :Number
+		 - zusaetzlichesKapital :Number
+}
+
+class  Anschrift {
+		 - hausnummer :String
+		 - ort :String
+		 - plz :String
+		 - strasse :String
+}
+
+class  BeleihungsWert {
+		 - adresse :Postadresse[]
+		 - beleihungsWert :Number
+		 - immobilie :ImmobilieVerknuepfung[]
+}
+
+class  AntragsStatus {
+		 - ablehnungsgrund :String
+		 - antragsteller :String
+		 - bearbeitungsFortschritt :String
+		 - produktAnbieter :String
+}
+
+class  BausparAngebot {
+		 - abschlussGebuehr :Number
+		 - angebotsHinweisFuerAntragsteller :String
+		 - bausparSumme :Number
+		 - einmalzahlung :Number
+		 - id :String
+		 - produktAnbieter :ProduktAnbieter[]
+		 - sonderZahlungen :SonderZahlung[]
+		 - sparPhase :SparPhase[]
+		 - tarif :String
+		 - tilgungsPhase :TilgungsPhase[]
+		 - typ :String
+		 - vertragsBeginn :Date
+		 - vertragsNummer :String
+		 - verwaltungsgebuehrenJaehrlich :Number
+		 - zuteilungsDatum :Date
+}
+
+class  Flurstueck {
+		 - anteil :MiteigentumsAnteil[]
+		 - flur :String
+		 - flurstuecksNummer :String
+		 - groesse :Number
+}
+
+class  Zahlungsplaene {
+		 - zahlungsplaene :Zahlungsplan[]
+		 - _links :Links[]
+}
+
+class  CharSequence {
+}
+
+class  Absicherung {
+		 - abgesicherteRisiken :RisikoAbsicherung[]
+		 - gesamtPraemie :Number
+		 - praemienZahlungsweise :String
+		 - tarifBezeichnung :String
+		 - tarifKennung :String
+		 - versichertePersonId :String
+		 - versicherungsArt :String
+		 - versicherungsNummer :String
+		 - versicherungsZeitraum :VersicherungsZeitraum[]
+}
+
+class  MietAusgaben {
+		 - ausgabenMonatlich :Number
+		 - entfallenMitFinanzierung :Boolean
+		 - zahlungsTyp :String
+}
+
+class  EinkuenfteAusNebentaetigkeit {
+		 - beginnDerNebentaetigkeit :Date
+		 - einnahmenMonatlich :Number
+		 - zahlungsTyp :String
+}
+
+class  ImmobilieVerknuepfung {
+		 - id :String
+}
+
+class  Vorhaben {
+		 - eigenleistungWennNeubauOderModernisierungsmassnahmen :Number
+		 - externeBausparAngebote :BausparAngebot[]
+		 - finanzbedarf :Finanzbedarf[]
+		 - nachfinanzierung :Boolean
+		 - nachrangigeExterneDarlehen :NachrangigesExternesDarlehen[]
+		 - verwendungszweck :String
+}
+
+class  Eintrag {
+		 - abgeltungssteuer :Number
+		 - datum :Date
+		 - kontofuehrungsGebuehr :Number
+		 - laufendeGebuehr :Number
+		 - riesterZulage :Number
+		 - saldo :Number
+		 - tilgung :Number
+		 - typ :String
+		 - zahlung :Number
+		 - zahlungsTyp :String
+		 - zinsen :Number
+}
+
+class  EinnahmenMonatlich {
+		 - einnahmenMonatlich :Number
+		 - zahlungsTyp :String
+}
+
+class  Beratung {
+		 - art :String
+		 - hinweisFuerProduktAnbieter :String
+		 - istKundenBetreuerVerkaeuferOderMaklerDerImmobilie :Boolean
+}
+
+class  ZugrundeliegendeDatenZumAntrag {
+		 - bankverbindung :Bankverbindung[]
+		 - finanzierungsObjekt :FinanzierungsObjekt[]
+		 - haushalte :Haushalt[]
+		 - vorhaben :Vorhaben[]
+		 - _links :Links[]
+}
+
+class  GrundbuchAngabe {
+		 - anmerkungen :String
+		 - bandUndBlatt :String
+		 - flurstuecke :Flurstueck[]
+		 - ort :String
+		 - rechteInAbteilung2 :RechteAbteilung2[]
+}
+
+class  Grundstueck {
+		 - groesse :Number
+		 - grundstuecksArt :String
+}
+
+class  ProduktAnbieter {
+		 - anrede :String
+		 - anschrift :Anschrift[]
+		 - aufsichtsBehoerde :String
+		 - partnerId :String
+		 - partnerKennzeichen :PartnerKennzeichen[]
+		 - produktAnbieterId :String
+		 - produktAnbieterKurzName :String
+		 - registrierungsNummer :String
+		 - vertriebsOrganisation :String
+		 - vertriebsOrganisationsId :String
+		 - webseite :String
+		 - vorname :String
+		 - nachname :String
+		 - firmierung :String
+		 - email :String
+		 - telefonnummer :String
+		 - externerKreditSachbearbeiterId :String
+}
+
+class  BeleihungsRechnung {
+		 - beleihungsAuslauf :Number
+		 - beleihungsWerte :BeleihungsWert[]
+		 - beleihungsWerteSumme :Number
+		 - produktAnbieter :ProduktAnbieter[]
+}
+
+class  SparPhase {
+		 - guthabenBeiZuteilung :Number
+		 - sparBeitragMonatlich :Number
+		 - sparPhaseInJahren :Int32
+}
+
+class  Link {
+		 - href :String
+		 - type :String
+}
+
+class  Tilgung {
+		 - anfaenglicheTilgung :Number
+		 - sonderTilgungJaehrlich :Number
+		 - tilgungsBeginnAm :Date
+		 - tilgungsErsatz :TilgungsErsatz[]
+}
+
+class  TilgungsErsatz {
+		 - id :String
+		 - typ :String
+}
+
+class  ZinsBindung {
+		 - endetAm :Date
+		 - jahre :Int32
+		 - monate :Int32
+		 - restschuldNachZinsBindungsEnde :Number
+}
+
+class  VermoegenVerbindlichkeit {
+		 - aktuellerWert :Number
+		 - anrechnungFuerBlankoAnteil :Number
+		 - bezeichner :String
+		 - kontonummer :String
+		 - vermoegensTyp :String
+}
+
+class  RechteAbteilung2 {
+		 - beschreibung :String
+		 - betrag :Number
+}
+
+class  Bonitaet {
+		 - angerechneteLebensHaltungsKosten :Number
+		 - angerechneteRatenAllerFinanzierungsDarlehen :Number
+		 - bewirtschaftungsKostenAllerFremdgenutzerFlaechen :Number
+		 - haushaltsUeberschuss :Number
+		 - kreditEntscheider :ProduktAnbieter[]
+		 - nebenkostenAllerEigengenutzterWohnflaechen :Number
+		 - produktAnbieter :ProduktAnbieter[]
+}
+
+class  EffektivZinsKosten {
+		 - beratungsHonorar :Number
+		 - grundbuchKosten :Number
+		 - laufendeVerwaltungskostenJaehrlich :Number
+		 - sonstigeKosten :Number
+		 - tilgungsErsatzProduktKosten :Number
+		 - wohnGebaeudeVersicherungsKosten :Number
+		 - zinsabsicherungsKosten :Number
+		 - zusatzSicherheitsKosten :Number
+}
+
+class  ModernisierungsAngaben {
+		 - modernisierungsGrad :String
+		 - modernisierungsJahr :String
+}
+
+class  PartnerKennzeichen {
+		 - name :String
+		 - wert :String
+}
+
+class  VersicherungsZeitraum {
+		 - beginn :Date
+		 - dauerInMonaten :Int32
+		 - ende :Date
+}
+
+class  BankUndSparguthaben {
+		 - aktuellerWert :Number
+		 - maximalAufzuloesenderWert :Number
+		 - vermoegensTyp :String
+		 - zahlungsTyp :String
+		 - zinsertragJaehrlich :Number
+}
+
+class  Antragsteller {
+		 - anrede :String
+		 - anschrift :Postadresse[]
+		 - arbeitserlaubnis :Boolean
+		 - arbeitserlaubnisBefristetBis :Date
+		 - aufenthaltsTitel :String
+		 - aufenthaltsTitelBefristetBis :Date
+		 - berufsgruppeBeiIngDiba :String
+		 - beschaeftigung :Beschaeftigung[]
+		 - beschaeftigungImOeffentlichenDienstBeiDsl :Boolean
+		 - brancheBeiIngDiba :String
+		 - brancheBeiMhb :String
+		 - brancheBeiSRating :String
+		 - bruttoJahresEinkommenErwartet :Number
+		 - bruttoVorjahresEinkommen :Number
+		 - email :String
+		 - externeAntragstellerId :String
+		 - familienstand :String
+		 - geburtsdatum :Date
+		 - geburtsort :String
+		 - guetertrennungVereinbartWennVerheiratet :Boolean
+		 - id :String
+		 - legitimationsDaten :LegitimationsDaten[]
+		 - nachname :String
+		 - schufaErgebnis :SchufaErgebnis[]
+		 - sozialversicherungsnummer :String
+		 - staatsangehoerigkeit :Staat[]
+		 - steuerId :String
+		 - telefonnummer :String
+		 - telefonnummerVorwahl :String
+		 - titelDoktor :Boolean
+		 - titelProfessor :Boolean
+		 - verheiratetMitAntragsteller :AntragstellerVerknuepfung[]
+		 - vorAnschrift :Postadresse[]
+		 - vorname :String
+		 - weitereKontaktMoeglichkeiten :String
+		 - wohnhaftSeit :Date
+}
+
+class  PatchOperation {
+		 - from :String
+		 - metaClass :MetaClass[]
+		 - op :String
+		 - path :String
+		 - value :Object
+}
+
+class  SonderZahlung {
+		 - anzahl :Int32
+		 - betrag :Number
+		 - termin :Date
+		 - zahlweise :String
+}
+
+class  Partner {
+		 - anrede :String
+		 - anschrift :Anschrift[]
+		 - aufsichtsBehoerde :String
+		 - partnerId :String
+		 - partnerKennzeichen :PartnerKennzeichen[]
+		 - registrierungsNummer :String
+		 - vertriebsOrganisation :String
+		 - vertriebsOrganisationsId :String
+		 - webseite :String
+		 - vorname :String
+		 - nachname :String
+		 - firmierung :String
+		 - email :String
+		 - telefonnummer :String
+		 - externerKreditSachbearbeiterId :String
+		 - _links :Links[]
+}
+
+class  VermietungsInformationen {
+		 - mieteinnahmenNettoKaltMonatlich :Number
+		 - nutzungsArt :String
+		 - vermieteteFlaeche :Number
+}
+
+class  BestehenderBausparvertrag {
+		 - abschlussGebuehr :Number
+		 - aktuellerWert :Number
+		 - bausparSumme :Number
+		 - einmalzahlung :Number
+		 - id :String
+		 - maximalAufzuloesenderBetrag :Number
+		 - produktAnbieter :ProduktAnbieter[]
+		 - sonderZahlungen :SonderZahlung[]
+		 - sparBeitragMonatlich :Number
+		 - tarif :String
+		 - typ :String
+		 - vermoegensEinsatz :String
+		 - vermoegensTyp :String
+		 - vertragsBeginn :Date
+		 - vertragsNummer :String
+		 - verwaltungsgebuehrenJaehrlich :Number
+		 - zahlungsTyp :String
+		 - zuteilungsDatum :Date
+}
+
+class  Antrag {
+		 - angebot :AngebotZumAntrag[]
+		 - ansprechpartner :Partner[]
+		 - antragsNummer :String
+		 - antragsReferenz :String
+		 - beratung :Beratung[]
+		 - datenKontext :String
+		 - dokumente :Dokument[]
+		 - kreditSachbearbeiter :Partner[]
+		 - letzteAenderung :Date-time
+		 - produktAnbieter :ProduktAnbieter[]
+		 - prolongation :Boolean
+		 - status :AntragsStatus[]
+		 - vermittler :Partner[]
+		 - voraussichtlicheBearbeitung :Date
+		 - vorgangsReferenz :String
+		 - zeitpunktDerAnnahme :Date-time
+		 - zugrundeliegendeDaten :ZugrundeliegendeDatenZumAntrag[]
+		 - _links :Links[]
+}
+
+class  GebaeudeFlaeche {
+		 - gesamtGroesse :Number
+		 - vermietungsInformationen :VermietungsInformationen[]
+}
+
+class  LebensOderRentenversicherungVermoegen {
+		 - id :String
+		 - maximalAufzuloesenderBetrag :Number
+		 - praemieMonatlich :Number
+		 - rueckkaufsWertAktuell :Number
+		 - tarif :String
+		 - typ :String
+		 - vermoegensEinsatz :String
+		 - vermoegensTyp :String
+		 - versicherungsGesellschaft :String
+		 - versicherungsSumme :Number
+		 - vertragsBeginn :Date
+		 - vertragsEnde :Date
+		 - vertragsNummer :String
+		 - verwaltungsgebuehrenJaehrlich :Number
+		 - zahlungsTyp :String
+}
+
+class  Provision {
+		 - europaceGebuehren :Number
+		 - kundenbetreuerProvision :Number
+		 - vertriebsProvisionGesamt :Number
+}
+
+class  StatusDTO {
+		 - ablehnungsgrund :String
+		 - antragsteller :String
+		 - kommentar :String
+		 - produktAnbieter :String
+}
+
+class  Gebaeude {
+		 - anzahlDerGewerbeeinheiten :Int32
+		 - anzahlDerWohneinheitenImGebaeude :Int32
+		 - anzahlVollgeschosse :Int32
+		 - ausstattung :String
+		 - baujahr :String
+		 - bauweise :String
+		 - bezeichnungWohneinheit :String
+		 - dachgeschossAusbau :String
+		 - einliegerwohnungVorhanden :Boolean
+		 - gewerbeflaeche :GebaeudeFlaeche[]
+		 - hausAnordnung :String
+		 - hausTyp :String
+		 - istFertighaus :Boolean
+		 - kubatur :Number
+		 - miteigentumsAnteil :MiteigentumsAnteil[]
+		 - modernisierungsAngaben :ModernisierungsAngaben[]
+		 - unterkellerung :String
+		 - wohnflaeche :GebaeudeFlaeche[]
+		 - zustand :String
+}
+
+class  FinanzierungsObjekt {
+		 - adresse :Postadresse[]
+		 - autostellplaetze :Autostellplatz[]
+		 - bestehendeDarlehen :BestehendesDarlehenDesFinanzierungsObjekts[]
+		 - bodenRichtwert :Number
+		 - erbbaurecht :Erbbaurecht[]
+		 - gebaeude :Gebaeude[]
+		 - grundbuchAngabe :GrundbuchAngabe[]
+		 - grundstueck :Grundstueck[]
+		 - id :String
+		 - keinBaulandFlaecheInQm :Number
+		 - marktueblicherKaufpreisProQm :Number
+		 - objektArt :String
+		 - vergleichsmieteFuerGewerbeflaecheProQm :Number
+		 - vergleichsmieteFuerWohnflaecheProQm :Number
+		 - verkehrswert :Number
+		 - vorlaeufigerVerkehrswert :Number
+		 - wohnlage :String
+}
+
+class  Error {
+		 - message :String
+		 - statusCode :Int32
+		 - statusMessage :String
+		 - traceId :String
+}
+
+class  RisikoAbsicherung {
+		 - abgesichertesRisiko :String
+		 - auszahlungsBetrag :Number
+		 - auszahlungsTurnus :String
+		 - praemienAnteil :Number
+}
+
+class  Autostellplatz {
+		 - mieteinnahmenMonatlich :Number
+		 - typ :String
+}
+
+class  Erbbaurecht {
+		 - erbbauzinsJaehrlich :Number
+		 - grundstuecksEigentuemer :String
+		 - laufzeitBisJahr :String
+}
+
+class  Dokument {
+		 - art :String
+		 - href :String
+		 - name :String
+		 - titel :String
+		 - type :String
+}
+
+class  SituationNachRenteneintritt {
+		 - gesetzlicheRenteMonatlich :Number
+		 - privateRenteMonatlich :Number
+		 - rentenBeginn :Date
+		 - sonstigesEinkommenMonatlich :Number
+}
+
+class  Wertpapiere {
+		 - aktuellerWert :Number
+		 - dividendenJaehrlich :Number
+		 - maximalAufzuloesenderWert :Number
+		 - vermoegensTyp :String
+		 - zahlungsTyp :String
+}
+
+class  zahlungsplan {
+		 - bausteinId :String
+		 - eintraege :Eintrag[]
+		 - gesamtSumme :Eintrag[]
+		 - sparplanSummenEintragZumZuteilungsZeitpunkt :Eintrag[]
+		 - summeEndeDerZinsbindung :Eintrag[]
+		 - typ :String
+}
+
+class  BestehendesDarlehen {
+		 - abzuloesendeRestschuld :Number
+		 - aktuelleRestschuldWennNichtAbzuloesen :Number
+		 - bausteinId :String
+		 - darlehensArt :String
+		 - darlehensBetrag :Number
+		 - darlehensGeber :ProduktAnbieter[]
+		 - darlehensKontonummer :String
+		 - eingetrageneGrundschuld :Number
+		 - hauptKontonummerDslBank :String
+		 - id :String
+		 - laufzeitEnde :Date
+		 - rateMonatlich :Number
+		 - sollZins :Number
+		 - sondertilgungZumZinsBindungsEnde :Number
+		 - zinsBindungEndetAm :Date
+}
+
+class  MetaClass {
+}
+
+class  BestehendesDarlehenDesFinanzierungsObjekts {
+		 - abzuloesendeRestschuld :Number
+		 - aktuelleRestschuldWennNichtAbzuloesen :Number
+		 - bausteinId :String
+		 - darlehensArt :String
+		 - darlehensBetrag :Number
+		 - darlehensGeber :ProduktAnbieter[]
+		 - darlehensKontonummer :String
+		 - eingetrageneGrundschuld :Number
+		 - hauptKontonummerDslBank :String
+		 - id :String
+		 - laufzeitEnde :Date
+		 - rateMonatlich :Number
+		 - sollZins :Number
+		 - sondertilgungZumZinsBindungsEnde :Number
+		 - verwendenAls :String
+		 - zinsBindungEndetAm :Date
+}
+
+class  Staat {
+		 - isoCountryCode :String
+		 - name :String
+}
+
+class  MiteigentumsAnteil {
+		 - anteil :Double
+		 - gesamt :Int32
+}
+
+class  Beschaeftigung {
+		 - anzahlGehaelterProJahr :Double
+		 - arbeitgeber :String
+		 - arbeitgeberInDeutschlandAnsaessig :Boolean
+		 - art :String
+		 - befristungsStatus :String
+		 - beruf :String
+		 - beschaeftigtSeit :Date
+		 - einkommenNettoJaehrlich :Number
+		 - einkommenNettoMonatlich :Number
+		 - inProbezeit :Boolean
+		 - situationNachRenteneintritt :SituationNachRenteneintritt[]
+		 - sonstigesRegelmaessigesEinkommenNettoMonatlich :Number
+		 - staatlicheRenteNettoMonatlich :Number
+		 - taetigkeit :String
+}
+
+class  SchufaErgebnis {
+		 - antragstellerUnbekannt :Boolean
+		 - inManuellerNachbehandlung :Boolean
+		 - score :String
+}
+
+class  Links {
+		 - self :Link[]
+}
+
+class  LegitimationsDaten {
+		 - ausstellendeBehoerde :String
+		 - ausstellungsdatum :Date
+		 - ausweisArt :String
+		 - ausweisArtBeiAndererAusweis :String
+		 - ausweisNummer :String
+}
+
+class  NachrangigesExternesDarlehen {
+		 - darlehensBetrag :Number
+		 - darlehensGeber :String
+		 - id :String
+		 - rateMonatlich :Number
+		 - typ :String
+		 - zinsBindung :ZinsBindung[]
+}
+
+class  VermoegenVerbindlichkeiten {
+		 - vermoegenOderVerbindlichkeiten :VermoegenVerbindlichkeit[]
+}
+
+
+interface AntraegeApi {
+	 + <i>getAlleAntraege(String datenKontext,String angenommenNach,String antragsReferenz,String sort,Integer page,Integer limit,String produktAnbieter,String aenderungSeit,String aenderungBis,)</i>:Antraege <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>getAntraegeByVorgangNummer(String vorgang,)</i>:Antraege <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>getAntrag(String vorgang,Integer antrag,)</i>:Antraege <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>getAngebot_1(String vorgang,Integer antrag,)</i>:AngebotZumAntrag <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>getAntrag_1(String vorgang,Integer antrag,Integer teilantrag,)</i>:Antrag <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>updateAntrag(String vorgang,Integer antrag,Integer teilantrag,PatchOperation[] patchOperations)</i>:void
+}
+
+interface AntraegeApi {
+	 + <i>getAngebot(String vorgang,Integer antrag,Integer teilantrag,)</i>:AngebotZumAntrag <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>getZahlungsplaene(String vorgang,Integer antrag,Integer teilantrag,)</i>:Zahlungsplaene <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>getAnsprechpartner(String vorgang,Integer antrag,Integer teilantrag,)</i>:Partner <color:red> throws Error </color> </b>
+}
+
+interface AntraegeApi {
+	 + <i>setAntragsStatus_1(String vorgang,Integer antrag,Integer teilantrag,StatusDTO statusDTO)</i>:void
+}
+
+
+HaushaltsPositionen  *-- "0..*"  BankUndSparguthaben
+HaushaltsPositionen  *-- "0..*"  BestehenderBausparvertrag
+HaushaltsPositionen  *-- "0..*"  EinnahmenMonatlich
+HaushaltsPositionen  *-- "0..*"  EinkuenfteAusNebentaetigkeit
+HaushaltsPositionen  *-- "0..*"  LebensOderRentenversicherungVermoegen
+HaushaltsPositionen  *-- "0..*"  MietAusgaben
+HaushaltsPositionen  *-- "0..*"  Verbindlichkeit
+HaushaltsPositionen  *-- "0..*"  AusgabenMonatlich
+HaushaltsPositionen  *-- "0..*"  Vermoegen
+HaushaltsPositionen  *-- "0..*"  Sparplaene
+HaushaltsPositionen  *-- "0..*"  Wertpapiere
+Meldung  *-- "0..*"  ProduktAnbieter
+BestehendeImmobilie  *-- "0..*"  Postadresse
+BestehendeImmobilie  *-- "0..*"  Autostellplatz
+BestehendeImmobilie  *-- "0..*"  BestehendesDarlehen
+BestehendeImmobilie  *-- "0..*"  Erbbaurecht
+BestehendeImmobilie  *-- "0..*"  Gebaeude
+BestehendeImmobilie  *-- "0..*"  GrundbuchAngabe
+BestehendeImmobilie  *-- "0..*"  Grundstueck
+Haushalt  *-- "0..*"  Antragsteller
+Haushalt  *-- "0..*"  BestehendeImmobilie
+Haushalt  *-- "0..*"  Kind
+Haushalt  *-- "0..*"  VermoegenVerbindlichkeiten
+Haushalt  *-- "0..*"  HaushaltsPositionen
+AngebotZumAntrag  *-- "0..*"  Absicherung
+AngebotZumAntrag  *-- "0..*"  Bausparvertrag
+AngebotZumAntrag  *-- "0..*"  BeleihungsRechnung
+AngebotZumAntrag  *-- "0..*"  Bonitaet
+AngebotZumAntrag  *-- "0..*"  Darlehen
+AngebotZumAntrag  *-- "0..*"  Meldung
+AngebotZumAntrag  *-- "0..*"  Links
+Bausparvertrag  *-- "0..*"  ProduktAnbieter
+Bausparvertrag  *-- "0..*"  SonderZahlung
+Bausparvertrag  *-- "0..*"  SparPhase
+Bausparvertrag  *-- "0..*"  TilgungsPhase
+Antraege  *-- "0..*"  Antrag
+Antraege  *-- "0..*"  PaginationLinks
+PaginationLinks  *-- "0..*"  Link
+Darlehen  *-- "0..*"  Bereitstellung
+Darlehen  *-- "0..*"  EffektivZinsKosten
+Darlehen  *-- "0..*"  ProduktAnbieter
+Darlehen  *-- "0..*"  Provision
+Darlehen  *-- "0..*"  Tilgung
+Darlehen  *-- "0..*"  ZinsBindung
+BeleihungsWert  *-- "0..*"  Postadresse
+BeleihungsWert  *-- "0..*"  ImmobilieVerknuepfung
+BausparAngebot  *-- "0..*"  ProduktAnbieter
+BausparAngebot  *-- "0..*"  SonderZahlung
+BausparAngebot  *-- "0..*"  SparPhase
+BausparAngebot  *-- "0..*"  TilgungsPhase
+Flurstueck  *-- "0..*"  MiteigentumsAnteil
+Zahlungsplaene  *-- "0..*"  zahlungsplan
+Zahlungsplaene  *-- "0..*"  Links
+Absicherung  *-- "0..*"  RisikoAbsicherung
+Absicherung  *-- "0..*"  VersicherungsZeitraum
+Vorhaben  *-- "0..*"  BausparAngebot
+Vorhaben  *-- "0..*"  Finanzbedarf
+Vorhaben  *-- "0..*"  NachrangigesExternesDarlehen
+ZugrundeliegendeDatenZumAntrag  *-- "0..*"  Bankverbindung
+ZugrundeliegendeDatenZumAntrag  *-- "0..*"  FinanzierungsObjekt
+ZugrundeliegendeDatenZumAntrag  *-- "0..*"  Haushalt
+ZugrundeliegendeDatenZumAntrag  *-- "0..*"  Vorhaben
+ZugrundeliegendeDatenZumAntrag  *-- "0..*"  Links
+GrundbuchAngabe  *-- "0..*"  Flurstueck
+GrundbuchAngabe  *-- "0..*"  RechteAbteilung2
+ProduktAnbieter  *-- "0..*"  Anschrift
+ProduktAnbieter  *-- "0..*"  PartnerKennzeichen
+BeleihungsRechnung  *-- "0..*"  BeleihungsWert
+BeleihungsRechnung  *-- "0..*"  ProduktAnbieter
+Tilgung  *-- "0..*"  TilgungsErsatz
+Bonitaet  *-- "0..*"  ProduktAnbieter
+Antragsteller  *-- "0..*"  Postadresse
+Antragsteller  *-- "0..*"  Beschaeftigung
+Antragsteller  *-- "0..*"  LegitimationsDaten
+Antragsteller  *-- "0..*"  SchufaErgebnis
+Antragsteller  *-- "0..*"  Staat
+Antragsteller  *-- "0..*"  AntragstellerVerknuepfung
+PatchOperation  *-- "0..*"  MetaClass
+Partner  *-- "0..*"  Anschrift
+Partner  *-- "0..*"  PartnerKennzeichen
+Partner  *-- "0..*"  Links
+BestehenderBausparvertrag  *-- "0..*"  ProduktAnbieter
+BestehenderBausparvertrag  *-- "0..*"  SonderZahlung
+Antrag  *-- "0..*"  AngebotZumAntrag
+Antrag  *-- "0..*"  Partner
+Antrag  *-- "0..*"  Beratung
+Antrag  *-- "0..*"  Dokument
+Antrag  *-- "0..*"  ProduktAnbieter
+Antrag  *-- "0..*"  AntragsStatus
+Antrag  *-- "0..*"  ZugrundeliegendeDatenZumAntrag
+Antrag  *-- "0..*"  Links
+GebaeudeFlaeche  *-- "0..*"  VermietungsInformationen
+Gebaeude  *-- "0..*"  GebaeudeFlaeche
+Gebaeude  *-- "0..*"  MiteigentumsAnteil
+Gebaeude  *-- "0..*"  ModernisierungsAngaben
+FinanzierungsObjekt  *-- "0..*"  Postadresse
+FinanzierungsObjekt  *-- "0..*"  Autostellplatz
+FinanzierungsObjekt  *-- "0..*"  BestehendesDarlehenDesFinanzierungsObjekts
+FinanzierungsObjekt  *-- "0..*"  Erbbaurecht
+FinanzierungsObjekt  *-- "0..*"  Gebaeude
+FinanzierungsObjekt  *-- "0..*"  GrundbuchAngabe
+FinanzierungsObjekt  *-- "0..*"  Grundstueck
+zahlungsplan  *-- "0..*"  Eintrag
+BestehendesDarlehen  *-- "0..*"  ProduktAnbieter
+BestehendesDarlehenDesFinanzierungsObjekts  *-- "0..*"  ProduktAnbieter
+Beschaeftigung  *-- "0..*"  SituationNachRenteneintritt
+Links  *-- "0..*"  Link
+NachrangigesExternesDarlehen  *-- "0..*"  ZinsBindung
+VermoegenVerbindlichkeiten  *-- "0..*"  VermoegenVerbindlichkeit
+AntraegeApi -->    Antraege
+AntraegeApi -->    Error
+AntraegeApi -->    AngebotZumAntrag
+AntraegeApi -->    Antrag
+AntraegeApi -->    PatchOperation
+AntraegeApi -->    Zahlungsplaene
+AntraegeApi -->    Partner
+AntraegeApi -->    StatusDTO
+
+note as N1
+  Name: <color:royalBlue>Anträge auslesen API</color>
+  Version: <color:royalBlue>2.16</color>
+end note
+
+
+@enduml
