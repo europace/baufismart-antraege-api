@@ -11,88 +11,88 @@ info:
 host: baufismart.api.europace.de
 basePath: /
 tags:
-- name: Antraege
-  description: Dieser Endpunkt dient zum aktualisieren von Daten eines Antrags
+  - name: Antraege
+    description: Dieser Endpunkt dient zum aktualisieren von Daten eines Antrags
 schemes:
-- https
+  - https
 paths:
   /v2/antraege:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: alle Anträge abrufen
       description: 'Es werden alle Anträge ausgeliefert, die der authentifizierten Partner sehen darf. Offen: Sortierung, Pagination, Filterung'
       operationId: getAlleAntraege
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: aenderungBis
-        in: query
-        description: Datum im ISO Format UTC - Zulu
-        required: false
-        type: string
-        allowEmptyValue: false
-        x-example: 2016-03-11T10:57:45Z
-      - name: aenderungSeit
-        in: query
-        description: Datum im ISO Format UTC - Zulu
-        required: false
-        type: string
-        allowEmptyValue: false
-        x-example: 2016-03-11T10:57:45Z
-      - name: angenommenNach
-        in: query
-        description: Datum im ISO Format UTC - Zulu
-        required: false
-        type: string
-        allowEmptyValue: false
-        x-example: 2016-03-11T10:57:45Z
-      - name: antragsReferenz
-        in: query
-        description: Suche nach Ihrer antragsReferenz
-        required: false
-        type: string
-        allowEmptyValue: false
-      - name: datenKontext
-        in: query
-        description: Datenkontext
-        required: false
-        type: string
-        default: ECHT_GESCHAEFT
-        allowEmptyValue: false
-        enum:
-        - ECHT_GESCHAEFT
-        - TEST_MODUS
-      - name: limit
-        in: query
-        description: limit
-        required: false
-        type: integer
-        default: 10
-        format: int32
-      - name: page
-        in: query
-        description: page
-        required: false
-        type: integer
-        default: 0
-        format: int32
-      - name: produktAnbieter
-        in: query
-        description: produktAnbieter
-        required: false
-        type: string
-      - name: sort
-        in: query
-        description: Sortierung der Anträge, aufsteigend oder absteigend
-        required: false
-        type: string
-        default: absteigend
-        allowEmptyValue: false
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: aenderungBis
+          in: query
+          description: Datum im ISO Format UTC - Zulu
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: 2016-03-11T10:57:45Z
+        - name: aenderungSeit
+          in: query
+          description: Datum im ISO Format UTC - Zulu
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: 2016-03-11T10:57:45Z
+        - name: angenommenNach
+          in: query
+          description: Datum im ISO Format UTC - Zulu
+          required: false
+          type: string
+          allowEmptyValue: false
+          x-example: 2016-03-11T10:57:45Z
+        - name: antragsReferenz
+          in: query
+          description: Suche nach Ihrer antragsReferenz
+          required: false
+          type: string
+          allowEmptyValue: false
+        - name: datenKontext
+          in: query
+          description: Datenkontext
+          required: false
+          type: string
+          default: ECHT_GESCHAEFT
+          allowEmptyValue: false
+          enum:
+            - ECHT_GESCHAEFT
+            - TEST_MODUS
+        - name: limit
+          in: query
+          description: limit
+          required: false
+          type: integer
+          default: 10
+          format: int32
+        - name: page
+          in: query
+          description: page
+          required: false
+          type: integer
+          default: 0
+          format: int32
+        - name: produktAnbieter
+          in: query
+          description: produktAnbieter
+          required: false
+          type: string
+        - name: sort
+          in: query
+          description: Sortierung der Anträge, aufsteigend oder absteigend
+          required: false
+          type: string
+          default: absteigend
+          allowEmptyValue: false
       responses:
         "200":
           description: OK
@@ -119,29 +119,29 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: Alle Anträg eines Vorgangs abrufen
       description: Als Parameter wird die Vorgangsnummer in der Form 'AB1234' verwendet.
       operationId: getAntraegeByVorgangNummer
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags
-        required: true
-        type: string
-        x-example: AB1234
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags
+          required: true
+          type: string
+          x-example: AB1234
       responses:
         "200":
           description: OK
@@ -168,35 +168,35 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: Teilanträge eines Antrags abrufen
       description: Als Parameter wird die Vorgangs- und Antragsnummer in der Form 'AB1234/1' verwendet.
       operationId: getAntrag
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags
-        required: true
-        type: string
-        x-example: AB1234/1
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags
+          required: true
+          type: string
+          x-example: AB1234/1
       responses:
         "200":
           description: OK
@@ -223,35 +223,35 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/angebot:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: 'Angebot des Antrags abrufen. '
       description: Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.  Nutzen sie den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot
       operationId: getAngebot_1
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags, bestehend aus Vorgangsnummer und Antragnummer.
-        required: true
-        type: string
-        x-example: AB1234/1
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags, bestehend aus Vorgangsnummer und Antragnummer.
+          required: true
+          type: string
+          x-example: AB1234/1
       responses:
         "200":
           description: OK
@@ -278,41 +278,41 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: true
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: einen Antrag abrufen
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getAntrag_1
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - name: teilantrag
-        in: path
-        description: teilantrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags
-        required: true
-        type: string
-        x-example: AB1234/1/2
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - name: teilantrag
+          in: path
+          description: teilantrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags
+          required: true
+          type: string
+          x-example: AB1234/1/2
       responses:
         "200":
           description: OK
@@ -339,47 +339,47 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
     patch:
       tags:
-      - Antraege
+        - Antraege
       summary: einen Antrag aktualisieren
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.
       operationId: updateAntrag
       consumes:
-      - application/json-patch+json
-      - application/json
+        - application/json-patch+json
+        - application/json
       produces:
-      - '*/*'
+        - '*/*'
       parameters:
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - in: body
-        name: patchOperations
-        description: patchOperations
-        required: true
-        schema:
-          type: array
-          items:
-            $ref: '#/definitions/PatchOperation'
-      - name: teilantrag
-        in: path
-        description: teilantrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags
-        required: true
-        type: string
-        x-example: AB1234/1/2
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - in: body
+          name: patchOperations
+          description: patchOperations
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PatchOperation'
+        - name: teilantrag
+          in: path
+          description: teilantrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags
+          required: true
+          type: string
+          x-example: AB1234/1/2
       responses:
         "204":
           description: No Content
@@ -388,41 +388,41 @@ paths:
         "403":
           description: Forbidden
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: Angebot des Antrags abrufen
       description: Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.
       operationId: getAngebot
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - name: teilantrag
-        in: path
-        description: teilantrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags, bestehend aus Vorgangsnummer und Antragnummer.
-        required: true
-        type: string
-        x-example: AB1234/1
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - name: teilantrag
+          in: path
+          description: teilantrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags, bestehend aus Vorgangsnummer und Antragnummer.
+          required: true
+          type: string
+          x-example: AB1234/1
       responses:
         "200":
           description: OK
@@ -449,43 +449,43 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: Die Zahlungsplaene (Tilgungs- & Sparpläne) des angenommenen Angebots.
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getZahlungsplaene
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: antrag
-        in: path
-        description: Nummer des Antrags
-        required: true
-        type: integer
-        format: int32
-        x-example: 1
-      - name: teilantrag
-        in: path
-        description: Nummer des Teilantrags
-        required: true
-        type: integer
-        format: int32
-        x-example: 1
-      - name: vorgang
-        in: path
-        description: Nummer des Vorgangs
-        required: true
-        type: string
-        x-example: AB1234
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: antrag
+          in: path
+          description: Nummer des Antrags
+          required: true
+          type: integer
+          format: int32
+          x-example: 1
+        - name: teilantrag
+          in: path
+          description: Nummer des Teilantrags
+          required: true
+          type: integer
+          format: int32
+          x-example: 1
+        - name: vorgang
+          in: path
+          description: Nummer des Vorgangs
+          required: true
+          type: string
+          x-example: AB1234
       responses:
         "200":
           description: OK
@@ -512,41 +512,41 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner:
     get:
       tags:
-      - Antraege
+        - Antraege
       summary: Den Ansprechpartner (Vertrieb) des  Teilantrags abrufen.
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getAnsprechpartner
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: X-TraceId
-        in: header
-        required: false
-        type: string
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - name: teilantrag
-        in: path
-        description: teilantrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: Nummer des Antrags
-        required: true
-        type: string
-        x-example: AB1234/1/2
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - name: teilantrag
+          in: path
+          description: teilantrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: Nummer des Antrags
+          required: true
+          type: string
+          x-example: AB1234/1/2
       responses:
         "200":
           description: OK
@@ -573,43 +573,43 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/status:
     post:
       tags:
-      - Antraege
+        - Antraege
       summary: Zum Setzen des Antragsstatus
       operationId: setAntragsStatus_1
       consumes:
-      - application/json
+        - application/json
       produces:
-      - application/json;charset=UTF-8
+        - application/json;charset=UTF-8
       parameters:
-      - name: antrag
-        in: path
-        description: antrag
-        required: true
-        type: integer
-        format: int32
-      - in: body
-        name: statusDTO
-        description: statusDTO
-        required: true
-        schema:
-          $ref: '#/definitions/StatusDTO'
-      - name: teilantrag
-        in: path
-        description: teilantrag
-        required: true
-        type: integer
-        format: int32
-      - name: vorgang
-        in: path
-        description: vorgang
-        required: true
-        type: string
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - in: body
+          name: statusDTO
+          description: statusDTO
+          required: true
+          schema:
+            $ref: '#/definitions/StatusDTO'
+        - name: teilantrag
+          in: path
+          description: teilantrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: vorgang
+          required: true
+          type: string
       responses:
         "201":
           description: Created
@@ -622,8 +622,8 @@ paths:
         "404":
           description: Not Found
       security:
-      - oauth2:
-        - API
+        - oauth2:
+            - API
       deprecated: false
 securityDefinitions:
   oauth2:
@@ -645,11 +645,11 @@ definitions:
       praemienZahlungsweise:
         type: string
         enum:
-        - EINMALIG
-        - MONATLICH
-        - VIERTELJAEHRLICH
-        - HALBJAEHRLICH
-        - JAEHRLICH
+          - EINMALIG
+          - MONATLICH
+          - VIERTELJAEHRLICH
+          - HALBJAEHRLICH
+          - JAEHRLICH
       tarifBezeichnung:
         type: string
       tarifKennung:
@@ -679,8 +679,8 @@ definitions:
       bewertungDesAngebots:
         type: string
         enum:
-        - ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS
-        - ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN
+          - ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS
+          - ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN
       bonitaet:
         type: array
         items:
@@ -698,9 +698,9 @@ definitions:
       machbarkeitsStatus:
         type: string
         enum:
-        - MACHBAR
-        - UNTER_VORBEHALT_PRODUZENT
-        - NICHT_MACHBAR
+          - MACHBAR
+          - UNTER_VORBEHALT_PRODUZENT
+          - NICHT_MACHBAR
       meldungen:
         type: array
         items:
@@ -752,8 +752,8 @@ definitions:
         type: string
         description: Gibt an, ob es sich um einen Antrag aus dem Testmodus oder Echtgeschäft handelt
         enum:
-        - TEST_MODUS
-        - ECHT_GESCHAEFT
+          - TEST_MODUS
+          - ECHT_GESCHAEFT
       dokumente:
         type: array
         description: Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.
@@ -801,38 +801,38 @@ definitions:
         type: string
         description: Ablehnungsgrund des Produktanbieters
         enum:
-        - FINANZIELLE_SITUATION
-        - NEGATIV_MERKMAL
-        - WERTERMITTLUNG
-        - KRITERIEN
-        - UNTERLAGEN_UNVOLLSTAENDIG
-        - GEGENANGEBOT
-        - KEINE_ANGABE
+          - FINANZIELLE_SITUATION
+          - NEGATIV_MERKMAL
+          - WERTERMITTLUNG
+          - KRITERIEN
+          - UNTERLAGEN_UNVOLLSTAENDIG
+          - GEGENANGEBOT
+          - KEINE_ANGABE
       antragsteller:
         type: string
         description: Willenserklärung des Antragstellers
         enum:
-        - BEANTRAGT
-        - UNTERSCHRIEBEN
-        - NICHT_ANGENOMMEN
-        - WIDERRUFEN
+          - BEANTRAGT
+          - UNTERSCHRIEBEN
+          - NICHT_ANGENOMMEN
+          - WIDERRUFEN
       bearbeitungsFortschritt:
         type: string
         description: Bearbeitungsfortschritt des Antrags nach beidseitiger Unterzeichnung
         enum:
-        - NICHT_VON_PRODUKTANBIETER_BESTAETIGT
-        - VON_PRODUKTANBIETER_BESTAETIGT
-        - FREIGEGEBEN_FUER_SAMMELFORDERUNG
-        - PROVISION_IN_BEARBEITUNG
-        - PROVISON_AN_KUNDENBETREUER_VOLLSTAENDIG_AUSGEZAHLT
+          - NICHT_VON_PRODUKTANBIETER_BESTAETIGT
+          - VON_PRODUKTANBIETER_BESTAETIGT
+          - FREIGEGEBEN_FUER_SAMMELFORDERUNG
+          - PROVISION_IN_BEARBEITUNG
+          - PROVISON_AN_KUNDENBETREUER_VOLLSTAENDIG_AUSGEZAHLT
       produktAnbieter:
         type: string
         description: Willenserklärung des Produktanbieters
         enum:
-        - NICHT_BEARBEITET
-        - UNTERSCHRIEBEN
-        - ABGELEHNT
-        - ZURUECKGESTELLT
+          - NICHT_BEARBEITET
+          - UNTERSCHRIEBEN
+          - ABGELEHNT
+          - ZURUECKGESTELLT
     title: AntragsStatus
   Antragsteller:
     type: object
@@ -840,8 +840,8 @@ definitions:
       anrede:
         type: string
         enum:
-        - FRAU
-        - HERR
+          - FRAU
+          - HERR
       anschrift:
         $ref: '#/definitions/Postadresse'
       arbeitserlaubnis:
@@ -855,10 +855,10 @@ definitions:
         type: string
         description: wenn keine deutsche Staatsangehörigkeit
         enum:
-        - VISUM
-        - AUFENTHALTS_ERLAUBNIS
-        - NIEDERLASSUNGS_ERLAUBNIS
-        - DAUERAUFENTHALT_EU
+          - VISUM
+          - AUFENTHALTS_ERLAUBNIS
+          - NIEDERLASSUNGS_ERLAUBNIS
+          - DAUERAUFENTHALT_EU
       aufenthaltsTitelBefristetBis:
         type: string
         format: date
@@ -890,12 +890,12 @@ definitions:
       familienstand:
         type: string
         enum:
-        - GESCHIEDEN
-        - GETRENNT_LEBEND
-        - LEBENSPARTNERSCHAFT
-        - LEDIG
-        - VERHEIRATET
-        - VERWITWET
+          - GESCHIEDEN
+          - GETRENNT_LEBEND
+          - LEBENSPARTNERSCHAFT
+          - LEDIG
+          - VERHEIRATET
+          - VERWITWET
       geburtsdatum:
         type: string
         format: date
@@ -963,8 +963,8 @@ definitions:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: AusgabenMonatlich
   Autostellplatz:
     type: object
@@ -974,12 +974,12 @@ definitions:
       typ:
         type: string
         enum:
-        - STELLPLATZ
-        - CARPORT
-        - GARAGE
-        - DOPPEL_GARAGE
-        - KELLER_GARAGE
-        - TIEFGARAGEN_STELLPLATZ
+          - STELLPLATZ
+          - CARPORT
+          - GARAGE
+          - DOPPEL_GARAGE
+          - KELLER_GARAGE
+          - TIEFGARAGEN_STELLPLATZ
     title: Autostellplatz
   BankUndSparguthaben:
     type: object
@@ -992,14 +992,14 @@ definitions:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
       zahlungsTyp:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
       zinsertragJaehrlich:
         type: number
     title: BankUndSparguthaben
@@ -1141,9 +1141,9 @@ definitions:
       art:
         type: string
         enum:
-        - PRAESENZ_GESCHAEFT
-        - FERN_ABSATZ_GESCHAEFT
-        - AUSSER_GESCHAEFTSRAUM_VERTRAG
+          - PRAESENZ_GESCHAEFT
+          - FERN_ABSATZ_GESCHAEFT
+          - AUSSER_GESCHAEFTSRAUM_VERTRAG
       hinweisFuerProduktAnbieter:
         type: string
       istKundenBetreuerVerkaeuferOderMaklerDerImmobilie:
@@ -1179,8 +1179,8 @@ definitions:
         type: string
         description: nur bei art==ANGESTELLTER,ARBEITER
         enum:
-        - BEFRISTET
-        - UNBEFRISTET
+          - BEFRISTET
+          - UNBEFRISTET
       beruf:
         type: string
         description: nur bei art!=RENTNER
@@ -1239,9 +1239,9 @@ definitions:
       immobilienEinsatz:
         type: string
         enum:
-        - KEIN_EINSATZ
-        - VERKAUFEN
-        - ALS_ZUSATZSICHERHEIT
+          - KEIN_EINSATZ
+          - VERKAUFEN
+          - ALS_ZUSATZSICHERHEIT
       keinBaulandFlaecheInQm:
         type: number
         description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.
@@ -1253,9 +1253,9 @@ definitions:
       objektArt:
         type: string
         enum:
-        - GRUNDSTUECK
-        - EIGENTUMSWOHNUNG
-        - HAUS
+          - GRUNDSTUECK
+          - EIGENTUMSWOHNUNG
+          - HAUS
       vergleichsmieteFuerGewerbeflaecheProQm:
         type: number
         description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.
@@ -1301,15 +1301,15 @@ definitions:
       vermoegensEinsatz:
         type: string
         enum:
-        - KEIN_EINSATZ
-        - ABTRETEN
-        - AUFLOESEN
+          - KEIN_EINSATZ
+          - ABTRETEN
+          - AUFLOESEN
       vermoegensTyp:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
       vertragsBeginn:
         type: string
         format: date
@@ -1321,8 +1321,8 @@ definitions:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
       zuteilungsDatum:
         type: string
         format: date
@@ -1341,11 +1341,11 @@ definitions:
         type: string
         description: 'Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
         enum:
-        - BAUSPARDARLEHEN
-        - FOERDERDARLEHEN
-        - IMMOBILIENDARLEHEN
-        - PRIVATDARLEHEN
-        - SONSTIGES_DARLEHEN
+          - BAUSPARDARLEHEN
+          - FOERDERDARLEHEN
+          - IMMOBILIENDARLEHEN
+          - PRIVATDARLEHEN
+          - SONSTIGES_DARLEHEN
       darlehensBetrag:
         type: number
         description: 'für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG'
@@ -1390,11 +1390,11 @@ definitions:
         type: string
         description: 'Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
         enum:
-        - BAUSPARDARLEHEN
-        - FOERDERDARLEHEN
-        - IMMOBILIENDARLEHEN
-        - PRIVATDARLEHEN
-        - SONSTIGES_DARLEHEN
+          - BAUSPARDARLEHEN
+          - FOERDERDARLEHEN
+          - IMMOBILIENDARLEHEN
+          - PRIVATDARLEHEN
+          - SONSTIGES_DARLEHEN
       darlehensBetrag:
         type: number
         description: 'für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG'
@@ -1425,9 +1425,9 @@ definitions:
         type: string
         description: Beschreibt wie das Darlehen im Zusammenhang mit dem Vorhaben, behandelt werden soll.
         enum:
-        - ABLOESEN
-        - TRITT_IM_RANG_ZURUECK
-        - TRITT_NICHT_IM_RANG_ZURUECK
+          - ABLOESEN
+          - TRITT_IM_RANG_ZURUECK
+          - TRITT_NICHT_IM_RANG_ZURUECK
       zinsBindungEndetAm:
         type: string
         format: date
@@ -1474,12 +1474,12 @@ definitions:
       darlehensTyp:
         type: string
         enum:
-        - ANNUITAETEN_DARLEHEN
-        - FORWARD_DARLEHEN
-        - KFW_DARLEHEN
-        - PRIVAT_DARLEHEN
-        - ZWISCHEN_FINANZIERUNG
-        - VARIABLES_DARLEHEN
+          - ANNUITAETEN_DARLEHEN
+          - FORWARD_DARLEHEN
+          - KFW_DARLEHEN
+          - PRIVAT_DARLEHEN
+          - ZWISCHEN_FINANZIERUNG
+          - VARIABLES_DARLEHEN
       detailsZurVerwendung:
         type: string
         description: nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG
@@ -1544,9 +1544,9 @@ definitions:
         type: string
         description: nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG
         enum:
-        - VORFINANZIERUNG_OEFFENTLICHER_MITTEL
-        - VERKAUF_EINES_ANDEREN_OBJEKTS
-        - SONSTIGE_VERWENDUNG
+          - VORFINANZIERUNG_OEFFENTLICHER_MITTEL
+          - VERKAUF_EINES_ANDEREN_OBJEKTS
+          - SONSTIGE_VERWENDUNG
       zinsBindung:
         description: nicht bei darlehensTyp IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]
         $ref: '#/definitions/ZinsBindung'
@@ -1605,8 +1605,8 @@ definitions:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: EinkuenfteAusNebentaetigkeit
   EinnahmenMonatlich:
     type: object
@@ -1617,8 +1617,8 @@ definitions:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: EinnahmenMonatlich
   Eintrag:
     type: object
@@ -1641,16 +1641,16 @@ definitions:
       typ:
         type: string
         enum:
-        - EINTRAG
-        - AGGREGIERTER_EINTRAG
-        - SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE
+          - EINTRAG
+          - AGGREGIERTER_EINTRAG
+          - SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE
       zahlung:
         type: number
       zahlungsTyp:
         type: string
         enum:
-        - EINZAHLUNG
-        - AUSZAHLUNG
+          - EINZAHLUNG
+          - AUSZAHLUNG
       zinsen:
         type: number
     title: Eintrag
@@ -1662,8 +1662,8 @@ definitions:
       grundstuecksEigentuemer:
         type: string
         enum:
-        - ANDERE
-        - OEFFENTLICH_KIRCHLICH
+          - ANDERE
+          - OEFFENTLICH_KIRCHLICH
       laufzeitBisJahr:
         type: string
         example: "2016"
@@ -1762,9 +1762,9 @@ definitions:
       objektArt:
         type: string
         enum:
-        - GRUNDSTUECK
-        - EIGENTUMSWOHNUNG
-        - HAUS
+          - GRUNDSTUECK
+          - EIGENTUMSWOHNUNG
+          - HAUS
       vergleichsmieteFuerGewerbeflaecheProQm:
         type: number
         description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.
@@ -1830,18 +1830,18 @@ definitions:
       hausAnordnung:
         type: string
         enum:
-        - FREISTEHEND
-        - KOPFHAUS
-        - MITTELHAUS
+          - FREISTEHEND
+          - KOPFHAUS
+          - MITTELHAUS
       hausTyp:
         type: string
         description: Nur bei ObjektArt == HAUS.
         enum:
-        - DOPPELHAUSHAELFTE
-        - EINFAMILIENHAUS
-        - MEHRFAMILIENHAUS
-        - REIHENHAUS
-        - ZWEIFAMILIENHAUS
+          - DOPPELHAUSHAELFTE
+          - EINFAMILIENHAUS
+          - MEHRFAMILIENHAUS
+          - REIHENHAUS
+          - ZWEIFAMILIENHAUS
       istFertighaus:
         type: boolean
         description: Nur bei ObjektArt == HAUS.
@@ -1862,11 +1862,11 @@ definitions:
         type: string
         description: Angaben zum Zustand der Immobilie für die automatische Objektbewertungs-Schnittstelle (VDP)
         enum:
-        - SEHR_GUT
-        - GUT
-        - MITTEL
-        - MAESSIG
-        - SCHLECHT
+          - SEHR_GUT
+          - GUT
+          - MITTEL
+          - MAESSIG
+          - SCHLECHT
     title: Gebaeude
   GebaeudeFlaeche:
     type: object
@@ -1903,11 +1903,11 @@ definitions:
       grundstuecksArt:
         type: string
         enum:
-        - UNBEBAUTES_WOHNGRUNDSTUECK
-        - UNBEBAUTES_MISCHGRUNDSTUECK
-        - UNBEBAUTES_GEWERBEGRUNDSTUECK
-        - LANDWIRTSCHAFTLICHES_GRUNDSTUECK
-        - SONSTIGES_GRUNDSTUECK
+          - UNBEBAUTES_WOHNGRUNDSTUECK
+          - UNBEBAUTES_MISCHGRUNDSTUECK
+          - UNBEBAUTES_GEWERBEGRUNDSTUECK
+          - LANDWIRTSCHAFTLICHES_GRUNDSTUECK
+          - SONSTIGES_GRUNDSTUECK
     title: Grundstueck
   Haushalt:
     type: object
@@ -2066,23 +2066,23 @@ definitions:
       typ:
         type: string
         enum:
-        - KAPITALBILDENDE_LEBENSVERSICHERUNG
-        - FONDSGEBUNDENE_LEBENSVERSICHERUNG
-        - KAPITALBILDENDE_RENTENVERSICHERUNG
-        - FONDSGEBUNDENE_RENTENVERSICHERUNG
-        - RISIKO_LEBENSVERSICHERUNG
+          - KAPITALBILDENDE_LEBENSVERSICHERUNG
+          - FONDSGEBUNDENE_LEBENSVERSICHERUNG
+          - KAPITALBILDENDE_RENTENVERSICHERUNG
+          - FONDSGEBUNDENE_RENTENVERSICHERUNG
+          - RISIKO_LEBENSVERSICHERUNG
       vermoegensEinsatz:
         type: string
         enum:
-        - KEIN_EINSATZ
-        - ABTRETEN
-        - AUFLOESEN
+          - KEIN_EINSATZ
+          - ABTRETEN
+          - AUFLOESEN
       vermoegensTyp:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
       versicherungsGesellschaft:
         type: string
       versicherungsSumme:
@@ -2101,8 +2101,8 @@ definitions:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: LebensOderRentenversicherungVermoegen
   LegitimationsDaten:
     type: object
@@ -2115,9 +2115,9 @@ definitions:
       ausweisArt:
         type: string
         enum:
-        - PERSONALAUSWEIS
-        - REISEPASS
-        - ANDERE
+          - PERSONALAUSWEIS
+          - REISEPASS
+          - ANDERE
       ausweisArtBeiAndererAusweis:
         type: string
         description: Nur wenn ausweisArt = ANDERE
@@ -2162,8 +2162,8 @@ definitions:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: MietAusgaben
   MiteigentumsAnteil:
     type: object
@@ -2273,12 +2273,12 @@ definitions:
         type: string
         description: Auszuführende Operation
         enum:
-        - add
-        - remove
-        - replace
-        - copy
-        - move
-        - test
+          - add
+          - remove
+          - replace
+          - copy
+          - move
+          - test
       path:
         type: string
         description: 'JSON-Path im Antrag. Valide Pfade sind: ''/antragsReferenz'', ''/status'', ''/status/antragsteller'', ''/ansprechpartner/partnerId'', ''/status/produktAnbieter'', ''/voraussichtlicheBearbeitung''.'
@@ -2367,20 +2367,20 @@ definitions:
       abgesichertesRisiko:
         type: string
         enum:
-        - TODESFALL
-        - ARBEITSLOSIGKEIT
-        - ARBEITSUNFAEHIGKEIT
-        - INVALIDITAET
+          - TODESFALL
+          - ARBEITSLOSIGKEIT
+          - ARBEITSUNFAEHIGKEIT
+          - INVALIDITAET
       auszahlungsBetrag:
         type: number
       auszahlungsTurnus:
         type: string
         enum:
-        - EINMALIG
-        - MONATLICH
-        - VIERTELJAEHRLICH
-        - HALBJAEHRLICH
-        - JAEHRLICH
+          - EINMALIG
+          - MONATLICH
+          - VIERTELJAEHRLICH
+          - HALBJAEHRLICH
+          - JAEHRLICH
       praemienAnteil:
         type: number
     title: RisikoAbsicherung
@@ -2423,11 +2423,11 @@ definitions:
       zahlweise:
         type: string
         enum:
-        - EINMALIG
-        - MONATLICH
-        - VIERTELJAEHRLICH
-        - HALBJAEHRLICH
-        - JAEHRLICH
+          - EINMALIG
+          - MONATLICH
+          - VIERTELJAEHRLICH
+          - HALBJAEHRLICH
+          - JAEHRLICH
     title: SonderZahlung
   SparPhase:
     type: object
@@ -2453,14 +2453,14 @@ definitions:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
       zahlungsTyp:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: Sparplaene
   Staat:
     type: object
@@ -2473,35 +2473,35 @@ definitions:
   StatusDTO:
     type: object
     required:
-    - antragsteller
-    - produktAnbieter
+      - antragsteller
+      - produktAnbieter
     properties:
       ablehnungsgrund:
         type: string
         enum:
-        - FINANZIELLE_SITUATION
-        - NEGATIV_MERKMAL
-        - WERTERMITTLUNG
-        - KRITERIEN
-        - UNTERLAGEN_UNVOLLSTAENDIG
-        - GEGENANGEBOT
-        - KEINE_ANGABE
+          - FINANZIELLE_SITUATION
+          - NEGATIV_MERKMAL
+          - WERTERMITTLUNG
+          - KRITERIEN
+          - UNTERLAGEN_UNVOLLSTAENDIG
+          - GEGENANGEBOT
+          - KEINE_ANGABE
       antragsteller:
         type: string
         enum:
-        - BEANTRAGT
-        - UNTERSCHRIEBEN
-        - NICHT_ANGENOMMEN
-        - WIDERRUFEN
+          - BEANTRAGT
+          - UNTERSCHRIEBEN
+          - NICHT_ANGENOMMEN
+          - WIDERRUFEN
       kommentar:
         type: string
       produktAnbieter:
         type: string
         enum:
-        - NICHT_BEARBEITET
-        - UNTERSCHRIEBEN
-        - ABGELEHNT
-        - ZURUECKGESTELLT
+          - NICHT_BEARBEITET
+          - UNTERSCHRIEBEN
+          - ABGELEHNT
+          - ZURUECKGESTELLT
     title: StatusDTO
   Tilgung:
     type: object
@@ -2559,16 +2559,16 @@ definitions:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
       wirdAbgeloest:
         type: boolean
       zahlungsTyp:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: Verbindlichkeit
   VermietungsInformationen:
     type: object
@@ -2578,9 +2578,9 @@ definitions:
       nutzungsArt:
         type: string
         enum:
-        - EIGENGENUTZT
-        - TEIL_VERMIETET
-        - VERMIETET
+          - EIGENGENUTZT
+          - TEIL_VERMIETET
+          - VERMIETET
       vermieteteFlaeche:
         type: number
     title: VermietungsInformationen
@@ -2595,8 +2595,8 @@ definitions:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
     title: Vermoegen
   VermoegenVerbindlichkeit:
     type: object
@@ -2612,8 +2612,8 @@ definitions:
       vermoegensTyp:
         type: string
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
     title: VermoegenVerbindlichkeit
   VermoegenVerbindlichkeiten:
     type: object
@@ -2656,12 +2656,12 @@ definitions:
       verwendungszweck:
         type: string
         enum:
-        - ANSCHLUSSFINANZIERUNG
-        - KAUF
-        - KAUF_NEUBAU_VOM_BAUTRAEGER
-        - MODERNISIERUNG_UMBAU_ANBAU
-        - NEUBAU
-        - KAPITALBESCHAFFUNG
+          - ANSCHLUSSFINANZIERUNG
+          - KAUF
+          - KAUF_NEUBAU_VOM_BAUTRAEGER
+          - MODERNISIERUNG_UMBAU_ANBAU
+          - NEUBAU
+          - KAPITALBESCHAFFUNG
     title: Vorhaben
   Wertpapiere:
     type: object
@@ -2676,14 +2676,14 @@ definitions:
         type: string
         description: Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium
         enum:
-        - VERMOEGEN
-        - VERBINDLICHKEIT
+          - VERMOEGEN
+          - VERBINDLICHKEIT
       zahlungsTyp:
         type: string
         description: Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium
         enum:
-        - EINNAHME
-        - AUSGABE
+          - EINNAHME
+          - AUSGABE
     title: Wertpapiere
   Zahlungsplaene:
     type: object
@@ -2744,6 +2744,6 @@ definitions:
       typ:
         type: string
         enum:
-        - TILGUNGSPLAN
+          - TILGUNGSPLAN
     title: zahlungsplan
     description: Diese Resource repräsentiert einen Zahlungsplan.
