@@ -846,14 +846,14 @@ definitions:
         $ref: '#/definitions/Postadresse'
       arbeitserlaubnis:
         type: boolean
-        description: wenn keine deutsche Staatsangehörigkeit
+        description: wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat
       arbeitserlaubnisBefristetBis:
         type: string
         format: date
         description: wenn Arbeitserlaubnis befristet
       aufenthaltsTitel:
         type: string
-        description: wenn keine deutsche Staatsangehörigkeit
+        description: wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat
         enum:
           - VISUM
           - AUFENTHALTS_ERLAUBNIS
@@ -910,7 +910,7 @@ definitions:
       inDeutschlandSeit:
         type: string
         format: date
-        description: wenn keine deutsche Staatsangehörigkeit
+        description: wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat
       legitimationsDaten:
         description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.
         $ref: '#/definitions/LegitimationsDaten'
