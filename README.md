@@ -80,8 +80,13 @@ Diese Liste kommt seitenweise.
 
 ## Wie rufe ich einen konkreten Antrag ab?
 
+Als Produktanbieter
 ```
 GET https://baufismart.api.europace.de/v2/antraege/AB1234/1/1
+```
+Als Vertrieb
+```
+GET https://baufismart.api.europace.de/v2/vorgaenge/AB1234/1/1/antraege
 ```
 
 ## Wie erkenne ich, dass sich der Antrag geändert hat?
