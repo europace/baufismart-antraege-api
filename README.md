@@ -69,16 +69,16 @@ Den API-Client nicht mit dem Default-Konstruktor, sondern dem Credentials-Kontru
  api = new ApiClient("oauth2","partnerID", "api-key").createService(AntraegeApi.class);
 ```
 
-# Häufige Fragen
+## Häufige Fragen
 
-## Wie bekomme ich eine Liste aller meiner Anträge?
+### Wie bekomme ich eine Liste aller meiner Anträge?
 
 ```
 GET https://baufismart.api.europace.de/v2/antraege
 ```
 Diese Liste kommt seitenweise.
 
-## Wie rufe ich einen konkreten Antrag ab?
+### Wie rufe ich einen konkreten Antrag ab?
 
 Als Produktanbieter
 ```
@@ -89,7 +89,7 @@ Als Vertrieb
 GET https://baufismart.api.europace.de/v2/vorgaenge/AB1234/1/1/antraege
 ```
 
-## Wie erkenne ich, dass sich der Antrag geändert hat?
+### Wie erkenne ich, dass sich der Antrag geändert hat?
 
 Am Antrag (Liste und Einzelabruf) wird im Feld `letzteAenderung` das Datum der letzten Änderung des Antrags ausgegeben.
 
@@ -108,7 +108,7 @@ Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 * Änderung des Kreditsachbearbeiters
 * Freigabe eines Dokumentes für den Kreditbetrieb
 
-## Welche PATCH Operationen sind möglich?
+### Welche PATCH Operationen sind möglich?
 
 Die folgenden Felder können an einem Antrag verändert werden:
 
@@ -193,5 +193,5 @@ Ja!
 ## Fragen und Anregungen
 Bei Fragen und Anregungen entweder ein Issue in GitHub anlegen oder an [helpdesk@europace2.de](mailto:helpdesk@europace2.de) schreiben.
 
-# Nutzungsbedingungen
+## Nutzungsbedingungen
 Mit der Verwendung dieser API stimme ich den [Nutzungsbedingungen](https://developer.europace.de/terms/) zu.
