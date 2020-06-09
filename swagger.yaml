@@ -1479,6 +1479,7 @@ definitions:
           - ANNUITAETEN_DARLEHEN
           - FORWARD_DARLEHEN
           - KFW_DARLEHEN
+          - REGIONAL_FOERDER_DARLEHEN
           - PRIVAT_DARLEHEN
           - ZWISCHEN_FINANZIERUNG
           - VARIABLES_DARLEHEN
@@ -1503,6 +1504,9 @@ definitions:
       kfwProgramm:
         type: string
         description: 'nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_141, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155, PROGRAMM_159, PROGRAMM_167. Bei neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.'
+      regionalFoerderbankProgramm:
+        type: string
+        description: 'nur bei darlehensType==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden.'
       konditionWurdeManuellAngepasst:
         type: boolean
       konditionsAnpassungsBegruendung:
