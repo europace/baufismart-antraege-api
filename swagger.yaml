@@ -53,7 +53,7 @@ paths:
           x-example: 2016-03-11T10:57:45Z
         - name: antragsReferenz
           in: query
-          description: Suche nach Ihrer antragsReferenz
+          description: Suche nach deiner antragsReferenz
           required: false
           type: string
           allowEmptyValue: false
@@ -231,7 +231,7 @@ paths:
       tags:
         - Antraege
       summary: 'Angebot des Antrags abrufen. '
-      description: Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.  Nutzen sie den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot
+      description: Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.  Nutze den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot
       operationId: getAngebot_1
       produces:
         - application/json;charset=UTF-8
@@ -746,7 +746,7 @@ definitions:
         description: Nummer des Antrags auf der Europace Plattform
       antragsReferenz:
         type: string
-        description: Nummer des Antrags in Ihrem System (ändernbar)
+        description: Nummer des Antrags in deinem System (ändernbar)
       beratung:
         description: Informationen zum Geschäftsabschluss
         $ref: '#/definitions/Beratung'
