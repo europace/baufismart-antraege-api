@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.
-  version: "2.22"
+  version: "2.23"
   title: Anträge auslesen API
   contact:
     name: Europace AG
@@ -1035,6 +1035,7 @@ definitions:
         type: number
       einmalzahlung:
         type: number
+        description: Deprecated. Einmalzahlungen sind Teil der Sonderzahlungen.
       id:
         type: string
       produktAnbieter:
@@ -1077,6 +1078,7 @@ definitions:
         type: number
       einmalzahlung:
         type: number
+        description: Deprecated. Einmalzahlungen sind Teil der Sonderzahlungen.
       gesamtLaufzeitInJahren:
         type: integer
         format: int32
@@ -1284,6 +1286,7 @@ definitions:
         type: number
       einmalzahlung:
         type: number
+        description: Deprecated. Einmalzahlungen sind Teil der Sonderzahlungen.
       id:
         type: string
       maximalAufzuloesenderBetrag:
@@ -1479,6 +1482,7 @@ definitions:
           - ANNUITAETEN_DARLEHEN
           - FORWARD_DARLEHEN
           - KFW_DARLEHEN
+          - REGIONAL_FOERDER_DARLEHEN
           - PRIVAT_DARLEHEN
           - ZWISCHEN_FINANZIERUNG
           - VARIABLES_DARLEHEN
@@ -1531,6 +1535,9 @@ definitions:
       rateMonatlichInDerTilgungsfreienAnlaufzeit:
         type: number
         description: nur bei darlehensTyp==KFW_DARLEHEN
+      regionalFoerderbankProgramm:
+        type: string
+        description: 'nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden.'
       sollZins:
         type: number
         example: 2.05
