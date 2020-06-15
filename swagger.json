@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.23",
+    "version": "2.24",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1255,7 +1255,7 @@
         },
         "berufsgruppeBeiIngDiba": {
           "type": "string",
-          "description": "Berufsgruppe des Antragstellers (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:  ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Berufsgruppe des Antragstellers (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:  ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         },
         "beschaeftigung": {
           "$ref": "#/definitions/Beschaeftigung"
@@ -1263,17 +1263,24 @@
         "beschaeftigungImOeffentlichenDienstBeiDsl": {
           "type": "boolean"
         },
+        "branche": {
+          "type": "array",
+          "description": "Branchen je Produktanbieter, in welcher der Antragsteller tätig ist. Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
+          "items": {
+            "$ref": "#/definitions/Branche"
+          }
+        },
         "brancheBeiIngDiba": {
           "type": "string",
-          "description": "Branche, in welcher der Antragsteller tätig ist. (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         },
         "brancheBeiMhb": {
           "type": "string",
-          "description": "Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         },
         "brancheBeiSRating": {
           "type": "string",
-          "description": "Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         },
         "bruttoJahresEinkommenErwartet": {
           "type": "number"
@@ -2083,6 +2090,24 @@
       },
       "title": "Bonitaet"
     },
+    "Branche": {
+      "type": "object",
+      "properties": {
+        "typ": {
+          "type": "string",
+          "enum": [
+            "ING",
+            "MHB",
+            "S_RATING"
+          ]
+        },
+        "wert": {
+          "type": "string",
+          "description": "Kann je nach Typ folgende Ausprägungen besitzen.\n\nFür Ausprägung ING erlaubte Werte: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR\n\nFür Ausprägung MHB erlaubte Werte: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES\n\nFür Ausprägung S_RATING erlaubte Werte: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE"
+        }
+      },
+      "title": "Branche"
+    },
     "CharSequence": {
       "type": "object",
       "title": "CharSequence"
@@ -2585,7 +2610,7 @@
         },
         "ausstattung": {
           "type": "string",
-          "description": "Angaben zur Ausstattung für alle verschiedene Produktanbieter und für die  für die automatische Objektbewertungs-Schnittstelle (VDP), aber nicht für ING-DiBa. Erlaubte Werte sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
+          "description": "Angaben zur Ausstattung für alle verschiedene Produktanbieter und für die  für die automatische Objektbewertungs-Schnittstelle (VDP), aber nicht für ING. Erlaubte Werte sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können."
         },
         "baujahr": {
           "type": "string",

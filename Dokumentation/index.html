@@ -579,6 +579,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_bestehendesdarlehen">BestehendesDarlehen</a></li>
 <li><a href="#_bestehendesdarlehendesfinanzierungsobjekts">BestehendesDarlehenDesFinanzierungsObjekts</a></li>
 <li><a href="#_bonitaet">Bonitaet</a></li>
+<li><a href="#_branche">Branche</a></li>
 <li><a href="#_charsequence">CharSequence</a></li>
 <li><a href="#_darlehen">Darlehen</a></li>
 <li><a href="#_dokument">Dokument</a></li>
@@ -659,7 +660,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.23</p>
+<p><em>Version</em> : 2.24</p>
 </div>
 </div>
 <div class="sect2">
@@ -3849,7 +3850,7 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Berufsgruppe des Antragstellers (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+<p>Berufsgruppe des Antragstellers (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -3877,11 +3878,23 @@ table.CodeRay td.code>pre{padding:0}
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>branche</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Branchen je Produktanbieter, in welcher der Antragsteller tätig ist. Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>&lt; <a href="#_branche">Branche</a> &gt; array</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>brancheBeiIngDiba</strong><br>
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Branche, in welcher der Antragsteller tätig ist. (ING-DiBa) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+<p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -3893,7 +3906,7 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+<p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -3905,7 +3918,7 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+<p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -6080,6 +6093,56 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="sect2">
+<h3 id="_branche">Branche</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 61.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Beschreibung</th>
+<th class="tableblock halign-left valign-middle">Typ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>typ</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ING, MHB, S_RATING)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>wert</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Kann je nach Typ folgende Ausprägungen besitzen.</p>
+</div>
+<div class="paragraph">
+<p>Für Ausprägung ING erlaubte Werte: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR</p>
+</div>
+<div class="paragraph">
+<p>Für Ausprägung MHB erlaubte Werte: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES</p>
+</div>
+<div class="paragraph">
+<p>Für Ausprägung S_RATING erlaubte Werte: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>string</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="_charsequence">CharSequence</h3>
 <div class="paragraph">
 <p><em>Typ</em> : object</p>
@@ -7440,7 +7503,7 @@ table.CodeRay td.code>pre{padding:0}
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Angaben zur Ausstattung für alle verschiedene Produktanbieter und für die für die automatische Objektbewertungs-Schnittstelle (VDP), aber nicht für ING-DiBa. Erlaubte Werte sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+<p>Angaben zur Ausstattung für alle verschiedene Produktanbieter und für die für die automatische Objektbewertungs-Schnittstelle (VDP), aber nicht für ING. Erlaubte Werte sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -10761,7 +10824,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-06-10 15:09:53 +0200
+Last updated 2020-06-15 16:00:20 +0200
 </div>
 </div>
 </body>
