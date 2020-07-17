@@ -7,7 +7,7 @@
 API Definition zum Auslesen von Anträgen aus der Europace-Plattform aus Sicht eines Produktanbieters. Außerdem erlaubt die API das Setzen des Antragsstatus und des Kreditsachbearbeiters.
 
 ### Swagger Spezifikationen
-Die API ist vollständig in Swagger definiert. Die Swagger Definitionen werden sowohl im JSON- ([swagger.json](swagger.json)) als auch im YAML-Format ([swagger.yaml](https://github.com/europace/baufismart-antraege-api/blob/master/swagger.yaml)) zur Verfügung gestellt.
+Die API ist vollständig in Swagger definiert. Die Swagger Definitionen werden sowohl im JSON- ([swagger.json](https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.json)) als auch im YAML-Format ([swagger.yaml](https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.yaml)) zur Verfügung gestellt.
 
 Diese Spezifikationen können auch zur Generierung von Clients für diese API verwendet
 werden. Dazu empfehlen wir das Tool [Swagger Codegen](https://github.com/swagger-api/swagger-codegen)
