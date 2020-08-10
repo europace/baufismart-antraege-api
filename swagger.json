@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.24",
+    "version": "2.25",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1958,6 +1958,14 @@
         "eingetrageneGrundschuld": {
           "type": "number"
         },
+        "grundschuldArt": {
+          "type": "string",
+          "description": "Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
+          "enum": [
+            "BUCH_GRUNDSCHULD",
+            "BRIEF_GRUNDSCHULD"
+          ]
+        },
         "hauptKontonummerDslBank": {
           "type": "string",
           "description": "für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
@@ -2024,6 +2032,14 @@
         },
         "eingetrageneGrundschuld": {
           "type": "number"
+        },
+        "grundschuldArt": {
+          "type": "string",
+          "description": "Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
+          "enum": [
+            "BUCH_GRUNDSCHULD",
+            "BRIEF_GRUNDSCHULD"
+          ]
         },
         "hauptKontonummerDslBank": {
           "type": "string",
