@@ -1111,6 +1111,11 @@ definitions:
         format: date
       vertragsNummer:
         type: string
+      vertragsPartner:
+        type: array
+        description: Liste von Antragstellern, die diesen Vertrag abschließen.
+        items:
+          $ref: '#/definitions/AntragstellerVerknuepfung'
       verwaltungsgebuehrenJaehrlich:
         type: number
       zuteilungsDatum:
