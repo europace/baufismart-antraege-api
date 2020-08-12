@@ -1490,6 +1490,14 @@
         "abschlussGebuehr": {
           "type": "number"
         },
+        "abschlussGebuehrenVerrechnung": {
+          "type": "string",
+          "description": "Erlaubte Werte sind: SOFORTZAHLUNG, VERRECHNUNG",
+          "enum": [
+            "SOFORTZAHLUNG",
+            "VERRECHNUNG"
+          ]
+        },
         "angebotsHinweisFuerAntragsteller": {
           "type": "string",
           "description": "nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten"
@@ -1551,6 +1559,14 @@
       "properties": {
         "abschlussGebuehr": {
           "type": "number"
+        },
+        "abschlussGebuehrenVerrechnung": {
+          "type": "string",
+          "description": "Erlaubte Werte sind: SOFORTZAHLUNG, VERRECHNUNG",
+          "enum": [
+            "SOFORTZAHLUNG",
+            "VERRECHNUNG"
+          ]
         },
         "angebotsHinweisFuerAntragsteller": {
           "type": "string",
@@ -1982,8 +1998,7 @@
         },
         "laufzeitEnde": {
           "type": "string",
-          "format": "date",
-          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)"
+          "format": "date"
         },
         "rateMonatlich": {
           "type": "number"
@@ -2057,8 +2072,7 @@
         },
         "laufzeitEnde": {
           "type": "string",
-          "format": "date",
-          "description": "Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)"
+          "format": "date"
         },
         "rateMonatlich": {
           "type": "number"
@@ -2729,6 +2743,10 @@
     "GrundbuchAngabe": {
       "type": "object",
       "properties": {
+        "amtsgericht": {
+          "type": "string",
+          "description": "Zuständiges Amtsgericht"
+        },
         "anmerkungen": {
           "type": "string"
         },
@@ -3183,6 +3201,10 @@
         },
         "id": {
           "type": "string"
+        },
+        "laufzeitEnde": {
+          "type": "string",
+          "format": "date"
         },
         "rateMonatlich": {
           "type": "number"

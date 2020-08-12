@@ -1033,6 +1033,12 @@ definitions:
     properties:
       abschlussGebuehr:
         type: number
+      abschlussGebuehrenVerrechnung:
+        type: string
+        description: 'Erlaubte Werte sind: SOFORTZAHLUNG, VERRECHNUNG'
+        enum:
+          - SOFORTZAHLUNG
+          - VERRECHNUNG
       angebotsHinweisFuerAntragsteller:
         type: string
         description: nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten
@@ -1076,6 +1082,12 @@ definitions:
     properties:
       abschlussGebuehr:
         type: number
+      abschlussGebuehrenVerrechnung:
+        type: string
+        description: 'Erlaubte Werte sind: SOFORTZAHLUNG, VERRECHNUNG'
+        enum:
+          - SOFORTZAHLUNG
+          - VERRECHNUNG
       angebotsHinweisFuerAntragsteller:
         type: string
         description: nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten
@@ -1385,7 +1397,6 @@ definitions:
       laufzeitEnde:
         type: string
         format: date
-        description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)
       rateMonatlich:
         type: number
       sollZins:
@@ -1440,7 +1451,6 @@ definitions:
       laufzeitEnde:
         type: string
         format: date
-        description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)
       rateMonatlich:
         type: number
       sollZins:
@@ -1930,6 +1940,9 @@ definitions:
   GrundbuchAngabe:
     type: object
     properties:
+      amtsgericht:
+        type: string
+        description: Zuständiges Amtsgericht
       anmerkungen:
         type: string
       bandUndBlatt:
@@ -2247,6 +2260,9 @@ definitions:
         description: Der Name des externen Darlehensgebers (Firmierung). Es gibt keine entsprechende Beziehung zu einem Partner auf der Europace-Plattform.
       id:
         type: string
+      laufzeitEnde:
+        type: string
+        format: date
       rateMonatlich:
         type: number
       typ:
