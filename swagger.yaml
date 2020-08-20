@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.
-  version: "2.24"
+  version: "2.25"
   title: Anträge auslesen API
   contact:
     name: Europace AG
@@ -114,6 +114,10 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Error'
         "500":
           description: Internal Server Error
           schema:
@@ -161,6 +165,10 @@ paths:
             $ref: '#/definitions/Error'
         "404":
           description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
           schema:
             $ref: '#/definitions/Error'
         "500":
@@ -218,6 +226,10 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Error'
         "500":
           description: Internal Server Error
           schema:
@@ -271,6 +283,10 @@ paths:
             $ref: '#/definitions/Error'
         "404":
           description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
           schema:
             $ref: '#/definitions/Error'
         "500":
@@ -332,6 +348,10 @@ paths:
             $ref: '#/definitions/Error'
         "404":
           description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
           schema:
             $ref: '#/definitions/Error'
         "500":
@@ -444,6 +464,10 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Error'
         "500":
           description: Internal Server Error
           schema:
@@ -507,6 +531,10 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Error'
         "500":
           description: Internal Server Error
           schema:
@@ -566,6 +594,10 @@ paths:
             $ref: '#/definitions/Error'
         "404":
           description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        "422":
+          description: Unprocessable Entity
           schema:
             $ref: '#/definitions/Error'
         "500":
@@ -665,6 +697,12 @@ definitions:
       versicherungsZeitraum:
         $ref: '#/definitions/VersicherungsZeitraum'
     title: Absicherung
+  AbsicherungsAngaben:
+    type: object
+    properties:
+      betraegtWoechentlicheArbeitsZeitMindestens15Stunden:
+        type: boolean
+    title: AbsicherungsAngaben
   AngebotZumAntrag:
     type: object
     properties:
@@ -839,6 +877,8 @@ definitions:
   Antragsteller:
     type: object
     properties:
+      absicherungsAngaben:
+        $ref: '#/definitions/AbsicherungsAngaben'
       anrede:
         type: string
         enum:
@@ -1033,6 +1073,12 @@ definitions:
     properties:
       abschlussGebuehr:
         type: number
+      abschlussGebuehrenVerrechnung:
+        type: string
+        description: 'Erlaubte Werte sind: SOFORTZAHLUNG, VERRECHNUNG'
+        enum:
+          - SOFORTZAHLUNG
+          - VERRECHNUNG
       angebotsHinweisFuerAntragsteller:
         type: string
         description: nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten
@@ -1076,6 +1122,12 @@ definitions:
     properties:
       abschlussGebuehr:
         type: number
+      abschlussGebuehrenVerrechnung:
+        type: string
+        description: 'Erlaubte Werte sind: SOFORTZAHLUNG, VERRECHNUNG'
+        enum:
+          - SOFORTZAHLUNG
+          - VERRECHNUNG
       angebotsHinweisFuerAntragsteller:
         type: string
         description: nur bei neuen extern berechneten Bausparverträgen und bei Gegenangeboten
@@ -1111,6 +1163,11 @@ definitions:
         format: date
       vertragsNummer:
         type: string
+      vertragsPartner:
+        type: array
+        description: Liste von Antragstellern, die diesen Vertrag abschließen.
+        items:
+          $ref: '#/definitions/AntragstellerVerknuepfung'
       verwaltungsgebuehrenJaehrlich:
         type: number
       zuteilungsDatum:
@@ -1366,6 +1423,12 @@ definitions:
         description: 'für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG'
       eingetrageneGrundschuld:
         type: number
+      grundschuldArt:
+        type: string
+        description: 'Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        enum:
+          - BUCH_GRUNDSCHULD
+          - BRIEF_GRUNDSCHULD
       hauptKontonummerDslBank:
         type: string
         description: 'für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist ''DSL Bank'' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG'
@@ -1374,7 +1437,6 @@ definitions:
       laufzeitEnde:
         type: string
         format: date
-        description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)
       rateMonatlich:
         type: number
       sollZins:
@@ -1415,6 +1477,12 @@ definitions:
         description: 'für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG'
       eingetrageneGrundschuld:
         type: number
+      grundschuldArt:
+        type: string
+        description: 'Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        enum:
+          - BUCH_GRUNDSCHULD
+          - BRIEF_GRUNDSCHULD
       hauptKontonummerDslBank:
         type: string
         description: 'für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist ''DSL Bank'' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG'
@@ -1423,7 +1491,6 @@ definitions:
       laufzeitEnde:
         type: string
         format: date
-        description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)
       rateMonatlich:
         type: number
       sollZins:
@@ -1913,6 +1980,9 @@ definitions:
   GrundbuchAngabe:
     type: object
     properties:
+      amtsgericht:
+        type: string
+        description: Zuständiges Amtsgericht
       anmerkungen:
         type: string
       bandUndBlatt:
@@ -2230,6 +2300,9 @@ definitions:
         description: Der Name des externen Darlehensgebers (Firmierung). Es gibt keine entsprechende Beziehung zu einem Partner auf der Europace-Plattform.
       id:
         type: string
+      laufzeitEnde:
+        type: string
+        format: date
       rateMonatlich:
         type: number
       typ:
