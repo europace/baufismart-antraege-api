@@ -697,6 +697,12 @@ definitions:
       versicherungsZeitraum:
         $ref: '#/definitions/VersicherungsZeitraum'
     title: Absicherung
+  AbsicherungsAngaben:
+    type: object
+    properties:
+      betraegtWoechentlicheArbeitsZeitMindestens15Stunden:
+        type: boolean
+    title: AbsicherungsAngaben
   AngebotZumAntrag:
     type: object
     properties:
@@ -871,6 +877,8 @@ definitions:
   Antragsteller:
     type: object
     properties:
+      absicherungsAngaben:
+        $ref: '#/definitions/AbsicherungsAngaben'
       anrede:
         type: string
         enum:
@@ -1944,7 +1952,13 @@ definitions:
       miteigentumsAnteil:
         description: Nur bei ObjektArt == EIGENTUMSWOHNUNG.
         $ref: '#/definitions/MiteigentumsAnteil'
+      modernisierungen:
+        type: array
+        description: Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.
+        items:
+          $ref: '#/definitions/Modernisierung'
       modernisierungsAngaben:
+        description: Deprecated. Zukünftig wird die Liste Modernisierungen verwendet.
         $ref: '#/definitions/ModernisierungsAngaben'
       unterkellerung:
         type: string
@@ -2271,6 +2285,33 @@ definitions:
         type: integer
         format: int32
     title: MiteigentumsAnteil
+  Modernisierung:
+    type: object
+    properties:
+      jahrDerModernisierung:
+        type: string
+      modernisierungGrad:
+        type: string
+        description: 'Erlaubte Werte sind: UEBERWIEGEND,UMFASSEND,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.'
+        enum:
+        - EINFACH
+        - MITTEL
+        - UEBERWIEGEND
+        - UMFASSEND
+      modernisierungsArt:
+        type: string
+        description: 'Erlaubte Werte sind: KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG, WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG. Der Client muss daher mit unbekannten Werten umgehen können.'
+        enum:
+        - KERNSANIERUNG
+        - DACHERNEUERUNG
+        - FENSTER
+        - ROHRLEITUNGEN
+        - HEIZUNG
+        - WAERMEDAEMMUNG
+        - BAEDER
+        - INNENAUSBAU
+        - RAUMAUFTEILUNG
+    title: Modernisierung
   ModernisierungsAngaben:
     type: object
     properties:

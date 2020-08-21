@@ -471,6 +471,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_definitions">Definitionen</a>
 <ul class="sectlevel2">
 <li><a href="#_absicherung">Absicherung</a></li>
+<li><a href="#_absicherungsangaben">AbsicherungsAngaben</a></li>
 <li><a href="#_angebotzumantrag">AngebotZumAntrag</a></li>
 <li><a href="#_anschrift">Anschrift</a></li>
 <li><a href="#_antraege">Antraege</a></li>
@@ -522,6 +523,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_meldung">Meldung</a></li>
 <li><a href="#_mietausgaben">MietAusgaben</a></li>
 <li><a href="#_miteigentumsanteil">MiteigentumsAnteil</a></li>
+<li><a href="#_modernisierung">Modernisierung</a></li>
 <li><a href="#_modernisierungsangaben">ModernisierungsAngaben</a></li>
 <li><a href="#_nachrangigesexternesdarlehen">NachrangigesExternesDarlehen</a></li>
 <li><a href="#_paginationlinks">PaginationLinks</a></li>
@@ -3246,6 +3248,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </table>
 </div>
 <div class="sect2">
+<h3 id="_absicherungsangaben">AbsicherungsAngaben</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 42.8571%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Typ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>betraegtWoechentlicheArbeitsZeitMindestens15Stunden</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>boolean</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="_angebotzumantrag">AngebotZumAntrag</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -3779,6 +3807,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>absicherungsAngaben</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="#_absicherungsangaben">AbsicherungsAngaben</a></p>
+</div></div></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>anrede</strong><br>
@@ -7699,10 +7737,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>modernisierungen</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>&lt; <a href="#_modernisierung">Modernisierung</a> &gt; array</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>modernisierungsAngaben</strong><br>
 <em>optional</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Deprecated. Zukünftig wird die Liste Modernisierungen verwendet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_modernisierungsangaben">ModernisierungsAngaben</a></p>
 </div></div></td>
@@ -8775,6 +8827,59 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>integer (int32)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_modernisierung">Modernisierung</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 61.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Beschreibung</th>
+<th class="tableblock halign-left valign-middle">Typ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>jahrDerModernisierung</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>string</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>modernisierungGrad</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Erlaubte Werte sind: UEBERWIEGEND,UMFASSEND,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (EINFACH, MITTEL, UEBERWIEGEND, UMFASSEND)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>modernisierungsArt</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Erlaubte Werte sind: KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG, WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG, WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG)</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -10905,7 +11010,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-08-19 18:07:53 +0200
+Last updated 2020-08-21 10:54:35 +0200
 </div>
 </div>
 </body>
