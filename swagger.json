@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.25",
+    "version": "2.26",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1569,6 +1569,11 @@
           "type": "number",
           "description": "Deprecated. Einmalzahlungen sind Teil der Sonderzahlungen."
         },
+        "gesamtLaufzeitInJahren": {
+          "type": "integer",
+          "format": "int32",
+          "description": "nur bei neuen extern berechneten Bausparverträgen"
+        },
         "id": {
           "type": "string"
         },
@@ -1603,6 +1608,13 @@
         },
         "vertragsNummer": {
           "type": "string"
+        },
+        "vertragsPartner": {
+          "type": "array",
+          "description": "nur bei neuen extern berechneten Bausparverträgen",
+          "items": {
+            "$ref": "#/definitions/AntragstellerVerknuepfung"
+          }
         },
         "verwaltungsgebuehrenJaehrlich": {
           "type": "number"
@@ -1641,7 +1653,8 @@
         },
         "gesamtLaufzeitInJahren": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "description": "nur bei neuen extern berechneten Bausparverträgen"
         },
         "id": {
           "type": "string"
@@ -2264,6 +2277,11 @@
           "type": "integer",
           "format": "int32",
           "description": "nur bei darlehensTyp==FORWARD_DARLEHEN"
+        },
+        "kalkulatorischesLaufzeitEnde": {
+          "type": "string",
+          "format": "date",
+          "description": "bei allen Darlehenstypen außer darlehensTyp==ZWISCHEN_FINANZIERUNG"
         },
         "kfwEnergieEffizienzStandard": {
           "type": "string",
