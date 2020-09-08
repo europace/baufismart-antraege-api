@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.",
-    "version": "2.26",
+    "version": "2.27",
     "title": "Anträge auslesen API",
     "contact": {
       "name": "Europace AG",
@@ -1098,11 +1098,30 @@
             "$ref": "#/definitions/Meldung"
           }
         },
+        "pruefungsErgebnisse": {
+          "type": "array",
+          "description": "Bewertungen seitens der Produktanbieter während der Angebotserstellung.",
+          "items": {
+            "$ref": "#/definitions/AngebotsPruefungsErgebnis"
+          }
+        },
         "_links": {
           "$ref": "#/definitions/Links"
         }
       },
       "title": "AngebotZumAntrag"
+    },
+    "AngebotsPruefungsErgebnis": {
+      "type": "object",
+      "properties": {
+        "bewertung": {
+          "$ref": "#/definitions/BewertungDurchProduktAnbieter"
+        },
+        "produktAnbieterId": {
+          "type": "string"
+        }
+      },
+      "title": "AngebotsPruefungsErgebnis"
     },
     "Anschrift": {
       "type": "object",
@@ -2172,6 +2191,16 @@
         }
       },
       "title": "BestehendesDarlehenDesFinanzierungsObjekts"
+    },
+    "BewertungDurchProduktAnbieter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "nur bei produktAnbieterId==DEUTSCHE_BANK"
+        }
+      },
+      "title": "BewertungDurchProduktAnbieter"
     },
     "Bonitaet": {
       "type": "object",
