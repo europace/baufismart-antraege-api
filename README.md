@@ -1,6 +1,6 @@
 # Anträge API
 
-##### Aktuelle Version: 2.27
+##### Aktuelle Version: 2.28
 
 [Aktuelles RELEASE](https://github.com/hypoport/antraege-auslesen-api/releases/)
 
