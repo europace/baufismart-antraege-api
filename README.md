@@ -104,7 +104,7 @@ Für beide Parameter wird ein Datum erwartet, wenn gesetzt.
 
 Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 
-* Statusänderung des Antrags 
+* Statusänderung des Antrags
 * Änderung des Kreditsachbearbeiters
 * Freigabe eines Dokumentes für den Kreditbetrieb
 
@@ -194,4 +194,4 @@ Ja!
 Bei Fragen und Anregungen entweder ein Issue in GitHub anlegen oder an [helpdesk@europace2.de](mailto:helpdesk@europace2.de) schreiben.
 
 ## Nutzungsbedingungen
-Mit der Verwendung dieser API stimme ich den [Nutzungsbedingungen](https://developer.europace.de/terms/) zu.
+Mit der Verwendung dieser API stimme ich den [Nutzungsbedingungen](https://docs.api.europace.de/nutzungsbedingungen/) zu.
