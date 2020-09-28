@@ -58,7 +58,7 @@ Für die Abfrage aller Anträge gibt es zwei Parameter zur Einschränkung der Su
 
 Für beide Parameter wird ein Datum erwartet, wenn gesetzt.
 
-### Was ist eine relevante Änderung am Antrag?
+#### Was ist eine relevante Änderung am Antrag?
 
 Welche Ereignisse führen zum Setzen des `letzteAenderung` Feldes?
 
