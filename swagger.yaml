@@ -1,26 +1,26 @@
 ---
 swagger: "2.0"
 info:
-  description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Securitykontext des Produktanbieters eingenommen.
+  description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
   version: "2.28"
-  title: Anträge auslesen API
+  title: Anträge API
   contact:
     name: Europace AG
     url: www.europace2.de
-    email: helpdesk@europace2.de
+    email: devsupport@europace2.de
 host: baufismart.api.europace.de
 basePath: /
 tags:
-- name: Antraege
-  description: Dieser Endpunkt dient zum aktualisieren von Daten eines Antrags
+- name: Anträge
+  description: Zugriff auf Anträge für die Kreditentscheidung
 schemes:
 - https
 paths:
   /v2/antraege:
     get:
       tags:
-      - Antraege
-      summary: alle Anträge abrufen
+      - Anträge
+      summary: Alle Anträge abrufen
       description: 'Es werden alle Anträge ausgeliefert, die der authentifizierten Partner sehen darf. Offen: Sortierung, Pagination, Filterung'
       operationId: getAlleAntraege
       produces:
@@ -123,14 +123,14 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
   /v2/antraege/{vorgang}:
     get:
       tags:
-      - Antraege
-      summary: Alle Anträg eines Vorgangs abrufen
+      - Anträge
+      summary: Alle Anträge eines Vorgangs abrufen
       description: Als Parameter wird die Vorgangsnummer in der Form 'AB1234' verwendet.
       operationId: getAntraegeByVorgangNummer
       produces:
@@ -176,13 +176,13 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}:
     get:
       tags:
-      - Antraege
+      - Anträge
       summary: Teilanträge eines Antrags abrufen
       description: Als Parameter wird die Vorgangs- und Antragsnummer in der Form 'AB1234/1' verwendet.
       operationId: getAntrag
@@ -235,14 +235,14 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/angebot:
     get:
       tags:
-      - Antraege
-      summary: 'Angebot des Antrags abrufen. '
+      - Anträge
+      summary: Angebot des Antrags abrufen
       description: Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.  Nutze den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot
       operationId: getAngebot_1
       produces:
@@ -294,14 +294,14 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: true
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}:
     get:
       tags:
-      - Antraege
-      summary: einen Antrag abrufen
+      - Anträge
+      summary: Einzelnen Antrag abrufen
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getAntrag_1
       produces:
@@ -359,13 +359,13 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
     patch:
       tags:
-      - Antraege
-      summary: einen Antrag aktualisieren
+      - Anträge
+      summary: Antrag aktualisieren
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.
       operationId: updateAntrag
       consumes:
@@ -408,13 +408,13 @@ paths:
         "403":
           description: Forbidden
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:schreiben
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot:
     get:
       tags:
-      - Antraege
+      - Anträge
       summary: Angebot des Antrags abrufen
       description: Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.
       operationId: getAngebot
@@ -473,13 +473,13 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene:
     get:
       tags:
-      - Antraege
+      - Anträge
       summary: Die Zahlungsplaene (Tilgungs- & Sparpläne) des angenommenen Angebots.
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getZahlungsplaene
@@ -540,13 +540,13 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner:
     get:
       tags:
-      - Antraege
+      - Anträge
       summary: Den Ansprechpartner (Vertrieb) des  Teilantrags abrufen.
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getAnsprechpartner
@@ -605,14 +605,14 @@ paths:
           schema:
             $ref: '#/definitions/Error'
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:lesen
       deprecated: false
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/status:
     post:
       tags:
-      - Antraege
-      summary: Zum Setzen des Antragsstatus
+      - Anträge
+      summary: Setzen des Antragsstatus
       operationId: setAntragsStatus_1
       consumes:
       - application/json
@@ -654,16 +654,21 @@ paths:
         "404":
           description: Not Found
       security:
-      - oauth2:
-        - API
+      - OAuth2:
+        - baufinanzierung:antrag:schreiben
       deprecated: false
 securityDefinitions:
-  oauth2:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+  OAuth2:
     type: oauth2
-    tokenUrl: https://api.europace.de/login
-    flow: password
+    tokenUrl: https://api.europace.de/auth/access-token
+    flow: application
     scopes:
-      API: Authorisation Scope für die gesamte API.
+      baufinanzierung:antrag:lesen: Lesen eines Antrags oder mehrerer Anträge
+      baufinanzierung:antrag:schreiben: Ändern von Daten eines Antrags (bspw. Antragsstatus, Kreditsachbearbeiter)
 definitions:
   Absicherung:
     type: object
