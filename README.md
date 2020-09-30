@@ -9,11 +9,6 @@ Die API erlaubt den Zugriff auf Anträge für die Kreditentscheidung als Produkt
 
 ## Authentifizierung
 
-> #### Hinweis
->
-> Bis Juli 2021 ist die Authentifizierung noch über API-Key möglich. Danach wird die Anträge-API nur noch über OAuth2 ansprechbar sein.
-> Wir empfehlen neuen Partnern daher, sich mittels OAuth2 zu verbinden. Bei Fragen wende dich bitte an [devsupport@europace2.de](mailto:devsupport@europace2.de).
-
 Zur Authentifizierung nutzt Europace [OAuth2](https://oauth.net/2/), um Zugang zu den APIs zu ermöglichen. Die Beschreibung unserer Authorization-API findest du [hier](https://github.com/europace/authorization-api).
 
 Der OAuth2-Client benötigt folgende Scopes, um die API verwenden zu können:
@@ -22,6 +17,12 @@ Der OAuth2-Client benötigt folgende Scopes, um die API verwenden zu können:
 |-----------------------------------|---------------------------------|
 | `baufinanzierung:antrag:lesen`       | als Produktanbieter, Daten von Anträgen abrufen. |
 | `baufinanzierung:antrag:schreiben`   | als Produktanbieter, Daten eines Antrags ändern (z.B. Antragsstatus, Kreditsachbearbeiter).|
+
+#### Hinweis
+
+> Bis Juli 2021 ist die Authentifizierung noch über API-Key möglich. Danach wird die Anträge-API nur noch über OAuth2 ansprechbar sein.
+> Wir empfehlen neuen Partnern daher, sich mittels OAuth2 zu verbinden. Bei Fragen wende dich bitte an [devsupport@europace2.de](mailto:devsupport@europace2.de).
+
 
 ## Häufige Fragen
 
