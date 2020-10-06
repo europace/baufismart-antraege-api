@@ -4,7 +4,7 @@
 
 Die API erlaubt den Zugriff auf Anträge für die Kreditentscheidung als Produktanbieter.
 
-[API Referenz](https://europace.github.io/baufismart-antraege-api/)  ⋅
+[API Referenz](https://europace.github.io/baufismart-antraege-api/docs/index.html)  ⋅
 [Release Notes](https://github.com/europace/baufismart-antraege-api/releases/)
 
 ## Authentifizierung
