@@ -4,7 +4,7 @@
 
 Die API erlaubt den Zugriff auf Anträge für die Kreditentscheidung als Produktanbieter.
 
-[API Referenz](http://htmlpreview.github.io?https://raw.githubusercontent.com/hypoport/antraege-auslesen-api/master/Dokumentation/index.html)  ⋅
+[API Referenz](https://europace.github.io/baufismart-antraege-api/)  ⋅
 [Release Notes](https://github.com/europace/baufismart-antraege-api/releases/)
 
 ## Authentifizierung
