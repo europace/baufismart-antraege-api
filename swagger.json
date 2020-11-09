@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.",
-    "version": "2.28",
+    "version": "2.29",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -984,7 +984,7 @@
       "tokenUrl": "https://api.europace.de/auth/access-token",
       "flow": "application",
       "scopes": {
-        "baufinanzierung:antrag:lesen": "Lesen eines Antrags oder mehrerer Anträge",
+        "baufinanzierung:antrag:lesen": "Auslesen von Anträgen",
         "baufinanzierung:antrag:schreiben": "Ändern von Daten eines Antrags (bspw. Antragsstatus, Kreditsachbearbeiter)"
       }
     }
@@ -2337,10 +2337,14 @@
           "type": "string",
           "description": "Begründung, wenn die Kondition angepasst wurde"
         },
+        "konditionsAnpassungsDelta": {
+          "type": "number",
+          "description": "Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die Kondition angepasst wurde."
+        },
         "laufZeitInJahren": {
           "type": "integer",
           "format": "int32",
-          "description": "nur bei darlehensTyp==KFW_DARLEHEN"
+          "description": "nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
         },
         "laufzeitInMonaten": {
           "type": "integer",
@@ -2365,11 +2369,11 @@
         },
         "rateMonatlichInDerTilgungsfreienAnlaufzeit": {
           "type": "number",
-          "description": "nur bei darlehensTyp==KFW_DARLEHEN"
+          "description": "nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
         },
         "regionalFoerderbankProgramm": {
           "type": "string",
-          "description": "nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden."
+          "description": "nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT, NRW_BANK_WOHNEIGENTUM. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden."
         },
         "sollZins": {
           "type": "number",
@@ -2383,7 +2387,7 @@
         "tilgungsFreieAnlaufJahre": {
           "type": "integer",
           "format": "int32",
-          "description": "nur bei darlehensTyp==KFW_DARLEHEN"
+          "description": "nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
         },
         "verwendungsZweck": {
           "type": "string",
