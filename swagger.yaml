@@ -1649,6 +1649,7 @@ definitions:
         description: Begründung, wenn die Kondition angepasst wurde
       konditionsAnpassungsDelta:
         type: number
+        example: -0.25
         description: 'Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die Kondition angepasst wurde (Differenz aus angepasster und ursprünglich berechneter Kondition, z.B. angepasst 1,25% - ursprünglich 1,50% = Delta von -0,25%).'
       laufZeitInJahren:
         type: integer
