@@ -1643,12 +1643,13 @@ definitions:
         description: 'nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_141, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155, PROGRAMM_159, PROGRAMM_167. Bei neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.'
       konditionWurdeManuellAngepasst:
         type: boolean
+        description: true, wenn die Kondition manuell durch den Berater angepasst wurde (d.h. entweder Soll- oder Effektivzins des Darlehens, je nachdem welche Anpassung durch den Produktanbieter erlaubt ist).
       konditionsAnpassungsBegruendung:
         type: string
         description: Begründung, wenn die Kondition angepasst wurde
       konditionsAnpassungsDelta:
         type: number
-        description: 'Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die Kondition angepasst wurde.'
+        description: 'Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die Kondition angepasst wurde (Differenz aus angepasster und ursprünglich berechneter Kondition, z.B. angepasst 1,25% - ursprünglich 1,50% = Delta von -0,25%).'
       laufZeitInJahren:
         type: integer
         format: int32
