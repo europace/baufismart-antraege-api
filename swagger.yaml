@@ -1596,7 +1596,7 @@ definitions:
       auszahlungsDatum:
         type: string
         format: date
-        description: nur bei darlehensTyp IN [FORWARD_DARLEHEN,ANNUITAETEN_DARLEHEN]
+        description: Datum, an dem das Darlehen dem Kunden ausgezahlt werden soll. Entweder berechnet oder vom Kunden angegeben.
       auszahlungsKurs:
         type: number
       bausteinId:
