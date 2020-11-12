@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
-  version: "2.28"
+  version: "2.29"
   title: Anträge API
   contact:
     name: Europace AG
@@ -667,7 +667,7 @@ securityDefinitions:
     tokenUrl: https://api.europace.de/auth/access-token
     flow: application
     scopes:
-      baufinanzierung:antrag:lesen: Lesen eines Antrags oder mehrerer Anträge
+      baufinanzierung:antrag:lesen: Auslesen von Anträgen
       baufinanzierung:antrag:schreiben: Ändern von Daten eines Antrags (bspw. Antragsstatus, Kreditsachbearbeiter)
 definitions:
   Absicherung:
@@ -1596,7 +1596,7 @@ definitions:
       auszahlungsDatum:
         type: string
         format: date
-        description: nur bei darlehensTyp IN [FORWARD_DARLEHEN,ANNUITAETEN_DARLEHEN]
+        description: Datum, an dem das Darlehen dem Kunden ausgezahlt werden soll. Entweder berechnet oder vom Kunden angegeben.
       auszahlungsKurs:
         type: number
       bausteinId:
@@ -1643,13 +1643,18 @@ definitions:
         description: 'nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_141, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155, PROGRAMM_159, PROGRAMM_167. Bei neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.'
       konditionWurdeManuellAngepasst:
         type: boolean
+        description: true, wenn die Kondition manuell durch den Berater angepasst wurde (d.h. entweder Soll- oder Effektivzins des Darlehens, je nachdem welche Anpassung durch den Produktanbieter erlaubt ist).
       konditionsAnpassungsBegruendung:
         type: string
         description: Begründung, wenn die Kondition angepasst wurde
+      konditionsAnpassungsDelta:
+        type: number
+        example: -0.25
+        description: 'Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die Kondition angepasst wurde (Differenz aus angepasster und ursprünglich berechneter Kondition, z.B. angepasst 1,25% - ursprünglich 1,50% = Delta von -0,25%).'
       laufZeitInJahren:
         type: integer
         format: int32
-        description: nur bei darlehensTyp==KFW_DARLEHEN
+        description: nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN
       laufzeitInMonaten:
         type: integer
         format: int32
@@ -1668,10 +1673,10 @@ definitions:
         description: Die monatliche Rate in Euro
       rateMonatlichInDerTilgungsfreienAnlaufzeit:
         type: number
-        description: nur bei darlehensTyp==KFW_DARLEHEN
+        description: nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN
       regionalFoerderbankProgramm:
         type: string
-        description: 'nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden.'
+        description: 'nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT, NRW_BANK_WOHNEIGENTUM. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden.'
       sollZins:
         type: number
         example: 2.05
@@ -1682,7 +1687,7 @@ definitions:
       tilgungsFreieAnlaufJahre:
         type: integer
         format: int32
-        description: nur bei darlehensTyp==KFW_DARLEHEN
+        description: nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN
       verwendungsZweck:
         type: string
         description: nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG
