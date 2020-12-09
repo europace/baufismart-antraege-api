@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Asciidoctor 2.0.10">
     <title>Anträge API</title>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
     <style>
         /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
         /* Uncomment @import statement to use as custom stylesheet */
@@ -2168,11 +2167,10 @@
                             <li><a href="#_getantrag_1">Einzelnen Antrag abrufen</a></li>
                             <li><a href="#_updateantrag">Antrag aktualisieren</a></li>
                             <li><a href="#_getangebot">Angebot des Antrags abrufen</a></li>
-                            <li><a href="#_getzahlungsplaene">Die Zahlungsplaene (Tilgungs- &amp; Sparpläne) des
-                                angenommenen
-                                Angebots.</a></li>
-                            <li><a href="#_getansprechpartner">Den Ansprechpartner (Vertrieb) des Teilantrags
-                                abrufen.</a></li>
+                            <li>
+                                <a href="#_getzahlungsplaene">Die Zahlungsplaene (Tilgungs- &amp; Sparpläne) des angenommenen Angebots.</a>
+                            </li>
+                            <li><a href="#_getansprechpartner">Den Ansprechpartner (Vertrieb) des Teilantrags abrufen.</a></li>
                             <li><a href="#_setantragsstatus_1">Setzen des Antragsstatus</a></li>
                         </ul>
                     </li>
@@ -2204,8 +2202,7 @@
                     <li><a href="#_bestehendeimmobilie">BestehendeImmobilie</a></li>
                     <li><a href="#_bestehenderbausparvertrag">BestehenderBausparvertrag</a></li>
                     <li><a href="#_bestehendesdarlehen">BestehendesDarlehen</a></li>
-                    <li><a href="#_bestehendesdarlehendesfinanzierungsobjekts">BestehendesDarlehenDesFinanzierungsObjekts</a>
-                    </li>
+                    <li><a href="#_bestehendesdarlehendesfinanzierungsobjekts">BestehendesDarlehenDesFinanzierungsObjekts</a></li>
                     <li><a href="#_bewertungdurchproduktanbieter">BewertungDurchProduktAnbieter</a></li>
                     <li><a href="#_bonitaet">Bonitaet</a></li>
                     <li><a href="#_branche">Branche</a></li>
@@ -2280,22 +2277,19 @@
         <h2 id="_overview">Übersicht</h2>
         <div class="sectionbody">
             <div class="paragraph">
-                <p>Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird
-                    ausschließlich der
-                    Kontext des Produktanbieters eingenommen.</p>
+                <p>Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.</p>
             </div>
             <div class="sect2">
                 <h3 id="_aktuelle_version">Aktuelle Version</h3>
                 <div class="paragraph">
-                    <p><em>Version</em> : 2.29</p>
+                    <p><em>Version</em> : 2.30</p>
                 </div>
             </div>
             <div class="sect2">
                 <h3 id="_kontaktinformationen">Kontaktinformationen</h3>
                 <div class="paragraph">
                     <p><em>Kontakt</em> : Europace AG<br>
-                        <em>Kontakt E-Mail</em> : <a href="mailto:devsupport@europace2.de">devsupport@europace2.de</a>
-                    </p>
+                        <em>Kontakt E-Mail</em> : <a href="mailto:devsupport@europace2.de">devsupport@europace2.de</a></p>
                 </div>
             </div>
             <div class="sect2">
@@ -2334,7 +2328,8 @@
                 <div class="paragraph">
                     <p><em>Typ</em> : oauth2<br>
                         <em>Flow</em> : application<br>
-                        <em>Token URL</em> : <a href="https://api.europace.de/auth/access-token" class="bare">https://api.europace.de/auth/access-token</a>
+                        <em>Token URL</em> :
+                        <a href="https://api.europace.de/auth/access-token" class="bare">https://api.europace.de/auth/access-token</a>
                     </p>
                 </div>
                 <table class="tableblock frame-all grid-all stretch">
@@ -2404,8 +2399,7 @@
                     <div class="sect4">
                         <h5 id="_beschreibung">Beschreibung</h5>
                         <div class="paragraph">
-                            <p>Es werden alle Anträge ausgeliefert, die der authentifizierten Partner sehen darf. Offen:
-                                Sortierung, Pagination, Filterung</p>
+                            <p>Es werden alle Anträge ausgeliefert, die der authentifizierten Partner sehen darf. Offen: Sortierung, Pagination, Filterung</p>
                         </div>
                     </div>
                     <div class="sect4">
@@ -3889,9 +3883,7 @@
                     <div class="sect4">
                         <h5 id="_beschreibung_4">Beschreibung</h5>
                         <div class="paragraph">
-                            <p>Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat. Nutze den
-                                Endpunkt
-                                /{vorgang}/{antrag}/{teilAntrag}/angebot</p>
+                            <p>Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat. Nutze den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot</p>
                         </div>
                     </div>
                     <div class="sect4">
@@ -4742,9 +4734,7 @@
                     <div class="sect4">
                         <h5 id="_beschreibung_6">Beschreibung</h5>
                         <div class="paragraph">
-                            <p>Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es
-                                können
-                                mehrere Operationen gleichzeitig übertragen werden.</p>
+                            <p>Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.</p>
                         </div>
                     </div>
                     <div class="sect4">
@@ -5488,8 +5478,7 @@
                     </div>
                 </div>
                 <div class="sect3">
-                    <h4 id="_getzahlungsplaene">Die Zahlungsplaene (Tilgungs- &amp; Sparpläne) des angenommenen
-                        Angebots.</h4>
+                    <h4 id="_getzahlungsplaene">Die Zahlungsplaene (Tilgungs- &amp; Sparpläne) des angenommenen Angebots.</h4>
                     <div class="literalblock">
                         <div class="content">
                             <pre>GET /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene</pre>
@@ -7037,8 +7026,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS,
-                                        ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN)</p>
+                                    <p>enum (ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS, ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN)</p>
                                 </div>
                             </div>
                         </td>
@@ -7186,8 +7174,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_angebotspruefungsergebnis">AngebotsPruefungsErgebnis</a> &gt;
-                                        array</p>
+                                    <p>&lt; <a href="#_angebotspruefungsergebnis">AngebotsPruefungsErgebnis</a> &gt; array</p>
                                 </div>
                             </div>
                         </td>
@@ -7457,8 +7444,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Für Rückfragen auf Seite des Vertriebs, kann mit dem Vermittler identisch
-                                        sein</p>
+                                    <p>Für Rückfragen auf Seite des Vertriebs, kann mit dem Vermittler identisch sein</p>
                                 </div>
                             </div>
                         </td>
@@ -7554,8 +7540,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Gibt an, ob es sich um einen Antrag aus dem Testmodus oder Echtgeschäft
-                                        handelt</p>
+                                    <p>Gibt an, ob es sich um einen Antrag aus dem Testmodus oder Echtgeschäft handelt</p>
                                 </div>
                             </div>
                         </td>
@@ -7579,8 +7564,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die
-                                        hochgeladenen Dokumente des Produktanbieters.</p>
+                                    <p>Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.</p>
                                 </div>
                             </div>
                         </td>
@@ -7906,8 +7890,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (FINANZIELLE_SITUATION, NEGATIV_MERKMAL, WERTERMITTLUNG, KRITERIEN,
-                                        UNTERLAGEN_UNVOLLSTAENDIG, GEGENANGEBOT, KEINE_ANGABE)</p>
+                                    <p>enum (FINANZIELLE_SITUATION, NEGATIV_MERKMAL, WERTERMITTLUNG, KRITERIEN, UNTERLAGEN_UNVOLLSTAENDIG, GEGENANGEBOT, KEINE_ANGABE)</p>
                                 </div>
                             </div>
                         </td>
@@ -7955,9 +7938,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (NICHT_VON_PRODUKTANBIETER_BESTAETIGT, VON_PRODUKTANBIETER_BESTAETIGT,
-                                        FREIGEGEBEN_FUER_SAMMELFORDERUNG, PROVISION_IN_BEARBEITUNG,
-                                        PROVISON_AN_KUNDENBETREUER_VOLLSTAENDIG_AUSGEZAHLT)</p>
+                                    <p>enum (NICHT_VON_PRODUKTANBIETER_BESTAETIGT, VON_PRODUKTANBIETER_BESTAETIGT, FREIGEGEBEN_FUER_SAMMELFORDERUNG, PROVISION_IN_BEARBEITUNG, PROVISON_AN_KUNDENBETREUER_VOLLSTAENDIG_AUSGEZAHLT)</p>
                                 </div>
                             </div>
                         </td>
@@ -8132,8 +8113,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (VISUM, AUFENTHALTS_ERLAUBNIS, NIEDERLASSUNGS_ERLAUBNIS,
-                                        DAUERAUFENTHALT_EU)</p>
+                                    <p>enum (VISUM, AUFENTHALTS_ERLAUBNIS, NIEDERLASSUNGS_ERLAUBNIS, DAUERAUFENTHALT_EU)</p>
                                 </div>
                             </div>
                         </td>
@@ -8174,16 +8154,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Berufsgruppe des Antragstellers (ING) Diese Angabe ist produktanbieterspezifisch,
-                                        sie wird
-                                        nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt..
-                                        Erlaubte
-                                        Werte sind: ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG,
-                                        RENTNER,
-                                        HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen
-                                        können
-                                        kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen
-                                        können.</p>
+                                    <p>Berufsgruppe des Antragstellers (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -8247,12 +8218,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Branchen je Produktanbieter, in welcher der Antragsteller tätig ist. Diese Angabe
-                                        ist
-                                        produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der
-                                        Angebotsermittlung berücksichtigt. Neue Ausprägungen können kurzfristig
-                                        hinzukommen. Der
-                                        Client muss daher mit unbekannten Werten umgehen können.</p>
+                                    <p>Branchen je Produktanbieter, in welcher der Antragsteller tätig ist. Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -8276,19 +8242,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der
-                                        Antragsteller tätig
-                                        ist. (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte
-                                        sind:
-                                        BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG,
-                                        ENERGIE,
-                                        ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE,
-                                        LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue
-                                        Ausprägungen
-                                        können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten
-                                        umgehen
-                                        können.</p>
+                                    <p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (ING) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -8312,16 +8266,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der
-                                        Antragsteller tätig
-                                        ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte
-                                        sind:
-                                        VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG,
-                                        SONSTIGES. Neue
-                                        Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten Werten
-                                        umgehen können.</p>
+                                    <p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (MHB) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -8345,21 +8290,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der
-                                        Antragsteller tätig
-                                        ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von
-                                        allen
-                                        Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte
-                                        sind:
-                                        BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU,
-                                        GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL,
-                                        HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI,
-                                        OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,
-                                        VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN,
-                                        SONSTIGE.
-                                        Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten
-                                        Werten umgehen können.</p>
+                                    <p>Deprecated. Bitte das Feld 'branche' nutzen. Branche, in welcher der Antragsteller tätig ist. (Sparkassen) Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -8466,8 +8397,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (GESCHIEDEN, GETRENNT_LEBEND, LEBENSPARTNERSCHAFT, LEDIG, VERHEIRATET,
-                                        VERWITWET)</p>
+                                    <p>enum (GESCHIEDEN, GETRENNT_LEBEND, LEBENSPARTNERSCHAFT, LEDIG, VERHEIRATET, VERWITWET)</p>
                                 </div>
                             </div>
                         </td>
@@ -8504,10 +8434,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt. Relevant für Sparprodukte
-                                        (Bausparkassen).</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. Relevant für Sparprodukte (Bausparkassen).</p>
                                 </div>
                             </div>
                         </td>
@@ -8599,9 +8526,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -9069,8 +8994,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (STELLPLATZ, CARPORT, GARAGE, DOPPEL_GARAGE, KELLER_GARAGE,
-                                        TIEFGARAGEN_STELLPLATZ)</p>
+                                    <p>enum (STELLPLATZ, CARPORT, GARAGE, DOPPEL_GARAGE, KELLER_GARAGE, TIEFGARAGEN_STELLPLATZ)</p>
                                 </div>
                             </div>
                         </td>
@@ -9695,8 +9619,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_antragstellerverknuepfung">AntragstellerVerknuepfung</a> &gt;
-                                        array</p>
+                                    <p>&lt; <a href="#_antragstellerverknuepfung">AntragstellerVerknuepfung</a> &gt; array</p>
                                 </div>
                             </div>
                         </td>
@@ -10115,8 +10038,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_antragstellerverknuepfung">AntragstellerVerknuepfung</a> &gt;
-                                        array</p>
+                                    <p>&lt; <a href="#_antragstellerverknuepfung">AntragstellerVerknuepfung</a> &gt; array</p>
                                 </div>
                             </div>
                         </td>
@@ -10192,9 +10114,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Der Beleihungsauslauf aus Sicht des Produktanbieters. Berechnet sich aus dem
-                                        Verhältnis
-                                        anerkannter Darlehen zur Summe der anerkannten Beleihungswerte.</p>
+                                    <p>Der Beleihungsauslauf aus Sicht des Produktanbieters. Berechnet sich aus dem Verhältnis anerkannter Darlehen zur Summe der anerkannten Beleihungswerte.</p>
                                 </div>
                             </div>
                         </td>
@@ -10242,8 +10162,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Berechnungshilfe: Die Summe aller vom Produktanbieter anerkannten
-                                        Beleihungswerte</p>
+                                    <p>Berechnungshilfe: Die Summe aller vom Produktanbieter anerkannten Beleihungswerte</p>
                                 </div>
                             </div>
                         </td>
@@ -10377,8 +10296,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (PRAESENZ_GESCHAEFT, FERN_ABSATZ_GESCHAEFT,
-                                        AUSSER_GESCHAEFTSRAUM_VERTRAG)</p>
+                                    <p>enum (PRAESENZ_GESCHAEFT, FERN_ABSATZ_GESCHAEFT, AUSSER_GESCHAEFTSRAUM_VERTRAG)</p>
                                 </div>
                             </div>
                         </td>
@@ -10415,8 +10333,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Mit diesem Wert wird ausgedrückt, ob der Kundenbetreuer auch der Immobilienmakler
-                                        ist.</p>
+                                    <p>Mit diesem Wert wird ausgedrückt, ob der Kundenbetreuer auch der Immobilienmakler ist.</p>
                                 </div>
                             </div>
                         </td>
@@ -10582,9 +10499,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind: ANGESTELLTER, ARBEITER, ARBEITSLOSER, BEAMTER, FREIBERUFLER,
-                                        HAUSFRAU,
-                                        RENTNER, SELBSTAENDIGER</p>
+                                    <p>Erlaubte Werte sind: ANGESTELLTER, ARBEITER, ARBEITSLOSER, BEAMTER, FREIBERUFLER, HAUSFRAU, RENTNER, SELBSTAENDIGER</p>
                                 </div>
                             </div>
                         </td>
@@ -10824,20 +10739,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei art==FREIBERUFLER,SELBSTAENDIGER. Erlaubte Werte sind: ALTENPFLEGER,
-                                        AMBULANTER_KRANKENPFLEGER, ANWALT, APOTHEKER, ARCHITEKT, ARZT, BESTATTER,
-                                        DATENSCHUTZBEAUFTRAGTER, DEKORATEUR, DIAETASSISTENT, DOLMETSCHER, EDV_BERATER,
-                                        ERGOTHERAPEUT, ERNAEHRUNGSBERATER, FOTOGRAF, GEOGRAF, GRAFIKDESIGNER, GRAFIKER,
-                                        HEBAMME,
-                                        HEILMASSEUR, HEILPRAKTIKER, HISTORIKER, INFORMATIKER, INGENIEUR,
-                                        INSOLVENZVERWALTER,
-                                        JOURNALIST, KLASSISCHER_KONZERTMUSIKER, KONSTRUKTEUR, KRANKENGYMNAST,
-                                        KRANKENPFLEGER,
-                                        KRANKENSCHWESTER, LOGOPAEDE, MEDIZINISCH_TECHN_ASSISTENT, NOTAR, OPERNSAENGER,
-                                        PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER,
-                                        SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT,
-                                        UNTERNEHMENSBERATER,
-                                        VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES.</p>
+                                    <p>nur bei art==FREIBERUFLER,SELBSTAENDIGER. Erlaubte Werte sind: ALTENPFLEGER, AMBULANTER_KRANKENPFLEGER, ANWALT, APOTHEKER, ARCHITEKT, ARZT, BESTATTER, DATENSCHUTZBEAUFTRAGTER, DEKORATEUR, DIAETASSISTENT, DOLMETSCHER, EDV_BERATER, ERGOTHERAPEUT, ERNAEHRUNGSBERATER, FOTOGRAF, GEOGRAF, GRAFIKDESIGNER, GRAFIKER, HEBAMME, HEILMASSEUR, HEILPRAKTIKER, HISTORIKER, INFORMATIKER, INGENIEUR, INSOLVENZVERWALTER, JOURNALIST, KLASSISCHER_KONZERTMUSIKER, KONSTRUKTEUR, KRANKENGYMNAST, KRANKENPFLEGER, KRANKENSCHWESTER, LOGOPAEDE, MEDIZINISCH_TECHN_ASSISTENT, NOTAR, OPERNSAENGER, PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER, SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT, UNTERNEHMENSBERATER, VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES.</p>
                                 </div>
                             </div>
                         </td>
@@ -10940,9 +10842,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -11086,9 +10986,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -11112,9 +11010,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -11178,9 +11074,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -11204,9 +11098,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -11250,9 +11142,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -11276,13 +11166,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:
-                                        GEHOBEN,MITTEL,EINFACH. Neue
-                                        Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten Werten
-                                        umgehen können.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: GEHOBEN,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -11780,20 +11664,14 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind:
-                                        BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN.
-                                        Neue
-                                        Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten Werten
-                                        umgehen können.</p>
+                                    <p>Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (BAUSPARDARLEHEN, FOERDERDARLEHEN, IMMOBILIENDARLEHEN, PRIVATDARLEHEN,
-                                        SONSTIGES_DARLEHEN)</p>
+                                    <p>enum (BAUSPARDARLEHEN, FOERDERDARLEHEN, IMMOBILIENDARLEHEN, PRIVATDARLEHEN, SONSTIGES_DARLEHEN)</p>
                                 </div>
                             </div>
                         </td>
@@ -11810,8 +11688,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für Prolongation, d.h. technisch: Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -11855,8 +11732,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für Prolongation, d.h. technisch: Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -11900,10 +11776,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen
-                                        können
-                                        kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen
-                                        können.</p>
+                                    <p>Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -11927,9 +11800,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und
-                                        Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -12033,8 +11904,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für Prolongation, d.h. technisch: Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -12161,20 +12031,14 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind:
-                                        BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN.
-                                        Neue
-                                        Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten Werten
-                                        umgehen können.</p>
+                                    <p>Erlaubte Werte sind: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (BAUSPARDARLEHEN, FOERDERDARLEHEN, IMMOBILIENDARLEHEN, PRIVATDARLEHEN,
-                                        SONSTIGES_DARLEHEN)</p>
+                                    <p>enum (BAUSPARDARLEHEN, FOERDERDARLEHEN, IMMOBILIENDARLEHEN, PRIVATDARLEHEN, SONSTIGES_DARLEHEN)</p>
                                 </div>
                             </div>
                         </td>
@@ -12191,8 +12055,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für Prolongation, d.h. technisch: Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -12236,8 +12099,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für Prolongation, d.h. technisch: Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -12281,10 +12143,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen
-                                        können
-                                        kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen
-                                        können.</p>
+                                    <p>Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -12308,9 +12167,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und
-                                        Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für DSL Bank Prolongation, d.h. technisch: Produktanbieter ist 'DSL Bank' und Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -12414,8 +12271,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>für Prolongation, d.h. technisch: Vorhaben
-                                        verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
+                                    <p>für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -12439,8 +12295,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Beschreibt wie das Darlehen im Zusammenhang mit dem Vorhaben, behandelt werden
-                                        soll.</p>
+                                    <p>Beschreibt wie das Darlehen im Zusammenhang mit dem Vorhaben, behandelt werden soll.</p>
                                 </div>
                             </div>
                         </td>
@@ -12705,24 +12560,13 @@
                                     <p>Kann je nach Typ folgende Ausprägungen besitzen.</p>
                                 </div>
                                 <div class="paragraph">
-                                    <p>Für Ausprägung ING erlaubte Werte: BANKEN_VERSICHERUNGEN, BAUGEWERBE,
-                                        DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT,
-                                        GESUNDHEITSWESEN,
-                                        HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST,
-                                        PRODUKTION_INDUSTRIE, VERKEHR</p>
+                                    <p>Für Ausprägung ING erlaubte Werte: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR</p>
                                 </div>
                                 <div class="paragraph">
-                                    <p>Für Ausprägung MHB erlaubte Werte: VERARBEITENDES_GEWERBE, BAU, HANDEL,
-                                        VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES</p>
+                                    <p>Für Ausprägung MHB erlaubte Werte: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES</p>
                                 </div>
                                 <div class="paragraph">
-                                    <p>Für Ausprägung S_RATING erlaubte Werte: BAUGEWERBE, DIENSTLEISTUNGEN,
-                                        ENERGIE_UND_WASSERVERSORGUNG_BERGBAU,
-                                        GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN,
-                                        GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE,
-                                        LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST,
-                                        ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE,
-                                        VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE</p>
+                                    <p>Für Ausprägung S_RATING erlaubte Werte: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE</p>
                                 </div>
                             </div>
                         </td>
@@ -12791,9 +12635,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Datum, an dem das Darlehen dem Kunden ausgezahlt werden soll. Entweder berechnet
-                                        oder vom
-                                        Kunden angegeben.</p>
+                                    <p>Datum, an dem das Darlehen dem Kunden ausgezahlt werden soll. Entweder berechnet oder vom Kunden angegeben.</p>
                                 </div>
                             </div>
                         </td>
@@ -12904,9 +12746,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN,
-                                        REGIONAL_FOERDER_DARLEHEN,
-                                        PRIVAT_DARLEHEN, ZWISCHEN_FINANZIERUNG, VARIABLES_DARLEHEN)</p>
+                                    <p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, PRIVAT_DARLEHEN, ZWISCHEN_FINANZIERUNG, VARIABLES_DARLEHEN)</p>
                                 </div>
                             </div>
                         </td>
@@ -13059,10 +12899,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: STANDARD_40_PLUS,
-                                        STANDARD_40,
-                                        STANDARD_55,STANDARD_70. Nur bei KfW-Programm 153 relevant. Bei neuen
-                                        Energieeffizienzstandards können auch weitere Werte zulässig werden.</p>
+                                    <p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: STANDARD_40_PLUS, STANDARD_40, STANDARD_55,STANDARD_70. Nur bei KfW-Programm 153 relevant. Bei neuen Energieeffizienzstandards können auch weitere Werte zulässig werden.</p>
                                 </div>
                             </div>
                         </td>
@@ -13086,10 +12923,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_141,
-                                        PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155, PROGRAMM_159,
-                                        PROGRAMM_167. Bei
-                                        neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.</p>
+                                    <p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_141, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155, PROGRAMM_159, PROGRAMM_167. Bei neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.</p>
                                 </div>
                             </div>
                         </td>
@@ -13113,11 +12947,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>true, wenn die Kondition manuell durch den Berater angepasst wurde (d.h. entweder
-                                        Soll-
-                                        oder Effektivzins des Darlehens, je nachdem welche Anpassung durch den
-                                        Produktanbieter
-                                        erlaubt ist).</p>
+                                    <p>true, wenn die Kondition manuell durch den Berater angepasst wurde (d.h. entweder Soll- oder Effektivzins des Darlehens, je nachdem welche Anpassung durch den Produktanbieter erlaubt ist).</p>
                                 </div>
                             </div>
                         </td>
@@ -13165,11 +12995,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die
-                                        Kondition
-                                        angepasst wurde (Differenz aus angepasster und ursprünglich berechneter
-                                        Kondition, z.B.
-                                        angepasst 1,25% - ursprünglich 1,50% = Delta von -0,25%).<br>
+                                    <p>Wenn die Kondition manuell angepasst wurde: Delta in Prozentpunkten, um das die Kondition angepasst wurde (Differenz aus angepasster und ursprünglich berechneter Kondition, z.B. angepasst 1,25% - ursprünglich 1,50% = Delta von -0,25%).<br>
                                         <strong>Beispiel</strong> : <code>-0.25</code></p>
                                 </div>
                             </div>
@@ -13194,8 +13020,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei darlehensTyp==KFW_DARLEHEN oder
-                                        darlehensTyp==REGIONAL_FOERDER_DARLEHEN</p>
+                                    <p>nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN</p>
                                 </div>
                             </div>
                         </td>
@@ -13332,8 +13157,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei darlehensTyp==KFW_DARLEHEN oder
-                                        darlehensTyp==REGIONAL_FOERDER_DARLEHEN</p>
+                                    <p>nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN</p>
                                 </div>
                             </div>
                         </td>
@@ -13357,11 +13181,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte:
-                                        L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT,
-                                        NRW_BANK_WOHNEIGENTUM. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer
-                                        regionaler
-                                        Förderbanken in die Plattform können weitere Werte zulässig werden.</p>
+                                    <p>nur bei darlehensTyp==REGIONAL_FOERDER_DARLEHEN. Mögliche Werte: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT, NRW_BANK_WOHNEIGENTUM. Bei neu aufgelegten Programmen bzw. Aufnahme weiterer regionaler Förderbanken in die Plattform können weitere Werte zulässig werden.</p>
                                 </div>
                             </div>
                         </td>
@@ -13434,8 +13254,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur bei darlehensTyp==KFW_DARLEHEN oder
-                                        darlehensTyp==REGIONAL_FOERDER_DARLEHEN</p>
+                                    <p>nur bei darlehensTyp==KFW_DARLEHEN oder darlehensTyp==REGIONAL_FOERDER_DARLEHEN</p>
                                 </div>
                             </div>
                         </td>
@@ -13466,8 +13285,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (VORFINANZIERUNG_OEFFENTLICHER_MITTEL, VERKAUF_EINES_ANDEREN_OBJEKTS,
-                                        SONSTIGE_VERWENDUNG)</p>
+                                    <p>enum (VORFINANZIERUNG_OEFFENTLICHER_MITTEL, VERKAUF_EINES_ANDEREN_OBJEKTS, SONSTIGE_VERWENDUNG)</p>
                                 </div>
                             </div>
                         </td>
@@ -13508,10 +13326,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Die Zinszahlung beginnt zum Abruf des Darlehensbetrages, spätestens jedoch nach
-                                        Ablauf der
-                                        zinsfreien Zeit. 'zinsZahlungsBeginnAm' liefert das Datum des spätensten
-                                        Zinszahlungsbeginn.</p>
+                                    <p>Die Zinszahlung beginnt zum Abruf des Darlehensbetrages, spätestens jedoch nach Ablauf der zinsfreien Zeit. 'zinsZahlungsBeginnAm' liefert das Datum des spätensten Zinszahlungsbeginn.</p>
                                 </div>
                             </div>
                         </td>
@@ -13646,10 +13461,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Mediatype des Dokuments, siehe &lt;a
-                                        href="http://tools.ietf.org/html/rfc7231#section-3.1.1.1"&gt;HTTP 1.1: Semantics
-                                        and
-                                        Content, section 3.1.1.1&lt;/a&gt;</p>
+                                    <p>Mediatype des Dokuments, siehe &lt;a href="http://tools.ietf.org/html/rfc7231#section-3.1.1.1"&gt;HTTP 1.1: Semantics and Content, section 3.1.1.1&lt;/a&gt;</p>
                                 </div>
                             </div>
                         </td>
@@ -14468,9 +14280,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>'null' wenn nicht 'Neubau', anderenfalls: true -&gt; bereits bezahlt, false -
-                                        noch nicht
-                                        bezahlt</p>
+                                    <p>'null' wenn nicht 'Neubau', anderenfalls: true -&gt; bereits bezahlt, false - noch nicht bezahlt</p>
                                 </div>
                             </div>
                         </td>
@@ -14796,8 +14606,9 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_bestehendesdarlehendesfinanzierungsobjekts">BestehendesDarlehenDesFinanzierungsObjekts</a>
-                                        &gt; array</p>
+                                    <p>&lt;
+                                        <a href="#_bestehendesdarlehendesfinanzierungsobjekts">BestehendesDarlehenDesFinanzierungsObjekts</a> &gt; array
+                                    </p>
                                 </div>
                             </div>
                         </td>
@@ -14814,9 +14625,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -14940,9 +14749,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -14966,9 +14773,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -15012,9 +14817,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -15038,9 +14841,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -15064,8 +14865,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Nur relevant bei Finanzbedarf AnschlussFinanzierung, Modernisierung und
-                                        Kapitalbeschaffung</p>
+                                    <p>Nur relevant bei Finanzbedarf AnschlussFinanzierung, Modernisierung und Kapitalbeschaffung</p>
                                 </div>
                             </div>
                         </td>
@@ -15089,9 +14889,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -15115,13 +14913,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind:
-                                        GEHOBEN,MITTEL,EINFACH. Neue
-                                        Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten Werten
-                                        umgehen können.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.. Erlaubte Werte sind: GEHOBEN,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -15313,11 +15105,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Angaben zur Ausstattung für alle verschiedene Produktanbieter und für die für die
-                                        automatische Objektbewertungs-Schnittstelle (VDP), aber nicht für ING. Erlaubte
-                                        Werte
-                                        sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN. Neue Ausprägungen können kurzfristig
-                                        hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
+                                    <p>Angaben zur Ausstattung für alle verschiedene Produktanbieter und für die für die automatische Objektbewertungs-Schnittstelle (VDP), aber nicht für ING. Erlaubte Werte sind: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -15366,11 +15154,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind:
-                                        FACHWERK_MIT_STROH_LEHM,FACHWERK_MIT_ZIEGELN,GLAS_STAHL,HOLZ,MASSIV.
-                                        Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten
-                                        Werten umgehen können.</p>
+                                    <p>Erlaubte Werte sind: FACHWERK_MIT_STROH_LEHM,FACHWERK_MIT_ZIEGELN,GLAS_STAHL,HOLZ,MASSIV. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -15418,11 +15202,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Nur bei ObjektArt == HAUS. Erlaubte Werte sind:
-                                        FLACHDACH,NICHT_AUSGEBAUT,TEILWEISE_AUSGEBAUT,VOLL_AUSGEBAUT. Neue Ausprägungen
-                                        können
-                                        kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen
-                                        können.</p>
+                                    <p>Nur bei ObjektArt == HAUS. Erlaubte Werte sind: FLACHDACH,NICHT_AUSGEBAUT,TEILWEISE_AUSGEBAUT,VOLL_AUSGEBAUT. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -15517,8 +15297,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (DOPPELHAUSHAELFTE, EINFAMILIENHAUS, MEHRFAMILIENHAUS, REIHENHAUS,
-                                        ZWEIFAMILIENHAUS)</p>
+                                    <p>enum (DOPPELHAUSHAELFTE, EINFAMILIENHAUS, MEHRFAMILIENHAUS, REIHENHAUS, ZWEIFAMILIENHAUS)</p>
                                 </div>
                             </div>
                         </td>
@@ -15559,9 +15338,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Angabe in Kubikmetern. Diese Angabe ist produktanbieterspezifisch, sie wird nicht
-                                        von allen
-                                        Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Angabe in Kubikmetern. Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -15609,9 +15386,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -15659,10 +15434,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Nur bei ObjektArt == HAUS. Erlaubte Werte sind:
-                                        NICHT_UNTERKELLERT,TEILWEISE_UNTERKELLERT,UNTERKELLERT. Neue Ausprägungen können
-                                        kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen
-                                        können.</p>
+                                    <p>Nur bei ObjektArt == HAUS. Erlaubte Werte sind: NICHT_UNTERKELLERT,TEILWEISE_UNTERKELLERT,UNTERKELLERT. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -15706,9 +15478,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Angaben zum Zustand der Immobilie für die automatische
-                                        Objektbewertungs-Schnittstelle
-                                        (VDP)</p>
+                                    <p>Angaben zum Zustand der Immobilie für die automatische Objektbewertungs-Schnittstelle (VDP)</p>
                                 </div>
                             </div>
                         </td>
@@ -15914,9 +15684,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Belastungen und Beschränkungen in der Nutzbarkeit des Grundstücks.
-                                        Leitungsrechte,
-                                        Verzichte auf Abstandsflächen, Wegerechte, Insolvenzvermerke.</p>
+                                    <p>Belastungen und Beschränkungen in der Nutzbarkeit des Grundstücks. Leitungsrechte, Verzichte auf Abstandsflächen, Wegerechte, Insolvenzvermerke.</p>
                                 </div>
                             </div>
                         </td>
@@ -15974,9 +15742,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (UNBEBAUTES_WOHNGRUNDSTUECK, UNBEBAUTES_MISCHGRUNDSTUECK,
-                                        UNBEBAUTES_GEWERBEGRUNDSTUECK, LANDWIRTSCHAFTLICHES_GRUNDSTUECK,
-                                        SONSTIGES_GRUNDSTUECK)</p>
+                                    <p>enum (UNBEBAUTES_WOHNGRUNDSTUECK, UNBEBAUTES_MISCHGRUNDSTUECK, UNBEBAUTES_GEWERBEGRUNDSTUECK, LANDWIRTSCHAFTLICHES_GRUNDSTUECK, SONSTIGES_GRUNDSTUECK)</p>
                                 </div>
                             </div>
                         </td>
@@ -16032,9 +15798,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -16058,9 +15822,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -16124,9 +15886,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt.</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt.</p>
                                 </div>
                             </div>
                         </td>
@@ -16170,9 +15930,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen
-                                        Produktanbietern bei
-                                        der Angebotsermittlung berücksichtigt. (DSL Bank)</p>
+                                    <p>Diese Angabe ist produktanbieterspezifisch, sie wird nicht von allen Produktanbietern bei der Angebotsermittlung berücksichtigt. (DSL Bank)</p>
                                 </div>
                             </div>
                         </td>
@@ -16278,8 +16036,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_bestehenderbausparvertrag">BestehenderBausparvertrag</a> &gt;
-                                        array</p>
+                                    <p>&lt; <a href="#_bestehenderbausparvertrag">BestehenderBausparvertrag</a> &gt; array</p>
                                 </div>
                             </div>
                         </td>
@@ -16319,8 +16076,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_einkuenfteausnebentaetigkeit">EinkuenfteAusNebentaetigkeit</a>
-                                        &gt; array
+                                    <p>&lt; <a href="#_einkuenfteausnebentaetigkeit">EinkuenfteAusNebentaetigkeit</a> &gt; array
                                     </p>
                                 </div>
                             </div>
@@ -16338,8 +16094,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Read-Only-Feld. Wird dynamisch aus den Angaben zu den Kindern berechnet. Pro
-                                        kindergelderhaltendem Kind ein Listenelement.</p>
+                                    <p>Read-Only-Feld. Wird dynamisch aus den Angaben zu den Kindern berechnet. Pro kindergelderhaltendem Kind ein Listenelement.</p>
                                 </div>
                             </div>
                         </td>
@@ -16366,8 +16121,9 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_lebensoderrentenversicherungvermoegen">LebensOderRentenversicherungVermoegen</a>
-                                        &gt; array</p>
+                                    <p>&lt;
+                                        <a href="#_lebensoderrentenversicherungvermoegen">LebensOderRentenversicherungVermoegen</a> &gt; array
+                                    </p>
                                 </div>
                             </div>
                         </td>
@@ -16905,9 +16661,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (KAPITALBILDENDE_LEBENSVERSICHERUNG, FONDSGEBUNDENE_LEBENSVERSICHERUNG,
-                                        KAPITALBILDENDE_RENTENVERSICHERUNG, FONDSGEBUNDENE_RENTENVERSICHERUNG,
-                                        RISIKO_LEBENSVERSICHERUNG)</p>
+                                    <p>enum (KAPITALBILDENDE_LEBENSVERSICHERUNG, FONDSGEBUNDENE_LEBENSVERSICHERUNG, KAPITALBILDENDE_RENTENVERSICHERUNG, FONDSGEBUNDENE_RENTENVERSICHERUNG, RISIKO_LEBENSVERSICHERUNG)</p>
                                 </div>
                             </div>
                         </td>
@@ -17339,11 +17093,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Mögliche Werte sind:
-                                        AUSZAHLUNGS_VORAUSSETZUNG,MACHBAR,MACHBARKEITS_HINWEIS,ANPASSUNG_KUNDENWUNSCH,ANPASSUNG_VERTRIEBSWUNSCH,UNBERUECKSICHTIGTE_ANGABE,KONDITIONEN_UNTER_VORBEHALT_VOLLSTAENDIGER_DATEN,KONDITIONEN_UNTER_VORBEHALT_EXTERNER_SCHNITTSTELLEN,MACHBARKEIT_UNTER_VORBEHALT_VOLLSTAENDIGER_DATEN,MACHBARKEIT_UNTER_VORBEHALT_EXTERNER_SCHNITTSTELLEN,MACHBAR_UNTER_VORBEHALT_PRODUZENT,NICHT_MACHBAR,NICHT_ANBIETBAR.
-                                        Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit
-                                        unbekannten
-                                        Werten umgehen können.</p>
+                                    <p>Mögliche Werte sind: AUSZAHLUNGS_VORAUSSETZUNG,MACHBAR,MACHBARKEITS_HINWEIS,ANPASSUNG_KUNDENWUNSCH,ANPASSUNG_VERTRIEBSWUNSCH,UNBERUECKSICHTIGTE_ANGABE,KONDITIONEN_UNTER_VORBEHALT_VOLLSTAENDIGER_DATEN,KONDITIONEN_UNTER_VORBEHALT_EXTERNER_SCHNITTSTELLEN,MACHBARKEIT_UNTER_VORBEHALT_VOLLSTAENDIGER_DATEN,MACHBARKEIT_UNTER_VORBEHALT_EXTERNER_SCHNITTSTELLEN,MACHBAR_UNTER_VORBEHALT_PRODUZENT,NICHT_MACHBAR,NICHT_ANBIETBAR. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -17600,10 +17350,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind: UEBERWIEGEND,UMFASSEND,MITTEL,EINFACH. Neue Ausprägungen
-                                        können
-                                        kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen
-                                        können.</p>
+                                    <p>Erlaubte Werte sind: UEBERWIEGEND,UMFASSEND,MITTEL,EINFACH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -17627,20 +17374,14 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind: KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN,
-                                        HEIZUNG,
-                                        WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG. Der Client muss daher mit
-                                        unbekannten
-                                        Werten umgehen können.</p>
+                                    <p>Erlaubte Werte sind: KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG, WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG,
-                                        WAERMEDAEMMUNG,
-                                        BAEDER, INNENAUSBAU, RAUMAUFTEILUNG)</p>
+                                    <p>enum (KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG, WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG)</p>
                                 </div>
                             </div>
                         </td>
@@ -17676,9 +17417,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>erlaubt sind GERING,MITTEL,HOCH. Neue Ausprägungen können kurzfristig
-                                        hinzukommen. Der
-                                        Client muss daher mit unbekannten Werten umgehen können.</p>
+                                    <p>erlaubt sind GERING,MITTEL,HOCH. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -17766,9 +17505,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Der Name des externen Darlehensgebers (Firmierung). Es gibt keine entsprechende
-                                        Beziehung
-                                        zu einem Partner auf der Europace-Plattform.</p>
+                                    <p>Der Name des externen Darlehensgebers (Firmierung). Es gibt keine entsprechende Beziehung zu einem Partner auf der Europace-Plattform.</p>
                                 </div>
                             </div>
                         </td>
@@ -17852,12 +17589,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Erlaubte Werte sind:
-                                        ARBEITGEBERDARLEHEN,BAUSPARDARLEHEN,OEFFENTLICHES_DARLEHEN,RATENKREDIT. Neue
-                                        Ausprägungen
-                                        können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten
-                                        umgehen
-                                        können.</p>
+                                    <p>Erlaubte Werte sind: ARBEITGEBERDARLEHEN,BAUSPARDARLEHEN,OEFFENTLICHES_DARLEHEN,RATENKREDIT. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.</p>
                                 </div>
                             </div>
                         </td>
@@ -17963,9 +17695,7 @@
             <div class="sect2">
                 <h3 id="_partner">Partner</h3>
                 <div class="paragraph">
-                    <p>Minimale Informationen zum Partner der EP2 Plattform, weitere Informationen können über die
-                        HAL-Relation
-                        abgerufen werden.</p>
+                    <p>Minimale Informationen zum Partner der EP2 Plattform, weitere Informationen können über die HAL-Relation abgerufen werden.</p>
                 </div>
                 <table class="tableblock frame-all grid-all stretch">
                     <colgroup>
@@ -18378,8 +18108,9 @@
             <div class="sect2">
                 <h3 id="_patchoperation">PatchOperation</h3>
                 <div class="paragraph">
-                    <p>A JSONPatch document as defined by RFC 6902 (see <a href="http://jsonpatch.com/" class="bare">http://jsonpatch.com/</a>).
-                        Beispiel: { "op": "replace", "path": "/antragsReferenz", "value": "123-ABC"&quot; }</p>
+                    <p>A JSONPatch document as defined by RFC 6902 (see
+                        <a href="http://jsonpatch.com/" class="bare">http://jsonpatch.com/</a>). Beispiel: { "op": "replace", "path": "/antragsReferenz", "value": "123-ABC"&quot; }
+                    </p>
                 </div>
                 <table class="tableblock frame-all grid-all stretch">
                     <colgroup>
@@ -18451,10 +18182,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz', '/status',
-                                        '/status/antragsteller', '/ansprechpartner/partnerId',
-                                        '/status/produktAnbieter',
-                                        '/voraussichtlicheBearbeitung'.</p>
+                                    <p>JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung'.</p>
                                 </div>
                             </div>
                         </td>
@@ -18478,10 +18206,9 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Zu setzender oder auszutauschender Wert. Erlaubt sind string, number oder JSON
-                                        object<br>
-                                        <strong>Beispiel</strong> : <code>"\"WER123\", 1234, {\"antragsteller\":
-                                            \"BEANTRAGT\"}"</code></p>
+                                    <p>Zu setzender oder auszutauschender Wert. Erlaubt sind string, number oder JSON object<br>
+                                        <strong>Beispiel</strong> :
+                                        <code>"\"WER123\", 1234, {\"antragsteller\": \"BEANTRAGT\"}"</code></p>
                                 </div>
                             </div>
                         </td>
@@ -19124,7 +18851,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (TODESFALL, ARBEITSLOSIGKEIT, ARBEITSUNFAEHIGKEIT, INVALIDITAET)</p>
+                                    <p>enum (TODESFALL, ARBEITSLOSIGKEIT, ARBEITSUNFAEHIGKEIT, INVALIDITAET, SCHWERE_KRANKHEIT, ASSISTANCE_ARBEITSUNFAEHIGKEIT, ASSISTANCE_ARBEITSLOSIGKEIT)</p>
                                 </div>
                             </div>
                         </td>
@@ -19235,9 +18962,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Die Ermittlung des Schufa-Scores verzögert sich, wenn sich die Anfrage bei der
-                                        Schufa in
-                                        manueller Nachbehandlung befindet.</p>
+                                    <p>Die Ermittlung des Schufa-Scores verzögert sich, wenn sich die Anfrage bei der Schufa in manueller Nachbehandlung befindet.</p>
                                 </div>
                             </div>
                         </td>
@@ -19714,8 +19439,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (FINANZIELLE_SITUATION, NEGATIV_MERKMAL, WERTERMITTLUNG, KRITERIEN,
-                                        UNTERLAGEN_UNVOLLSTAENDIG, GEGENANGEBOT, KEINE_ANGABE)</p>
+                                    <p>enum (FINANZIELLE_SITUATION, NEGATIV_MERKMAL, WERTERMITTLUNG, KRITERIEN, UNTERLAGEN_UNVOLLSTAENDIG, GEGENANGEBOT, KEINE_ANGABE)</p>
                                 </div>
                             </div>
                         </td>
@@ -19826,8 +19550,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>nur wenn darlehensArt IN [ANNUITAETEN_DARLEHEN,FORWARD_DARLEHEN] und KEIN
-                                        tilgungsErsatz</p>
+                                    <p>nur wenn darlehensArt IN [ANNUITAETEN_DARLEHEN,FORWARD_DARLEHEN] und KEIN tilgungsErsatz</p>
                                 </div>
                             </div>
                         </td>
@@ -19918,9 +19641,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Id des Tilgungsersatzproduktes, das in den Vermögenswerten des Haushalts oder in
-                                        den
-                                        Bausparangeboten des Angebotes zu finden ist.</p>
+                                    <p>Id des Tilgungsersatzproduktes, das in den Vermögenswerten des Haushalts oder in den Bausparangeboten des Angebotes zu finden ist.</p>
                                 </div>
                             </div>
                         </td>
@@ -19944,8 +19665,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>Menschenlesbarer Hinweis auf den Typ, z.B. BAUSPARVERTRAG oder
-                                        KAPITALBILDENDE_LEBENSVERSICHERUNG</p>
+                                    <p>Menschenlesbarer Hinweis auf den Typ, z.B. BAUSPARVERTRAG oder KAPITALBILDENDE_LEBENSVERSICHERUNG</p>
                                 </div>
                             </div>
                         </td>
@@ -20491,8 +20211,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_vermoegenverbindlichkeit">VermoegenVerbindlichkeit</a> &gt; array
-                                    </p>
+                                    <p>&lt; <a href="#_vermoegenverbindlichkeit">VermoegenVerbindlichkeit</a> &gt; array</p>
                                 </div>
                             </div>
                         </td>
@@ -20662,8 +20381,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>&lt; <a href="#_nachrangigesexternesdarlehen">NachrangigesExternesDarlehen</a>
-                                        &gt; array
+                                    <p>&lt; <a href="#_nachrangigesexternesdarlehen">NachrangigesExternesDarlehen</a> &gt; array
                                     </p>
                                 </div>
                             </div>
@@ -20681,9 +20399,7 @@
                         <td class="tableblock halign-left valign-middle">
                             <div class="content">
                                 <div class="paragraph">
-                                    <p>enum (ANSCHLUSSFINANZIERUNG, KAUF, KAUF_NEUBAU_VOM_BAUTRAEGER,
-                                        MODERNISIERUNG_UMBAU_ANBAU,
-                                        NEUBAU, KAPITALBESCHAFFUNG)</p>
+                                    <p>enum (ANSCHLUSSFINANZIERUNG, KAUF, KAUF_NEUBAU_VOM_BAUTRAEGER, MODERNISIERUNG_UMBAU_ANBAU, NEUBAU, KAPITALBESCHAFFUNG)</p>
                                 </div>
                             </div>
                         </td>
@@ -21183,7 +20899,7 @@
 </div>
 <div id="footer">
     <div id="footer-text">
-        Last updated 2020-11-12 09:35:22 +0100
+        Last updated 2020-12-08 14:27:57 +0100
     </div>
 </div>
 </body>

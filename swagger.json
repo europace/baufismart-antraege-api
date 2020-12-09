@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.",
-    "version": "2.29",
+    "version": "2.30",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -3622,7 +3622,10 @@
             "TODESFALL",
             "ARBEITSLOSIGKEIT",
             "ARBEITSUNFAEHIGKEIT",
-            "INVALIDITAET"
+            "INVALIDITAET",
+            "SCHWERE_KRANKHEIT",
+            "ASSISTANCE_ARBEITSUNFAEHIGKEIT",
+            "ASSISTANCE_ARBEITSLOSIGKEIT"
           ]
         },
         "auszahlungsBetrag": {
