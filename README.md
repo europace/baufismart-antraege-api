@@ -15,8 +15,9 @@ Der OAuth2-Client benötigt folgende Scopes, um die API verwenden zu können:
 
 | Scope                             | API Use case |
 |-----------------------------------|---------------------------------|
-| `baufinanzierung:antrag:lesen`       | als Produktanbieter, Daten von Anträgen abrufen. |
-| `baufinanzierung:antrag:schreiben`   | als Produktanbieter, Daten eines Antrags ändern (z.B. Antragsstatus, Kreditsachbearbeiter).|
+| `baufinanzierung:echtgeschaeft`      | Für das Lesen und Bearbeiten von Echtgeschäft-Daten. |
+| `baufinanzierung:antrag:lesen`       | Daten von Anträgen abrufen. |
+| `baufinanzierung:antrag:schreiben`   | Daten eines Antrags ändern (z.B. Antragsstatus, Kreditsachbearbeiter).|
 
 #### Hinweis
 
