@@ -153,6 +153,89 @@ Es besteht die Möglichkeit den voraussichtlichen Zeitpunkt der Antragsbearbeitu
 ]
 ```
 
+### Wie erzeuge ich ein Gegenangebot?
+
+Ein Gegenangebot ist ein angepasster Finanzierungsvorschlag seitens des Produktanbieters. 
+Sobald ein Gegenangebot gestellt wird, wird der ursprüngliche Antrag als `ABGELEHNT` markiert und ein neuer Antrag erzeugt. 
+Der neue Antrag wird automatisch markiert als `UNTERSCHRIEBEN` seitens des Produktanbieters.
+
+Für ein Gegenangebot kann ein einzelnes Darlehen oder auch eine Kombination von Darlehen angeboten werden.
+
+Die URL zum Senden eines Gegenangebots lautet:
+
+```POST https://baufismart.api.europace.de/v2/antraege/AB1234/1/1/gegenangebot```
+
+Die Pfadvariable `AB1234/1/1` entspricht dem ursprünglichen Antrag für den ein Gegenangebot erstellt werden soll. 
+Bei Erfolg wird als Antwort ein Link auf den neuen Antrag geliefert.
+
+#### Wie sende ich ein Annuitätendarlehen als Gegenangebot?
+
+```json
+{
+  "kennung": "Gegenangebot zum existierenden Angebot",
+  "darlehen": [
+    {
+      "darlehensTyp": "ANNUITAETEN_DARLEHEN",
+      "sollZins": 1.17,
+      "effektivZins": 1.2,
+      "rateMonatlich": 264.17,
+      "darlehensBetrag": 100000.00,
+      "vertriebsProvisionGesamtAbsolut": 1010.00,
+      "zinsBindungInJahren": 10,
+      "sonderTilgungJaehrlich": 10.0,
+      "tilgungsBeginnAm": "2020-11-30",
+      "produktDetails": "Angepasstes Finanzierung (weitere Beschriebung möglich)",
+      "anfaenglicheTilgung": 2.0,
+      "bereitstellungsZinsFreieZeitInMonaten": 3,
+      "bereitstellungsZins": 3.0,
+      "laufzeitKalkulatorischInJahren": 39
+    }
+  ]
+}
+```
+
+#### Wie sende ich eine Kombination von Darlehen als Gegenangebot?
+
+```json
+{
+  "kennung": "Kombinatorisches Gegenangebot zum existierenden Angebot",
+  "darlehen": [
+    {
+      "darlehensTyp": "ANNUITAETEN_DARLEHEN",
+      "darlehensBetrag": 100000.00,
+      "sollZins": 1.17,
+      "effektivZins": 1.2,
+      "rateMonatlich": 264.17,
+      "vertriebsProvisionGesamtAbsolut": 1010.00,
+      "zinsBindungInJahren": 10,
+      "sonderTilgungJaehrlich": 10.0,
+      "tilgungsBeginnAm": "2020-11-30",
+      "produktDetails": "Angepasstes Finanzierung (weitere Beschriebung möglich)",
+      "anfaenglicheTilgung": 2.0,
+      "bereitstellungsZinsFreieZeitInMonaten": 3,
+      "bereitstellungsZins": 3.0,
+      "laufzeitKalkulatorischInJahren": 39
+    },
+    {
+      "darlehensTyp": "KFW_DARLEHEN",
+      "darlehensBetrag": 100000.00,
+      "sollZins": 0.84,
+      "effektivZins": 0.87,
+      "rateMonatlich": 383.52,
+      "anfaenglicheTilgung": 3.762,
+      "vertriebsProvisionGesamtAbsolut": 1072.00,
+      "laufzeitKalkulatorischInJahren": 25,
+      "zinsBindungInJahren": 10,
+      "bereitstellungsZinsFreieZeitInMonaten": 12,
+      "produktDetails": "KfW Darlehen zusätzlich zum angepassten Finanzierung",
+      "kfwProgramm": "PROGRAMM_124",
+      "tilgungsFreieAnlaufJahre": 1,
+      "rateMonatlichInDerTilgungsfreienAnlaufzeit": 77.00
+    }
+  ]
+}
+```
+
 ## Fragen und Anregungen
 Bei Fragen und Anregungen entweder ein Issue in GitHub anlegen oder an [devsupport@europace2.de](mailto:devsupport@europace2.de) schreiben.
 
