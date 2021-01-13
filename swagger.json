@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.",
-    "version": "2.30",
+    "version": "2.31",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -35,18 +35,11 @@
         ],
         "parameters": [
           {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "aenderungBis",
             "in": "query",
             "description": "Datum im ISO Format UTC - Zulu",
             "required": false,
             "type": "string",
-            "allowEmptyValue": false,
             "x-example": "2016-03-11T10:57:45Z"
           },
           {
@@ -55,7 +48,6 @@
             "description": "Datum im ISO Format UTC - Zulu",
             "required": false,
             "type": "string",
-            "allowEmptyValue": false,
             "x-example": "2016-03-11T10:57:45Z"
           },
           {
@@ -64,7 +56,6 @@
             "description": "Datum im ISO Format UTC - Zulu",
             "required": false,
             "type": "string",
-            "allowEmptyValue": false,
             "x-example": "2016-03-11T10:57:45Z"
           },
           {
@@ -72,8 +63,7 @@
             "in": "query",
             "description": "Suche nach deiner antragsReferenz",
             "required": false,
-            "type": "string",
-            "allowEmptyValue": false
+            "type": "string"
           },
           {
             "name": "datenKontext",
@@ -82,7 +72,6 @@
             "required": false,
             "type": "string",
             "default": "ECHT_GESCHAEFT",
-            "allowEmptyValue": false,
             "enum": [
               "ECHT_GESCHAEFT",
               "TEST_MODUS"
@@ -119,8 +108,13 @@
             "description": "Sortierung der Anträge, aufsteigend oder absteigend",
             "required": false,
             "type": "string",
-            "default": "absteigend",
-            "allowEmptyValue": false
+            "default": "absteigend"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -173,8 +167,7 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     },
     "/v2/antraege/{vorgang}": {
@@ -190,18 +183,18 @@
         ],
         "parameters": [
           {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "vorgang",
             "in": "path",
             "description": "Nummer des Antrags",
             "required": true,
             "type": "string",
             "x-example": "AB1234"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -254,8 +247,7 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}": {
@@ -271,12 +263,6 @@
         ],
         "parameters": [
           {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "antrag",
             "in": "path",
             "description": "antrag",
@@ -291,6 +277,12 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234/1"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -343,8 +335,7 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/angebot": {
@@ -360,12 +351,6 @@
         ],
         "parameters": [
           {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "antrag",
             "in": "path",
             "description": "antrag",
@@ -380,6 +365,12 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234/1"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -449,12 +440,6 @@
         ],
         "parameters": [
           {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "antrag",
             "in": "path",
             "description": "antrag",
@@ -477,6 +462,12 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234/1/2"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -529,8 +520,7 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       },
       "patch": {
         "tags": [
@@ -554,6 +544,12 @@
             "required": true,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
           },
           {
             "in": "body",
@@ -582,6 +578,18 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234/1/2"
+          },
+          {
+            "name": "X-Authentication",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -601,8 +609,7 @@
               "baufinanzierung:antrag:schreiben"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot": {
@@ -617,12 +624,6 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
-          {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
           {
             "name": "antrag",
             "in": "path",
@@ -646,6 +647,12 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234/1"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -698,8 +705,7 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene": {
@@ -714,12 +720,6 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
-          {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
           {
             "name": "antrag",
             "in": "path",
@@ -745,6 +745,12 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -797,8 +803,7 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner": {
@@ -813,12 +818,6 @@
           "application/json;charset=UTF-8"
         ],
         "parameters": [
-          {
-            "name": "X-TraceId",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
           {
             "name": "antrag",
             "in": "path",
@@ -842,6 +841,12 @@
             "required": true,
             "type": "string",
             "x-example": "AB1234/1/2"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
           }
         ],
         "responses": {
@@ -894,8 +899,107 @@
               "baufinanzierung:antrag:lesen"
             ]
           }
+        ]
+      }
+    },
+    "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/gegenangebot": {
+      "post": {
+        "tags": [
+          "Anträge"
         ],
-        "deprecated": false
+        "summary": "Ein Gegenangebot erstellen",
+        "description": "Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Das übergebene Angebot wird sofort als Gegenangebot gestellt. Der alte Antrag wird abgelehnt.",
+        "operationId": "erstelleGegenangebot",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "antrag",
+            "in": "path",
+            "description": "antrag",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "gegenangebot",
+            "description": "gegenangebot",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Gegenangebot"
+            }
+          },
+          {
+            "name": "teilantrag",
+            "in": "path",
+            "description": "teilantrag",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "vorgang",
+            "in": "path",
+            "description": "Nummer des Antrags",
+            "required": true,
+            "type": "string",
+            "x-example": "AB1234/1/2"
+          },
+          {
+            "name": "X-Authentication",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Client Error",
+            "schema": {
+              "$ref": "#/definitions/Problem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "OAuth2": [
+              "baufinanzierung:antrag:schreiben",
+              "baufinanzierung:echtgeschaeft"
+            ]
+          }
+        ]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/status": {
@@ -921,6 +1025,12 @@
             "format": "int32"
           },
           {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
             "in": "body",
             "name": "statusDTO",
             "description": "statusDTO",
@@ -942,6 +1052,18 @@
             "in": "path",
             "description": "vorgang",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "X-Authentication",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "X-TraceId",
+            "in": "header",
+            "required": false,
             "type": "string"
           }
         ],
@@ -968,8 +1090,7 @@
               "baufinanzierung:antrag:schreiben"
             ]
           }
-        ],
-        "deprecated": false
+        ]
       }
     }
   },
@@ -984,6 +1105,7 @@
       "tokenUrl": "https://api.europace.de/auth/access-token",
       "flow": "application",
       "scopes": {
+        "baufinanzierung:echtgeschaeft": "Für das Lesen und Bearbeiten von Anträgen im Echtgeschäft benötigt",
         "baufinanzierung:antrag:lesen": "Auslesen von Anträgen",
         "baufinanzierung:antrag:schreiben": "Ändern von Daten eines Antrags (bspw. Antragsstatus, Kreditsachbearbeiter)"
       }
@@ -1009,10 +1131,10 @@
           "type": "string",
           "enum": [
             "EINMALIG",
-            "MONATLICH",
-            "VIERTELJAEHRLICH",
             "HALBJAEHRLICH",
-            "JAEHRLICH"
+            "JAEHRLICH",
+            "MONATLICH",
+            "VIERTELJAEHRLICH"
           ]
         },
         "tarifBezeichnung": {
@@ -1048,6 +1170,9 @@
     "AngebotZumAntrag": {
       "type": "object",
       "properties": {
+        "_links": {
+          "$ref": "#/definitions/Links"
+        },
         "absicherungen": {
           "type": "array",
           "items": {
@@ -1066,8 +1191,8 @@
         "bewertungDesAngebots": {
           "type": "string",
           "enum": [
-            "ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS",
-            "ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN"
+            "ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN",
+            "ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS"
           ]
         },
         "bonitaet": {
@@ -1094,8 +1219,8 @@
           "type": "string",
           "enum": [
             "MACHBAR",
-            "UNTER_VORBEHALT_PRODUZENT",
-            "NICHT_MACHBAR"
+            "NICHT_MACHBAR",
+            "UNTER_VORBEHALT_PRODUZENT"
           ]
         },
         "meldungen": {
@@ -1110,9 +1235,6 @@
           "items": {
             "$ref": "#/definitions/AngebotsPruefungsErgebnis"
           }
-        },
-        "_links": {
-          "$ref": "#/definitions/Links"
         }
       },
       "title": "AngebotZumAntrag"
@@ -1128,6 +1250,87 @@
         }
       },
       "title": "AngebotsPruefungsErgebnis"
+    },
+    "AnnuitaetenDarlehen": {
+      "title": "AnnuitaetenDarlehen",
+      "allOf": [
+        {
+          "$ref": "#/definitions/GegenangebotDarlehen"
+        },
+        {
+          "type": "object",
+          "required": [
+            "anfaenglicheTilgung",
+            "bereitstellungsZinsFreieZeitInMonaten",
+            "darlehensBetrag",
+            "darlehensTyp",
+            "effektivZins",
+            "laufzeitKalkulatorischInJahren",
+            "rateMonatlich",
+            "sollZins",
+            "sonderTilgungJaehrlich",
+            "vertriebsProvisionGesamtAbsolut",
+            "zinsBindungInJahren"
+          ],
+          "discriminator": "darlehensTyp",
+          "properties": {
+            "anfaenglicheTilgung": {
+              "type": "number"
+            },
+            "bereitstellungsZins": {
+              "type": "number"
+            },
+            "bereitstellungsZinsFreieZeitInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "darlehensBetrag": {
+              "type": "number"
+            },
+            "darlehensTyp": {
+              "type": "string",
+              "enum": [
+                "ANNUITAETEN_DARLEHEN"
+              ]
+            },
+            "effektivZins": {
+              "type": "number"
+            },
+            "laufzeitKalkulatorischInJahren": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "produktDetails": {
+              "type": "string",
+              "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+            },
+            "rateMonatlich": {
+              "type": "number"
+            },
+            "sollZins": {
+              "type": "number"
+            },
+            "sonderTilgungJaehrlich": {
+              "type": "number"
+            },
+            "tilgungsBeginnAm": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2020-03-28"
+            },
+            "vertriebsProvisionGesamtAbsolut": {
+              "type": "number"
+            },
+            "zinsBindungInJahren": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "title": "AnnuitaetenDarlehen",
+          "description": "Erweitert GegenangebotDarlehen"
+        }
+      ],
+      "description": "Erweitert GegenangebotDarlehen"
     },
     "Anschrift": {
       "type": "object",
@@ -1150,14 +1353,14 @@
     "Antraege": {
       "type": "object",
       "properties": {
+        "_links": {
+          "$ref": "#/definitions/PaginationLinks"
+        },
         "antraege": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Antrag"
           }
-        },
-        "_links": {
-          "$ref": "#/definitions/PaginationLinks"
         }
       },
       "title": "Antraege"
@@ -1165,6 +1368,9 @@
     "Antrag": {
       "type": "object",
       "properties": {
+        "_links": {
+          "$ref": "#/definitions/Links"
+        },
         "angebot": {
           "description": "Das angenommene Angebot, auf dem dieser Antrag basiert",
           "$ref": "#/definitions/AngebotZumAntrag"
@@ -1189,13 +1395,14 @@
           "type": "string",
           "description": "Gibt an, ob es sich um einen Antrag aus dem Testmodus oder Echtgeschäft handelt",
           "enum": [
-            "TEST_MODUS",
-            "ECHT_GESCHAEFT"
+            "ECHT_GESCHAEFT",
+            "TEST_MODUS"
           ]
         },
         "dokumente": {
           "type": "array",
           "description": "Enthält alle Plattformdokumente, freigegebene Dokumente des Vertriebs, sowie die hochgeladenen Dokumente des Produktanbieters.",
+          "uniqueItems": true,
           "items": {
             "$ref": "#/definitions/Dokument"
           }
@@ -1244,9 +1451,6 @@
         "zugrundeliegendeDaten": {
           "description": "Basisdaten des Kunden, die für die Berechnung des Angebots relevant waren",
           "$ref": "#/definitions/ZugrundeliegendeDatenZumAntrag"
-        },
-        "_links": {
-          "$ref": "#/definitions/Links"
         }
       },
       "title": "Antrag",
@@ -1260,12 +1464,12 @@
           "description": "Ablehnungsgrund des Produktanbieters",
           "enum": [
             "FINANZIELLE_SITUATION",
-            "NEGATIV_MERKMAL",
-            "WERTERMITTLUNG",
-            "KRITERIEN",
-            "UNTERLAGEN_UNVOLLSTAENDIG",
             "GEGENANGEBOT",
-            "KEINE_ANGABE"
+            "KEINE_ANGABE",
+            "KRITERIEN",
+            "NEGATIV_MERKMAL",
+            "UNTERLAGEN_UNVOLLSTAENDIG",
+            "WERTERMITTLUNG"
           ]
         },
         "antragsteller": {
@@ -1273,8 +1477,8 @@
           "description": "Willenserklärung des Antragstellers",
           "enum": [
             "BEANTRAGT",
-            "UNTERSCHRIEBEN",
             "NICHT_ANGENOMMEN",
+            "UNTERSCHRIEBEN",
             "WIDERRUFEN"
           ]
         },
@@ -1282,20 +1486,20 @@
           "type": "string",
           "description": "Bearbeitungsfortschritt des Antrags nach beidseitiger Unterzeichnung",
           "enum": [
-            "NICHT_VON_PRODUKTANBIETER_BESTAETIGT",
-            "VON_PRODUKTANBIETER_BESTAETIGT",
             "FREIGEGEBEN_FUER_SAMMELFORDERUNG",
+            "NICHT_VON_PRODUKTANBIETER_BESTAETIGT",
             "PROVISION_IN_BEARBEITUNG",
-            "PROVISON_AN_KUNDENBETREUER_VOLLSTAENDIG_AUSGEZAHLT"
+            "PROVISON_AN_KUNDENBETREUER_VOLLSTAENDIG_AUSGEZAHLT",
+            "VON_PRODUKTANBIETER_BESTAETIGT"
           ]
         },
         "produktAnbieter": {
           "type": "string",
           "description": "Willenserklärung des Produktanbieters",
           "enum": [
+            "ABGELEHNT",
             "NICHT_BEARBEITET",
             "UNTERSCHRIEBEN",
-            "ABGELEHNT",
             "ZURUECKGESTELLT"
           ]
         }
@@ -1331,10 +1535,10 @@
           "type": "string",
           "description": "wenn der Antragssteller die Staatsangehörigkeit eines Nicht-EU-Landes hat",
           "enum": [
-            "VISUM",
             "AUFENTHALTS_ERLAUBNIS",
+            "DAUERAUFENTHALT_EU",
             "NIEDERLASSUNGS_ERLAUBNIS",
-            "DAUERAUFENTHALT_EU"
+            "VISUM"
           ]
         },
         "aufenthaltsTitelBefristetBis": {
@@ -1488,8 +1692,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -1504,11 +1708,11 @@
         "typ": {
           "type": "string",
           "enum": [
-            "STELLPLATZ",
             "CARPORT",
-            "GARAGE",
             "DOPPEL_GARAGE",
+            "GARAGE",
             "KELLER_GARAGE",
+            "STELLPLATZ",
             "TIEFGARAGEN_STELLPLATZ"
           ]
         }
@@ -1528,16 +1732,16 @@
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         },
         "zahlungsTyp": {
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         },
         "zinsertragJaehrlich": {
@@ -1782,9 +1986,9 @@
         "art": {
           "type": "string",
           "enum": [
-            "PRAESENZ_GESCHAEFT",
+            "AUSSER_GESCHAEFTSRAUM_VERTRAG",
             "FERN_ABSATZ_GESCHAEFT",
-            "AUSSER_GESCHAEFTSRAUM_VERTRAG"
+            "PRAESENZ_GESCHAEFT"
           ]
         },
         "hinweisFuerProduktAnbieter": {
@@ -1918,9 +2122,9 @@
         "immobilienEinsatz": {
           "type": "string",
           "enum": [
+            "ALS_ZUSATZSICHERHEIT",
             "KEIN_EINSATZ",
-            "VERKAUFEN",
-            "ALS_ZUSATZSICHERHEIT"
+            "VERKAUFEN"
           ]
         },
         "keinBaulandFlaecheInQm": {
@@ -1937,8 +2141,8 @@
         "objektArt": {
           "type": "string",
           "enum": [
-            "GRUNDSTUECK",
             "EIGENTUMSWOHNUNG",
+            "GRUNDSTUECK",
             "HAUS"
           ]
         },
@@ -2007,17 +2211,17 @@
         "vermoegensEinsatz": {
           "type": "string",
           "enum": [
-            "KEIN_EINSATZ",
             "ABTRETEN",
-            "AUFLOESEN"
+            "AUFLOESEN",
+            "KEIN_EINSATZ"
           ]
         },
         "vermoegensTyp": {
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         },
         "vertragsBeginn": {
@@ -2034,8 +2238,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         },
         "zuteilungsDatum": {
@@ -2087,8 +2291,8 @@
           "type": "string",
           "description": "Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
           "enum": [
-            "BUCH_GRUNDSCHULD",
-            "BRIEF_GRUNDSCHULD"
+            "BRIEF_GRUNDSCHULD",
+            "BUCH_GRUNDSCHULD"
           ]
         },
         "hauptKontonummerDslBank": {
@@ -2161,8 +2365,8 @@
           "type": "string",
           "description": "Erlaubte Werte sind: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD. Neue Ausprägungen können kurzfristig hinzukommen. Der Client muss daher mit unbekannten Werten umgehen können.",
           "enum": [
-            "BUCH_GRUNDSCHULD",
-            "BRIEF_GRUNDSCHULD"
+            "BRIEF_GRUNDSCHULD",
+            "BUCH_GRUNDSCHULD"
           ]
         },
         "hauptKontonummerDslBank": {
@@ -2257,10 +2461,6 @@
       },
       "title": "Branche"
     },
-    "CharSequence": {
-      "type": "object",
-      "title": "CharSequence"
-    },
     "Darlehen": {
       "type": "object",
       "properties": {
@@ -2291,10 +2491,10 @@
             "ANNUITAETEN_DARLEHEN",
             "FORWARD_DARLEHEN",
             "KFW_DARLEHEN",
-            "REGIONAL_FOERDER_DARLEHEN",
             "PRIVAT_DARLEHEN",
-            "ZWISCHEN_FINANZIERUNG",
-            "VARIABLES_DARLEHEN"
+            "REGIONAL_FOERDER_DARLEHEN",
+            "VARIABLES_DARLEHEN",
+            "ZWISCHEN_FINANZIERUNG"
           ]
         },
         "detailsZurVerwendung": {
@@ -2395,9 +2595,9 @@
           "type": "string",
           "description": "nur bei darlehensTyp==ZWISCHEN_FINANZIERUNG",
           "enum": [
-            "VORFINANZIERUNG_OEFFENTLICHER_MITTEL",
+            "SONSTIGE_VERWENDUNG",
             "VERKAUF_EINES_ANDEREN_OBJEKTS",
-            "SONSTIGE_VERWENDUNG"
+            "VORFINANZIERUNG_OEFFENTLICHER_MITTEL"
           ]
         },
         "zinsBindung": {
@@ -2481,8 +2681,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -2498,8 +2698,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -2533,8 +2733,8 @@
         "typ": {
           "type": "string",
           "enum": [
-            "EINTRAG",
             "AGGREGIERTER_EINTRAG",
+            "EINTRAG",
             "SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE"
           ]
         },
@@ -2544,8 +2744,8 @@
         "zahlungsTyp": {
           "type": "string",
           "enum": [
-            "EINZAHLUNG",
-            "AUSZAHLUNG"
+            "AUSZAHLUNG",
+            "EINZAHLUNG"
           ]
         },
         "zinsen": {
@@ -2706,8 +2906,8 @@
         "objektArt": {
           "type": "string",
           "enum": [
-            "GRUNDSTUECK",
             "EIGENTUMSWOHNUNG",
+            "GRUNDSTUECK",
             "HAUS"
           ]
         },
@@ -2751,6 +2951,92 @@
         }
       },
       "title": "Flurstueck"
+    },
+    "ForwardDarlehen": {
+      "title": "ForwardDarlehen",
+      "allOf": [
+        {
+          "$ref": "#/definitions/GegenangebotDarlehen"
+        },
+        {
+          "type": "object",
+          "required": [
+            "anfaenglicheTilgung",
+            "bereitstellungsZinsFreieZeitInMonaten",
+            "darlehensBetrag",
+            "darlehensTyp",
+            "effektivZins",
+            "forwardPeriodeInMonaten",
+            "laufzeitKalkulatorischInJahren",
+            "rateMonatlich",
+            "sollZins",
+            "sonderTilgungJaehrlich",
+            "vertriebsProvisionGesamtAbsolut",
+            "zinsBindungInJahren"
+          ],
+          "discriminator": "darlehensTyp",
+          "properties": {
+            "anfaenglicheTilgung": {
+              "type": "number"
+            },
+            "bereitstellungsZins": {
+              "type": "number"
+            },
+            "bereitstellungsZinsFreieZeitInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "darlehensBetrag": {
+              "type": "number"
+            },
+            "darlehensTyp": {
+              "type": "string",
+              "enum": [
+                "FORWARD_DARLEHEN"
+              ]
+            },
+            "effektivZins": {
+              "type": "number"
+            },
+            "forwardPeriodeInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "laufzeitKalkulatorischInJahren": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "produktDetails": {
+              "type": "string",
+              "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+            },
+            "rateMonatlich": {
+              "type": "number"
+            },
+            "sollZins": {
+              "type": "number"
+            },
+            "sonderTilgungJaehrlich": {
+              "type": "number"
+            },
+            "tilgungsBeginnAm": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2020-03-28"
+            },
+            "vertriebsProvisionGesamtAbsolut": {
+              "type": "number"
+            },
+            "zinsBindungInJahren": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "title": "ForwardDarlehen",
+          "description": "Erweitert GegenangebotDarlehen"
+        }
+      ],
+      "description": "Erweitert GegenangebotDarlehen"
     },
     "Gebaeude": {
       "type": "object",
@@ -2849,11 +3135,11 @@
           "type": "string",
           "description": "Angaben zum Zustand der Immobilie für die automatische Objektbewertungs-Schnittstelle (VDP)",
           "enum": [
-            "SEHR_GUT",
             "GUT",
-            "MITTEL",
             "MAESSIG",
-            "SCHLECHT"
+            "MITTEL",
+            "SCHLECHT",
+            "SEHR_GUT"
           ]
         }
       },
@@ -2870,6 +3156,74 @@
         }
       },
       "title": "GebaeudeFlaeche"
+    },
+    "Gegenangebot": {
+      "type": "object",
+      "required": [
+        "darlehen"
+      ],
+      "properties": {
+        "darlehen": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/GegenangebotDarlehen"
+          }
+        },
+        "kennung": {
+          "type": "string",
+          "description": "Anmerkung des Angebots in der Ergebnisliste - sichtbar für den Vertrieb."
+        }
+      },
+      "title": "Gegenangebot"
+    },
+    "GegenangebotDarlehen": {
+      "type": "object",
+      "required": [
+        "anfaenglicheTilgung",
+        "darlehensBetrag",
+        "effektivZins",
+        "rateMonatlich",
+        "sollZins",
+        "vertriebsProvisionGesamtAbsolut"
+      ],
+      "discriminator": "darlehensTyp",
+      "properties": {
+        "anfaenglicheTilgung": {
+          "type": "number"
+        },
+        "darlehensBetrag": {
+          "type": "number"
+        },
+        "darlehensTyp": {
+          "type": "string",
+          "enum": [
+            "ANNUITAETEN_DARLEHEN",
+            "FORWARD_DARLEHEN",
+            "KFW_DARLEHEN",
+            "PRIVAT_DARLEHEN",
+            "REGIONAL_FOERDER_DARLEHEN",
+            "VARIABLES_DARLEHEN",
+            "ZWISCHEN_FINANZIERUNG"
+          ]
+        },
+        "effektivZins": {
+          "type": "number"
+        },
+        "produktDetails": {
+          "type": "string",
+          "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+        },
+        "rateMonatlich": {
+          "type": "number"
+        },
+        "sollZins": {
+          "type": "number"
+        },
+        "vertriebsProvisionGesamtAbsolut": {
+          "type": "number"
+        }
+      },
+      "title": "GegenangebotDarlehen"
     },
     "GrundbuchAngabe": {
       "type": "object",
@@ -2911,11 +3265,11 @@
         "grundstuecksArt": {
           "type": "string",
           "enum": [
-            "UNBEBAUTES_WOHNGRUNDSTUECK",
-            "UNBEBAUTES_MISCHGRUNDSTUECK",
-            "UNBEBAUTES_GEWERBEGRUNDSTUECK",
             "LANDWIRTSCHAFTLICHES_GRUNDSTUECK",
-            "SONSTIGES_GRUNDSTUECK"
+            "SONSTIGES_GRUNDSTUECK",
+            "UNBEBAUTES_GEWERBEGRUNDSTUECK",
+            "UNBEBAUTES_MISCHGRUNDSTUECK",
+            "UNBEBAUTES_WOHNGRUNDSTUECK"
           ]
         }
       },
@@ -3109,6 +3463,109 @@
       },
       "title": "ImmobilieVerknuepfung"
     },
+    "KfwDarlehen": {
+      "title": "KfwDarlehen",
+      "allOf": [
+        {
+          "$ref": "#/definitions/GegenangebotDarlehen"
+        },
+        {
+          "type": "object",
+          "required": [
+            "anfaenglicheTilgung",
+            "bereitstellungsZins",
+            "bereitstellungsZinsFreieZeitInMonaten",
+            "darlehensBetrag",
+            "darlehensTyp",
+            "effektivZins",
+            "kfwProgramm",
+            "laufzeitKalkulatorischInJahren",
+            "rateMonatlich",
+            "rateMonatlichInDerTilgungsfreienAnlaufzeit",
+            "sollZins",
+            "tilgungsFreieAnlaufJahre",
+            "vertriebsProvisionGesamtAbsolut",
+            "zinsBindungInJahren"
+          ],
+          "discriminator": "darlehensTyp",
+          "properties": {
+            "anfaenglicheTilgung": {
+              "type": "number"
+            },
+            "bereitstellungsZins": {
+              "type": "number"
+            },
+            "bereitstellungsZinsFreieZeitInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "darlehensBetrag": {
+              "type": "number"
+            },
+            "darlehensTyp": {
+              "type": "string",
+              "enum": [
+                "KFW_DARLEHEN"
+              ]
+            },
+            "effektivZins": {
+              "type": "number"
+            },
+            "kfwEnergieEffizienzStandard": {
+              "type": "string",
+              "description": "Nur benötigt, wenn kfwProgramm = PROGRAMM_153",
+              "enum": [
+                "STANDARD_40",
+                "STANDARD_40_PLUS",
+                "STANDARD_55"
+              ]
+            },
+            "kfwProgramm": {
+              "type": "string",
+              "enum": [
+                "PROGRAMM_124",
+                "PROGRAMM_151",
+                "PROGRAMM_152",
+                "PROGRAMM_153",
+                "PROGRAMM_159",
+                "PROGRAMM_167"
+              ]
+            },
+            "laufzeitKalkulatorischInJahren": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "produktDetails": {
+              "type": "string",
+              "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+            },
+            "rateMonatlich": {
+              "type": "number"
+            },
+            "rateMonatlichInDerTilgungsfreienAnlaufzeit": {
+              "type": "number"
+            },
+            "sollZins": {
+              "type": "number"
+            },
+            "tilgungsFreieAnlaufJahre": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "vertriebsProvisionGesamtAbsolut": {
+              "type": "number"
+            },
+            "zinsBindungInJahren": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "title": "KfwDarlehen",
+          "description": "Erweitert GegenangebotDarlehen"
+        }
+      ],
+      "description": "Erweitert GegenangebotDarlehen"
+    },
     "Kind": {
       "type": "object",
       "properties": {
@@ -3149,27 +3606,27 @@
         "typ": {
           "type": "string",
           "enum": [
-            "KAPITALBILDENDE_LEBENSVERSICHERUNG",
             "FONDSGEBUNDENE_LEBENSVERSICHERUNG",
-            "KAPITALBILDENDE_RENTENVERSICHERUNG",
             "FONDSGEBUNDENE_RENTENVERSICHERUNG",
+            "KAPITALBILDENDE_LEBENSVERSICHERUNG",
+            "KAPITALBILDENDE_RENTENVERSICHERUNG",
             "RISIKO_LEBENSVERSICHERUNG"
           ]
         },
         "vermoegensEinsatz": {
           "type": "string",
           "enum": [
-            "KEIN_EINSATZ",
             "ABTRETEN",
-            "AUFLOESEN"
+            "AUFLOESEN",
+            "KEIN_EINSATZ"
           ]
         },
         "vermoegensTyp": {
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         },
         "versicherungsGesellschaft": {
@@ -3196,8 +3653,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -3216,9 +3673,9 @@
         "ausweisArt": {
           "type": "string",
           "enum": [
+            "ANDERE",
             "PERSONALAUSWEIS",
-            "REISEPASS",
-            "ANDERE"
+            "REISEPASS"
           ]
         },
         "ausweisArtBeiAndererAusweis": {
@@ -3284,8 +3741,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -3325,15 +3782,15 @@
           "type": "string",
           "description": "Erlaubte Werte sind: KERNSANIERUNG, DACHERNEUERUNG, FENSTER, ROHRLEITUNGEN, HEIZUNG, WAERMEDAEMMUNG, BAEDER, INNENAUSBAU, RAUMAUFTEILUNG. Der Client muss daher mit unbekannten Werten umgehen können.",
           "enum": [
-            "KERNSANIERUNG",
+            "BAEDER",
             "DACHERNEUERUNG",
             "FENSTER",
-            "ROHRLEITUNGEN",
             "HEIZUNG",
-            "WAERMEDAEMMUNG",
-            "BAEDER",
             "INNENAUSBAU",
-            "RAUMAUFTEILUNG"
+            "KERNSANIERUNG",
+            "RAUMAUFTEILUNG",
+            "ROHRLEITUNGEN",
+            "WAERMEDAEMMUNG"
           ]
         }
       },
@@ -3402,6 +3859,9 @@
     "Partner": {
       "type": "object",
       "properties": {
+        "_links": {
+          "$ref": "#/definitions/Links"
+        },
         "anrede": {
           "type": "string"
         },
@@ -3409,6 +3869,18 @@
           "$ref": "#/definitions/Anschrift"
         },
         "aufsichtsBehoerde": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "externerKreditSachbearbeiterId": {
+          "type": "string"
+        },
+        "firmierung": {
+          "type": "string"
+        },
+        "nachname": {
           "type": "string"
         },
         "partnerId": {
@@ -3424,35 +3896,20 @@
         "registrierungsNummer": {
           "type": "string"
         },
+        "telefonnummer": {
+          "type": "string"
+        },
         "vertriebsOrganisation": {
           "type": "string"
         },
         "vertriebsOrganisationsId": {
           "type": "string"
         },
-        "webseite": {
-          "type": "string"
-        },
         "vorname": {
           "type": "string"
         },
-        "nachname": {
+        "webseite": {
           "type": "string"
-        },
-        "firmierung": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "telefonnummer": {
-          "type": "string"
-        },
-        "externerKreditSachbearbeiterId": {
-          "type": "string"
-        },
-        "_links": {
-          "$ref": "#/definitions/Links"
         }
       },
       "title": "Partner",
@@ -3483,10 +3940,10 @@
           "description": "Auszuführende Operation",
           "enum": [
             "add",
-            "remove",
-            "replace",
             "copy",
             "move",
+            "remove",
+            "replace",
             "test"
           ]
         },
@@ -3521,6 +3978,95 @@
       },
       "title": "Postadresse"
     },
+    "PrivatDarlehen": {
+      "title": "PrivatDarlehen",
+      "allOf": [
+        {
+          "$ref": "#/definitions/GegenangebotDarlehen"
+        },
+        {
+          "type": "object",
+          "required": [
+            "anfaenglicheTilgung",
+            "darlehensBetrag",
+            "darlehensTyp",
+            "effektivZins",
+            "laufzeitKalkulatorischInMonaten",
+            "rateMonatlich",
+            "sollZins",
+            "vertriebsProvisionGesamtAbsolut",
+            "zinsBindungInMonaten"
+          ],
+          "discriminator": "darlehensTyp",
+          "properties": {
+            "anfaenglicheTilgung": {
+              "type": "number"
+            },
+            "darlehensBetrag": {
+              "type": "number"
+            },
+            "darlehensTyp": {
+              "type": "string",
+              "enum": [
+                "PRIVAT_DARLEHEN"
+              ]
+            },
+            "effektivZins": {
+              "type": "number"
+            },
+            "laufzeitKalkulatorischInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "produktDetails": {
+              "type": "string",
+              "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+            },
+            "rateMonatlich": {
+              "type": "number"
+            },
+            "sollZins": {
+              "type": "number"
+            },
+            "vertriebsProvisionGesamtAbsolut": {
+              "type": "number"
+            },
+            "zinsBindungInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "title": "PrivatDarlehen",
+          "description": "Erweitert GegenangebotDarlehen"
+        }
+      ],
+      "description": "Erweitert GegenangebotDarlehen"
+    },
+    "Problem": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "statusMessage": {
+          "type": "string"
+        },
+        "traceId": {
+          "type": "string"
+        },
+        "violations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Violation"
+          }
+        }
+      },
+      "title": "Problem"
+    },
     "ProduktAnbieter": {
       "type": "object",
       "properties": {
@@ -3531,6 +4077,18 @@
           "$ref": "#/definitions/Anschrift"
         },
         "aufsichtsBehoerde": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "externerKreditSachbearbeiterId": {
+          "type": "string"
+        },
+        "firmierung": {
+          "type": "string"
+        },
+        "nachname": {
           "type": "string"
         },
         "partnerId": {
@@ -3552,31 +4110,19 @@
         "registrierungsNummer": {
           "type": "string"
         },
+        "telefonnummer": {
+          "type": "string"
+        },
         "vertriebsOrganisation": {
           "type": "string"
         },
         "vertriebsOrganisationsId": {
           "type": "string"
         },
-        "webseite": {
-          "type": "string"
-        },
         "vorname": {
           "type": "string"
         },
-        "nachname": {
-          "type": "string"
-        },
-        "firmierung": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "telefonnummer": {
-          "type": "string"
-        },
-        "externerKreditSachbearbeiterId": {
+        "webseite": {
           "type": "string"
         }
       },
@@ -3613,19 +4159,111 @@
       },
       "title": "RechteAbteilung2"
     },
+    "RegionalFoerderDarlehen": {
+      "title": "RegionalFoerderDarlehen",
+      "allOf": [
+        {
+          "$ref": "#/definitions/GegenangebotDarlehen"
+        },
+        {
+          "type": "object",
+          "required": [
+            "anfaenglicheTilgung",
+            "bereitstellungsZins",
+            "bereitstellungsZinsFreieZeitInMonaten",
+            "darlehensBetrag",
+            "darlehensTyp",
+            "effektivZins",
+            "laufzeitKalkulatorischInJahren",
+            "rateMonatlich",
+            "rateMonatlichInDerTilgungsfreienAnlaufzeit",
+            "regionalFoerderbankProgramm",
+            "sollZins",
+            "tilgungsFreieAnlaufJahre",
+            "vertriebsProvisionGesamtAbsolut",
+            "zinsBindungInJahren"
+          ],
+          "discriminator": "darlehensTyp",
+          "properties": {
+            "anfaenglicheTilgung": {
+              "type": "number"
+            },
+            "bereitstellungsZins": {
+              "type": "number"
+            },
+            "bereitstellungsZinsFreieZeitInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "darlehensBetrag": {
+              "type": "number"
+            },
+            "darlehensTyp": {
+              "type": "string",
+              "enum": [
+                "REGIONAL_FOERDER_DARLEHEN"
+              ]
+            },
+            "effektivZins": {
+              "type": "number"
+            },
+            "laufzeitKalkulatorischInJahren": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "produktDetails": {
+              "type": "string",
+              "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+            },
+            "rateMonatlich": {
+              "type": "number"
+            },
+            "rateMonatlichInDerTilgungsfreienAnlaufzeit": {
+              "type": "number"
+            },
+            "regionalFoerderbankProgramm": {
+              "type": "string",
+              "enum": [
+                "L_BANK_KOMBI_DARLEHEN_WOHNEN",
+                "L_BANK_WOHNEN_MIT_KIND",
+                "L_BANK_WOHNEN_MIT_ZUKUNFT",
+                "NRW_BANK_WOHNEIGENTUM"
+              ]
+            },
+            "sollZins": {
+              "type": "number"
+            },
+            "tilgungsFreieAnlaufJahre": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "vertriebsProvisionGesamtAbsolut": {
+              "type": "number"
+            },
+            "zinsBindungInJahren": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "title": "RegionalFoerderDarlehen",
+          "description": "Erweitert GegenangebotDarlehen"
+        }
+      ],
+      "description": "Erweitert GegenangebotDarlehen"
+    },
     "RisikoAbsicherung": {
       "type": "object",
       "properties": {
         "abgesichertesRisiko": {
           "type": "string",
           "enum": [
-            "TODESFALL",
             "ARBEITSLOSIGKEIT",
             "ARBEITSUNFAEHIGKEIT",
+            "ASSISTANCE_ARBEITSLOSIGKEIT",
+            "ASSISTANCE_ARBEITSUNFAEHIGKEIT",
             "INVALIDITAET",
             "SCHWERE_KRANKHEIT",
-            "ASSISTANCE_ARBEITSUNFAEHIGKEIT",
-            "ASSISTANCE_ARBEITSLOSIGKEIT"
+            "TODESFALL"
           ]
         },
         "auszahlungsBetrag": {
@@ -3635,10 +4273,10 @@
           "type": "string",
           "enum": [
             "EINMALIG",
-            "MONATLICH",
-            "VIERTELJAEHRLICH",
             "HALBJAEHRLICH",
-            "JAEHRLICH"
+            "JAEHRLICH",
+            "MONATLICH",
+            "VIERTELJAEHRLICH"
           ]
         },
         "praemienAnteil": {
@@ -3701,10 +4339,10 @@
           "type": "string",
           "enum": [
             "EINMALIG",
-            "MONATLICH",
-            "VIERTELJAEHRLICH",
             "HALBJAEHRLICH",
-            "JAEHRLICH"
+            "JAEHRLICH",
+            "MONATLICH",
+            "VIERTELJAEHRLICH"
           ]
         }
       },
@@ -3742,16 +4380,16 @@
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         },
         "zahlungsTyp": {
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -3780,20 +4418,20 @@
           "type": "string",
           "enum": [
             "FINANZIELLE_SITUATION",
-            "NEGATIV_MERKMAL",
-            "WERTERMITTLUNG",
-            "KRITERIEN",
-            "UNTERLAGEN_UNVOLLSTAENDIG",
             "GEGENANGEBOT",
-            "KEINE_ANGABE"
+            "KEINE_ANGABE",
+            "KRITERIEN",
+            "NEGATIV_MERKMAL",
+            "UNTERLAGEN_UNVOLLSTAENDIG",
+            "WERTERMITTLUNG"
           ]
         },
         "antragsteller": {
           "type": "string",
           "enum": [
             "BEANTRAGT",
-            "UNTERSCHRIEBEN",
             "NICHT_ANGENOMMEN",
+            "UNTERSCHRIEBEN",
             "WIDERRUFEN"
           ]
         },
@@ -3803,9 +4441,9 @@
         "produktAnbieter": {
           "type": "string",
           "enum": [
+            "ABGELEHNT",
             "NICHT_BEARBEITET",
             "UNTERSCHRIEBEN",
-            "ABGELEHNT",
             "ZURUECKGESTELLT"
           ]
         }
@@ -3868,6 +4506,77 @@
       },
       "title": "TilgungsPhase"
     },
+    "VariablesDarlehen": {
+      "title": "VariablesDarlehen",
+      "allOf": [
+        {
+          "$ref": "#/definitions/GegenangebotDarlehen"
+        },
+        {
+          "type": "object",
+          "required": [
+            "anfaenglicheTilgung",
+            "darlehensBetrag",
+            "darlehensTyp",
+            "effektivZins",
+            "laufzeitKalkulatorischInJahren",
+            "rateMonatlich",
+            "sollZins",
+            "vertriebsProvisionGesamtAbsolut"
+          ],
+          "discriminator": "darlehensTyp",
+          "properties": {
+            "anfaenglicheTilgung": {
+              "type": "number"
+            },
+            "bereitstellungsZins": {
+              "type": "number"
+            },
+            "bereitstellungsZinsFreieZeitInMonaten": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "darlehensBetrag": {
+              "type": "number"
+            },
+            "darlehensTyp": {
+              "type": "string",
+              "enum": [
+                "VARIABLES_DARLEHEN"
+              ]
+            },
+            "effektivZins": {
+              "type": "number"
+            },
+            "laufzeitKalkulatorischInJahren": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "produktDetails": {
+              "type": "string",
+              "description": "Wird dem Vertrieb als Beschreibung zum Produkt angezeigt."
+            },
+            "rateMonatlich": {
+              "type": "number"
+            },
+            "sollZins": {
+              "type": "number"
+            },
+            "tilgungsBeginnAm": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2020-03-28"
+            },
+            "vertriebsProvisionGesamtAbsolut": {
+              "type": "number"
+            }
+          },
+          "title": "VariablesDarlehen",
+          "description": "Erweitert GegenangebotDarlehen"
+        }
+      ],
+      "description": "Erweitert GegenangebotDarlehen"
+    },
     "Verbindlichkeit": {
       "type": "object",
       "properties": {
@@ -3888,8 +4597,8 @@
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         },
         "wirdAbgeloest": {
@@ -3899,8 +4608,8 @@
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -3939,8 +4648,8 @@
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         }
       },
@@ -3964,8 +4673,8 @@
         "vermoegensTyp": {
           "type": "string",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         }
       },
@@ -4001,6 +4710,18 @@
       },
       "title": "VersicherungsZeitraum"
     },
+    "Violation": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Violation"
+    },
     "Vorhaben": {
       "type": "object",
       "properties": {
@@ -4029,11 +4750,11 @@
           "type": "string",
           "enum": [
             "ANSCHLUSSFINANZIERUNG",
+            "KAPITALBESCHAFFUNG",
             "KAUF",
             "KAUF_NEUBAU_VOM_BAUTRAEGER",
             "MODERNISIERUNG_UMBAU_ANBAU",
-            "NEUBAU",
-            "KAPITALBESCHAFFUNG"
+            "NEUBAU"
           ]
         }
       },
@@ -4055,16 +4776,16 @@
           "type": "string",
           "description": "Redundante Angabe des Vermögenstyp dient als zusätzliches Filterkriterium",
           "enum": [
-            "VERMOEGEN",
-            "VERBINDLICHKEIT"
+            "VERBINDLICHKEIT",
+            "VERMOEGEN"
           ]
         },
         "zahlungsTyp": {
           "type": "string",
           "description": "Redundante Angabe des Zahlungstyps dient als zusätzliches Filterkriterium",
           "enum": [
-            "EINNAHME",
-            "AUSGABE"
+            "AUSGABE",
+            "EINNAHME"
           ]
         }
       },
@@ -4073,14 +4794,14 @@
     "Zahlungsplaene": {
       "type": "object",
       "properties": {
+        "_links": {
+          "$ref": "#/definitions/Links"
+        },
         "zahlungsplaene": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/zahlungsplan"
           }
-        },
-        "_links": {
-          "$ref": "#/definitions/Links"
         }
       },
       "title": "Zahlungsplaene"
@@ -4109,6 +4830,9 @@
     "ZugrundeliegendeDatenZumAntrag": {
       "type": "object",
       "properties": {
+        "_links": {
+          "$ref": "#/definitions/Links"
+        },
         "bankverbindung": {
           "$ref": "#/definitions/Bankverbindung"
         },
@@ -4123,9 +4847,6 @@
         },
         "vorhaben": {
           "$ref": "#/definitions/Vorhaben"
-        },
-        "_links": {
-          "$ref": "#/definitions/Links"
         }
       },
       "title": "ZugrundeliegendeDatenZumAntrag"
