@@ -590,7 +590,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.31</p>
+<p><em>Version</em> : 2.32</p>
 </div>
 </div>
 <div class="sect2">
@@ -3909,7 +3909,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (ANNUITAETEN_DARLEHEN)</p>
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3959,7 +3959,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -6395,7 +6397,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>abzuloesendeRestschuld</strong><br>
 <em>optional</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Deprecated.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -6406,7 +6410,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>nur wenn wirdAbgeloest==true</p>
+<p>Deprecated. nur wenn wirdAbgeloest==true</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
@@ -6534,6 +6538,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>restschuldAktuell</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Die aktuelle Restschuld bezüglich des Darlehens.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>number</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>restschuldZumAbloeseTermin</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Die kalkulatorische Restschuld zum Ende der Zinsbindung.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>number</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>sollZins</strong><br>
 <em>optional</em></p>
 </div></div></td>
@@ -6552,6 +6580,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>wirdAbgeloest</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>true, wenn Darlehen abgelöst wird, ansonsten false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>boolean</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6588,7 +6628,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>abzuloesendeRestschuld</strong><br>
 <em>optional</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Deprecated.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -6599,7 +6641,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>nur wenn wirdAbgeloest==true</p>
+<p>Deprecated. nur wenn wirdAbgeloest==true</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
@@ -6727,6 +6769,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>restschuldAktuell</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Die aktuelle Restschuld bezüglich des Darlehens.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>number</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>restschuldZumAbloeseTermin</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Die kalkulatorische Restschuld zum Ende der Zinsbindung.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>number</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>sollZins</strong><br>
 <em>optional</em></p>
 </div></div></td>
@@ -6757,6 +6823,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>enum (ABLOESEN, TRITT_IM_RANG_ZURUECK, TRITT_NICHT_IM_RANG_ZURUECK)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>wirdAbgeloest</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>true, wenn Darlehen abgelöst wird, ansonsten false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>boolean</p>
 </div></div></td>
 </tr>
 <tr>
@@ -8311,7 +8389,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (FORWARD_DARLEHEN)</p>
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -8361,7 +8439,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -8806,7 +8886,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>darlehensTyp</strong><br>
-<em>optional</em></p>
+<em>verpflichtend</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
@@ -8860,7 +8940,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -9414,7 +9496,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (KFW_DARLEHEN)</p>
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -9464,7 +9546,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -10692,7 +10776,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (PRIVAT_DARLEHEN)</p>
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -10742,7 +10826,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -11169,7 +11255,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (REGIONAL_FOERDER_DARLEHEN)</p>
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -11219,7 +11305,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -11927,7 +12015,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (VARIABLES_DARLEHEN)</p>
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -11977,7 +12065,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
 <em>verpflichtend</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>number</p>
 </div></div></td>
@@ -12755,7 +12845,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-01-13 16:47:21 +0100
+Last updated 2021-02-09 09:24:27 +0100
 </div>
 </div>
 </body>

@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.",
-    "version": "2.31",
+    "version": "2.32",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -1290,7 +1290,13 @@
             "darlehensTyp": {
               "type": "string",
               "enum": [
-                "ANNUITAETEN_DARLEHEN"
+                "ANNUITAETEN_DARLEHEN",
+                "FORWARD_DARLEHEN",
+                "KFW_DARLEHEN",
+                "PRIVAT_DARLEHEN",
+                "REGIONAL_FOERDER_DARLEHEN",
+                "VARIABLES_DARLEHEN",
+                "ZWISCHEN_FINANZIERUNG"
               ]
             },
             "effektivZins": {
@@ -1319,7 +1325,8 @@
               "example": "2020-03-28"
             },
             "vertriebsProvisionGesamtAbsolut": {
-              "type": "number"
+              "type": "number",
+              "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
             },
             "zinsBindungInJahren": {
               "type": "integer",
@@ -2253,11 +2260,12 @@
       "type": "object",
       "properties": {
         "abzuloesendeRestschuld": {
-          "type": "number"
+          "type": "number",
+          "description": "Deprecated."
         },
         "aktuelleRestschuldWennNichtAbzuloesen": {
           "type": "number",
-          "description": "nur wenn wirdAbgeloest==true"
+          "description": "Deprecated. nur wenn wirdAbgeloest==true"
         },
         "bausteinId": {
           "type": "string"
@@ -2309,12 +2317,24 @@
         "rateMonatlich": {
           "type": "number"
         },
+        "restschuldAktuell": {
+          "type": "number",
+          "description": "Die aktuelle Restschuld bezüglich des Darlehens."
+        },
+        "restschuldZumAbloeseTermin": {
+          "type": "number",
+          "description": "Die kalkulatorische Restschuld zum Ende der Zinsbindung."
+        },
         "sollZins": {
           "type": "number"
         },
         "sondertilgungZumZinsBindungsEnde": {
           "type": "number",
           "description": "für Prolongation, d.h. technisch: Vorhaben verwendungszweck==ANSCHLUSSFINANZIERUNG"
+        },
+        "wirdAbgeloest": {
+          "type": "boolean",
+          "description": "true, wenn Darlehen abgelöst wird, ansonsten false"
         },
         "zinsBindungEndetAm": {
           "type": "string",
@@ -2327,11 +2347,12 @@
       "type": "object",
       "properties": {
         "abzuloesendeRestschuld": {
-          "type": "number"
+          "type": "number",
+          "description": "Deprecated."
         },
         "aktuelleRestschuldWennNichtAbzuloesen": {
           "type": "number",
-          "description": "nur wenn wirdAbgeloest==true"
+          "description": "Deprecated. nur wenn wirdAbgeloest==true"
         },
         "bausteinId": {
           "type": "string"
@@ -2382,6 +2403,14 @@
         },
         "rateMonatlich": {
           "type": "number"
+        },
+        "restschuldAktuell": {
+          "type": "number",
+          "description": "Die aktuelle Restschuld bezüglich des Darlehens."
+        },
+        "restschuldZumAbloeseTermin": {
+          "type": "number",
+          "description": "Die kalkulatorische Restschuld zum Ende der Zinsbindung."
         },
         "sollZins": {
           "type": "number"
@@ -2398,6 +2427,10 @@
             "TRITT_IM_RANG_ZURUECK",
             "TRITT_NICHT_IM_RANG_ZURUECK"
           ]
+        },
+        "wirdAbgeloest": {
+          "type": "boolean",
+          "description": "true, wenn Darlehen abgelöst wird, ansonsten false"
         },
         "zinsBindungEndetAm": {
           "type": "string",
@@ -2992,7 +3025,13 @@
             "darlehensTyp": {
               "type": "string",
               "enum": [
-                "FORWARD_DARLEHEN"
+                "ANNUITAETEN_DARLEHEN",
+                "FORWARD_DARLEHEN",
+                "KFW_DARLEHEN",
+                "PRIVAT_DARLEHEN",
+                "REGIONAL_FOERDER_DARLEHEN",
+                "VARIABLES_DARLEHEN",
+                "ZWISCHEN_FINANZIERUNG"
               ]
             },
             "effektivZins": {
@@ -3025,7 +3064,8 @@
               "example": "2020-03-28"
             },
             "vertriebsProvisionGesamtAbsolut": {
-              "type": "number"
+              "type": "number",
+              "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
             },
             "zinsBindungInJahren": {
               "type": "integer",
@@ -3181,6 +3221,7 @@
       "required": [
         "anfaenglicheTilgung",
         "darlehensBetrag",
+        "darlehensTyp",
         "effektivZins",
         "rateMonatlich",
         "sollZins",
@@ -3220,7 +3261,8 @@
           "type": "number"
         },
         "vertriebsProvisionGesamtAbsolut": {
-          "type": "number"
+          "type": "number",
+          "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
         }
       },
       "title": "GegenangebotDarlehen"
@@ -3505,7 +3547,13 @@
             "darlehensTyp": {
               "type": "string",
               "enum": [
-                "KFW_DARLEHEN"
+                "ANNUITAETEN_DARLEHEN",
+                "FORWARD_DARLEHEN",
+                "KFW_DARLEHEN",
+                "PRIVAT_DARLEHEN",
+                "REGIONAL_FOERDER_DARLEHEN",
+                "VARIABLES_DARLEHEN",
+                "ZWISCHEN_FINANZIERUNG"
               ]
             },
             "effektivZins": {
@@ -3553,7 +3601,8 @@
               "format": "int32"
             },
             "vertriebsProvisionGesamtAbsolut": {
-              "type": "number"
+              "type": "number",
+              "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
             },
             "zinsBindungInJahren": {
               "type": "integer",
@@ -4008,7 +4057,13 @@
             "darlehensTyp": {
               "type": "string",
               "enum": [
-                "PRIVAT_DARLEHEN"
+                "ANNUITAETEN_DARLEHEN",
+                "FORWARD_DARLEHEN",
+                "KFW_DARLEHEN",
+                "PRIVAT_DARLEHEN",
+                "REGIONAL_FOERDER_DARLEHEN",
+                "VARIABLES_DARLEHEN",
+                "ZWISCHEN_FINANZIERUNG"
               ]
             },
             "effektivZins": {
@@ -4029,7 +4084,8 @@
               "type": "number"
             },
             "vertriebsProvisionGesamtAbsolut": {
-              "type": "number"
+              "type": "number",
+              "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
             },
             "zinsBindungInMonaten": {
               "type": "integer",
@@ -4201,7 +4257,13 @@
             "darlehensTyp": {
               "type": "string",
               "enum": [
-                "REGIONAL_FOERDER_DARLEHEN"
+                "ANNUITAETEN_DARLEHEN",
+                "FORWARD_DARLEHEN",
+                "KFW_DARLEHEN",
+                "PRIVAT_DARLEHEN",
+                "REGIONAL_FOERDER_DARLEHEN",
+                "VARIABLES_DARLEHEN",
+                "ZWISCHEN_FINANZIERUNG"
               ]
             },
             "effektivZins": {
@@ -4238,7 +4300,8 @@
               "format": "int32"
             },
             "vertriebsProvisionGesamtAbsolut": {
-              "type": "number"
+              "type": "number",
+              "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
             },
             "zinsBindungInJahren": {
               "type": "integer",
@@ -4542,7 +4605,13 @@
             "darlehensTyp": {
               "type": "string",
               "enum": [
-                "VARIABLES_DARLEHEN"
+                "ANNUITAETEN_DARLEHEN",
+                "FORWARD_DARLEHEN",
+                "KFW_DARLEHEN",
+                "PRIVAT_DARLEHEN",
+                "REGIONAL_FOERDER_DARLEHEN",
+                "VARIABLES_DARLEHEN",
+                "ZWISCHEN_FINANZIERUNG"
               ]
             },
             "effektivZins": {
@@ -4568,7 +4637,8 @@
               "example": "2020-03-28"
             },
             "vertriebsProvisionGesamtAbsolut": {
-              "type": "number"
+              "type": "number",
+              "description": "Enthält die Vertriebsprovision inkl. Overhead. Die Europace-Provision wird separat berechnet."
             }
           },
           "title": "VariablesDarlehen",
