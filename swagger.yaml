@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
-  version: "2.32"
+  version: "2.33"
   title: Anträge API
   contact:
     name: Europace AG
@@ -840,6 +840,8 @@ definitions:
     properties:
       bewertung:
         $ref: '#/definitions/BewertungDurchProduktAnbieter'
+      kfwKonditionsReservierung:
+        $ref: '#/definitions/KfwKonditionsReservierung'
       produktAnbieterId:
         type: string
     title: AngebotsPruefungsErgebnis
@@ -2552,6 +2554,23 @@ definitions:
         title: KfwDarlehen
         description: Erweitert GegenangebotDarlehen
     description: Erweitert GegenangebotDarlehen
+  KfwKonditionsReservierung:
+    type: object
+    properties:
+      erfolgreichReserviert:
+        type: boolean
+        description: "TRUE bei erfolgter Freischaltung der Konditionsreservierung durch die Kfw Schnittstelle, FALSE bei Fehler, null, wenn keine Sofortbestätigung aufgerufen wurde"
+      gueltigBis:
+        type: string
+        format: date
+        description: Gültigkeitsdatum für die erfolgte Reservierung.
+      reservierungsMeldung:
+        type: string
+        description: "Detaillierte Meldung im Fehlerfall. Null, wenn kein Fehler aufgetreten ist."
+      sofortbestaetigungId:
+        type: string
+        description: SofortbestätigungID der Kfw für die erfolgreiche Reservierung
+    title: KfwKonditionsReservierung
   Kind:
     type: object
     properties:
@@ -2831,7 +2850,7 @@ definitions:
         type: object
         example: "\"WER123\", 1234, {\"antragsteller\": \"BEANTRAGT\"}"
         description: "Zu setzender oder auszutauschender Wert. Erlaubt sind string, number oder JSON object"
-        properties: { }
+        properties: {}
     title: PatchOperation
     description: "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/). Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\": \"123-ABC\"\" }"
   Postadresse:

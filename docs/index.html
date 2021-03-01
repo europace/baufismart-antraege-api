@@ -528,6 +528,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_haushaltspositionen">HaushaltsPositionen</a></li>
 <li><a href="#_immobilieverknuepfung">ImmobilieVerknuepfung</a></li>
 <li><a href="#_kfwdarlehen">KfwDarlehen</a></li>
+<li><a href="#_kfwkonditionsreservierung">KfwKonditionsReservierung</a></li>
 <li><a href="#_kind">Kind</a></li>
 <li><a href="#_lebensoderrentenversicherungvermoegen">LebensOderRentenversicherungVermoegen</a></li>
 <li><a href="#_legitimationsdaten">LegitimationsDaten</a></li>
@@ -590,7 +591,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.32</p>
+<p><em>Version</em> : 2.33</p>
 </div>
 </div>
 <div class="sect2">
@@ -3845,6 +3846,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_bewertungdurchproduktanbieter">BewertungDurchProduktAnbieter</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>kfwKonditionsReservierung</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><a href="#_kfwkonditionsreservierung">KfwKonditionsReservierung</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -9639,6 +9649,73 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </table>
 </div>
 <div class="sect2">
+<h3 id="_kfwkonditionsreservierung">KfwKonditionsReservierung</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 61.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">Name</th>
+<th class="tableblock halign-left valign-middle">Beschreibung</th>
+<th class="tableblock halign-left valign-middle">Typ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>erfolgreichReserviert</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>TRUE bei erfolgter Freischaltung der Konditionsreservierung durch die Kfw Schnittstelle, FALSE bei Fehler, null, wenn keine Sofortbestätigung aufgerufen wurde</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>boolean</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>gueltigBis</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Gültigkeitsdatum für die erfolgte Reservierung.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>string (date)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>reservierungsMeldung</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Detaillierte Meldung im Fehlerfall. Null, wenn kein Fehler aufgetreten ist.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>string</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>sofortbestaetigungId</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>SofortbestätigungID der Kfw für die erfolgreiche Reservierung</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>string</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="_kind">Kind</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -12845,7 +12922,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-09 09:24:27 +0100
+Last updated 2021-02-26 10:12:24 +0100
 </div>
 </div>
 </body>
