@@ -11,7 +11,7 @@ info:
 host: baufismart.api.europace.de
 basePath: /
 tags:
-  - name: Anträge
+  - name: Antraege
     description: Zugriff auf Anträge für die Kreditentscheidung
 schemes:
   - https
@@ -19,7 +19,7 @@ paths:
   /v2/antraege:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Alle Anträge abrufen
       description: "Es werden alle Anträge ausgeliefert, die der authentifizierten Partner sehen darf. Offen: Sortierung, Pagination, Filterung"
       operationId: getAlleAntraege
@@ -122,7 +122,7 @@ paths:
   /v2/antraege/{vorgang}:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Alle Anträge eines Vorgangs abrufen
       description: Als Parameter wird die Vorgangsnummer in der Form 'AB1234' verwendet.
       operationId: getAntraegeByVorgangNummer
@@ -174,7 +174,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Teilanträge eines Antrags abrufen
       description: Als Parameter wird die Vorgangs- und Antragsnummer in der Form 'AB1234/1' verwendet.
       operationId: getAntrag
@@ -232,7 +232,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/angebot:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Angebot des Antrags abrufen
       description: "Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat.  Nutze den Endpunkt /{vorgang}/{antrag}/{teilAntrag}/angebot"
       operationId: getAngebot_1
@@ -291,7 +291,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Einzelnen Antrag abrufen
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getAntrag_1
@@ -354,7 +354,7 @@ paths:
             - baufinanzierung:antrag:lesen
     patch:
       tags:
-        - Anträge
+        - Antraege
       summary: Antrag aktualisieren
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.
       operationId: updateAntrag
@@ -415,7 +415,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Angebot des Antrags abrufen
       description: "Es handelt sich um das angenommene Angebot, das zu diesem Antrag geführt hat."
       operationId: getAngebot
@@ -479,7 +479,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Die Zahlungsplaene (Tilgungs- & Sparpläne) des angenommenen Angebots.
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getZahlungsplaene
@@ -545,7 +545,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner:
     get:
       tags:
-        - Anträge
+        - Antraege
       summary: Den Ansprechpartner (Vertrieb) des  Teilantrags abrufen.
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet.
       operationId: getAnsprechpartner
@@ -609,7 +609,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/gegenangebot:
     post:
       tags:
-        - Anträge
+        - Antraege
       summary: Ein Gegenangebot erstellen
       description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Das übergebene Angebot wird sofort als Gegenangebot gestellt. Der alte Antrag wird abgelehnt.
       operationId: erstelleGegenangebot
@@ -676,7 +676,7 @@ paths:
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/status:
     post:
       tags:
-        - Anträge
+        - Antraege
       summary: Setzen des Antragsstatus
       operationId: setAntragsStatus_1
       consumes:
@@ -2850,7 +2850,7 @@ definitions:
         type: object
         example: "\"WER123\", 1234, {\"antragsteller\": \"BEANTRAGT\"}"
         description: "Zu setzender oder auszutauschender Wert. Erlaubt sind string, number oder JSON object"
-        properties: {}
+        properties: { }
     title: PatchOperation
     description: "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/). Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\": \"123-ABC\"\" }"
   Postadresse:
