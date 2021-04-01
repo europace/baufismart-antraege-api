@@ -6,7 +6,7 @@ info:
   title: Anträge API
   contact:
     name: Europace AG
-    url: www.europace2.de
+    url: https://www.europace2.de
     email: devsupport@europace2.de
 host: baufismart.api.europace.de
 basePath: /
@@ -1214,9 +1214,6 @@ definitions:
       tarif:
         type: string
         description: Tarifname
-      tarifId:
-        type: string
-        description: Produktanbieter-spezifische Tarif-ID des Bauspartarifs
       tilgungsPhase:
         $ref: '#/definitions/TilgungsPhase'
       typ:
