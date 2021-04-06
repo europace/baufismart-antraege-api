@@ -2,11 +2,11 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
-  version: "2.34"
+  version: "2.35"
   title: Anträge API
   contact:
     name: Europace AG
-    url: www.europace2.de
+    url: https://www.europace2.de
     email: devsupport@europace2.de
 host: baufismart.api.europace.de
 basePath: /
@@ -1213,6 +1213,7 @@ definitions:
         $ref: '#/definitions/SparPhase'
       tarif:
         type: string
+        description: Tarifname
       tilgungsPhase:
         $ref: '#/definitions/TilgungsPhase'
       typ:
@@ -1271,6 +1272,10 @@ definitions:
         $ref: '#/definitions/SparPhase'
       tarif:
         type: string
+        description: Tarifname
+      tarifId:
+        type: string
+        description: Produktanbieter-spezifische Tarif-ID des Bauspartarifs
       tilgungsPhase:
         $ref: '#/definitions/TilgungsPhase'
       typ:
@@ -1480,6 +1485,7 @@ definitions:
         type: number
       tarif:
         type: string
+        description: Tarifname
       typ:
         type: string
       vermoegensEinsatz:
@@ -2538,6 +2544,7 @@ definitions:
         type: number
       tarif:
         type: string
+        description: Tarifname
       typ:
         type: string
         enum:

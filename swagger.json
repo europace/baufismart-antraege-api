@@ -2,11 +2,11 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.",
-    "version": "2.34",
+    "version": "2.35",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
-      "url": "www.europace2.de",
+      "url": "https://www.europace2.de",
       "email": "devsupport@europace2.de"
     }
   },
@@ -1748,7 +1748,8 @@
           "$ref": "#/definitions/SparPhase"
         },
         "tarif": {
-          "type": "string"
+          "type": "string",
+          "description": "Tarifname"
         },
         "tilgungsPhase": {
           "$ref": "#/definitions/TilgungsPhase"
@@ -1830,7 +1831,12 @@
           "$ref": "#/definitions/SparPhase"
         },
         "tarif": {
-          "type": "string"
+          "type": "string",
+          "description": "Tarifname"
+        },
+        "tarifId": {
+          "type": "string",
+          "description": "Produktanbieter-spezifische Tarif-ID des Bauspartarifs"
         },
         "tilgungsPhase": {
           "$ref": "#/definitions/TilgungsPhase"
@@ -2124,7 +2130,8 @@
           "type": "number"
         },
         "tarif": {
-          "type": "string"
+          "type": "string",
+          "description": "Tarifname"
         },
         "typ": {
           "type": "string"
@@ -3587,7 +3594,8 @@
           "type": "number"
         },
         "tarif": {
-          "type": "string"
+          "type": "string",
+          "description": "Tarifname"
         },
         "typ": {
           "type": "string",
