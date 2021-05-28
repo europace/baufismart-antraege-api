@@ -590,7 +590,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.36</p>
+<p><em>Version</em> : 2.37</p>
 </div>
 </div>
 <div class="sect2">
@@ -6944,11 +6944,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>kfwEnergieEffizienzGruppe</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: STANDARD, NEUBAU, SANIERUNG. Nur bei KfW-Programmen 153, 261, 262 relevant. Es können auch weitere Werte zulässig werden.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>string</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>kfwEnergieEffizienzStandard</strong><br>
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: STANDARD_40_PLUS, STANDARD_40, STANDARD_55,STANDARD_70. Nur bei KfW-Programm 153 relevant. Bei neuen Energieeffizienzstandards können auch weitere Werte zulässig werden.</p>
+<p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK. Nur bei KfW-Programm 153, 261, 262 relevant. Bei neuen Energieeffizienzstandards können auch weitere Werte zulässig werden.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -6960,10 +6972,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_141, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_155, PROGRAMM_159, PROGRAMM_167. Bei neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.</p>
+<p>nur bei darlehensTyp==KFW_DARLEHEN. Mögliche Werte: PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262. Bei neu aufgelegten KfW-Programmen können auch weitere Werte zulässig werden.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>kfwSanierungsFahrplanLiegtVor</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>nur bei darlehensTyp==KFW_DARLEHEN und Programmen 261, 262.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>boolean</p>
 </div></div></td>
 </tr>
 <tr>
@@ -9348,14 +9372,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>kfwEnergieEffizienzGruppe</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Nur benötigt, wenn kfwProgramm = PROGRAMM_261, PROGRAMM_262</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (NEUBAU, SANIERUNG, STANDARD)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>kfwEnergieEffizienzStandard</strong><br>
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Nur benötigt, wenn kfwProgramm = PROGRAMM_153</p>
+<p>Nur benötigt, wenn kfwProgramm = PROGRAMM_153, PROGRAMM_261, PROGRAMM_262</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (STANDARD_40, STANDARD_40_PLUS, STANDARD_55)</p>
+<p>enum (STANDARD_100, STANDARD_100_EEK, STANDARD_40, STANDARD_40_EEK, STANDARD_40_PLUS, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -9365,7 +9401,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167)</p>
+<p>enum (PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>kfwSanierungsFahrplanLiegtVor</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Nur benötigt, wenn kfwProgramm = PROGRAMM_261, PROGRAMM_262</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>boolean</p>
 </div></div></td>
 </tr>
 <tr>
@@ -12700,7 +12748,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-07 15:19:17 +0200
+Last updated 2021-05-28 18:03:38 +0200
 </div>
 </div>
 </body>
