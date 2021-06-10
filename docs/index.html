@@ -590,7 +590,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_aktuelle_version">Aktuelle Version</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.37</p>
+<p><em>Version</em> : 2.38</p>
 </div>
 </div>
 <div class="sect2">
@@ -795,36 +795,106 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>Query</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>angenommenNach</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Datum im ISO Format UTC - Zulu</p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>string</p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p><strong>Query</strong></p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p><strong>angenommenNach</strong><br>
+                    <em>optional</em></p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p>Datum im ISO Format UTC - Zulu</p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p>string</p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content"></div>
+    </td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>Query</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>antragsReferenz</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>Suche nach deiner antragsReferenz</p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>string</p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p><strong>Query</strong></p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p><strong>angenommenVor</strong><br>
+                    <em>optional</em></p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p>Datum im ISO Format UTC - Zulu. Setzen des Parameters erzwingt das Zulu Datumsformat für beide 'angenommen' Parameter.</p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p>string</p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content"></div>
+    </td>
+</tr>
+<tr>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p><strong>Query</strong></p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p><strong>antragsReferenz</strong><br>
+                    <em>optional</em></p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p>Suche nach deiner antragsReferenz</p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content">
+            <div class="paragraph">
+                <p>string</p>
+            </div>
+        </div>
+    </td>
+    <td class="tableblock halign-left valign-middle">
+        <div class="content"></div>
+    </td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
@@ -12748,7 +12818,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-05-28 18:03:38 +0200
+    Last updated 2021-06-10 10:15:45 +0200
 </div>
 </div>
 </body>
