@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
-  version: "2.39"
+  version: "2.40"
   title: Anträge API
   contact:
     name: Europace AG
@@ -620,6 +620,64 @@ paths:
         - OAuth2:
             - baufinanzierung:antrag:schreiben
             - baufinanzierung:echtgeschaeft
+  /v2/antraege/{vorgang}/{antrag}/{teilantrag}/nachricht:
+    post:
+      tags:
+        - Antraege
+      summary: Schreibt dem Vermittler eine Nachricht in BaufiSmart
+      operationId: addNachricht_1
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: antrag
+          in: path
+          description: antrag
+          required: true
+          type: integer
+          format: int32
+        - name: Authorization
+          in: header
+          required: false
+          type: string
+        - in: body
+          name: nachrichtDTO
+          description: nachrichtDTO
+          required: true
+          schema:
+            $ref: "#/definitions/NachrichtDTO"
+        - name: teilantrag
+          in: path
+          description: teilantrag
+          required: true
+          type: integer
+          format: int32
+        - name: vorgang
+          in: path
+          description: vorgang
+          required: true
+          type: string
+        - name: X-Authentication
+          in: header
+          required: false
+          type: string
+        - name: X-TraceId
+          in: header
+          required: false
+          type: string
+      responses:
+        "201":
+          description: Created
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:schreiben
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/status:
     post:
       tags:
@@ -2750,6 +2808,17 @@ definitions:
       zinsBindung:
         $ref: "#/definitions/ZinsBindung"
     title: NachrangigesExternesDarlehen
+  NachrichtDTO:
+    type: object
+    required:
+      - text
+    properties:
+      text:
+        type: string
+        description: Inhalt der Nachricht
+        minLength: 1
+        maxLength: 500
+    title: NachrichtDTO
   PaginationLinks:
     type: object
     properties:
