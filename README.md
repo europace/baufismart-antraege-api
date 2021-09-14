@@ -158,11 +158,11 @@ Es besteht die Möglichkeit den voraussichtlichen Zeitpunkt der Antragsbearbeitu
 ```json
 [
 	{ "op": "replace", "path": "/ansprechpartner/externerPartner", 	"value": 
-		{
-			"kreditBetriebPartnerId":"MYID03",
-			"name":"Frau Angela Anaconda",
-	      		"telefonnummer":"0170 7717789"
-	         }
+          {
+             "kreditBetriebPartnerId":"MYID03",
+             "name":"Frau Angela Anaconda", 
+             "telefonnummer":"0170 7717789"
+          }
 	}
 ]
 ```
