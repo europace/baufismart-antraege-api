@@ -153,6 +153,21 @@ Es besteht die Möglichkeit den voraussichtlichen Zeitpunkt der Antragsbearbeitu
 ]
 ```
 
+### Setzen eines externen Kreditsachbearbeiters (ohne Plakette im Partnermanagement)
+
+```json
+[
+	{ "op": "replace", "path": "/ansprechpartner/externerPartner", 	"value": 
+          {
+             "kreditBetriebPartnerId":"MYID03",
+             "name":"Frau Angela Anaconda", 
+             "telefonnummer":"0170 7717789"
+          }
+	}
+]
+```
+`kreditBetriebPartnerId` ist die PartnerId des Kreditbetriebs für den der externe Kreditsachbearbeiter arbeitet.
+
 ### Wie erzeuge ich ein Gegenangebot?
 
 Ein Gegenangebot ist ein angepasster Finanzierungsvorschlag seitens des Produktanbieters. 
