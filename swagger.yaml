@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
-  version: "2.40"
+  version: "2.41"
   title: Anträge API
   contact:
     name: Europace AG
@@ -303,7 +303,7 @@ paths:
       tags:
         - Antraege
       summary: Antrag aktualisieren
-      description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden.
+      description: Als Parameter wird die komplette Antragsnummer in der Form 'AB1234/1/2' verwendet. Es können mehrere Operationen gleichzeitig übertragen werden. Siehe Readme.
       operationId: updateAntrag
       consumes:
         - application/json-patch+json
@@ -2896,7 +2896,7 @@ definitions:
           - test
       path:
         type: string
-        description: "JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung'."
+        description: "JSON-Path im Antrag. Valide Pfade sind: '/antragsReferenz', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung', '/ansprechpartner/externerPartner'."
       value:
         type: object
         example: '"WER123", 1234, {"antragsteller": "BEANTRAGT"}'
