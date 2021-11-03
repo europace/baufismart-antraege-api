@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.",
-    "version": "2.41",
+    "version": "2.42",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -3709,7 +3709,7 @@
           "type": "string",
           "description": "Inhalt der Nachricht",
           "minLength": 1,
-          "maxLength": 500
+          "maxLength": 2000
         }
       },
       "title": "NachrichtDTO"
@@ -3774,6 +3774,10 @@
         },
         "vertriebsOrganisation": {
           "type": "string"
+        },
+        "vertriebsOrganisationPartnerId": {
+          "type": "string",
+          "description": "Enthält die PartnerId der Vertriebsorganisation, um weitere Informationen über die Partner-API ermitteln zu können."
         },
         "vertriebsOrganisationsId": {
           "type": "string"
@@ -3988,6 +3992,10 @@
         },
         "vertriebsOrganisation": {
           "type": "string"
+        },
+        "vertriebsOrganisationPartnerId": {
+          "type": "string",
+          "description": "Enthält die PartnerId der Vertriebsorganisation, um weitere Informationen über die Partner-API ermitteln zu können."
         },
         "vertriebsOrganisationsId": {
           "type": "string"
