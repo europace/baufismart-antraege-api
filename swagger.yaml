@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: Mit dieser API können die Anträge durch die Produktanbieter abgerufen werden. Dabei wird ausschließlich der Kontext des Produktanbieters eingenommen.
-  version: "2.41"
+  version: "2.42"
   title: Anträge API
   contact:
     name: Europace AG
@@ -93,6 +93,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -122,9 +125,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
   /v2/antraege/{vorgang}:
     get:
       tags:
@@ -145,6 +145,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -174,9 +177,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
   /v2/antraege/{vorgang}/{antrag}:
     get:
       tags:
@@ -203,6 +203,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -232,9 +235,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}:
     get:
       tags:
@@ -267,6 +267,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -296,9 +299,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
     patch:
       tags:
         - Antraege
@@ -349,6 +349,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:schreiben
       responses:
         "204":
           description: No Content
@@ -356,9 +359,6 @@ paths:
           description: Unauthorized
         "403":
           description: Forbidden
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:schreiben
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot:
     get:
       tags:
@@ -391,6 +391,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -420,9 +423,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene:
     get:
       tags:
@@ -457,6 +457,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -486,9 +489,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner:
     get:
       tags:
@@ -521,6 +521,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:lesen
       responses:
         "200":
           description: OK
@@ -550,9 +553,6 @@ paths:
           description: Internal Server Error
           schema:
             $ref: "#/definitions/Error"
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:lesen
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/gegenangebot:
     post:
       tags:
@@ -601,6 +601,10 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:schreiben
+            - baufinanzierung:echtgeschaeft
       responses:
         "201":
           description: Created
@@ -616,10 +620,6 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:schreiben
-            - baufinanzierung:echtgeschaeft
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/nachricht:
     post:
       tags:
@@ -666,6 +666,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:schreiben
       responses:
         "201":
           description: Created
@@ -675,9 +678,6 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:schreiben
   /v2/antraege/{vorgang}/{antrag}/{teilantrag}/status:
     post:
       tags:
@@ -724,6 +724,9 @@ paths:
           in: header
           required: false
           type: string
+      security:
+        - OAuth2:
+            - baufinanzierung:antrag:schreiben
       responses:
         "201":
           description: Created
@@ -735,9 +738,6 @@ paths:
           description: Forbidden
         "404":
           description: Not Found
-      security:
-        - OAuth2:
-            - baufinanzierung:antrag:schreiben
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -2817,7 +2817,7 @@ definitions:
         type: string
         description: Inhalt der Nachricht
         minLength: 1
-        maxLength: 500
+        maxLength: 2000
     title: NachrichtDTO
   PaginationLinks:
     type: object
@@ -2861,6 +2861,9 @@ definitions:
         type: string
       vertriebsOrganisation:
         type: string
+      vertriebsOrganisationPartnerId:
+        type: string
+        description: "Enthält die PartnerId der Vertriebsorganisation, um weitere Informationen über die Partner-API ermitteln zu können."
       vertriebsOrganisationsId:
         type: string
       vorname:
@@ -3019,6 +3022,9 @@ definitions:
         type: string
       vertriebsOrganisation:
         type: string
+      vertriebsOrganisationPartnerId:
+        type: string
+        description: "Enthält die PartnerId der Vertriebsorganisation, um weitere Informationen über die Partner-API ermitteln zu können."
       vertriebsOrganisationsId:
         type: string
       vorname:
