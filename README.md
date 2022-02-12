@@ -387,6 +387,7 @@ Content-Length: 165
   {
     "produktAnbieter": "ABGELEHNT",
     "ablehnungsgrund": "FINANZIELLE_SITUATION",
+    "kommentar": "comment to decision"
   }
 }
 ```
