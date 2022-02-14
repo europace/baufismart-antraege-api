@@ -368,8 +368,8 @@ example response:
 204 no content
 ```
 
-### Set state
-If you set a state for an approval the adivsor will be automatically informed by your descision and comment.
+### Set state and send message
+If you set a state for an approval the adivsor will be automatically informed by your descision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`. 
 
 Requirement:
 - the caller is loan officer for the approval
@@ -387,7 +387,7 @@ Content-Length: 165
   {
     "produktAnbieter": "ABGELEHNT",
     "ablehnungsgrund": "FINANZIELLE_SITUATION",
-    "kommentar": "comment to decision"
+    "kommentar": "message to advisor"
   }
 }
 ```
@@ -401,6 +401,33 @@ The values of Ablehnungsgrund can be:
 * `UNTERLAGEN_UNVOLLSTAENDIG`
 * `GEGENANGEBOT`
 * `KEINE_ANGABE`
+
+example response:
+``` http
+201 created
+```
+
+### Send message
+As loan provider, you can send a message to the advisor to communicate without a denied-state.
+
+> Important! Please prefer [set state](#set_state_and_send_message) for communication with advisor, because states are more helpful for process reporting. This method should be your last choice.
+
+Requirement:
+- the caller is loan officer for the approval
+- the caller has scope `baufinanzierung:antrag:schreiben` 
+
+example request:
+``` http
+POST /v2/antraege/ABC12F/1/1/nachricht HTTP/1.1
+Host: baufismart.api.europace.de
+Content-Type: application/json
+Authorization: Bearer {{access-token}}
+Content-Length: 165
+
+{ 
+    "text": "your message to advisor"
+}
+```
 
 example response:
 ``` http
