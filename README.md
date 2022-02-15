@@ -72,7 +72,7 @@ Further more maybe: \
 
 ## Get all the data you need for approval
 ### Get a list of applications
-To get a list of your applications, you can call the api without any parameters. 
+As loan provider, you'll get a list of all your applications, sorted by lastChanged, paged and filterable.
 
 Requirement:
 - the caller is loan provider or part of it
@@ -148,67 +148,8 @@ Authorization: Bearer {{access-token}}
 Example resonse: \
 see above
 
-### Get data of applications
-
-Requirement:
-- the caller is loan provider or part of it
-- the caller is `Kreditsachbearbeiter`
-- the caller has scope `baufinanzierung:antrag:lesen` 
-
-example-request:
-``` http
-GET /v2/antraege/ABC12F/1 HTTP/1.1
-Host: baufismart.api.europace.de
-Content-Type: application/json
-Authorization: Bearer {{access-token}}
-```
-
-example-response:
-You will receive a list of antraege with all the data. 
-``` json
-{
-    "_links": {
-        "self": {
-            "href": "https://baufismart.api.europace.de/v2/antraege/ABC12F/1"
-        }
-    },
-    "antraege": [
-        {
-            "_links": {
-                "self": {
-                    "href": "https://baufismart.api.europace.de/v2/antraege/ABC12F/1/1"
-                }
-            },
-            "antragsNummer": "ABC12F/1/1",
-            "datenKontext": "ECHT_GESCHAEFT",
-            "zeitpunktDerAnnahme": "2022-02-09T08:41:33.572+01:00",
-            "produktAnbieter": { ...
-            },
-            "beratung": { ...
-            },
-            "status": { ...
-            },
-            "dokumente": [  ...
-            ],
-            "prolongation": false,
-            "letzteAenderung": "2022-02-09T08:41:38.038+01:00",
-            "entscheidungsreifeVomVertriebSignalisiert": false,
-            "angebot": { ...
-            },
-            "vermittler": { ...
-            },
-            "ansprechpartner": { ...
-            },
-            "kreditSachbearbeiter": { ...
-            },
-            "zugrundeliegendeDaten": { ...
-            }
-        }
-    ]
-}
-```
-
 ### Get data of an approval
+As loan Provider, you'll get all data of an approval for validation and decision.
 
 Requirement:
 - the caller is loan provider or part of it
@@ -264,8 +205,9 @@ To receive all the shared proofs for an approval please use the [Unterlagen Push
 
 > Please note: The property `dokumente` is deprecated.
 
-## Drive the process an inform your customer
+## Drive the process and inform your customer
 ### Set planned approving date
+As loan provider, update the planned approving date for well informed advisors and easy conversations with sales.
 
 Requirement:
 - the caller is loan officer for the approval
@@ -290,6 +232,8 @@ example response:
 ```
 
 ### Set loan officer
+As loan provider, update the the loan officer for well informed advisors and easy conversations with sales.
+
 If you set the loan officer, she/he can edit the approval and the contact information will automatically shared with the advisor in BaufiSmart.
 Requirement:
 - the caller is loan officer for the approval
@@ -314,7 +258,11 @@ example response:
 ```
 
 ### Set loan officer contact details
-If you don't use different europace users for loan officers identity, it is helpful to set contact details for the advisors as information. This operation is not necessary, if your loan officers have an identity in europace (see [set loan officer](#set_loan_officer)) and it is set on the approval. 
+As loan provider, update the the loan officer contact details for well informed advisors and easy conversations with sales.
+
+If you don't use different europace users for loan officers identity, it is helpful to set contact details for the advisors as information. 
+
+> This operation is not necessary, if your loan officers have an identity in europace (see [set loan officer](#set_loan_officer)) and it is set on the approval. 
 
 Requirement:
 - the caller is loan officer for the approval
@@ -344,6 +292,8 @@ example response:
 ```
 
 ### Set loan provider reference
+As loan provider, update your own reference for well informed advisors and easy conversations with sales.
+
 The loan providers reference can be used in communication between advisor and loan officer. Typically an account-number is used here, when available. 
 
 Requirement:
@@ -369,6 +319,8 @@ example response:
 ```
 
 ### Set state and send message
+As loan provider, you can set a state with message for an approval to inform the advisor about your descision.
+
 If you set a state for an approval the adivsor will be automatically informed by your descision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`. 
 
 Requirement:
@@ -435,6 +387,7 @@ example response:
 ```
 
 ## How to make a counteroffer
+As loan provider, you can resend an adjusted offer, to create a working solution for the customer. 
 
 A counteroffer is an adjusted offer based on the application set by the loan provider. 
 
