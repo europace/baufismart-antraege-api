@@ -1,6 +1,6 @@
 # Anträge API
 
-As loan Provider get all the data of your applications for high effective validations and approvals. 
+As a loan provider get all the data of your applications for highly effective validations and approvals. 
 
 ![loanProvider](https://img.shields.io/badge/-loanProvider-lightblue)
 ![mortgageLoan](https://img.shields.io/badge/-mortgageLoan-lightblue)
