@@ -392,13 +392,13 @@ As loan provider, you can resend an adjusted offer, to create a working solution
 
 A counteroffer is an adjusted offer based on the application set by the loan provider.
 
-If a counteroffer is created, the original offer will be marked as 'ABGELEHNT' and a new offer will be created. The new offer is automatically marked as `UNTERSCHRIEBEN ` from the loan provider.
+If a counteroffer is created, the original offer will be declined and marked as 'ABGELEHNT' and the new offer is automatically approved and marked as `UNTERSCHRIEBEN ` from the loan provider.
 
-A single loan or a combination of loans can be offered as a counteroffer.
+A single loan or a combination of loans can be offered as a counteroffer. The `vertriebsProvisionGesamtAbsolut` (commission amount) has to be exclude the europace-fee. The europace-fee will be recalculated based on your new loan details and is contained in the the new application.
 
 Example request:
 
-``` http
+``` json
 POST /v2/antraege/ABC12F/1/1/gegenangebot HTTP/1.1
 Host: baufismart.api.europace.de
 Authorization: Bearer {{access-token}}
@@ -448,7 +448,10 @@ Content-Length: 1324
 Example response:
 ``` json
 201 created
-
+{
+    "antragsNummer": "ABC12F/2/1/",
+    "_links": "https://baufismart.api.europace.de/v2/antraege/ABC12F/2/1/"
+}
 ```
 
 ## FAQ
