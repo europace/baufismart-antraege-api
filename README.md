@@ -36,7 +36,7 @@ Please use [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](h
 | `baufinanzierung:antrag:schreiben`  | to update application data (eg state, loan office and own reference) |
 
 ### First try
-To start tests begin with [Get a list of applications](#get_a_list_of_applications)
+To start tests begin with [Get a list of applications](#get-a-list-of-applications)
 
 ## Segments of Antragsnummer
 Europace is a multi-lender plattform. For this case antragsnummer is segmented by / for different applications and approvals
@@ -263,7 +263,7 @@ As loan provider, update the the loan officer contact details for well informed 
 
 If you don't use different europace users for loan officers identity, it is helpful to set contact details for the advisors as information.
 
-> This operation is not necessary, if your loan officers has an identity in europace (see [set loan officer](#set_loan_officer)) and it is set on the approval.
+> This operation is not necessary, if your loan officers has an identity in europace (see [set loan officer](#set-loan-officer)) and it is set on the approval.
 
 Requirement:
 - the caller is loan officer for the approval
@@ -363,7 +363,7 @@ example response:
 ### Send message
 As loan provider, you can send a message to the advisor to communicate without a denied-state.
 
-> Important! Please prefer [set state](#set_state_and_send_message) for communication with advisor, because states are more helpful for process reporting. This method should be your last choice.
+> Important! Please prefer [set state](#set-state-and-send-message) for communication with advisor, because states are more helpful for process reporting. This method should be your last choice.
 
 Requirement:
 - the caller is loan officer for the approval
