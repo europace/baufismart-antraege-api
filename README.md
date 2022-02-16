@@ -29,11 +29,11 @@ To test our APIs and your use cases as quickly as possible, we have created a [P
 ### Authentication
 Please use [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://github.com/europace/authorization-api) to get access to the APIs. The OAuth2 client requires the following scopes:
 
-| Scope                             | API Use case |
-|-----------------------------------|---------------------------------|
-| `baufinanzierung:echtgeschaeft`      | Für das Lesen und Bearbeiten von Echtgeschäft-Daten. |
-| `baufinanzierung:antrag:lesen`       | Daten von Anträgen abrufen. |
-| `baufinanzierung:antrag:schreiben`   | Daten eines Antrags ändern (z.B. Antragsstatus, Kreditsachbearbeiter).|
+| Scope                               | API Use case                                                         |
+|-------------------------------------|----------------------------------------------------------------------|
+| `baufinanzierung:echtgeschaeft`     | to use api in production mode                                        |
+| `baufinanzierung:antrag:lesen`      | to get application information                                       |
+| `baufinanzierung:antrag:schreiben`  | to update application data (eg state, loan office and own reference) |
 
 ### First try
 To start tests begin with [Get a list of applications](#get_a_list_of_applications)
