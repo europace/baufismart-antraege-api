@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.43"
+  version: "2.44"
   title: Anträge API
   contact:
     name: Europace AG
@@ -1048,6 +1048,9 @@ definitions:
       vermittler:
         description: advisor
         $ref: "#/definitions/Partner"
+      vertriebsStrukturZumZeitpunktDerAnnahme:
+        description: distribution channels of advisor and/or clerk at creation date of application
+        $ref: "#/definitions/VertriebsStruktur"
       voraussichtlicheBearbeitung:
         type: string
         format: date
@@ -3621,6 +3624,35 @@ definitions:
         type: string
         format: date
     title: VersicherungsZeitraum
+  Vertrieb:
+    type: object
+    properties:
+      _links:
+        $ref: "#/definitions/Links"
+      orderid:
+        type: integer
+        format: int32
+      organisationsName:
+        type: string
+    title: Vertrieb
+    description: "information about distribution channel, for more use Partner API"
+  VertriebsStruktur:
+    type: object
+    properties:
+      _links:
+        $ref: "#/definitions/Links"
+      vertriebeDesAnsprechpartners:
+        type: array
+        description: distribution channels of clerk at creation date of application
+        items:
+          $ref: "#/definitions/Vertrieb"
+      vertriebeDesVermittlers:
+        type: array
+        description: distribution channels of advisor at creation date of application
+        items:
+          $ref: "#/definitions/Vertrieb"
+    title: VertriebsStruktur
+    description: distribution channels of advisor and/or clerk at creation date of application
   Violation:
     type: object
     properties:
