@@ -5,8 +5,10 @@ As a loan provider get all the data of your applications for highly effective va
 ![loanProvider](https://img.shields.io/badge/-loanProvider-lightblue)
 ![mortgageLoan](https://img.shields.io/badge/-mortgageLoan-lightblue)
 
-[![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://github.com/europace/authorization-api)
-[![YAML](https://img.shields.io/badge/{}-YAML-green)]((https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.yaml))
+[![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://docs.api.europace.de/common/authentifizierung/authorization-api/)
+[![YAML](https://img.shields.io/badge/OAS-YAML-lightblue)](https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.yaml)
+[![YAML](https://img.shields.io/badge/OAS-HTML-lightblue)](https://europace.github.io/baufismart-antraege-api/docs/index.html)
+
 [![Github](https://img.shields.io/badge/-Github-black?logo=github)]((https://github.com/https://github.com/europace/baufismart-antraege-api))
 
 [![GitHub release](https://img.shields.io/github/v/release/europace/baufismart-antraege-api)](https://github.com/europace/baufismart-antraege-api/releases)
@@ -27,7 +29,7 @@ As a loan provider get all the data of your applications for highly effective va
 To test our APIs and your use cases as quickly as possible, we have created a [Postman Collection](https://github.com/europace/api-quickstart) for you.
 
 ### Authentication
-Please use [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://github.com/europace/authorization-api) to get access to the APIs. The OAuth2 client requires the following scopes:
+Please use [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://docs.api.europace.de/common/authentifizierung/authorization-api/) to get access to the APIs. The OAuth2 client requires the following scopes:
 
 | Scope                               | API Use case                                                         |
 |-------------------------------------|----------------------------------------------------------------------|
