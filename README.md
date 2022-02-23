@@ -16,10 +16,10 @@ As a loan provider get all the data of your applications for highly effective va
 ## Usecases
 - get informed about new applications
 - get the data of applications for approval
-- inform about state of approval
+- inform about state of application
+- send messag to advisor
 - inform about own reference (e.g. account-number)
 - manage loan officer on application
-
 ## Requirements
 - authenticated as loan provider
 
@@ -39,7 +39,7 @@ Please use [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](h
 To start tests begin with [Get a list of applications](#get-a-list-of-applications)
 
 ## Segments of Antragsnummer
-Europace is a multi-lender plattform. For this case antragsnummer is segmented by / for different applications and approvals
+Europace is a multi-lender plattform. For this case antragsnummer is segmented by / for different solutions and applications
 
 Example: `ABC12F/2/1`
 
@@ -149,8 +149,8 @@ Authorization: Bearer {{access-token}}
 Example resonse: \
 see above
 
-### Get data of an approval
-As loan Provider, you'll get all data of an approval for validation and decision.
+### Get data of an application
+As loan Provider, you'll get all data of an application for validation and decision.
 
 Requirement:
 - the caller is loan provider or part of it
@@ -202,7 +202,7 @@ You will receive a list of antraege with all the data.
 ```
 
 ### Get proofs
-To receive all the shared proofs for an approval please use the [Unterlagen Push API](https://docs.api.europace.de/baufinanzierung/unterlagen/unterlagen-push-api/)
+To receive all the shared proofs for an application please use the [Unterlagen Push API](https://docs.api.europace.de/baufinanzierung/unterlagen/unterlagen-push-api/)
 
 > Please note: The property `dokumente` is deprecated.
 
@@ -211,7 +211,7 @@ To receive all the shared proofs for an approval please use the [Unterlagen Push
 As loan provider, update the planned approving date for well informed advisors and easy conversations with sales.
 
 Requirement:
-- the caller is loan officer for the approval
+- the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
 
 example request:
@@ -235,9 +235,9 @@ example response:
 ### Set loan officer
 As loan provider, update the loan officer for well informed advisors and easy conversations with sales.
 
-If you set the loan officer, she/he can edit the approval and the contact information will be automatically shared with the advisor in BaufiSmart.
+If you set the loan officer, she/he can edit the application and the contact information will be automatically shared with the advisor in BaufiSmart.
 Requirement:
-- the caller is loan officer for the approval
+- the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
 
 example request:
@@ -263,10 +263,10 @@ As loan provider, update the the loan officer contact details for well informed 
 
 If you don't use different europace users for loan officers identity, it is helpful to set contact details for the advisors as information.
 
-> This operation is not necessary, if your loan officers has an identity in europace (see [set loan officer](#set-loan-officer)) and it is set on the approval.
+> This operation is not necessary, if your loan officers has an identity in europace (see [set loan officer](#set-loan-officer)) and it is set on the application.
 
 Requirement:
-- the caller is loan officer for the approval
+- the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
 
 example request:
@@ -298,7 +298,7 @@ As loan provider, update your own reference for well informed advisors and easy 
 The loan providers reference can be used in communication between advisor and loan officer. Typically, an account-number is used here, when available.
 
 Requirement:
-- the caller is loan officer for the approval
+- the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
 
 example request:
@@ -320,12 +320,12 @@ example response:
 ```
 
 ### Set state and send message
-As loan provider, you can set a state with message for an approval to inform the advisor about your descision.
+As loan provider, you can set a state with message for an application to inform the advisor about your descision.
 
-If you set a state for an approval the advisor will be automatically informed by your decision and message. You can use it, to send the advisor a message if you choose the right state and use the property `kommentar`.
+If you set a state for an application the advisor will be automatically informed by your decision and message. You can use it, to send the advisor a message if you choose the right state and use the property `kommentar`.
 
 Requirement:
-- the caller is loan officer for the approval
+- the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
 
 example request:
@@ -366,7 +366,7 @@ As loan provider, you can send a message to the advisor to communicate without a
 > Important! Please prefer [set state](#set-state-and-send-message) for communication with advisor, because states are more helpful for process reporting. This method should be your last choice.
 
 Requirement:
-- the caller is loan officer for the approval
+- the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
 
 example request:
@@ -469,8 +469,8 @@ If one of the parameter set, a date (`YYYY-MM-DD hh:mi:ss`) is expected.
 ### What is a relevant change to the application?
 
 What events lead to the setting of the `lastChange` field?
-* changing state of approval
-* changing loan office on approval
+* changing state of application
+* changing loan office on application
 * new proof is shared
 
 ## Terms of use
