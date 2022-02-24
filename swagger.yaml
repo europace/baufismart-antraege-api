@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.44"
+  version: "2.45"
   title: Anträge API
   contact:
     name: Europace AG
@@ -191,7 +191,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -243,22 +243,22 @@ paths:
     get:
       tags:
         - Antraege
-      summary: get approval
-      description: "As loan Provider, you'll get all data of an approval for validation and decision."
+      summary: get application
+      description: "As loan Provider, you'll get all data of an application for validation and decision."
       operationId: getAntrag_1
       produces:
         - application/json;charset=UTF-8
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
           x-example: 3
         - name: teilantrag
           in: path
-          description: approval-id
+          description: iterator-application
           required: true
           type: integer
           format: int32
@@ -309,7 +309,7 @@ paths:
     patch:
       tags:
         - Antraege
-      summary: patch approval
+      summary: patch application
       description: "As loan provider, update the planned approving date, the loan officer contact details and your own reference for well informed advisors and easy conversations with sales."
       operationId: updateAntrag
       consumes:
@@ -320,7 +320,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -385,7 +385,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -452,7 +452,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -526,7 +526,7 @@ paths:
           x-example: 3
         - name: teilantrag
           in: path
-          description: approval-id
+          description: iterator-application
           required: true
           type: integer
           format: int32
@@ -588,7 +588,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -662,7 +662,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -680,7 +680,7 @@ paths:
             $ref: "#/definitions/NachrichtDTO"
         - name: teilantrag
           in: path
-          description: approval-id
+          description: iterator-application
           required: true
           type: integer
           format: int32
@@ -720,7 +720,7 @@ paths:
       tags:
         - Antraege
       summary: set state
-      description: "As loan provider, you can set a state for an approval to inform the advisor about your descision.\n\nIf you set a state for an approval the adivsor will be automatically informed by your descision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`. "
+      description: "As loan provider, you can set a state for an application to inform the advisor about your descision.\n\nIf you set a state for an application the adivsor will be automatically informed by your descision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`. "
       operationId: setAntragsStatus_1
       consumes:
         - application/json
@@ -729,7 +729,7 @@ paths:
       parameters:
         - name: antrag
           in: path
-          description: application-iterator
+          description: iterator-solution
           required: true
           type: integer
           format: int32
@@ -747,7 +747,7 @@ paths:
             $ref: "#/definitions/StatusDTO"
         - name: teilantrag
           in: path
-          description: approval-id
+          description: iterator-application
           required: true
           type: integer
           format: int32
@@ -1012,7 +1012,7 @@ definitions:
         description: application-id
       antragsReferenz:
         type: string
-        description: loan providers reference for approval
+        description: loan providers reference for application
       beratung:
         description: information about advisor type
         $ref: "#/definitions/Beratung"
@@ -1043,7 +1043,7 @@ definitions:
       prolongation:
         type: boolean
       status:
-        description: state of approval
+        description: state of application
         $ref: "#/definitions/AntragsStatus"
       vermittler:
         description: advisor
