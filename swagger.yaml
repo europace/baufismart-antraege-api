@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.47"
+  version: "2.48"
   title: Anträge API
   contact:
     name: Europace AG
@@ -936,6 +936,7 @@ definitions:
             type: string
             enum:
               - ANNUITAETEN_DARLEHEN
+              - BAUSPAR_DARLEHEN
               - FORWARD_DARLEHEN
               - KFW_DARLEHEN
               - PRIVAT_DARLEHEN
@@ -1865,6 +1866,9 @@ definitions:
         type: number
         example: 100.0
         description: disbursement ratio
+      bausparTarif:
+        type: string
+        description: "building savings tariff, only with darlehensTyp==BAUSPAR_DARLEHEN"
       bausteinId:
         type: string
       bereitstellung:
@@ -1878,6 +1882,7 @@ definitions:
         type: string
         enum:
           - ANNUITAETEN_DARLEHEN
+          - BAUSPAR_DARLEHEN
           - FORWARD_DARLEHEN
           - KFW_DARLEHEN
           - PRIVAT_DARLEHEN
@@ -1967,6 +1972,11 @@ definitions:
         type: integer
         format: int32
         description: "beginning years of no redemption, only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
+      vertragsPartner:
+        type: array
+        description: only with external building society saving loans
+        items:
+          $ref: "#/definitions/AntragstellerVerknuepfung"
       verwendungsZweck:
         type: string
         description: only with darlehensTyp==ZWISCHEN_FINANZIERUNG
@@ -2268,6 +2278,7 @@ definitions:
             type: string
             enum:
               - ANNUITAETEN_DARLEHEN
+              - BAUSPAR_DARLEHEN
               - FORWARD_DARLEHEN
               - KFW_DARLEHEN
               - PRIVAT_DARLEHEN
@@ -2426,6 +2437,7 @@ definitions:
         type: string
         enum:
           - ANNUITAETEN_DARLEHEN
+          - BAUSPAR_DARLEHEN
           - FORWARD_DARLEHEN
           - KFW_DARLEHEN
           - PRIVAT_DARLEHEN
@@ -2651,6 +2663,7 @@ definitions:
             type: string
             enum:
               - ANNUITAETEN_DARLEHEN
+              - BAUSPAR_DARLEHEN
               - FORWARD_DARLEHEN
               - KFW_DARLEHEN
               - PRIVAT_DARLEHEN
@@ -3091,6 +3104,7 @@ definitions:
             type: string
             enum:
               - ANNUITAETEN_DARLEHEN
+              - BAUSPAR_DARLEHEN
               - FORWARD_DARLEHEN
               - KFW_DARLEHEN
               - PRIVAT_DARLEHEN
@@ -3256,6 +3270,7 @@ definitions:
             type: string
             enum:
               - ANNUITAETEN_DARLEHEN
+              - BAUSPAR_DARLEHEN
               - FORWARD_DARLEHEN
               - KFW_DARLEHEN
               - PRIVAT_DARLEHEN
@@ -3513,6 +3528,7 @@ definitions:
             type: string
             enum:
               - ANNUITAETEN_DARLEHEN
+              - BAUSPAR_DARLEHEN
               - FORWARD_DARLEHEN
               - KFW_DARLEHEN
               - PRIVAT_DARLEHEN
