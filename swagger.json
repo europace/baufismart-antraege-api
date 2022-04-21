@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.46",
+    "version": "2.47",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -2474,7 +2474,7 @@
         },
         "kfwEnergieEffizienzStandard": {
           "type": "string",
-          "description": "KfW-energy-standards, only with darlehensTyp==KFW_DARLEHEN (allowed values: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK) Only relevant with KfW-Programm 153, 261, 262. If new KfW-energy-standards will follow, more values can be attached."
+          "description": "KfW-energy-standards, only with darlehensTyp==KFW_DARLEHEN (allowed values: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_40_NH, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK) Only relevant with KfW-Programm 153, 261, 262. If new KfW-energy-standards will follow, more values can be attached."
         },
         "kfwProgramm": {
           "type": "string",
@@ -3474,6 +3474,7 @@
                 "STANDARD_100_EEK",
                 "STANDARD_40",
                 "STANDARD_40_EEK",
+                "STANDARD_40_NH",
                 "STANDARD_40_PLUS",
                 "STANDARD_55",
                 "STANDARD_55_EEK",
