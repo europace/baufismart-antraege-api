@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.46"
+  version: "2.47"
   title: Anträge API
   contact:
     name: Europace AG
@@ -1840,7 +1840,14 @@ definitions:
           - S_RATING
       wert:
         type: string
-        description: "diffrent values depended on type:\n\nsector ING allowed values: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR\n\nsector MHB allowed values: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES\n\nsector S_RATING allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE"
+        description: |-
+          diffrent values depended on type:
+
+          sector ING allowed values: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR
+
+          sector MHB allowed values: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES
+
+          sector S_RATING allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE
     title: Branche
     description: sector
   Darlehen:
@@ -1904,7 +1911,7 @@ definitions:
         description: "KfW-energy-reference-groups, only with darlehensTyp==KFW_DARLEHEN. (allowed values: STANDARD, NEUBAU, SANIERUNG)Only relevant with KfW-Programm 153, 261, 262. If new energy-reference-groups will follow, more values can be attached.)"
       kfwEnergieEffizienzStandard:
         type: string
-        description: "KfW-energy-standards, only with darlehensTyp==KFW_DARLEHEN (allowed values: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK) Only relevant with KfW-Programm 153, 261, 262. If new KfW-energy-standards will follow, more values can be attached."
+        description: "KfW-energy-standards, only with darlehensTyp==KFW_DARLEHEN (allowed values: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_40_NH, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK) Only relevant with KfW-Programm 153, 261, 262. If new KfW-energy-standards will follow, more values can be attached."
       kfwProgramm:
         type: string
         description: "KfW-program, only with darlehensTyp==KFW_DARLEHEN (allowed values: PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262) If new KfW programs will follow, more values can be attached."
@@ -2667,6 +2674,7 @@ definitions:
               - STANDARD_100_EEK
               - STANDARD_40
               - STANDARD_40_EEK
+              - STANDARD_40_NH
               - STANDARD_40_PLUS
               - STANDARD_55
               - STANDARD_55_EEK
