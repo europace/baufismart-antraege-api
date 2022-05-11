@@ -2,22 +2,13 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.48",
+    "version": "2.49",
     "title": "Anträge API",
-    "contact": {
-      "name": "Europace AG",
-      "url": "https://docs.api.europace.de",
-      "email": "devsupport@europace2.de"
-    }
+    "contact": { "name": "Europace AG", "url": "https://docs.api.europace.de", "email": "devsupport@europace2.de" }
   },
   "host": "baufismart.api.europace.de",
   "basePath": "/",
-  "tags": [
-    {
-      "name": "Antraege",
-      "description": "All about mortage-applications and -approvals."
-    }
-  ],
+  "tags": [{ "name": "Antraege", "description": "All about mortage-applications and -approvals." }],
   "schemes": ["https"],
   "paths": {
     "/v2/antraege": {
@@ -118,54 +109,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Antraege"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Antraege" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       }
     },
     "/v2/antraege/{vorgang}": {
@@ -193,54 +145,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Antraege"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Antraege" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}": {
@@ -277,54 +190,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Antraege"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Antraege" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}": {
@@ -370,54 +244,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Antrag"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Antrag" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       },
       "patch": {
         "tags": ["Antraege"],
@@ -448,12 +283,7 @@
             "name": "patchOperations",
             "description": "patchOperations",
             "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/PatchOperation"
-              }
-            }
+            "schema": { "type": "array", "items": { "$ref": "#/definitions/PatchOperation" } }
           },
           {
             "name": "teilantrag",
@@ -488,21 +318,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          }
+          "204": { "description": "No Content" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:schreiben"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:schreiben"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot": {
@@ -548,54 +368,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/AngebotZumAntrag"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/AngebotZumAntrag" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/angebot/zahlungsplaene": {
@@ -641,54 +422,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Zahlungsplaene"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Zahlungsplaene" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner": {
@@ -734,54 +476,15 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/Partner"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
+          "200": { "description": "OK", "schema": { "$ref": "#/definitions/Partner" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Error" } },
+          "401": { "description": "Unauthorized", "schema": { "$ref": "#/definitions/Error" } },
+          "403": { "description": "Forbidden", "schema": { "$ref": "#/definitions/Error" } },
+          "404": { "description": "Not Found", "schema": { "$ref": "#/definitions/Error" } },
+          "422": { "description": "Unprocessable Entity", "schema": { "$ref": "#/definitions/Error" } },
+          "500": { "description": "Internal Server Error", "schema": { "$ref": "#/definitions/Error" } }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:lesen"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:lesen"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/gegenangebot": {
@@ -814,9 +517,7 @@
             "name": "gegenangebot",
             "description": "gegenangebot",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/Gegenangebot"
-            }
+            "schema": { "$ref": "#/definitions/Gegenangebot" }
           },
           {
             "name": "teilantrag",
@@ -851,33 +552,13 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created",
-            "schema": {
-              "type": "string"
-            }
-          },
-          "400": {
-            "description": "Client Error",
-            "schema": {
-              "$ref": "#/definitions/Problem"
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
+          "201": { "description": "Created", "schema": { "type": "string" } },
+          "400": { "description": "Client Error", "schema": { "$ref": "#/definitions/Problem" } },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:schreiben", "baufinanzierung:echtgeschaeft"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:schreiben", "baufinanzierung:echtgeschaeft"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/nachricht": {
@@ -910,9 +591,7 @@
             "name": "nachrichtDTO",
             "description": "nachrichtDTO",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/NachrichtDTO"
-            }
+            "schema": { "$ref": "#/definitions/NachrichtDTO" }
           },
           {
             "name": "teilantrag",
@@ -947,24 +626,12 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:schreiben"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:schreiben"] }]
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/status": {
@@ -997,9 +664,7 @@
             "name": "statusDTO",
             "description": "statusDTO",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/StatusDTO"
-            }
+            "schema": { "$ref": "#/definitions/StatusDTO" }
           },
           {
             "name": "teilantrag",
@@ -1034,36 +699,18 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "202": {
-            "description": "Accepted"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "404": {
-            "description": "Not Found"
-          }
+          "201": { "description": "Created" },
+          "202": { "description": "Accepted" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
         },
-        "security": [
-          {
-            "OAuth2": ["baufinanzierung:antrag:schreiben"]
-          }
-        ]
+        "security": [{ "OAuth2": ["baufinanzierung:antrag:schreiben"] }]
       }
     }
   },
   "securityDefinitions": {
-    "Bearer": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header"
-    },
+    "Bearer": { "type": "apiKey", "name": "Authorization", "in": "header" },
     "OAuth2": {
       "type": "oauth2",
       "tokenUrl": "https://api.europace.de/auth/access-token",
@@ -1079,40 +726,19 @@
     "Absicherung": {
       "type": "object",
       "properties": {
-        "abgesicherteRisiken": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RisikoAbsicherung"
-          }
-        },
-        "externeAngebotsNummer": {
-          "type": "string"
-        },
-        "gesamtPraemie": {
-          "type": "number"
-        },
+        "abgesicherteRisiken": { "type": "array", "items": { "$ref": "#/definitions/RisikoAbsicherung" } },
+        "externeAngebotsNummer": { "type": "string" },
+        "gesamtPraemie": { "type": "number" },
         "praemienZahlungsweise": {
           "type": "string",
           "enum": ["EINMALIG", "HALBJAEHRLICH", "JAEHRLICH", "MONATLICH", "VIERTELJAEHRLICH"]
         },
-        "tarifBezeichnung": {
-          "type": "string"
-        },
-        "tarifKennung": {
-          "type": "string"
-        },
-        "versichertePersonId": {
-          "type": "string"
-        },
-        "versicherungsArt": {
-          "type": "string"
-        },
-        "versicherungsNummer": {
-          "type": "string"
-        },
-        "versicherungsZeitraum": {
-          "$ref": "#/definitions/VersicherungsZeitraum"
-        }
+        "tarifBezeichnung": { "type": "string" },
+        "tarifKennung": { "type": "string" },
+        "versichertePersonId": { "type": "string" },
+        "versicherungsArt": { "type": "string" },
+        "versicherungsNummer": { "type": "string" },
+        "versicherungsZeitraum": { "$ref": "#/definitions/VersicherungsZeitraum" }
       },
       "title": "Absicherung"
     },
@@ -1129,70 +755,33 @@
     "AngebotZumAntrag": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
+        "_links": { "$ref": "#/definitions/Links" },
         "absicherungen": {
           "type": "array",
           "description": "payment protection insurance",
-          "items": {
-            "$ref": "#/definitions/Absicherung"
-          }
+          "items": { "$ref": "#/definitions/Absicherung" }
         },
-        "bausparvertraege": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Bausparvertrag"
-          }
-        },
-        "beleihungsRechnung": {
-          "description": "mortgage value calculation",
-          "$ref": "#/definitions/BeleihungsRechnung"
-        },
+        "bausparvertraege": { "type": "array", "items": { "$ref": "#/definitions/Bausparvertrag" } },
+        "beleihungsRechnung": { "description": "mortgage value calculation", "$ref": "#/definitions/BeleihungsRechnung" },
         "bewertungDesAngebots": {
           "type": "string",
           "description": "type of advisory responsability",
           "enum": ["ANGEBOT_ENTSPRICHT_DEM_WUNSCH_DES_KUNDEN", "ANGEBOT_ENTSPRICHT_DER_EMPFEHLUNG_DES_KUNDENBETREUERS"]
         },
-        "bonitaet": {
-          "type": "array",
-          "description": "creditworthiness",
-          "items": {
-            "$ref": "#/definitions/Bonitaet"
-          }
-        },
-        "darlehen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Darlehen"
-          }
-        },
-        "erzeugtAm": {
-          "type": "string",
-          "format": "date-time",
-          "description": "date offer created"
-        },
-        "kennung": {
-          "type": "string",
-          "description": "additional offer name"
-        },
+        "bonitaet": { "type": "array", "description": "creditworthiness", "items": { "$ref": "#/definitions/Bonitaet" } },
+        "darlehen": { "type": "array", "items": { "$ref": "#/definitions/Darlehen" } },
+        "erzeugtAm": { "type": "string", "format": "date-time", "description": "date offer created" },
+        "kennung": { "type": "string", "description": "additional offer name" },
         "machbarkeitsStatus": {
           "type": "string",
           "description": "feasibility state",
           "enum": ["MACHBAR", "NICHT_MACHBAR", "UNTER_VORBEHALT_PRODUZENT"]
         },
-        "meldungen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Meldung"
-          }
-        },
+        "meldungen": { "type": "array", "items": { "$ref": "#/definitions/Meldung" } },
         "pruefungsErgebnisse": {
           "type": "array",
           "description": "result of europace-offer-validation",
-          "items": {
-            "$ref": "#/definitions/AngebotsPruefungsErgebnis"
-          }
+          "items": { "$ref": "#/definitions/AngebotsPruefungsErgebnis" }
         }
       },
       "title": "AngebotZumAntrag",
@@ -1201,24 +790,16 @@
     "AngebotsPruefungsErgebnis": {
       "type": "object",
       "properties": {
-        "bewertung": {
-          "$ref": "#/definitions/BewertungDurchProduktAnbieter"
-        },
-        "kfwKonditionsReservierung": {
-          "$ref": "#/definitions/KfwKonditionsReservierung"
-        },
-        "produktAnbieterId": {
-          "type": "string"
-        }
+        "bewertung": { "$ref": "#/definitions/BewertungDurchProduktAnbieter" },
+        "kfwKonditionsReservierung": { "$ref": "#/definitions/KfwKonditionsReservierung" },
+        "produktAnbieterId": { "type": "string" }
       },
       "title": "AngebotsPruefungsErgebnis"
     },
     "AnnuitaetenDarlehen": {
       "title": "AnnuitaetenDarlehen",
       "allOf": [
-        {
-          "$ref": "#/definitions/GegenangebotDarlehen"
-        },
+        { "$ref": "#/definitions/GegenangebotDarlehen" },
         {
           "type": "object",
           "required": [
@@ -1236,19 +817,10 @@
           ],
           "discriminator": "darlehensTyp",
           "properties": {
-            "anfaenglicheTilgung": {
-              "type": "number"
-            },
-            "bereitstellungsZins": {
-              "type": "number"
-            },
-            "bereitstellungsZinsFreieZeitInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "darlehensBetrag": {
-              "type": "number"
-            },
+            "anfaenglicheTilgung": { "type": "number" },
+            "bereitstellungsZins": { "type": "number" },
+            "bereitstellungsZinsFreieZeitInMonaten": { "type": "integer", "format": "int32" },
+            "darlehensBetrag": { "type": "number" },
             "darlehensTyp": {
               "type": "string",
               "enum": [
@@ -1262,39 +834,18 @@
                 "ZWISCHEN_FINANZIERUNG"
               ]
             },
-            "effektivZins": {
-              "type": "number"
-            },
-            "laufzeitKalkulatorischInJahren": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "produktDetails": {
-              "type": "string",
-              "description": "description for advisor"
-            },
-            "rateMonatlich": {
-              "type": "number"
-            },
-            "sollZins": {
-              "type": "number"
-            },
-            "sonderTilgungJaehrlich": {
-              "type": "number"
-            },
-            "tilgungsBeginnAm": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2020-03-28"
-            },
+            "effektivZins": { "type": "number" },
+            "laufzeitKalkulatorischInJahren": { "type": "integer", "format": "int32" },
+            "produktDetails": { "type": "string", "description": "description for advisor" },
+            "rateMonatlich": { "type": "number" },
+            "sollZins": { "type": "number" },
+            "sonderTilgungJaehrlich": { "type": "number" },
+            "tilgungsBeginnAm": { "type": "string", "format": "date-time", "example": "2020-03-28" },
             "vertriebsProvisionGesamtAbsolut": {
               "type": "number",
               "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
             },
-            "zinsBindungInJahren": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "zinsBindungInJahren": { "type": "integer", "format": "int32" }
           },
           "title": "AnnuitaetenDarlehen",
           "description": "extends loan of counteroffer"
@@ -1305,37 +856,18 @@
     "Anschrift": {
       "type": "object",
       "properties": {
-        "hausnummer": {
-          "type": "string",
-          "description": "housenumber"
-        },
-        "ort": {
-          "type": "string",
-          "description": "place"
-        },
-        "plz": {
-          "type": "string",
-          "description": "zip-code"
-        },
-        "strasse": {
-          "type": "string",
-          "description": "street"
-        }
+        "hausnummer": { "type": "string", "description": "housenumber" },
+        "ort": { "type": "string", "description": "place" },
+        "plz": { "type": "string", "description": "zip-code" },
+        "strasse": { "type": "string", "description": "street" }
       },
       "title": "Anschrift"
     },
     "Antraege": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/PaginationLinks"
-        },
-        "antraege": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Antrag"
-          }
-        }
+        "_links": { "$ref": "#/definitions/PaginationLinks" },
+        "antraege": { "type": "array", "items": { "$ref": "#/definitions/Antrag" } }
       },
       "title": "Antraege",
       "description": "list of applications"
@@ -1343,29 +875,12 @@
     "Antrag": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
-        "angebot": {
-          "description": "The offer on which the application is based on.",
-          "$ref": "#/definitions/AngebotZumAntrag"
-        },
-        "ansprechpartner": {
-          "description": "clerk",
-          "$ref": "#/definitions/Partner"
-        },
-        "antragsNummer": {
-          "type": "string",
-          "description": "application-id"
-        },
-        "antragsReferenz": {
-          "type": "string",
-          "description": "loan providers reference for application"
-        },
-        "beratung": {
-          "description": "information about advisor type",
-          "$ref": "#/definitions/Beratung"
-        },
+        "_links": { "$ref": "#/definitions/Links" },
+        "angebot": { "description": "The offer on which the application is based on.", "$ref": "#/definitions/AngebotZumAntrag" },
+        "ansprechpartner": { "description": "clerk", "$ref": "#/definitions/Partner" },
+        "antragsNummer": { "type": "string", "description": "application-id" },
+        "antragsReferenz": { "type": "string", "description": "loan providers reference for application" },
+        "beratung": { "description": "information about advisor type", "$ref": "#/definitions/Beratung" },
         "datenKontext": {
           "type": "string",
           "description": "usage mode of the api for production or testmode",
@@ -1375,55 +890,25 @@
           "type": "array",
           "description": "all generated documents, shared proofs and documents uploaded by loan provider",
           "uniqueItems": true,
-          "items": {
-            "$ref": "#/definitions/Dokument"
-          }
+          "items": { "$ref": "#/definitions/Dokument" }
         },
         "entscheidungsreifeVomVertriebSignalisiert": {
           "type": "boolean",
           "description": "advisor-mark of final state for approving"
         },
-        "kreditSachbearbeiter": {
-          "description": "loan officer",
-          "$ref": "#/definitions/Partner"
-        },
-        "letzteAenderung": {
-          "type": "string",
-          "format": "date-time",
-          "description": "last changed date"
-        },
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "prolongation": {
-          "type": "boolean"
-        },
-        "status": {
-          "description": "state of application",
-          "$ref": "#/definitions/AntragsStatus"
-        },
-        "vermittler": {
-          "description": "advisor",
-          "$ref": "#/definitions/Partner"
-        },
+        "kreditSachbearbeiter": { "description": "loan officer", "$ref": "#/definitions/Partner" },
+        "letzteAenderung": { "type": "string", "format": "date-time", "description": "last changed date" },
+        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" },
+        "prolongation": { "type": "boolean" },
+        "status": { "description": "state of application", "$ref": "#/definitions/AntragsStatus" },
+        "vermittler": { "description": "advisor", "$ref": "#/definitions/Partner" },
         "vertriebsStrukturZumZeitpunktDerAnnahme": {
           "description": "distribution channels of advisor and/or clerk at creation date of application",
           "$ref": "#/definitions/VertriebsStruktur"
         },
-        "voraussichtlicheBearbeitung": {
-          "type": "string",
-          "format": "date",
-          "description": "estimated approval date"
-        },
-        "vorgangsReferenz": {
-          "type": "string",
-          "description": "advisors reference for case"
-        },
-        "zeitpunktDerAnnahme": {
-          "type": "string",
-          "format": "date-time",
-          "description": "creation date of application"
-        },
+        "voraussichtlicheBearbeitung": { "type": "string", "format": "date", "description": "estimated approval date" },
+        "vorgangsReferenz": { "type": "string", "description": "advisors reference for case" },
+        "zeitpunktDerAnnahme": { "type": "string", "format": "date-time", "description": "creation date of application" },
         "zugrundeliegendeDaten": {
           "description": "data of applicants, property and project, wich is the source for application",
           "$ref": "#/definitions/ZugrundeliegendeDatenZumAntrag"
@@ -1476,25 +961,11 @@
     "Antragsteller": {
       "type": "object",
       "properties": {
-        "absicherungsAngaben": {
-          "$ref": "#/definitions/AbsicherungsAngaben"
-        },
-        "anrede": {
-          "type": "string",
-          "enum": ["FRAU", "HERR"]
-        },
-        "anschrift": {
-          "$ref": "#/definitions/Postadresse"
-        },
-        "arbeitserlaubnis": {
-          "type": "boolean",
-          "description": "only with non-EU nationality"
-        },
-        "arbeitserlaubnisBefristetBis": {
-          "type": "string",
-          "format": "date",
-          "description": "only with restricted work permit"
-        },
+        "absicherungsAngaben": { "$ref": "#/definitions/AbsicherungsAngaben" },
+        "anrede": { "type": "string", "enum": ["FRAU", "HERR"] },
+        "anschrift": { "$ref": "#/definitions/Postadresse" },
+        "arbeitserlaubnis": { "type": "boolean", "description": "only with non-EU nationality" },
+        "arbeitserlaubnisBefristetBis": { "type": "string", "format": "date", "description": "only with restricted work permit" },
         "aufenthaltsTitel": {
           "type": "string",
           "description": "only with non-EU nationality",
@@ -1509,18 +980,12 @@
           "type": "string",
           "description": "professional group (ING) loan provider specific data (optional). allowed values: ANGESTELLTER, ARBEITER, BEAMTER, FREIBERUFLER, SELBSTSTAENDIG, RENTNER, HAUSMANN, PRIVATIER, SOLDAT, SCHUELER, AZUBI, STUDENT, OHNE. (More value can be attached)"
         },
-        "beschaeftigung": {
-          "$ref": "#/definitions/Beschaeftigung"
-        },
-        "beschaeftigungImOeffentlichenDienstBeiDsl": {
-          "type": "boolean"
-        },
+        "beschaeftigung": { "$ref": "#/definitions/Beschaeftigung" },
+        "beschaeftigungImOeffentlichenDienstBeiDsl": { "type": "boolean" },
         "branche": {
           "type": "array",
           "description": "sector, loan provider specific data (optional)(More value can be attached)",
-          "items": {
-            "$ref": "#/definitions/Branche"
-          }
+          "items": { "$ref": "#/definitions/Branche" }
         },
         "brancheBeiIngDiba": {
           "type": "string",
@@ -1534,90 +999,43 @@
           "type": "string",
           "description": "Deprecated. Pls use property 'branche'. sector (Sparkassen) loan provider specific data (optional). allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE.(More value can be attached)"
         },
-        "bruttoJahresEinkommenErwartet": {
-          "type": "number"
-        },
-        "bruttoVorjahresEinkommen": {
-          "type": "number"
-        },
-        "email": {
-          "type": "string"
-        },
-        "externeAntragstellerId": {
-          "type": "string"
-        },
+        "bruttoJahresEinkommenErwartet": { "type": "number" },
+        "bruttoVorjahresEinkommen": { "type": "number" },
+        "email": { "type": "string" },
+        "externeAntragstellerId": { "type": "string" },
         "familienstand": {
           "type": "string",
           "enum": ["GESCHIEDEN", "GETRENNT_LEBEND", "LEBENSPARTNERSCHAFT", "LEDIG", "VERHEIRATET", "VERWITWET"]
         },
-        "geburtsdatum": {
-          "type": "string",
-          "format": "date"
-        },
+        "geburtsdatum": { "type": "string", "format": "date" },
         "geburtsort": {
           "type": "string",
           "description": "place of birthloan provider specific data (optional) relevant for building society safe loans"
         },
-        "guetertrennungVereinbartWennVerheiratet": {
-          "type": "boolean",
-          "description": "only if married"
-        },
-        "id": {
-          "type": "string"
-        },
-        "inDeutschlandSeit": {
-          "type": "string",
-          "format": "date",
-          "description": "only with non-EU nationality"
-        },
+        "guetertrennungVereinbartWennVerheiratet": { "type": "boolean", "description": "only if married" },
+        "id": { "type": "string" },
+        "inDeutschlandSeit": { "type": "string", "format": "date", "description": "only with non-EU nationality" },
         "legitimationsDaten": {
           "description": "loan provider specific data (optional)",
           "$ref": "#/definitions/LegitimationsDaten"
         },
-        "nachname": {
-          "type": "string"
-        },
-        "schufaErgebnis": {
-          "$ref": "#/definitions/SchufaErgebnis"
-        },
-        "sozialversicherungsnummer": {
-          "type": "string"
-        },
-        "staatsangehoerigkeit": {
-          "$ref": "#/definitions/Staat"
-        },
-        "steuerId": {
-          "type": "string"
-        },
-        "telefonnummer": {
-          "type": "string"
-        },
-        "telefonnummerVorwahl": {
-          "type": "string"
-        },
-        "titelDoktor": {
-          "type": "boolean"
-        },
-        "titelProfessor": {
-          "type": "boolean"
-        },
+        "nachname": { "type": "string" },
+        "schufaErgebnis": { "$ref": "#/definitions/SchufaErgebnis" },
+        "sozialversicherungsnummer": { "type": "string" },
+        "staatsangehoerigkeit": { "$ref": "#/definitions/Staat" },
+        "steuerId": { "type": "string" },
+        "telefonnummer": { "type": "string" },
+        "telefonnummerVorwahl": { "type": "string" },
+        "titelDoktor": { "type": "boolean" },
+        "titelProfessor": { "type": "boolean" },
         "verheiratetMitAntragsteller": {
           "description": "Deprecated. only if married",
           "$ref": "#/definitions/AntragstellerVerknuepfung"
         },
-        "vorAnschrift": {
-          "$ref": "#/definitions/Postadresse"
-        },
-        "vorname": {
-          "type": "string"
-        },
-        "weitereKontaktMoeglichkeiten": {
-          "type": "string"
-        },
-        "wohnhaftSeit": {
-          "type": "string",
-          "format": "date"
-        }
+        "vorAnschrift": { "$ref": "#/definitions/Postadresse" },
+        "vorname": { "type": "string" },
+        "weitereKontaktMoeglichkeiten": { "type": "string" },
+        "wohnhaftSeit": { "type": "string", "format": "date" }
       },
       "title": "Antragsteller",
       "description": "customer"
@@ -1625,22 +1043,15 @@
     "AntragstellerVerknuepfung": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "description": "only for better readability, pls use antragsteller-ressource"
-        }
+        "id": { "type": "string" },
+        "name": { "type": "string", "description": "only for better readability, pls use antragsteller-ressource" }
       },
       "title": "AntragstellerVerknuepfung"
     },
     "AusgabenMonatlich": {
       "type": "object",
       "properties": {
-        "ausgabenMonatlich": {
-          "type": "number"
-        },
+        "ausgabenMonatlich": { "type": "number" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
@@ -1652,9 +1063,7 @@
     "Autostellplatz": {
       "type": "object",
       "properties": {
-        "mieteinnahmenMonatlich": {
-          "type": "number"
-        },
+        "mieteinnahmenMonatlich": { "type": "number" },
         "typ": {
           "type": "string",
           "enum": ["CARPORT", "DOPPEL_GARAGE", "GARAGE", "KELLER_GARAGE", "STELLPLATZ", "TIEFGARAGEN_STELLPLATZ"]
@@ -1665,12 +1074,8 @@
     "BankUndSparguthaben": {
       "type": "object",
       "properties": {
-        "aktuellerWert": {
-          "type": "number"
-        },
-        "maximalAufzuloesenderWert": {
-          "type": "number"
-        },
+        "aktuellerWert": { "type": "number" },
+        "maximalAufzuloesenderWert": { "type": "number" },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
@@ -1681,36 +1086,19 @@
           "description": "payment type, redundant entry serves as an additional filter criterion",
           "enum": ["AUSGABE", "EINNAHME"]
         },
-        "zinsertragJaehrlich": {
-          "type": "number"
-        }
+        "zinsertragJaehrlich": { "type": "number" }
       },
       "title": "BankUndSparguthaben"
     },
     "Bankverbindung": {
       "type": "object",
       "properties": {
-        "bic": {
-          "type": "string"
-        },
-        "iban": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "kontoinhaberIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "kontoinhaberName": {
-          "type": "string"
-        },
-        "kreditinstitut": {
-          "type": "string"
-        }
+        "bic": { "type": "string" },
+        "iban": { "type": "string" },
+        "id": { "type": "string" },
+        "kontoinhaberIds": { "type": "array", "items": { "type": "string" } },
+        "kontoinhaberName": { "type": "string" },
+        "kreditinstitut": { "type": "string" }
       },
       "title": "Bankverbindung",
       "description": "bank account"
@@ -1718,9 +1106,7 @@
     "BausparAngebot": {
       "type": "object",
       "properties": {
-        "abschlussGebuehr": {
-          "type": "number"
-        },
+        "abschlussGebuehr": { "type": "number" },
         "abschlussGebuehrenVerrechnung": {
           "type": "string",
           "description": "allowed values: SOFORTZAHLUNG, VERRECHNUNG",
@@ -1730,79 +1116,37 @@
           "type": "string",
           "description": "only with external building society saving loans an counteroffers"
         },
-        "bausparSumme": {
-          "type": "number"
-        },
-        "einmalzahlung": {
-          "type": "number",
-          "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
-        },
+        "bausparSumme": { "type": "number" },
+        "einmalzahlung": { "type": "number", "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen." },
         "gesamtLaufzeitInJahren": {
           "type": "integer",
           "format": "int32",
           "description": "only with external building society saving loans"
         },
-        "id": {
-          "type": "string"
-        },
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "sonderZahlungen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SonderZahlung"
-          }
-        },
-        "sparBeginn": {
-          "type": "string",
-          "format": "date"
-        },
-        "sparPhase": {
-          "$ref": "#/definitions/SparPhase"
-        },
-        "tarif": {
-          "type": "string",
-          "description": "name of tariff"
-        },
-        "tilgungsPhase": {
-          "$ref": "#/definitions/TilgungsPhase"
-        },
-        "typ": {
-          "type": "string"
-        },
-        "vertragsBeginn": {
-          "type": "string",
-          "format": "date",
-          "description": "contract start"
-        },
-        "vertragsNummer": {
-          "type": "string",
-          "description": "contract number"
-        },
+        "id": { "type": "string" },
+        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" },
+        "sonderZahlungen": { "type": "array", "items": { "$ref": "#/definitions/SonderZahlung" } },
+        "sparBeginn": { "type": "string", "format": "date" },
+        "sparPhase": { "$ref": "#/definitions/SparPhase" },
+        "tarif": { "type": "string", "description": "name of tariff" },
+        "tilgungsPhase": { "$ref": "#/definitions/TilgungsPhase" },
+        "typ": { "type": "string" },
+        "vertragsBeginn": { "type": "string", "format": "date", "description": "contract start" },
+        "vertragsNummer": { "type": "string", "description": "contract number" },
         "vertragsPartner": {
           "type": "array",
           "description": "only with external building society saving loans",
-          "items": {
-            "$ref": "#/definitions/AntragstellerVerknuepfung"
-          }
+          "items": { "$ref": "#/definitions/AntragstellerVerknuepfung" }
         },
-        "verwaltungsgebuehrenJaehrlich": {
-          "type": "number"
-        },
-        "zuteilungsDatum": {
-          "type": "string",
-          "format": "date"
-        }
+        "verwaltungsgebuehrenJaehrlich": { "type": "number" },
+        "zuteilungsDatum": { "type": "string", "format": "date" }
       },
       "title": "BausparAngebot"
     },
     "Bausparvertrag": {
       "type": "object",
       "properties": {
-        "abschlussGebuehr": {
-          "type": "number"
-        },
+        "abschlussGebuehr": { "type": "number" },
         "abschlussGebuehrenVerrechnung": {
           "type": "string",
           "description": "allowed values: SOFORTZAHLUNG, VERRECHNUNG",
@@ -1812,74 +1156,31 @@
           "type": "string",
           "description": "only with external building society saving loans an counteroffers"
         },
-        "bausparSumme": {
-          "type": "number"
-        },
-        "einmalzahlung": {
-          "type": "number",
-          "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
-        },
+        "bausparSumme": { "type": "number" },
+        "einmalzahlung": { "type": "number", "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen." },
         "gesamtLaufzeitInJahren": {
           "type": "integer",
           "format": "int32",
           "description": "only with external building society saving loans"
         },
-        "id": {
-          "type": "string"
-        },
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "sonderZahlungen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SonderZahlung"
-          }
-        },
-        "sparBeginn": {
-          "type": "string",
-          "format": "date"
-        },
-        "sparPhase": {
-          "$ref": "#/definitions/SparPhase"
-        },
-        "tarif": {
-          "type": "string",
-          "description": "name of tariff"
-        },
-        "tarifId": {
-          "type": "string",
-          "description": "loan provider Tarif-ID of building society saving loan tariff"
-        },
-        "tilgungsPhase": {
-          "$ref": "#/definitions/TilgungsPhase"
-        },
-        "typ": {
-          "type": "string"
-        },
-        "vertragsBeginn": {
-          "type": "string",
-          "format": "date",
-          "description": "contract start"
-        },
-        "vertragsNummer": {
-          "type": "string",
-          "description": "contract number"
-        },
+        "id": { "type": "string" },
+        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" },
+        "sonderZahlungen": { "type": "array", "items": { "$ref": "#/definitions/SonderZahlung" } },
+        "sparBeginn": { "type": "string", "format": "date" },
+        "sparPhase": { "$ref": "#/definitions/SparPhase" },
+        "tarif": { "type": "string", "description": "name of tariff" },
+        "tarifId": { "type": "string", "description": "loan provider Tarif-ID of building society saving loan tariff" },
+        "tilgungsPhase": { "$ref": "#/definitions/TilgungsPhase" },
+        "typ": { "type": "string" },
+        "vertragsBeginn": { "type": "string", "format": "date", "description": "contract start" },
+        "vertragsNummer": { "type": "string", "description": "contract number" },
         "vertragsPartner": {
           "type": "array",
           "description": "list of applicants",
-          "items": {
-            "$ref": "#/definitions/AntragstellerVerknuepfung"
-          }
+          "items": { "$ref": "#/definitions/AntragstellerVerknuepfung" }
         },
-        "verwaltungsgebuehrenJaehrlich": {
-          "type": "number"
-        },
-        "zuteilungsDatum": {
-          "type": "string",
-          "format": "date"
-        }
+        "verwaltungsgebuehrenJaehrlich": { "type": "number" },
+        "zuteilungsDatum": { "type": "string", "format": "date" }
       },
       "title": "Bausparvertrag",
       "description": "building society savings contract details"
@@ -1887,42 +1188,23 @@
     "BeleihungsRechnung": {
       "type": "object",
       "properties": {
-        "beleihungsAuslauf": {
-          "type": "number",
-          "description": "loan to value ratio"
-        },
+        "beleihungsAuslauf": { "type": "number", "description": "loan to value ratio" },
         "beleihungsWerte": {
           "type": "array",
           "description": "list of mortgage values",
-          "items": {
-            "$ref": "#/definitions/BeleihungsWert"
-          }
+          "items": { "$ref": "#/definitions/BeleihungsWert" }
         },
-        "beleihungsWerteSumme": {
-          "type": "number",
-          "description": "sum of mortgage values"
-        },
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        }
+        "beleihungsWerteSumme": { "type": "number", "description": "sum of mortgage values" },
+        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" }
       },
       "title": "BeleihungsRechnung"
     },
     "BeleihungsWert": {
       "type": "object",
       "properties": {
-        "adresse": {
-          "description": "adress of property",
-          "$ref": "#/definitions/Postadresse"
-        },
-        "beleihungsWert": {
-          "type": "number",
-          "description": "mortgage value"
-        },
-        "immobilie": {
-          "description": "property",
-          "$ref": "#/definitions/ImmobilieVerknuepfung"
-        }
+        "adresse": { "description": "adress of property", "$ref": "#/definitions/Postadresse" },
+        "beleihungsWert": { "type": "number", "description": "mortgage value" },
+        "immobilie": { "description": "property", "$ref": "#/definitions/ImmobilieVerknuepfung" }
       },
       "title": "BeleihungsWert"
     },
@@ -1934,10 +1216,7 @@
           "description": "advisory type",
           "enum": ["AUSSER_GESCHAEFTSRAUM_VERTRAG", "FERN_ABSATZ_GESCHAEFT", "PRAESENZ_GESCHAEFT"]
         },
-        "hinweisFuerProduktAnbieter": {
-          "type": "string",
-          "description": "advisors message for loan officer"
-        },
+        "hinweisFuerProduktAnbieter": { "type": "string", "description": "advisors message for loan officer" },
         "istKundenBetreuerVerkaeuferOderMaklerDerImmobilie": {
           "type": "boolean",
           "description": "true, if advisor is estate agent in this case too"
@@ -1948,10 +1227,7 @@
     "Bereitstellung": {
       "type": "object",
       "properties": {
-        "bereitstellungsZins": {
-          "type": "number",
-          "description": "commitment interest"
-        },
+        "bereitstellungsZins": { "type": "number", "description": "commitment interest" },
         "bereitstellungsZinsFreieZeitInMonaten": {
           "type": "integer",
           "format": "int32",
@@ -1968,14 +1244,8 @@
           "format": "double",
           "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
         },
-        "arbeitgeber": {
-          "type": "string",
-          "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
-        },
-        "arbeitgeberInDeutschlandAnsaessig": {
-          "type": "boolean",
-          "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
-        },
+        "arbeitgeber": { "type": "string", "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER" },
+        "arbeitgeberInDeutschlandAnsaessig": { "type": "boolean", "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER" },
         "art": {
           "type": "string",
           "description": "allowed values:ANGESTELLTER, ARBEITER, ARBEITSLOSER, BEAMTER, FREIBERUFLER, HAUSFRAU, RENTNER, SELBSTAENDIGER"
@@ -1985,27 +1255,15 @@
           "description": "only with art==ANGESTELLTER,ARBEITER",
           "enum": ["BEFRISTET", "UNBEFRISTET"]
         },
-        "beruf": {
-          "type": "string",
-          "description": "only with art!=RENTNER"
-        },
+        "beruf": { "type": "string", "description": "only with art!=RENTNER" },
         "beschaeftigtSeit": {
           "type": "string",
           "format": "date",
           "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTAENDIGER"
         },
-        "einkommenNettoJaehrlich": {
-          "type": "number",
-          "description": "only with art==FREIBERUFLER,SELBSTAENDIGER"
-        },
-        "einkommenNettoMonatlich": {
-          "type": "number",
-          "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
-        },
-        "inProbezeit": {
-          "type": "boolean",
-          "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
-        },
+        "einkommenNettoJaehrlich": { "type": "number", "description": "only with art==FREIBERUFLER,SELBSTAENDIGER" },
+        "einkommenNettoMonatlich": { "type": "number", "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER" },
+        "inProbezeit": { "type": "boolean", "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER" },
         "situationNachRenteneintritt": {
           "description": "only with art!=RENTNER",
           "$ref": "#/definitions/SituationNachRenteneintritt"
@@ -2014,10 +1272,7 @@
           "type": "number",
           "description": "only with art==ARBEITSLOSER,HAUSFRAU"
         },
-        "staatlicheRenteNettoMonatlich": {
-          "type": "number",
-          "description": "only with art==RENTNER"
-        },
+        "staatlicheRenteNettoMonatlich": { "type": "number", "description": "only with art==RENTNER" },
         "taetigkeit": {
           "type": "string",
           "description": "only with art==FREIBERUFLER,SELBSTAENDIGER. allowed values:  ALTENPFLEGER, AMBULANTER_KRANKENPFLEGER, ANWALT, APOTHEKER, ARCHITEKT, ARZT, BESTATTER, DATENSCHUTZBEAUFTRAGTER, DEKORATEUR, DIAETASSISTENT, DOLMETSCHER, EDV_BERATER, ERGOTHERAPEUT, ERNAEHRUNGSBERATER, FOTOGRAF, GEOGRAF, GRAFIKDESIGNER, GRAFIKER, HEBAMME, HEILMASSEUR, HEILPRAKTIKER, HISTORIKER, INFORMATIKER, INGENIEUR, INSOLVENZVERWALTER, JOURNALIST, KLASSISCHER_KONZERTMUSIKER, KONSTRUKTEUR, KRANKENGYMNAST, KRANKENPFLEGER, KRANKENSCHWESTER, LOGOPAEDE, MEDIZINISCH_TECHN_ASSISTENT, NOTAR, OPERNSAENGER, PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER, SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT, UNTERNEHMENSBERATER, VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES."
@@ -2029,74 +1284,24 @@
     "BestehendeImmobilie": {
       "type": "object",
       "properties": {
-        "adresse": {
-          "$ref": "#/definitions/Postadresse"
-        },
-        "autostellplaetze": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Autostellplatz"
-          }
-        },
-        "bestehendeDarlehen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BestehendesDarlehen"
-          }
-        },
-        "bodenRichtwert": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "erbbaurecht": {
-          "$ref": "#/definitions/Erbbaurecht"
-        },
-        "gebaeude": {
-          "$ref": "#/definitions/Gebaeude"
-        },
-        "grundbuchAngabe": {
-          "$ref": "#/definitions/GrundbuchAngabe"
-        },
-        "grundstueck": {
-          "$ref": "#/definitions/Grundstueck"
-        },
-        "id": {
-          "type": "string"
-        },
-        "immobilienEinsatz": {
-          "type": "string",
-          "enum": ["ALS_ZUSATZSICHERHEIT", "KEIN_EINSATZ", "VERKAUFEN"]
-        },
-        "keinBaulandFlaecheInQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "marktueblicherKaufpreisProQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "maximalEinzusetzenderBetragWennVerkauf": {
-          "type": "number"
-        },
-        "objektArt": {
-          "type": "string",
-          "enum": ["EIGENTUMSWOHNUNG", "GRUNDSTUECK", "HAUS"]
-        },
-        "vergleichsmieteFuerGewerbeflaecheProQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "vergleichsmieteFuerWohnflaecheProQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "verkehrswert": {
-          "type": "number"
-        },
-        "vorlaeufigerVerkehrswert": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
+        "adresse": { "$ref": "#/definitions/Postadresse" },
+        "autostellplaetze": { "type": "array", "items": { "$ref": "#/definitions/Autostellplatz" } },
+        "bestehendeDarlehen": { "type": "array", "items": { "$ref": "#/definitions/BestehendesDarlehen" } },
+        "bodenRichtwert": { "type": "number", "description": "loan provider specific data (optional)" },
+        "erbbaurecht": { "$ref": "#/definitions/Erbbaurecht" },
+        "gebaeude": { "$ref": "#/definitions/Gebaeude" },
+        "grundbuchAngabe": { "$ref": "#/definitions/GrundbuchAngabe" },
+        "grundstueck": { "$ref": "#/definitions/Grundstueck" },
+        "id": { "type": "string" },
+        "immobilienEinsatz": { "type": "string", "enum": ["ALS_ZUSATZSICHERHEIT", "KEIN_EINSATZ", "VERKAUFEN"] },
+        "keinBaulandFlaecheInQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "marktueblicherKaufpreisProQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "maximalEinzusetzenderBetragWennVerkauf": { "type": "number" },
+        "objektArt": { "type": "string", "enum": ["EIGENTUMSWOHNUNG", "GRUNDSTUECK", "HAUS"] },
+        "vergleichsmieteFuerGewerbeflaecheProQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "vergleichsmieteFuerWohnflaecheProQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "verkehrswert": { "type": "number" },
+        "vorlaeufigerVerkehrswert": { "type": "number", "description": "loan provider specific data (optional)" },
         "wohnlage": {
           "type": "string",
           "description": "loan provider specific data (optional). allowed values: GEHOBEN,MITTEL,EINFACH. (More values can be attached)"
@@ -2108,110 +1313,53 @@
     "BestehenderBausparvertrag": {
       "type": "object",
       "properties": {
-        "abschlussGebuehr": {
-          "type": "number"
-        },
-        "aktuellerWert": {
-          "type": "number"
-        },
-        "bausparSumme": {
-          "type": "number"
-        },
-        "einmalzahlung": {
-          "type": "number",
-          "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
-        },
-        "id": {
-          "type": "string"
-        },
-        "maximalAufzuloesenderBetrag": {
-          "type": "number"
-        },
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "sonderZahlungen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SonderZahlung"
-          }
-        },
-        "sparBeitragMonatlich": {
-          "type": "number"
-        },
-        "tarif": {
-          "type": "string",
-          "description": "name of tariff"
-        },
-        "typ": {
-          "type": "string"
-        },
-        "vermoegensEinsatz": {
-          "type": "string",
-          "enum": ["ABTRETEN", "AUFLOESEN", "KEIN_EINSATZ"]
-        },
+        "abschlussGebuehr": { "type": "number" },
+        "aktuellerWert": { "type": "number" },
+        "bausparSumme": { "type": "number" },
+        "einmalzahlung": { "type": "number", "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen." },
+        "id": { "type": "string" },
+        "maximalAufzuloesenderBetrag": { "type": "number" },
+        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" },
+        "sonderZahlungen": { "type": "array", "items": { "$ref": "#/definitions/SonderZahlung" } },
+        "sparBeitragMonatlich": { "type": "number" },
+        "tarif": { "type": "string", "description": "name of tariff" },
+        "typ": { "type": "string" },
+        "vermoegensEinsatz": { "type": "string", "enum": ["ABTRETEN", "AUFLOESEN", "KEIN_EINSATZ"] },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
           "enum": ["VERBINDLICHKEIT", "VERMOEGEN"]
         },
-        "vertragsBeginn": {
-          "type": "string",
-          "format": "date",
-          "description": "contract start"
-        },
-        "vertragsNummer": {
-          "type": "string",
-          "description": "contract number"
-        },
-        "verwaltungsgebuehrenJaehrlich": {
-          "type": "number"
-        },
+        "vertragsBeginn": { "type": "string", "format": "date", "description": "contract start" },
+        "vertragsNummer": { "type": "string", "description": "contract number" },
+        "verwaltungsgebuehrenJaehrlich": { "type": "number" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
           "enum": ["AUSGABE", "EINNAHME"]
         },
-        "zuteilungsDatum": {
-          "type": "string",
-          "format": "date"
-        }
+        "zuteilungsDatum": { "type": "string", "format": "date" }
       },
       "title": "BestehenderBausparvertrag"
     },
     "BestehendesDarlehen": {
       "type": "object",
       "properties": {
-        "abzuloesendeRestschuld": {
-          "type": "number",
-          "description": "Deprecated."
-        },
-        "aktuelleRestschuldWennNichtAbzuloesen": {
-          "type": "number",
-          "description": "Deprecated. only with wirdAbgeloest==true"
-        },
-        "bausteinId": {
-          "type": "string"
-        },
+        "abzuloesendeRestschuld": { "type": "number", "description": "Deprecated." },
+        "aktuelleRestschuldWennNichtAbzuloesen": { "type": "number", "description": "Deprecated. only with wirdAbgeloest==true" },
+        "bausteinId": { "type": "string" },
         "darlehensArt": {
           "type": "string",
           "description": "allowed values: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN (More values can be attached)",
           "enum": ["BAUSPARDARLEHEN", "FOERDERDARLEHEN", "IMMOBILIENDARLEHEN", "PRIVATDARLEHEN", "SONSTIGES_DARLEHEN"]
         },
-        "darlehensBetrag": {
-          "type": "number",
-          "description": "loan amount, only with verwendungszweck==ANSCHLUSSFINANZIERUNG"
-        },
-        "darlehensGeber": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
+        "darlehensBetrag": { "type": "number", "description": "loan amount, only with verwendungszweck==ANSCHLUSSFINANZIERUNG" },
+        "darlehensGeber": { "$ref": "#/definitions/ProduktAnbieter" },
         "darlehensKontonummer": {
           "type": "string",
           "description": "account number of prolongation, only with verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
-        "eingetrageneGrundschuld": {
-          "type": "number"
-        },
+        "eingetrageneGrundschuld": { "type": "number" },
         "grundschuldArt": {
           "type": "string",
           "description": "allowed values: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD (More values can be attached)",
@@ -2221,75 +1369,42 @@
           "type": "string",
           "description": "DSL account number, only with loan provider='DSL Bank' and verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
-        "id": {
-          "type": "string"
-        },
-        "laufzeitEnde": {
-          "type": "string",
-          "format": "date"
-        },
-        "rateMonatlich": {
-          "type": "number"
-        },
-        "restschuldAktuell": {
-          "type": "number",
-          "description": "remainder of debt"
-        },
+        "id": { "type": "string" },
+        "laufzeitEnde": { "type": "string", "format": "date" },
+        "rateMonatlich": { "type": "number" },
+        "restschuldAktuell": { "type": "number", "description": "remainder of debt" },
         "restschuldZumAbloeseTermin": {
           "type": "number",
           "description": "calculated remainder of debt at end of the fixed interest period"
         },
-        "sollZins": {
-          "type": "number"
-        },
+        "sollZins": { "type": "number" },
         "sondertilgungZumZinsBindungsEnde": {
           "type": "number",
           "description": "amount of special redemption at the end of fixed interest period, only with verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
-        "wirdAbgeloest": {
-          "type": "boolean",
-          "description": "TRUE if loan will be replaced"
-        },
-        "zinsBindungEndetAm": {
-          "type": "string",
-          "format": "date"
-        }
+        "wirdAbgeloest": { "type": "boolean", "description": "TRUE if loan will be replaced" },
+        "zinsBindungEndetAm": { "type": "string", "format": "date" }
       },
       "title": "BestehendesDarlehen"
     },
     "BestehendesDarlehenDesFinanzierungsObjekts": {
       "type": "object",
       "properties": {
-        "abzuloesendeRestschuld": {
-          "type": "number",
-          "description": "Deprecated."
-        },
-        "aktuelleRestschuldWennNichtAbzuloesen": {
-          "type": "number",
-          "description": "Deprecated. only with wirdAbgeloest==true"
-        },
-        "bausteinId": {
-          "type": "string"
-        },
+        "abzuloesendeRestschuld": { "type": "number", "description": "Deprecated." },
+        "aktuelleRestschuldWennNichtAbzuloesen": { "type": "number", "description": "Deprecated. only with wirdAbgeloest==true" },
+        "bausteinId": { "type": "string" },
         "darlehensArt": {
           "type": "string",
           "description": "allowed values: BAUSPARDARLEHEN,FOERDERDARLEHEN,IMMOBILIENDARLEHEN,PRIVATDARLEHEN,SONSTIGES_DARLEHEN (More values can be attached)",
           "enum": ["BAUSPARDARLEHEN", "FOERDERDARLEHEN", "IMMOBILIENDARLEHEN", "PRIVATDARLEHEN", "SONSTIGES_DARLEHEN"]
         },
-        "darlehensBetrag": {
-          "type": "number",
-          "description": "loan amount, only with verwendungszweck==ANSCHLUSSFINANZIERUNG"
-        },
-        "darlehensGeber": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
+        "darlehensBetrag": { "type": "number", "description": "loan amount, only with verwendungszweck==ANSCHLUSSFINANZIERUNG" },
+        "darlehensGeber": { "$ref": "#/definitions/ProduktAnbieter" },
         "darlehensKontonummer": {
           "type": "string",
           "description": "account number of prolongation, only with verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
-        "eingetrageneGrundschuld": {
-          "type": "number"
-        },
+        "eingetrageneGrundschuld": { "type": "number" },
         "grundschuldArt": {
           "type": "string",
           "description": "allowed values: BUCH_GRUNDSCHULD, BRIEF_GRUNDSCHULD (More values can be attached)",
@@ -2299,87 +1414,46 @@
           "type": "string",
           "description": "DSL account number, only with loan provider='DSL Bank' and verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
-        "id": {
-          "type": "string"
-        },
-        "laufzeitEnde": {
-          "type": "string",
-          "format": "date"
-        },
-        "rateMonatlich": {
-          "type": "number"
-        },
-        "restschuldAktuell": {
-          "type": "number",
-          "description": "remainder of debt"
-        },
+        "id": { "type": "string" },
+        "laufzeitEnde": { "type": "string", "format": "date" },
+        "rateMonatlich": { "type": "number" },
+        "restschuldAktuell": { "type": "number", "description": "remainder of debt" },
         "restschuldZumAbloeseTermin": {
           "type": "number",
           "description": "calculated remainder of debt at end of the fixed interest period"
         },
-        "sollZins": {
-          "type": "number"
-        },
+        "sollZins": { "type": "number" },
         "sondertilgungZumZinsBindungsEnde": {
           "type": "number",
           "description": "amount of special redemption at the end of fixed interest period, only with verwendungszweck==ANSCHLUSSFINANZIERUNG"
         },
-        "verwendenAls": {
-          "type": "string",
-          "enum": ["ABLOESEN", "TRITT_IM_RANG_ZURUECK", "TRITT_NICHT_IM_RANG_ZURUECK"]
-        },
-        "wirdAbgeloest": {
-          "type": "boolean",
-          "description": "TRUE if loan will be replaced"
-        },
-        "zinsBindungEndetAm": {
-          "type": "string",
-          "format": "date"
-        }
+        "verwendenAls": { "type": "string", "enum": ["ABLOESEN", "TRITT_IM_RANG_ZURUECK", "TRITT_NICHT_IM_RANG_ZURUECK"] },
+        "wirdAbgeloest": { "type": "boolean", "description": "TRUE if loan will be replaced" },
+        "zinsBindungEndetAm": { "type": "string", "format": "date" }
       },
       "title": "BestehendesDarlehenDesFinanzierungsObjekts"
     },
     "BewertungDurchProduktAnbieter": {
       "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "only produktAnbieterId==DEUTSCHE_BANK"
-        }
-      },
+      "properties": { "id": { "type": "string", "description": "only produktAnbieterId==DEUTSCHE_BANK" } },
       "title": "BewertungDurchProduktAnbieter"
     },
     "Bonitaet": {
       "type": "object",
       "properties": {
-        "angerechneteLebensHaltungsKosten": {
-          "type": "number",
-          "description": "included living costs"
-        },
-        "angerechneteRatenAllerFinanzierungsDarlehen": {
-          "type": "number",
-          "description": "new loan rates"
-        },
+        "angerechneteLebensHaltungsKosten": { "type": "number", "description": "included living costs" },
+        "angerechneteRatenAllerFinanzierungsDarlehen": { "type": "number", "description": "new loan rates" },
         "bewirtschaftungsKostenAllerFremdgenutzerFlaechen": {
           "type": "number",
           "description": "operating costs for all external-used properties (rent)"
         },
-        "haushaltsUeberschuss": {
-          "type": "number",
-          "description": "budget surplus"
-        },
-        "kreditEntscheider": {
-          "description": "loan officer",
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
+        "haushaltsUeberschuss": { "type": "number", "description": "budget surplus" },
+        "kreditEntscheider": { "description": "loan officer", "$ref": "#/definitions/ProduktAnbieter" },
         "nebenkostenAllerEigengenutzterWohnflaechen": {
           "type": "number",
           "description": "ancillary costs for all own-used properties"
         },
-        "produktAnbieter": {
-          "description": "loan provider",
-          "$ref": "#/definitions/ProduktAnbieter"
-        }
+        "produktAnbieter": { "description": "loan provider", "$ref": "#/definitions/ProduktAnbieter" }
       },
       "title": "Bonitaet",
       "description": "creditworthiness"
@@ -2387,10 +1461,7 @@
     "Branche": {
       "type": "object",
       "properties": {
-        "typ": {
-          "type": "string",
-          "enum": ["ING", "MHB", "S_RATING"]
-        },
+        "typ": { "type": "string", "enum": ["ING", "MHB", "S_RATING"] },
         "wert": {
           "type": "string",
           "description": "diffrent values depended on type:\n\nsector ING allowed values: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR\n\nsector MHB allowed values: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES\n\nsector S_RATING allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE"
@@ -2402,37 +1473,13 @@
     "Darlehen": {
       "type": "object",
       "properties": {
-        "auszahlungsBetrag": {
-          "type": "number",
-          "example": 365000.0,
-          "description": "disbursement amount"
-        },
-        "auszahlungsDatum": {
-          "type": "string",
-          "format": "date",
-          "description": "disbursement date"
-        },
-        "auszahlungsKurs": {
-          "type": "number",
-          "example": 100.0,
-          "description": "disbursement ratio"
-        },
-        "bausparTarif": {
-          "type": "string",
-          "description": "building savings tariff, only with darlehensTyp==BAUSPAR_DARLEHEN"
-        },
-        "bausteinId": {
-          "type": "string"
-        },
-        "bereitstellung": {
-          "description": "not with darlehensTyp==PRIVAT_DARLEHEN",
-          "$ref": "#/definitions/Bereitstellung"
-        },
-        "darlehensBetrag": {
-          "type": "number",
-          "example": 365000.0,
-          "description": "loan amount"
-        },
+        "auszahlungsBetrag": { "type": "number", "example": 365000.0, "description": "disbursement amount" },
+        "auszahlungsDatum": { "type": "string", "format": "date", "description": "disbursement date" },
+        "auszahlungsKurs": { "type": "number", "example": 100.0, "description": "disbursement ratio" },
+        "bausparTarif": { "type": "string", "description": "building savings tariff, only with darlehensTyp==BAUSPAR_DARLEHEN" },
+        "bausteinId": { "type": "string" },
+        "bereitstellung": { "description": "not with darlehensTyp==PRIVAT_DARLEHEN", "$ref": "#/definitions/Bereitstellung" },
+        "darlehensBetrag": { "type": "number", "example": 365000.0, "description": "loan amount" },
         "darlehensTyp": {
           "type": "string",
           "enum": [
@@ -2446,24 +1493,13 @@
             "ZWISCHEN_FINANZIERUNG"
           ]
         },
-        "detailsZurVerwendung": {
-          "type": "string",
-          "description": "only with darlehensTyp==ZWISCHEN_FINANZIERUNG"
-        },
-        "effektivZins": {
-          "type": "number",
-          "example": 2.35,
-          "description": "actual interest"
-        },
+        "detailsZurVerwendung": { "type": "string", "description": "only with darlehensTyp==ZWISCHEN_FINANZIERUNG" },
+        "effektivZins": { "type": "number", "example": 2.35, "description": "actual interest" },
         "effektivZinsRelevanteKosten": {
           "description": "costs for calculation of actual interest",
           "$ref": "#/definitions/EffektivZinsKosten"
         },
-        "einstandsDatum": {
-          "type": "string",
-          "format": "date-time",
-          "description": "debit interest date"
-        },
+        "einstandsDatum": { "type": "string", "format": "date-time", "description": "debit interest date" },
         "forwardPeriodeInMonaten": {
           "type": "integer",
           "format": "int32",
@@ -2490,14 +1526,8 @@
           "type": "boolean",
           "description": "plan of refurbishment exists, with darlehensTyp==KFW_DARLEHEN and program 261, 262"
         },
-        "konditionWurdeManuellAngepasst": {
-          "type": "boolean",
-          "description": "true, if advisor overrides the interest rate"
-        },
-        "konditionsAnpassungsBegruendung": {
-          "type": "string",
-          "description": "reason for overriding interest rate"
-        },
+        "konditionWurdeManuellAngepasst": { "type": "boolean", "description": "true, if advisor overrides the interest rate" },
+        "konditionsAnpassungsBegruendung": { "type": "string", "description": "reason for overriding interest rate" },
         "konditionsAnpassungsDelta": {
           "type": "number",
           "example": -0.25,
@@ -2518,19 +1548,9 @@
           "format": "int32",
           "description": "only with darlehensTyp==ZWISCHEN_FINANZIERUNG"
         },
-        "produktAnbieter": {
-          "description": "loan provider",
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "provision": {
-          "description": "commission",
-          "$ref": "#/definitions/Provision"
-        },
-        "rateMonatlich": {
-          "type": "number",
-          "example": 723.34,
-          "description": "rate for redemption"
-        },
+        "produktAnbieter": { "description": "loan provider", "$ref": "#/definitions/ProduktAnbieter" },
+        "provision": { "description": "commission", "$ref": "#/definitions/Provision" },
+        "rateMonatlich": { "type": "number", "example": 723.34, "description": "rate for redemption" },
         "rateMonatlichInDerTilgungsfreienAnlaufzeit": {
           "type": "number",
           "description": "rate in the beginning years of no redemption, only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
@@ -2539,15 +1559,8 @@
           "type": "string",
           "description": "regional support program, only with darlehensTyp==REGIONAL_FOERDER_DARLEHEN (allowed values: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, L_BANK_WOHNEN_MIT_ZUKUNFT, NRW_BANK_WOHNEIGENTUM If new program will follow, more values can be attached.)"
         },
-        "sollZins": {
-          "type": "number",
-          "example": 2.05,
-          "description": "debit interest"
-        },
-        "tilgung": {
-          "description": "not with darlehensTyp==ZWISCHEN_FINANZIERUNG",
-          "$ref": "#/definitions/Tilgung"
-        },
+        "sollZins": { "type": "number", "example": 2.05, "description": "debit interest" },
+        "tilgung": { "description": "not with darlehensTyp==ZWISCHEN_FINANZIERUNG", "$ref": "#/definitions/Tilgung" },
         "tilgungsFreieAnlaufJahre": {
           "type": "integer",
           "format": "int32",
@@ -2556,9 +1569,7 @@
         "vertragsPartner": {
           "type": "array",
           "description": "only with external building society saving loans",
-          "items": {
-            "$ref": "#/definitions/AntragstellerVerknuepfung"
-          }
+          "items": { "$ref": "#/definitions/AntragstellerVerknuepfung" }
         },
         "verwendungsZweck": {
           "type": "string",
@@ -2581,21 +1592,10 @@
     "Dokument": {
       "type": "object",
       "properties": {
-        "art": {
-          "type": "string",
-          "description": "partly not available"
-        },
-        "href": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string",
-          "description": "source filename with extension"
-        },
-        "titel": {
-          "type": "string",
-          "description": "document name"
-        },
+        "art": { "type": "string", "description": "partly not available" },
+        "href": { "type": "string" },
+        "name": { "type": "string", "description": "source filename with extension" },
+        "titel": { "type": "string", "description": "document name" },
         "type": {
           "type": "string",
           "description": "mediatype of document, see <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\">HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
@@ -2606,43 +1606,22 @@
     "EffektivZinsKosten": {
       "type": "object",
       "properties": {
-        "beratungsHonorar": {
-          "type": "number"
-        },
-        "grundbuchKosten": {
-          "type": "number"
-        },
-        "laufendeVerwaltungskostenJaehrlich": {
-          "type": "number"
-        },
-        "sonstigeKosten": {
-          "type": "number"
-        },
-        "tilgungsErsatzProduktKosten": {
-          "type": "number"
-        },
-        "wohnGebaeudeVersicherungsKosten": {
-          "type": "number"
-        },
-        "zinsabsicherungsKosten": {
-          "type": "number"
-        },
-        "zusatzSicherheitsKosten": {
-          "type": "number"
-        }
+        "beratungsHonorar": { "type": "number" },
+        "grundbuchKosten": { "type": "number" },
+        "laufendeVerwaltungskostenJaehrlich": { "type": "number" },
+        "sonstigeKosten": { "type": "number" },
+        "tilgungsErsatzProduktKosten": { "type": "number" },
+        "wohnGebaeudeVersicherungsKosten": { "type": "number" },
+        "zinsabsicherungsKosten": { "type": "number" },
+        "zusatzSicherheitsKosten": { "type": "number" }
       },
       "title": "EffektivZinsKosten"
     },
     "EinkuenfteAusNebentaetigkeit": {
       "type": "object",
       "properties": {
-        "beginnDerNebentaetigkeit": {
-          "type": "string",
-          "format": "date"
-        },
-        "einnahmenMonatlich": {
-          "type": "number"
-        },
+        "beginnDerNebentaetigkeit": { "type": "string", "format": "date" },
+        "einnahmenMonatlich": { "type": "number" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
@@ -2654,9 +1633,7 @@
     "EinnahmenMonatlich": {
       "type": "object",
       "properties": {
-        "einnahmenMonatlich": {
-          "type": "number"
-        },
+        "einnahmenMonatlich": { "type": "number" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
@@ -2668,221 +1645,93 @@
     "Eintrag": {
       "type": "object",
       "properties": {
-        "abgeltungssteuer": {
-          "type": "number"
-        },
-        "datum": {
-          "type": "string",
-          "format": "date"
-        },
-        "kontofuehrungsGebuehr": {
-          "type": "number"
-        },
-        "laufendeGebuehr": {
-          "type": "number"
-        },
-        "riesterZulage": {
-          "type": "number"
-        },
-        "saldo": {
-          "type": "number"
-        },
-        "tilgung": {
-          "type": "number"
-        },
-        "typ": {
-          "type": "string",
-          "enum": ["AGGREGIERTER_EINTRAG", "EINTRAG", "SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE"]
-        },
-        "zahlung": {
-          "type": "number"
-        },
-        "zahlungsTyp": {
-          "type": "string",
-          "enum": ["AUSZAHLUNG", "EINZAHLUNG"]
-        },
-        "zinsen": {
-          "type": "number"
-        }
+        "abgeltungssteuer": { "type": "number" },
+        "datum": { "type": "string", "format": "date" },
+        "kontofuehrungsGebuehr": { "type": "number" },
+        "laufendeGebuehr": { "type": "number" },
+        "riesterZulage": { "type": "number" },
+        "saldo": { "type": "number" },
+        "tilgung": { "type": "number" },
+        "typ": { "type": "string", "enum": ["AGGREGIERTER_EINTRAG", "EINTRAG", "SUMMEN_EINTRAG_ZUM_ZINSBINDUNGSENDE"] },
+        "zahlung": { "type": "number" },
+        "zahlungsTyp": { "type": "string", "enum": ["AUSZAHLUNG", "EINZAHLUNG"] },
+        "zinsen": { "type": "number" }
       },
       "title": "Eintrag"
     },
     "Erbbaurecht": {
       "type": "object",
       "properties": {
-        "erbbauzinsJaehrlich": {
-          "type": "number"
-        },
-        "grundstuecksEigentuemer": {
-          "type": "string",
-          "enum": ["ANDERE", "OEFFENTLICH_KIRCHLICH"]
-        },
-        "laufzeitBisJahr": {
-          "type": "string",
-          "example": 2022,
-          "description": "4-digit year"
-        }
+        "erbbauzinsJaehrlich": { "type": "number" },
+        "grundstuecksEigentuemer": { "type": "string", "enum": ["ANDERE", "OEFFENTLICH_KIRCHLICH"] },
+        "laufzeitBisJahr": { "type": "string", "example": 2022, "description": "4-digit year" }
       },
       "title": "Erbbaurecht"
     },
     "Error": {
       "type": "object",
       "properties": {
-        "message": {
-          "type": "string"
-        },
-        "statusCode": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "statusMessage": {
-          "type": "string"
-        },
-        "traceId": {
-          "type": "string"
-        }
+        "message": { "type": "string" },
+        "statusCode": { "type": "integer", "format": "int32" },
+        "statusMessage": { "type": "string" },
+        "traceId": { "type": "string" }
       },
       "title": "Error"
     },
     "Finanzbedarf": {
       "type": "object",
       "properties": {
-        "aussenAnlagen": {
-          "type": "number",
-          "description": "costs for gardening"
-        },
+        "aussenAnlagen": { "type": "number", "description": "costs for gardening" },
         "bauNebenkosten": {
           "type": "number",
           "description": "additional costs for construction (eg connection to power-net, telecommunication and waste water)"
         },
-        "bereitsBeglichen": {
-          "type": "number",
-          "description": "costs already paid"
-        },
-        "erschliessung": {
-          "type": "number",
-          "description": "costs for development"
-        },
-        "grunderwerbsteuer": {
-          "type": "number",
-          "description": "real property acquisition tax, ancillary costs"
-        },
+        "bereitsBeglichen": { "type": "number", "description": "costs already paid" },
+        "erschliessung": { "type": "number", "description": "costs for development" },
+        "grunderwerbsteuer": { "type": "number", "description": "real property acquisition tax, ancillary costs" },
         "grundstueckBereitsBezahlt": {
           "type": "boolean",
           "description": "'true' -> land already paid, 'false' - land not yet paid, 'null' if not 'Neubau'"
         },
-        "grundstuecksKaufpreis": {
-          "type": "number",
-          "description": "purchasing costs for land"
-        },
-        "herstellung": {
-          "type": "number",
-          "description": "construction costs, including personal contribution"
-        },
-        "kapitalBeschaffung": {
-          "type": "number",
-          "description": "capital procurement from existing properties"
-        },
-        "kaufpreis": {
-          "type": "number",
-          "description": "purchasing price"
-        },
-        "maklergebuehr": {
-          "type": "number",
-          "description": "estate agents commission, ancillary costs"
-        },
-        "mobiliar": {
-          "type": "number",
-          "description": "furniture costs"
-        },
-        "modernisierung": {
-          "type": "number",
-          "description": "refurbishment costs, including personal contribution"
-        },
-        "notargebuehr": {
-          "type": "number",
-          "description": "notary fee, ancillary costs"
-        },
-        "renovierung": {
-          "type": "number",
-          "description": "renovation costs, including personal contribution"
-        },
-        "sonstigeKosten": {
-          "type": "number",
-          "description": "other costs"
-        },
-        "zusaetzlichesKapital": {
-          "type": "number",
-          "description": "additional capital"
-        }
+        "grundstuecksKaufpreis": { "type": "number", "description": "purchasing costs for land" },
+        "herstellung": { "type": "number", "description": "construction costs, including personal contribution" },
+        "kapitalBeschaffung": { "type": "number", "description": "capital procurement from existing properties" },
+        "kaufpreis": { "type": "number", "description": "purchasing price" },
+        "maklergebuehr": { "type": "number", "description": "estate agents commission, ancillary costs" },
+        "mobiliar": { "type": "number", "description": "furniture costs" },
+        "modernisierung": { "type": "number", "description": "refurbishment costs, including personal contribution" },
+        "notargebuehr": { "type": "number", "description": "notary fee, ancillary costs" },
+        "renovierung": { "type": "number", "description": "renovation costs, including personal contribution" },
+        "sonstigeKosten": { "type": "number", "description": "other costs" },
+        "zusaetzlichesKapital": { "type": "number", "description": "additional capital" }
       },
       "title": "Finanzbedarf"
     },
     "FinanzierungsObjekt": {
       "type": "object",
       "properties": {
-        "adresse": {
-          "$ref": "#/definitions/Postadresse"
-        },
-        "autostellplaetze": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Autostellplatz"
-          }
-        },
+        "adresse": { "$ref": "#/definitions/Postadresse" },
+        "autostellplaetze": { "type": "array", "items": { "$ref": "#/definitions/Autostellplatz" } },
         "bestehendeDarlehen": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/BestehendesDarlehenDesFinanzierungsObjekts"
-          }
+          "items": { "$ref": "#/definitions/BestehendesDarlehenDesFinanzierungsObjekts" }
         },
-        "bodenRichtwert": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "erbbaurecht": {
-          "$ref": "#/definitions/Erbbaurecht"
-        },
-        "gebaeude": {
-          "$ref": "#/definitions/Gebaeude"
-        },
-        "grundbuchAngabe": {
-          "$ref": "#/definitions/GrundbuchAngabe"
-        },
-        "grundstueck": {
-          "$ref": "#/definitions/Grundstueck"
-        },
-        "id": {
-          "type": "string"
-        },
-        "keinBaulandFlaecheInQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "marktueblicherKaufpreisProQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "objektArt": {
-          "type": "string",
-          "enum": ["EIGENTUMSWOHNUNG", "GRUNDSTUECK", "HAUS"]
-        },
-        "vergleichsmieteFuerGewerbeflaecheProQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
-        "vergleichsmieteFuerWohnflaecheProQm": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
+        "bodenRichtwert": { "type": "number", "description": "loan provider specific data (optional)" },
+        "erbbaurecht": { "$ref": "#/definitions/Erbbaurecht" },
+        "gebaeude": { "$ref": "#/definitions/Gebaeude" },
+        "grundbuchAngabe": { "$ref": "#/definitions/GrundbuchAngabe" },
+        "grundstueck": { "$ref": "#/definitions/Grundstueck" },
+        "id": { "type": "string" },
+        "keinBaulandFlaecheInQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "marktueblicherKaufpreisProQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "objektArt": { "type": "string", "enum": ["EIGENTUMSWOHNUNG", "GRUNDSTUECK", "HAUS"] },
+        "vergleichsmieteFuerGewerbeflaecheProQm": { "type": "number", "description": "loan provider specific data (optional)" },
+        "vergleichsmieteFuerWohnflaecheProQm": { "type": "number", "description": "loan provider specific data (optional)" },
         "verkehrswert": {
           "type": "number",
           "description": "only relevant for AnschlussFinanzierung, Modernisierung und Kapitalbeschaffung"
         },
-        "vorlaeufigerVerkehrswert": {
-          "type": "number",
-          "description": "loan provider specific data (optional)"
-        },
+        "vorlaeufigerVerkehrswert": { "type": "number", "description": "loan provider specific data (optional)" },
         "wohnlage": {
           "type": "string",
           "description": "loan provider specific data (optional). allowed values: GEHOBEN,MITTEL,EINFACH. (More values can be attached)"
@@ -2893,31 +1742,17 @@
     "Flurstueck": {
       "type": "object",
       "properties": {
-        "anteil": {
-          "description": "owning part",
-          "$ref": "#/definitions/MiteigentumsAnteil"
-        },
-        "flur": {
-          "type": "string",
-          "description": "plot area"
-        },
-        "flurstuecksNummer": {
-          "type": "string",
-          "description": "plot number"
-        },
-        "groesse": {
-          "type": "number",
-          "description": "area dimension in square meter"
-        }
+        "anteil": { "description": "owning part", "$ref": "#/definitions/MiteigentumsAnteil" },
+        "flur": { "type": "string", "description": "plot area" },
+        "flurstuecksNummer": { "type": "string", "description": "plot number" },
+        "groesse": { "type": "number", "description": "area dimension in square meter" }
       },
       "title": "Flurstueck"
     },
     "ForwardDarlehen": {
       "title": "ForwardDarlehen",
       "allOf": [
-        {
-          "$ref": "#/definitions/GegenangebotDarlehen"
-        },
+        { "$ref": "#/definitions/GegenangebotDarlehen" },
         {
           "type": "object",
           "required": [
@@ -2936,19 +1771,10 @@
           ],
           "discriminator": "darlehensTyp",
           "properties": {
-            "anfaenglicheTilgung": {
-              "type": "number"
-            },
-            "bereitstellungsZins": {
-              "type": "number"
-            },
-            "bereitstellungsZinsFreieZeitInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "darlehensBetrag": {
-              "type": "number"
-            },
+            "anfaenglicheTilgung": { "type": "number" },
+            "bereitstellungsZins": { "type": "number" },
+            "bereitstellungsZinsFreieZeitInMonaten": { "type": "integer", "format": "int32" },
+            "darlehensBetrag": { "type": "number" },
             "darlehensTyp": {
               "type": "string",
               "enum": [
@@ -2962,43 +1788,19 @@
                 "ZWISCHEN_FINANZIERUNG"
               ]
             },
-            "effektivZins": {
-              "type": "number"
-            },
-            "forwardPeriodeInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "laufzeitKalkulatorischInJahren": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "produktDetails": {
-              "type": "string",
-              "description": "description for advisor"
-            },
-            "rateMonatlich": {
-              "type": "number"
-            },
-            "sollZins": {
-              "type": "number"
-            },
-            "sonderTilgungJaehrlich": {
-              "type": "number"
-            },
-            "tilgungsBeginnAm": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2020-03-28"
-            },
+            "effektivZins": { "type": "number" },
+            "forwardPeriodeInMonaten": { "type": "integer", "format": "int32" },
+            "laufzeitKalkulatorischInJahren": { "type": "integer", "format": "int32" },
+            "produktDetails": { "type": "string", "description": "description for advisor" },
+            "rateMonatlich": { "type": "number" },
+            "sollZins": { "type": "number" },
+            "sonderTilgungJaehrlich": { "type": "number" },
+            "tilgungsBeginnAm": { "type": "string", "format": "date-time", "example": "2020-03-28" },
             "vertriebsProvisionGesamtAbsolut": {
               "type": "number",
               "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
             },
-            "zinsBindungInJahren": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "zinsBindungInJahren": { "type": "integer", "format": "int32" }
           },
           "title": "ForwardDarlehen",
           "description": "extends loan of counteroffer"
@@ -3009,19 +1811,9 @@
     "Gebaeude": {
       "type": "object",
       "properties": {
-        "anzahlDerGewerbeeinheiten": {
-          "type": "integer",
-          "format": "int32",
-          "description": "only with ObjektArt == HAUS."
-        },
-        "anzahlDerWohneinheitenImGebaeude": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "anzahlVollgeschosse": {
-          "type": "integer",
-          "format": "int32"
-        },
+        "anzahlDerGewerbeeinheiten": { "type": "integer", "format": "int32", "description": "only with ObjektArt == HAUS." },
+        "anzahlDerWohneinheitenImGebaeude": { "type": "integer", "format": "int32" },
+        "anzahlVollgeschosse": { "type": "integer", "format": "int32" },
         "ausstattung": {
           "type": "string",
           "description": "equipment of property for the automatic mortage evaluation (VDP), not ING, allowed values: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN (More values can be attached)"
@@ -3035,38 +1827,21 @@
           "type": "string",
           "description": "allowed values: FACHWERK_MIT_STROH_LEHM,FACHWERK_MIT_ZIEGELN,GLAS_STAHL,HOLZ,MASSIV (More values can be attached)"
         },
-        "bezeichnungWohneinheit": {
-          "type": "string",
-          "description": "only with ObjektArt == EIGENTUMSWOHNUNG."
-        },
+        "bezeichnungWohneinheit": { "type": "string", "description": "only with ObjektArt == EIGENTUMSWOHNUNG." },
         "dachgeschossAusbau": {
           "type": "string",
           "description": "only with ObjektArt == HAUS. allowed values: FLACHDACH,NICHT_AUSGEBAUT,TEILWEISE_AUSGEBAUT,VOLL_AUSGEBAUT (More values can be attached)"
         },
-        "einliegerwohnungVorhanden": {
-          "type": "boolean",
-          "description": "only with ObjektArt == HAUS."
-        },
-        "gewerbeflaeche": {
-          "$ref": "#/definitions/GebaeudeFlaeche"
-        },
-        "hausAnordnung": {
-          "type": "string",
-          "enum": ["FREISTEHEND", "KOPFHAUS", "MITTELHAUS"]
-        },
+        "einliegerwohnungVorhanden": { "type": "boolean", "description": "only with ObjektArt == HAUS." },
+        "gewerbeflaeche": { "$ref": "#/definitions/GebaeudeFlaeche" },
+        "hausAnordnung": { "type": "string", "enum": ["FREISTEHEND", "KOPFHAUS", "MITTELHAUS"] },
         "hausTyp": {
           "type": "string",
           "description": "only with ObjektArt == HAUS.",
           "enum": ["DOPPELHAUSHAELFTE", "EINFAMILIENHAUS", "MEHRFAMILIENHAUS", "REIHENHAUS", "ZWEIFAMILIENHAUS"]
         },
-        "istFertighaus": {
-          "type": "boolean",
-          "description": "only with ObjektArt == HAUS."
-        },
-        "kubatur": {
-          "type": "number",
-          "description": "Angabe in Kubikmetern. loan provider specific data (optional)"
-        },
+        "istFertighaus": { "type": "boolean", "description": "only with ObjektArt == HAUS." },
+        "kubatur": { "type": "number", "description": "Angabe in Kubikmetern. loan provider specific data (optional)" },
         "miteigentumsAnteil": {
           "description": "only with ObjektArt == EIGENTUMSWOHNUNG.",
           "$ref": "#/definitions/MiteigentumsAnteil"
@@ -3074,9 +1849,7 @@
         "modernisierungen": {
           "type": "array",
           "description": "loan provider specific data (optional)",
-          "items": {
-            "$ref": "#/definitions/Modernisierung"
-          }
+          "items": { "$ref": "#/definitions/Modernisierung" }
         },
         "modernisierungsAngaben": {
           "description": "Deprecated. Pls use list of refurbishment.",
@@ -3086,9 +1859,7 @@
           "type": "string",
           "description": "only with ObjektArt == HAUS. allowed values: NICHT_UNTERKELLERT,TEILWEISE_UNTERKELLERT,UNTERKELLERT (More values can be attached)"
         },
-        "wohnflaeche": {
-          "$ref": "#/definitions/GebaeudeFlaeche"
-        },
+        "wohnflaeche": { "$ref": "#/definitions/GebaeudeFlaeche" },
         "zustand": {
           "type": "string",
           "description": "condition of the property for the automatic mortage evaluation (VDP)",
@@ -3100,12 +1871,8 @@
     "GebaeudeFlaeche": {
       "type": "object",
       "properties": {
-        "gesamtGroesse": {
-          "type": "number"
-        },
-        "vermietungsInformationen": {
-          "$ref": "#/definitions/VermietungsInformationen"
-        }
+        "gesamtGroesse": { "type": "number" },
+        "vermietungsInformationen": { "$ref": "#/definitions/VermietungsInformationen" }
       },
       "title": "GebaeudeFlaeche"
     },
@@ -3113,16 +1880,8 @@
       "type": "object",
       "required": ["darlehen"],
       "properties": {
-        "darlehen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/GegenangebotDarlehen"
-          }
-        },
-        "kennung": {
-          "type": "string",
-          "description": "name of offer, visible in advisors offerlist, eg. 'Sonderangebot' "
-        }
+        "darlehen": { "type": "array", "items": { "$ref": "#/definitions/GegenangebotDarlehen" } },
+        "kennung": { "type": "string", "description": "name of offer, visible in advisors offerlist, eg. 'Sonderangebot' " }
       },
       "title": "Gegenangebot"
     },
@@ -3139,12 +1898,8 @@
       ],
       "discriminator": "darlehensTyp",
       "properties": {
-        "anfaenglicheTilgung": {
-          "type": "number"
-        },
-        "darlehensBetrag": {
-          "type": "number"
-        },
+        "anfaenglicheTilgung": { "type": "number" },
+        "darlehensBetrag": { "type": "number" },
         "darlehensTyp": {
           "type": "string",
           "enum": [
@@ -3158,19 +1913,10 @@
             "ZWISCHEN_FINANZIERUNG"
           ]
         },
-        "effektivZins": {
-          "type": "number"
-        },
-        "produktDetails": {
-          "type": "string",
-          "description": "description for advisor"
-        },
-        "rateMonatlich": {
-          "type": "number"
-        },
-        "sollZins": {
-          "type": "number"
-        },
+        "effektivZins": { "type": "number" },
+        "produktDetails": { "type": "string", "description": "description for advisor" },
+        "rateMonatlich": { "type": "number" },
+        "sollZins": { "type": "number" },
         "vertriebsProvisionGesamtAbsolut": {
           "type": "number",
           "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
@@ -3181,29 +1927,11 @@
     "GrundbuchAngabe": {
       "type": "object",
       "properties": {
-        "amtsgericht": {
-          "type": "string",
-          "description": "competent local court"
-        },
-        "anmerkungen": {
-          "type": "string",
-          "description": "comment"
-        },
-        "bandUndBlatt": {
-          "type": "string",
-          "description": "book and page"
-        },
-        "flurstuecke": {
-          "type": "array",
-          "description": "plot of land",
-          "items": {
-            "$ref": "#/definitions/Flurstueck"
-          }
-        },
-        "ort": {
-          "type": "string",
-          "description": "place of the local court responsible as the land registry office"
-        },
+        "amtsgericht": { "type": "string", "description": "competent local court" },
+        "anmerkungen": { "type": "string", "description": "comment" },
+        "bandUndBlatt": { "type": "string", "description": "book and page" },
+        "flurstuecke": { "type": "array", "description": "plot of land", "items": { "$ref": "#/definitions/Flurstueck" } },
+        "ort": { "type": "string", "description": "place of the local court responsible as the land registry office" },
         "rechteInAbteilung2": {
           "description": "Encumbrances and restrictions on the usability of the property. Pipeline rights, waivers of distance areas, rights of way, insolvency notices.",
           "$ref": "#/definitions/RechteAbteilung2"
@@ -3214,10 +1942,7 @@
     "Grundstueck": {
       "type": "object",
       "properties": {
-        "groesse": {
-          "type": "number",
-          "description": "plot dimensions in square meter"
-        },
+        "groesse": { "type": "number", "description": "plot dimensions in square meter" },
         "grundstuecksArt": {
           "type": "string",
           "description": "type of plot",
@@ -3236,12 +1961,7 @@
     "Haushalt": {
       "type": "object",
       "properties": {
-        "antragsteller": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Antragsteller"
-          }
-        },
+        "antragsteller": { "type": "array", "items": { "$ref": "#/definitions/Antragsteller" } },
         "anzahlErwachseneImHaushalt": {
           "type": "integer",
           "format": "int32",
@@ -3252,36 +1972,13 @@
           "format": "int32",
           "description": "loan provider specific data (optional)"
         },
-        "bestehendeImmobilien": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BestehendeImmobilie"
-          }
-        },
-        "id": {
-          "type": "string"
-        },
-        "kfzAnzahl": {
-          "type": "integer",
-          "format": "int32",
-          "description": "loan provider specific data (optional)"
-        },
-        "kinder": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Kind"
-          }
-        },
-        "lebenshaltungsKostenMonatlich": {
-          "type": "number",
-          "description": "loan provider specific data (optional) (DSL Bank)"
-        },
-        "obligo": {
-          "$ref": "#/definitions/VermoegenVerbindlichkeiten"
-        },
-        "positionen": {
-          "$ref": "#/definitions/HaushaltsPositionen"
-        }
+        "bestehendeImmobilien": { "type": "array", "items": { "$ref": "#/definitions/BestehendeImmobilie" } },
+        "id": { "type": "string" },
+        "kfzAnzahl": { "type": "integer", "format": "int32", "description": "loan provider specific data (optional)" },
+        "kinder": { "type": "array", "items": { "$ref": "#/definitions/Kind" } },
+        "lebenshaltungsKostenMonatlich": { "type": "number", "description": "loan provider specific data (optional) (DSL Bank)" },
+        "obligo": { "$ref": "#/definitions/VermoegenVerbindlichkeiten" },
+        "positionen": { "$ref": "#/definitions/HaushaltsPositionen" }
       },
       "title": "Haushalt",
       "description": "household"
@@ -3289,145 +1986,41 @@
     "HaushaltsPositionen": {
       "type": "object",
       "properties": {
-        "bankUndSparguthaben": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BankUndSparguthaben"
-          }
-        },
-        "bausparvertraege": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BestehenderBausparvertrag"
-          }
-        },
-        "ehegattenUnterhalt": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EinnahmenMonatlich"
-          }
-        },
-        "einkuenfteAusNebentaetigkeit": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EinkuenfteAusNebentaetigkeit"
-          }
-        },
+        "bankUndSparguthaben": { "type": "array", "items": { "$ref": "#/definitions/BankUndSparguthaben" } },
+        "bausparvertraege": { "type": "array", "items": { "$ref": "#/definitions/BestehenderBausparvertrag" } },
+        "ehegattenUnterhalt": { "type": "array", "items": { "$ref": "#/definitions/EinnahmenMonatlich" } },
+        "einkuenfteAusNebentaetigkeit": { "type": "array", "items": { "$ref": "#/definitions/EinkuenfteAusNebentaetigkeit" } },
         "kindergeld": {
           "type": "array",
           "description": "read-only. Will be calculated based on children-data. One entry per child.",
-          "items": {
-            "$ref": "#/definitions/EinnahmenMonatlich"
-          }
+          "items": { "$ref": "#/definitions/EinnahmenMonatlich" }
         },
         "lebensUndRentenVersicherungen": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/LebensOderRentenversicherungVermoegen"
-          }
+          "items": { "$ref": "#/definitions/LebensOderRentenversicherungVermoegen" }
         },
-        "mietAusgaben": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MietAusgaben"
-          }
-        },
-        "privateDarlehen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Verbindlichkeit"
-          }
-        },
-        "privateKrankenversicherung": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AusgabenMonatlich"
-          }
-        },
-        "ratenkredite": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Verbindlichkeit"
-          }
-        },
-        "sonstigeAusgaben": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AusgabenMonatlich"
-          }
-        },
-        "sonstigeEinnahmen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EinnahmenMonatlich"
-          }
-        },
-        "sonstigeVerbindlichkeiten": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Verbindlichkeit"
-          }
-        },
-        "sonstigeVermoegen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Vermoegen"
-          }
-        },
-        "sparplaene": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Sparplaene"
-          }
-        },
-        "unbefristeteZusatzRenten": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EinnahmenMonatlich"
-          }
-        },
-        "unterhaltsVerpflichtungen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AusgabenMonatlich"
-          }
-        },
-        "variableEinkuenfte": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/EinnahmenMonatlich"
-          }
-        },
-        "versicherungsAusgaben": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AusgabenMonatlich"
-          }
-        },
-        "wertpapiere": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Wertpapiere"
-          }
-        }
+        "mietAusgaben": { "type": "array", "items": { "$ref": "#/definitions/MietAusgaben" } },
+        "privateDarlehen": { "type": "array", "items": { "$ref": "#/definitions/Verbindlichkeit" } },
+        "privateKrankenversicherung": { "type": "array", "items": { "$ref": "#/definitions/AusgabenMonatlich" } },
+        "ratenkredite": { "type": "array", "items": { "$ref": "#/definitions/Verbindlichkeit" } },
+        "sonstigeAusgaben": { "type": "array", "items": { "$ref": "#/definitions/AusgabenMonatlich" } },
+        "sonstigeEinnahmen": { "type": "array", "items": { "$ref": "#/definitions/EinnahmenMonatlich" } },
+        "sonstigeVerbindlichkeiten": { "type": "array", "items": { "$ref": "#/definitions/Verbindlichkeit" } },
+        "sonstigeVermoegen": { "type": "array", "items": { "$ref": "#/definitions/Vermoegen" } },
+        "sparplaene": { "type": "array", "items": { "$ref": "#/definitions/Sparplaene" } },
+        "unbefristeteZusatzRenten": { "type": "array", "items": { "$ref": "#/definitions/EinnahmenMonatlich" } },
+        "unterhaltsVerpflichtungen": { "type": "array", "items": { "$ref": "#/definitions/AusgabenMonatlich" } },
+        "variableEinkuenfte": { "type": "array", "items": { "$ref": "#/definitions/EinnahmenMonatlich" } },
+        "versicherungsAusgaben": { "type": "array", "items": { "$ref": "#/definitions/AusgabenMonatlich" } },
+        "wertpapiere": { "type": "array", "items": { "$ref": "#/definitions/Wertpapiere" } }
       },
       "title": "HaushaltsPositionen"
     },
-    "ImmobilieVerknuepfung": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        }
-      },
-      "title": "ImmobilieVerknuepfung"
-    },
+    "ImmobilieVerknuepfung": { "type": "object", "properties": { "id": { "type": "string" } }, "title": "ImmobilieVerknuepfung" },
     "KfwDarlehen": {
       "title": "KfwDarlehen",
       "allOf": [
-        {
-          "$ref": "#/definitions/GegenangebotDarlehen"
-        },
+        { "$ref": "#/definitions/GegenangebotDarlehen" },
         {
           "type": "object",
           "required": [
@@ -3448,19 +2041,10 @@
           ],
           "discriminator": "darlehensTyp",
           "properties": {
-            "anfaenglicheTilgung": {
-              "type": "number"
-            },
-            "bereitstellungsZins": {
-              "type": "number"
-            },
-            "bereitstellungsZinsFreieZeitInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "darlehensBetrag": {
-              "type": "number"
-            },
+            "anfaenglicheTilgung": { "type": "number" },
+            "bereitstellungsZins": { "type": "number" },
+            "bereitstellungsZinsFreieZeitInMonaten": { "type": "integer", "format": "int32" },
+            "darlehensBetrag": { "type": "number" },
             "darlehensTyp": {
               "type": "string",
               "enum": [
@@ -3474,9 +2058,7 @@
                 "ZWISCHEN_FINANZIERUNG"
               ]
             },
-            "effektivZins": {
-              "type": "number"
-            },
+            "effektivZins": { "type": "number" },
             "kfwEnergieEffizienzGruppe": {
               "type": "string",
               "description": "only with PROGRAMM_261, PROGRAMM_262",
@@ -3515,39 +2097,18 @@
                 "PROGRAMM_262"
               ]
             },
-            "kfwSanierungsFahrplanLiegtVor": {
-              "type": "boolean",
-              "description": "only with PROGRAMM_261, PROGRAMM_262"
-            },
-            "laufzeitKalkulatorischInJahren": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "produktDetails": {
-              "type": "string",
-              "description": "description for advisor"
-            },
-            "rateMonatlich": {
-              "type": "number"
-            },
-            "rateMonatlichInDerTilgungsfreienAnlaufzeit": {
-              "type": "number"
-            },
-            "sollZins": {
-              "type": "number"
-            },
-            "tilgungsFreieAnlaufJahre": {
-              "type": "integer",
-              "format": "int32"
-            },
+            "kfwSanierungsFahrplanLiegtVor": { "type": "boolean", "description": "only with PROGRAMM_261, PROGRAMM_262" },
+            "laufzeitKalkulatorischInJahren": { "type": "integer", "format": "int32" },
+            "produktDetails": { "type": "string", "description": "description for advisor" },
+            "rateMonatlich": { "type": "number" },
+            "rateMonatlichInDerTilgungsfreienAnlaufzeit": { "type": "number" },
+            "sollZins": { "type": "number" },
+            "tilgungsFreieAnlaufJahre": { "type": "integer", "format": "int32" },
             "vertriebsProvisionGesamtAbsolut": {
               "type": "number",
               "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
             },
-            "zinsBindungInJahren": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "zinsBindungInJahren": { "type": "integer", "format": "int32" }
           },
           "title": "KfwDarlehen",
           "description": "Erweitert GegenangebotDarlehen"
@@ -3562,60 +2123,30 @@
           "type": "boolean",
           "description": "TRUE if reservation is commited by KfW-API, FALSE if errors occurs, null if no reservation was called"
         },
-        "gueltigBis": {
-          "type": "string",
-          "format": "date",
-          "description": "end of reservation date"
-        },
-        "reservierungsMeldung": {
-          "type": "string",
-          "description": "error message, null if no error occured"
-        },
-        "sofortbestaetigungId": {
-          "type": "string",
-          "description": "SofortbestätigungID of KfW for successful reservation"
-        }
+        "gueltigBis": { "type": "string", "format": "date", "description": "end of reservation date" },
+        "reservierungsMeldung": { "type": "string", "description": "error message, null if no error occured" },
+        "sofortbestaetigungId": { "type": "string", "description": "SofortbestätigungID of KfW for successful reservation" }
       },
       "title": "KfwKonditionsReservierung"
     },
     "Kind": {
       "type": "object",
       "properties": {
-        "geburtsdatum": {
-          "type": "string",
-          "format": "date"
-        },
-        "kindergeldWirdBezogen": {
-          "type": "boolean"
-        },
-        "name": {
-          "type": "string"
-        },
-        "unterhaltsEinnahmenBetragMonatlich": {
-          "type": "number"
-        }
+        "geburtsdatum": { "type": "string", "format": "date" },
+        "kindergeldWirdBezogen": { "type": "boolean" },
+        "name": { "type": "string" },
+        "unterhaltsEinnahmenBetragMonatlich": { "type": "number" }
       },
       "title": "Kind"
     },
     "LebensOderRentenversicherungVermoegen": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "maximalAufzuloesenderBetrag": {
-          "type": "number"
-        },
-        "praemieMonatlich": {
-          "type": "number"
-        },
-        "rueckkaufsWertAktuell": {
-          "type": "number"
-        },
-        "tarif": {
-          "type": "string",
-          "description": "name of tariff"
-        },
+        "id": { "type": "string" },
+        "maximalAufzuloesenderBetrag": { "type": "number" },
+        "praemieMonatlich": { "type": "number" },
+        "rueckkaufsWertAktuell": { "type": "number" },
+        "tarif": { "type": "string", "description": "name of tariff" },
         "typ": {
           "type": "string",
           "enum": [
@@ -3626,37 +2157,18 @@
             "RISIKO_LEBENSVERSICHERUNG"
           ]
         },
-        "vermoegensEinsatz": {
-          "type": "string",
-          "enum": ["ABTRETEN", "AUFLOESEN", "KEIN_EINSATZ"]
-        },
+        "vermoegensEinsatz": { "type": "string", "enum": ["ABTRETEN", "AUFLOESEN", "KEIN_EINSATZ"] },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
           "enum": ["VERBINDLICHKEIT", "VERMOEGEN"]
         },
-        "versicherungsGesellschaft": {
-          "type": "string"
-        },
-        "versicherungsSumme": {
-          "type": "number"
-        },
-        "vertragsBeginn": {
-          "type": "string",
-          "format": "date",
-          "description": "contract start"
-        },
-        "vertragsEnde": {
-          "type": "string",
-          "format": "date"
-        },
-        "vertragsNummer": {
-          "type": "string",
-          "description": "contract number"
-        },
-        "verwaltungsgebuehrenJaehrlich": {
-          "type": "number"
-        },
+        "versicherungsGesellschaft": { "type": "string" },
+        "versicherungsSumme": { "type": "number" },
+        "vertragsBeginn": { "type": "string", "format": "date", "description": "contract start" },
+        "vertragsEnde": { "type": "string", "format": "date" },
+        "vertragsNummer": { "type": "string", "description": "contract number" },
+        "verwaltungsgebuehrenJaehrlich": { "type": "number" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
@@ -3668,48 +2180,16 @@
     "LegitimationsDaten": {
       "type": "object",
       "properties": {
-        "ausstellendeBehoerde": {
-          "type": "string"
-        },
-        "ausstellungsdatum": {
-          "type": "string",
-          "format": "date"
-        },
-        "ausweisArt": {
-          "type": "string",
-          "enum": ["ANDERE", "PERSONALAUSWEIS", "REISEPASS"]
-        },
-        "ausweisArtBeiAndererAusweis": {
-          "type": "string",
-          "description": "only with ausweisArt = ANDERE"
-        },
-        "ausweisNummer": {
-          "type": "string"
-        }
+        "ausstellendeBehoerde": { "type": "string" },
+        "ausstellungsdatum": { "type": "string", "format": "date" },
+        "ausweisArt": { "type": "string", "enum": ["ANDERE", "PERSONALAUSWEIS", "REISEPASS"] },
+        "ausweisArtBeiAndererAusweis": { "type": "string", "description": "only with ausweisArt = ANDERE" },
+        "ausweisNummer": { "type": "string" }
       },
       "title": "LegitimationsDaten"
     },
-    "Link": {
-      "type": "object",
-      "properties": {
-        "href": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "title": "Link"
-    },
-    "Links": {
-      "type": "object",
-      "properties": {
-        "self": {
-          "$ref": "#/definitions/Link"
-        }
-      },
-      "title": "Links"
-    },
+    "Link": { "type": "object", "properties": { "href": { "type": "string" }, "type": { "type": "string" } }, "title": "Link" },
+    "Links": { "type": "object", "properties": { "self": { "$ref": "#/definitions/Link" } }, "title": "Links" },
     "Meldung": {
       "type": "object",
       "properties": {
@@ -3717,27 +2197,17 @@
           "type": "string",
           "description": "error-category, possible values: AUSZAHLUNGS_VORAUSSETZUNG,MACHBAR,MACHBARKEITS_HINWEIS,ANPASSUNG_KUNDENWUNSCH,ANPASSUNG_VERTRIEBSWUNSCH,UNBERUECKSICHTIGTE_ANGABE,KONDITIONEN_UNTER_VORBEHALT_VOLLSTAENDIGER_DATEN,KONDITIONEN_UNTER_VORBEHALT_EXTERNER_SCHNITTSTELLEN,MACHBARKEIT_UNTER_VORBEHALT_VOLLSTAENDIGER_DATEN,MACHBARKEIT_UNTER_VORBEHALT_EXTERNER_SCHNITTSTELLEN,MACHBAR_UNTER_VORBEHALT_PRODUZENT,NICHT_MACHBAR,NICHT_ANBIETBAR, new values are possible"
         },
-        "kreditEntscheider": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "produktAnbieter": {
-          "$ref": "#/definitions/ProduktAnbieter"
-        },
-        "text": {
-          "type": "string"
-        }
+        "kreditEntscheider": { "$ref": "#/definitions/ProduktAnbieter" },
+        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" },
+        "text": { "type": "string" }
       },
       "title": "Meldung"
     },
     "MietAusgaben": {
       "type": "object",
       "properties": {
-        "ausgabenMonatlich": {
-          "type": "number"
-        },
-        "entfallenMitFinanzierung": {
-          "type": "boolean"
-        },
+        "ausgabenMonatlich": { "type": "number" },
+        "entfallenMitFinanzierung": { "type": "boolean" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
@@ -3748,24 +2218,13 @@
     },
     "MiteigentumsAnteil": {
       "type": "object",
-      "properties": {
-        "anteil": {
-          "type": "number",
-          "format": "double"
-        },
-        "gesamt": {
-          "type": "integer",
-          "format": "int32"
-        }
-      },
+      "properties": { "anteil": { "type": "number", "format": "double" }, "gesamt": { "type": "integer", "format": "int32" } },
       "title": "MiteigentumsAnteil"
     },
     "Modernisierung": {
       "type": "object",
       "properties": {
-        "jahrDerModernisierung": {
-          "type": "string"
-        },
+        "jahrDerModernisierung": { "type": "string" },
         "modernisierungGrad": {
           "type": "string",
           "description": " allowed values: UEBERWIEGEND,UMFASSEND,MITTEL,EINFACH. (More values can be attached)",
@@ -3807,132 +2266,64 @@
     "NachrangigesExternesDarlehen": {
       "type": "object",
       "properties": {
-        "darlehensBetrag": {
-          "type": "number"
-        },
+        "darlehensBetrag": { "type": "number" },
         "darlehensGeber": {
           "type": "string",
           "description": "The name of the external lender (company name). There is no corresponding relationship with a partner on the Europace platform."
         },
-        "id": {
-          "type": "string"
-        },
-        "laufzeitEnde": {
-          "type": "string",
-          "format": "date"
-        },
-        "rateMonatlich": {
-          "type": "number"
-        },
+        "id": { "type": "string" },
+        "laufzeitEnde": { "type": "string", "format": "date" },
+        "rateMonatlich": { "type": "number" },
         "typ": {
           "type": "string",
           "description": "allowed values: ARBEITGEBERDARLEHEN,BAUSPARDARLEHEN,OEFFENTLICHES_DARLEHEN,RATENKREDIT. (More values can be attached)"
         },
-        "zinsBindung": {
-          "$ref": "#/definitions/ZinsBindung"
-        }
+        "zinsBindung": { "$ref": "#/definitions/ZinsBindung" }
       },
       "title": "NachrangigesExternesDarlehen"
     },
     "NachrichtDTO": {
       "type": "object",
       "required": ["text"],
-      "properties": {
-        "text": {
-          "type": "string",
-          "description": "content of message",
-          "minLength": 1,
-          "maxLength": 2000
-        }
-      },
+      "properties": { "text": { "type": "string", "description": "content of message", "minLength": 1, "maxLength": 2000 } },
       "title": "NachrichtDTO"
     },
     "PaginationLinks": {
       "type": "object",
       "properties": {
-        "next": {
-          "$ref": "#/definitions/Link"
-        },
-        "prev": {
-          "$ref": "#/definitions/Link"
-        },
-        "self": {
-          "$ref": "#/definitions/Link"
-        }
+        "next": { "$ref": "#/definitions/Link" },
+        "prev": { "$ref": "#/definitions/Link" },
+        "self": { "$ref": "#/definitions/Link" }
       },
       "title": "PaginationLinks"
     },
     "Partner": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
-        "anrede": {
-          "type": "string",
-          "description": "salutation"
-        },
-        "anschrift": {
-          "description": "adress",
-          "$ref": "#/definitions/Anschrift"
-        },
-        "aufsichtsBehoerde": {
-          "type": "string",
-          "description": "regulating authority"
-        },
-        "email": {
-          "type": "string",
-          "description": "email"
-        },
-        "externerKreditSachbearbeiterId": {
-          "type": "string",
-          "description": "external loan officer id"
-        },
-        "firmierung": {
-          "type": "string",
-          "description": "company"
-        },
-        "nachname": {
-          "type": "string",
-          "description": "sur name"
-        },
-        "partnerId": {
-          "type": "string"
-        },
+        "_links": { "$ref": "#/definitions/Links" },
+        "anrede": { "type": "string", "description": "salutation" },
+        "anschrift": { "description": "adress", "$ref": "#/definitions/Anschrift" },
+        "aufsichtsBehoerde": { "type": "string", "description": "regulating authority" },
+        "email": { "type": "string", "description": "email" },
+        "externerKreditSachbearbeiterId": { "type": "string", "description": "external loan officer id" },
+        "firmierung": { "type": "string", "description": "company" },
+        "nachname": { "type": "string", "description": "sur name" },
+        "partnerId": { "type": "string" },
         "partnerKennzeichen": {
           "type": "array",
           "description": "list of partner-identifiers",
-          "items": {
-            "$ref": "#/definitions/PartnerKennzeichen"
-          }
+          "items": { "$ref": "#/definitions/PartnerKennzeichen" }
         },
-        "registrierungsNummer": {
-          "type": "string",
-          "description": "registration number"
-        },
-        "telefonnummer": {
-          "type": "string",
-          "description": "phone number"
-        },
-        "vertriebsOrganisation": {
-          "type": "string",
-          "description": "sales organization"
-        },
+        "registrierungsNummer": { "type": "string", "description": "registration number" },
+        "telefonnummer": { "type": "string", "description": "phone number" },
+        "vertriebsOrganisation": { "type": "string", "description": "sales organization" },
         "vertriebsOrganisationPartnerId": {
           "type": "string",
           "description": "sales organisation partnerId to get more data with Partner API"
         },
-        "vertriebsOrganisationsId": {
-          "type": "string",
-          "description": "identfier sales organization"
-        },
-        "vorname": {
-          "type": "string",
-          "description": "first name"
-        },
-        "webseite": {
-          "type": "string"
-        }
+        "vertriebsOrganisationsId": { "type": "string", "description": "identfier sales organization" },
+        "vorname": { "type": "string", "description": "first name" },
+        "webseite": { "type": "string" }
       },
       "title": "Partner",
       "description": "information about partner, for more use Partner API"
@@ -3940,23 +2331,15 @@
     "PartnerKennzeichen": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "name of partner-identifier"
-        },
-        "wert": {
-          "type": "string",
-          "description": "value of partner-identifier"
-        }
+        "name": { "type": "string", "description": "name of partner-identifier" },
+        "wert": { "type": "string", "description": "value of partner-identifier" }
       },
       "title": "PartnerKennzeichen"
     },
     "PatchOperation": {
       "type": "object",
       "properties": {
-        "from": {
-          "type": "string"
-        },
+        "from": { "type": "string" },
         "op": {
           "type": "string",
           "description": "executed operation",
@@ -3978,31 +2361,17 @@
     "Postadresse": {
       "type": "object",
       "properties": {
-        "hausnummer": {
-          "type": "string",
-          "description": "housenumber"
-        },
-        "ort": {
-          "type": "string",
-          "description": "place"
-        },
-        "postleitzahl": {
-          "type": "string",
-          "description": "zip-code"
-        },
-        "strasse": {
-          "type": "string",
-          "description": "street"
-        }
+        "hausnummer": { "type": "string", "description": "housenumber" },
+        "ort": { "type": "string", "description": "place" },
+        "postleitzahl": { "type": "string", "description": "zip-code" },
+        "strasse": { "type": "string", "description": "street" }
       },
       "title": "Postadresse"
     },
     "PrivatDarlehen": {
       "title": "PrivatDarlehen",
       "allOf": [
-        {
-          "$ref": "#/definitions/GegenangebotDarlehen"
-        },
+        { "$ref": "#/definitions/GegenangebotDarlehen" },
         {
           "type": "object",
           "required": [
@@ -4018,12 +2387,8 @@
           ],
           "discriminator": "darlehensTyp",
           "properties": {
-            "anfaenglicheTilgung": {
-              "type": "number"
-            },
-            "darlehensBetrag": {
-              "type": "number"
-            },
+            "anfaenglicheTilgung": { "type": "number" },
+            "darlehensBetrag": { "type": "number" },
             "darlehensTyp": {
               "type": "string",
               "enum": [
@@ -4037,31 +2402,16 @@
                 "ZWISCHEN_FINANZIERUNG"
               ]
             },
-            "effektivZins": {
-              "type": "number"
-            },
-            "laufzeitKalkulatorischInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "produktDetails": {
-              "type": "string",
-              "description": "description for advisor"
-            },
-            "rateMonatlich": {
-              "type": "number"
-            },
-            "sollZins": {
-              "type": "number"
-            },
+            "effektivZins": { "type": "number" },
+            "laufzeitKalkulatorischInMonaten": { "type": "integer", "format": "int32" },
+            "produktDetails": { "type": "string", "description": "description for advisor" },
+            "rateMonatlich": { "type": "number" },
+            "sollZins": { "type": "number" },
             "vertriebsProvisionGesamtAbsolut": {
               "type": "number",
               "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
             },
-            "zinsBindungInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "zinsBindungInMonaten": { "type": "integer", "format": "int32" }
           },
           "title": "PrivatDarlehen",
           "description": "extends loan of counteroffer"
@@ -4072,104 +2422,42 @@
     "Problem": {
       "type": "object",
       "properties": {
-        "message": {
-          "type": "string"
-        },
-        "statusCode": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "statusMessage": {
-          "type": "string"
-        },
-        "traceId": {
-          "type": "string"
-        },
-        "violations": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Violation"
-          }
-        }
+        "message": { "type": "string" },
+        "statusCode": { "type": "integer", "format": "int32" },
+        "statusMessage": { "type": "string" },
+        "traceId": { "type": "string" },
+        "violations": { "type": "array", "items": { "$ref": "#/definitions/Violation" } }
       },
       "title": "Problem"
     },
     "ProduktAnbieter": {
       "type": "object",
       "properties": {
-        "anrede": {
-          "type": "string",
-          "description": "salutation"
-        },
-        "anschrift": {
-          "description": "adress",
-          "$ref": "#/definitions/Anschrift"
-        },
-        "aufsichtsBehoerde": {
-          "type": "string",
-          "description": "regulating authority"
-        },
-        "email": {
-          "type": "string",
-          "description": "email"
-        },
-        "externerKreditSachbearbeiterId": {
-          "type": "string",
-          "description": "external loan officer id"
-        },
-        "firmierung": {
-          "type": "string",
-          "description": "company"
-        },
-        "nachname": {
-          "type": "string",
-          "description": "sur name"
-        },
-        "partnerId": {
-          "type": "string"
-        },
+        "anrede": { "type": "string", "description": "salutation" },
+        "anschrift": { "description": "adress", "$ref": "#/definitions/Anschrift" },
+        "aufsichtsBehoerde": { "type": "string", "description": "regulating authority" },
+        "email": { "type": "string", "description": "email" },
+        "externerKreditSachbearbeiterId": { "type": "string", "description": "external loan officer id" },
+        "firmierung": { "type": "string", "description": "company" },
+        "nachname": { "type": "string", "description": "sur name" },
+        "partnerId": { "type": "string" },
         "partnerKennzeichen": {
           "type": "array",
           "description": "list of partner-identifiers",
-          "items": {
-            "$ref": "#/definitions/PartnerKennzeichen"
-          }
+          "items": { "$ref": "#/definitions/PartnerKennzeichen" }
         },
-        "produktAnbieterId": {
-          "type": "string",
-          "description": "loan provider id"
-        },
-        "produktAnbieterKurzName": {
-          "type": "string",
-          "description": "loan provider short name"
-        },
-        "registrierungsNummer": {
-          "type": "string",
-          "description": "registration number"
-        },
-        "telefonnummer": {
-          "type": "string",
-          "description": "phone number"
-        },
-        "vertriebsOrganisation": {
-          "type": "string",
-          "description": "sales organization"
-        },
+        "produktAnbieterId": { "type": "string", "description": "loan provider id" },
+        "produktAnbieterKurzName": { "type": "string", "description": "loan provider short name" },
+        "registrierungsNummer": { "type": "string", "description": "registration number" },
+        "telefonnummer": { "type": "string", "description": "phone number" },
+        "vertriebsOrganisation": { "type": "string", "description": "sales organization" },
         "vertriebsOrganisationPartnerId": {
           "type": "string",
           "description": "sales organisation partnerId to get more data with Partner API"
         },
-        "vertriebsOrganisationsId": {
-          "type": "string",
-          "description": "identfier sales organization"
-        },
-        "vorname": {
-          "type": "string",
-          "description": "first name"
-        },
-        "webseite": {
-          "type": "string"
-        }
+        "vertriebsOrganisationsId": { "type": "string", "description": "identfier sales organization" },
+        "vorname": { "type": "string", "description": "first name" },
+        "webseite": { "type": "string" }
       },
       "title": "ProduktAnbieter",
       "description": "loan provider"
@@ -4177,47 +2465,26 @@
     "Provision": {
       "type": "object",
       "properties": {
-        "europaceGebuehren": {
-          "type": "number",
-          "description": "europace fee"
-        },
+        "europaceGebuehren": { "type": "number", "description": "europace fee" },
         "europaceGebuehrenSindSteuerpflichtig": {
           "type": "boolean",
           "description": "TRUE if europace fee is value-added tax (VAT) relevant"
         },
-        "kundenbetreuerProvision": {
-          "type": "number",
-          "description": "advisors commissions"
-        },
-        "tippgeberProvision": {
-          "type": "number",
-          "description": "tipster commissions"
-        },
-        "vertriebsProvisionGesamt": {
-          "type": "number",
-          "description": "sum of sales commissions"
-        }
+        "kundenbetreuerProvision": { "type": "number", "description": "advisors commissions" },
+        "tippgeberProvision": { "type": "number", "description": "tipster commissions" },
+        "vertriebsProvisionGesamt": { "type": "number", "description": "sum of sales commissions" }
       },
       "title": "Provision"
     },
     "RechteAbteilung2": {
       "type": "object",
-      "properties": {
-        "beschreibung": {
-          "type": "string"
-        },
-        "betrag": {
-          "type": "number"
-        }
-      },
+      "properties": { "beschreibung": { "type": "string" }, "betrag": { "type": "number" } },
       "title": "RechteAbteilung2"
     },
     "RegionalFoerderDarlehen": {
       "title": "RegionalFoerderDarlehen",
       "allOf": [
-        {
-          "$ref": "#/definitions/GegenangebotDarlehen"
-        },
+        { "$ref": "#/definitions/GegenangebotDarlehen" },
         {
           "type": "object",
           "required": [
@@ -4238,19 +2505,10 @@
           ],
           "discriminator": "darlehensTyp",
           "properties": {
-            "anfaenglicheTilgung": {
-              "type": "number"
-            },
-            "bereitstellungsZins": {
-              "type": "number"
-            },
-            "bereitstellungsZinsFreieZeitInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "darlehensBetrag": {
-              "type": "number"
-            },
+            "anfaenglicheTilgung": { "type": "number" },
+            "bereitstellungsZins": { "type": "number" },
+            "bereitstellungsZinsFreieZeitInMonaten": { "type": "integer", "format": "int32" },
+            "darlehensBetrag": { "type": "number" },
             "darlehensTyp": {
               "type": "string",
               "enum": [
@@ -4264,42 +2522,22 @@
                 "ZWISCHEN_FINANZIERUNG"
               ]
             },
-            "effektivZins": {
-              "type": "number"
-            },
-            "laufzeitKalkulatorischInJahren": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "produktDetails": {
-              "type": "string",
-              "description": "description for advisor"
-            },
-            "rateMonatlich": {
-              "type": "number"
-            },
-            "rateMonatlichInDerTilgungsfreienAnlaufzeit": {
-              "type": "number"
-            },
+            "effektivZins": { "type": "number" },
+            "laufzeitKalkulatorischInJahren": { "type": "integer", "format": "int32" },
+            "produktDetails": { "type": "string", "description": "description for advisor" },
+            "rateMonatlich": { "type": "number" },
+            "rateMonatlichInDerTilgungsfreienAnlaufzeit": { "type": "number" },
             "regionalFoerderbankProgramm": {
               "type": "string",
               "enum": ["L_BANK_KOMBI_DARLEHEN_WOHNEN", "L_BANK_WOHNEN_MIT_KIND", "NRW_BANK_WOHNEIGENTUM"]
             },
-            "sollZins": {
-              "type": "number"
-            },
-            "tilgungsFreieAnlaufJahre": {
-              "type": "integer",
-              "format": "int32"
-            },
+            "sollZins": { "type": "number" },
+            "tilgungsFreieAnlaufJahre": { "type": "integer", "format": "int32" },
             "vertriebsProvisionGesamtAbsolut": {
               "type": "number",
               "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
             },
-            "zinsBindungInJahren": {
-              "type": "integer",
-              "format": "int32"
-            }
+            "zinsBindungInJahren": { "type": "integer", "format": "int32" }
           },
           "title": "RegionalFoerderDarlehen",
           "description": "extends loan of counteroffer"
@@ -4322,105 +2560,59 @@
             "TODESFALL"
           ]
         },
-        "auszahlungsBetrag": {
-          "type": "number"
-        },
+        "auszahlungsBetrag": { "type": "number" },
         "auszahlungsTurnus": {
           "type": "string",
           "enum": ["EINMALIG", "HALBJAEHRLICH", "JAEHRLICH", "MONATLICH", "VIERTELJAEHRLICH"]
         },
-        "praemienAnteil": {
-          "type": "number"
-        }
+        "praemienAnteil": { "type": "number" }
       },
       "title": "RisikoAbsicherung"
     },
     "SchufaErgebnis": {
       "type": "object",
       "properties": {
-        "antragstellerUnbekannt": {
-          "type": "boolean",
-          "description": "TRUE if customer is not identifiable by schufa"
-        },
-        "inManuellerNachbehandlung": {
-          "type": "boolean",
-          "description": "TRUE if schufa rating process is manually operated "
-        },
-        "score": {
-          "type": "string",
-          "description": "schufa rating score"
-        }
+        "antragstellerUnbekannt": { "type": "boolean", "description": "TRUE if customer is not identifiable by schufa" },
+        "inManuellerNachbehandlung": { "type": "boolean", "description": "TRUE if schufa rating process is manually operated " },
+        "score": { "type": "string", "description": "schufa rating score" }
       },
       "title": "SchufaErgebnis"
     },
     "SituationNachRenteneintritt": {
       "type": "object",
       "properties": {
-        "gesetzlicheRenteMonatlich": {
-          "type": "number"
-        },
-        "privateRenteMonatlich": {
-          "type": "number"
-        },
-        "rentenBeginn": {
-          "type": "string",
-          "format": "date"
-        },
-        "sonstigesEinkommenMonatlich": {
-          "type": "number"
-        }
+        "gesetzlicheRenteMonatlich": { "type": "number" },
+        "privateRenteMonatlich": { "type": "number" },
+        "rentenBeginn": { "type": "string", "format": "date" },
+        "sonstigesEinkommenMonatlich": { "type": "number" }
       },
       "title": "SituationNachRenteneintritt"
     },
     "SonderZahlung": {
       "type": "object",
       "properties": {
-        "anzahl": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "betrag": {
-          "type": "number"
-        },
-        "termin": {
-          "type": "string",
-          "format": "date"
-        },
-        "zahlweise": {
-          "type": "string",
-          "enum": ["EINMALIG", "HALBJAEHRLICH", "JAEHRLICH", "MONATLICH", "VIERTELJAEHRLICH"]
-        }
+        "anzahl": { "type": "integer", "format": "int32" },
+        "betrag": { "type": "number" },
+        "termin": { "type": "string", "format": "date" },
+        "zahlweise": { "type": "string", "enum": ["EINMALIG", "HALBJAEHRLICH", "JAEHRLICH", "MONATLICH", "VIERTELJAEHRLICH"] }
       },
       "title": "SonderZahlung"
     },
     "SparPhase": {
       "type": "object",
       "properties": {
-        "guthabenBeiZuteilung": {
-          "type": "number"
-        },
-        "sparBeitragMonatlich": {
-          "type": "number"
-        },
-        "sparPhaseInJahren": {
-          "type": "integer",
-          "format": "int32"
-        }
+        "guthabenBeiZuteilung": { "type": "number" },
+        "sparBeitragMonatlich": { "type": "number" },
+        "sparPhaseInJahren": { "type": "integer", "format": "int32" }
       },
       "title": "SparPhase"
     },
     "Sparplaene": {
       "type": "object",
       "properties": {
-        "aktuellerWert": {
-          "type": "number"
-        },
-        "beitragMonatlich": {
-          "type": "number"
-        },
-        "maximalAufzuloesenderWert": {
-          "type": "number"
-        },
+        "aktuellerWert": { "type": "number" },
+        "beitragMonatlich": { "type": "number" },
+        "maximalAufzuloesenderWert": { "type": "number" },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
@@ -4436,14 +2628,7 @@
     },
     "Staat": {
       "type": "object",
-      "properties": {
-        "isoCountryCode": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      },
+      "properties": { "isoCountryCode": { "type": "string" }, "name": { "type": "string" } },
       "title": "Staat"
     },
     "StatusDTO": {
@@ -4462,40 +2647,22 @@
             "WERTERMITTLUNG"
           ]
         },
-        "antragsteller": {
-          "type": "string",
-          "enum": ["BEANTRAGT", "NICHT_ANGENOMMEN", "UNTERSCHRIEBEN", "WIDERRUFEN"]
-        },
-        "kommentar": {
-          "type": "string"
-        },
-        "produktAnbieter": {
-          "type": "string",
-          "enum": ["ABGELEHNT", "NICHT_BEARBEITET", "UNTERSCHRIEBEN", "ZURUECKGESTELLT"]
-        }
+        "antragsteller": { "type": "string", "enum": ["BEANTRAGT", "NICHT_ANGENOMMEN", "UNTERSCHRIEBEN", "WIDERRUFEN"] },
+        "kommentar": { "type": "string" },
+        "produktAnbieter": { "type": "string", "enum": ["ABGELEHNT", "NICHT_BEARBEITET", "UNTERSCHRIEBEN", "ZURUECKGESTELLT"] }
       },
       "title": "StatusDTO"
     },
     "Tilgung": {
       "type": "object",
       "properties": {
-        "anfaenglicheTilgung": {
-          "type": "number",
-          "description": "if null or 0: suspended redemption"
-        },
+        "anfaenglicheTilgung": { "type": "number", "description": "if null or 0: suspended redemption" },
         "sonderTilgungJaehrlich": {
           "type": "number",
           "description": "only with darlehensArt IN [ANNUITAETEN_DARLEHEN,FORWARD_DARLEHEN] and NO redemption substitute"
         },
-        "tilgungsBeginnAm": {
-          "type": "string",
-          "format": "date",
-          "description": "redemption date"
-        },
-        "tilgungsErsatz": {
-          "description": "not with PRIVAT_DARLEHEN",
-          "$ref": "#/definitions/TilgungsErsatz"
-        },
+        "tilgungsBeginnAm": { "type": "string", "format": "date", "description": "redemption date" },
+        "tilgungsErsatz": { "description": "not with PRIVAT_DARLEHEN", "$ref": "#/definitions/TilgungsErsatz" },
         "volltilgerDarlehen": {
           "type": "boolean",
           "example": true,
@@ -4521,28 +2688,17 @@
     "TilgungsPhase": {
       "type": "object",
       "properties": {
-        "bausparDarlehenSumme": {
-          "type": "number"
-        },
-        "sollZinsNachZuteilung": {
-          "type": "number"
-        },
-        "tilgungsBeitragMonatlich": {
-          "type": "number"
-        },
-        "tilgungsPhaseInJahren": {
-          "type": "integer",
-          "format": "int32"
-        }
+        "bausparDarlehenSumme": { "type": "number" },
+        "sollZinsNachZuteilung": { "type": "number" },
+        "tilgungsBeitragMonatlich": { "type": "number" },
+        "tilgungsPhaseInJahren": { "type": "integer", "format": "int32" }
       },
       "title": "TilgungsPhase"
     },
     "VariablesDarlehen": {
       "title": "VariablesDarlehen",
       "allOf": [
-        {
-          "$ref": "#/definitions/GegenangebotDarlehen"
-        },
+        { "$ref": "#/definitions/GegenangebotDarlehen" },
         {
           "type": "object",
           "required": [
@@ -4557,19 +2713,10 @@
           ],
           "discriminator": "darlehensTyp",
           "properties": {
-            "anfaenglicheTilgung": {
-              "type": "number"
-            },
-            "bereitstellungsZins": {
-              "type": "number"
-            },
-            "bereitstellungsZinsFreieZeitInMonaten": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "darlehensBetrag": {
-              "type": "number"
-            },
+            "anfaenglicheTilgung": { "type": "number" },
+            "bereitstellungsZins": { "type": "number" },
+            "bereitstellungsZinsFreieZeitInMonaten": { "type": "integer", "format": "int32" },
+            "darlehensBetrag": { "type": "number" },
             "darlehensTyp": {
               "type": "string",
               "enum": [
@@ -4583,28 +2730,12 @@
                 "ZWISCHEN_FINANZIERUNG"
               ]
             },
-            "effektivZins": {
-              "type": "number"
-            },
-            "laufzeitKalkulatorischInJahren": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "produktDetails": {
-              "type": "string",
-              "description": "description for advisor"
-            },
-            "rateMonatlich": {
-              "type": "number"
-            },
-            "sollZins": {
-              "type": "number"
-            },
-            "tilgungsBeginnAm": {
-              "type": "string",
-              "format": "date-time",
-              "example": "2020-03-28"
-            },
+            "effektivZins": { "type": "number" },
+            "laufzeitKalkulatorischInJahren": { "type": "integer", "format": "int32" },
+            "produktDetails": { "type": "string", "description": "description for advisor" },
+            "rateMonatlich": { "type": "number" },
+            "sollZins": { "type": "number" },
+            "tilgungsBeginnAm": { "type": "string", "format": "date-time", "example": "2020-03-28" },
             "vertriebsProvisionGesamtAbsolut": {
               "type": "number",
               "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
@@ -4619,27 +2750,16 @@
     "Verbindlichkeit": {
       "type": "object",
       "properties": {
-        "glaeubiger": {
-          "type": "string"
-        },
-        "laufzeitEnde": {
-          "type": "string",
-          "format": "date"
-        },
-        "rateMonatlich": {
-          "type": "number"
-        },
-        "restschuld": {
-          "type": "number"
-        },
+        "glaeubiger": { "type": "string" },
+        "laufzeitEnde": { "type": "string", "format": "date" },
+        "rateMonatlich": { "type": "number" },
+        "restschuld": { "type": "number" },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
           "enum": ["VERBINDLICHKEIT", "VERMOEGEN"]
         },
-        "wirdAbgeloest": {
-          "type": "boolean"
-        },
+        "wirdAbgeloest": { "type": "boolean" },
         "zahlungsTyp": {
           "type": "string",
           "description": "payment type, redundant entry serves as an additional filter criterion",
@@ -4652,28 +2772,17 @@
     "VermietungsInformationen": {
       "type": "object",
       "properties": {
-        "mieteinnahmenNettoKaltMonatlich": {
-          "type": "number"
-        },
-        "nutzungsArt": {
-          "type": "string",
-          "enum": ["EIGENGENUTZT", "TEIL_VERMIETET", "VERMIETET"]
-        },
-        "vermieteteFlaeche": {
-          "type": "number"
-        }
+        "mieteinnahmenNettoKaltMonatlich": { "type": "number" },
+        "nutzungsArt": { "type": "string", "enum": ["EIGENGENUTZT", "TEIL_VERMIETET", "VERMIETET"] },
+        "vermieteteFlaeche": { "type": "number" }
       },
       "title": "VermietungsInformationen"
     },
     "Vermoegen": {
       "type": "object",
       "properties": {
-        "aktuellerWert": {
-          "type": "number"
-        },
-        "maximalAufzuloesenderWert": {
-          "type": "number"
-        },
+        "aktuellerWert": { "type": "number" },
+        "maximalAufzuloesenderWert": { "type": "number" },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
@@ -4685,68 +2794,37 @@
     "VermoegenVerbindlichkeit": {
       "type": "object",
       "properties": {
-        "aktuellerWert": {
-          "type": "number"
-        },
-        "anrechnungFuerBlankoAnteil": {
-          "type": "number"
-        },
-        "bezeichner": {
-          "type": "string"
-        },
-        "kontonummer": {
-          "type": "string"
-        },
-        "vermoegensTyp": {
-          "type": "string",
-          "enum": ["VERBINDLICHKEIT", "VERMOEGEN"]
-        }
+        "aktuellerWert": { "type": "number" },
+        "anrechnungFuerBlankoAnteil": { "type": "number" },
+        "bezeichner": { "type": "string" },
+        "kontonummer": { "type": "string" },
+        "vermoegensTyp": { "type": "string", "enum": ["VERBINDLICHKEIT", "VERMOEGEN"] }
       },
       "title": "VermoegenVerbindlichkeit"
     },
     "VermoegenVerbindlichkeiten": {
       "type": "object",
       "properties": {
-        "vermoegenOderVerbindlichkeiten": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/VermoegenVerbindlichkeit"
-          }
-        }
+        "vermoegenOderVerbindlichkeiten": { "type": "array", "items": { "$ref": "#/definitions/VermoegenVerbindlichkeit" } }
       },
       "title": "VermoegenVerbindlichkeiten"
     },
     "VersicherungsZeitraum": {
       "type": "object",
       "properties": {
-        "beginn": {
-          "type": "string",
-          "format": "date"
-        },
-        "dauerInMonaten": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "ende": {
-          "type": "string",
-          "format": "date"
-        }
+        "beginn": { "type": "string", "format": "date" },
+        "dauerInMonaten": { "type": "integer", "format": "int32" },
+        "ende": { "type": "string", "format": "date" }
       },
       "title": "VersicherungsZeitraum"
     },
     "Vertrieb": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
-        "orderid": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "organisationsName": {
-          "type": "string"
-        }
+        "_links": { "$ref": "#/definitions/Links" },
+        "orderid": { "type": "integer", "format": "int32" },
+        "organisationsName": { "type": "string" },
+        "partnerId": { "type": "string" }
       },
       "title": "Vertrieb",
       "description": "information about distribution channel, for more use Partner API"
@@ -4754,22 +2832,16 @@
     "VertriebsStruktur": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
+        "_links": { "$ref": "#/definitions/Links" },
         "vertriebeDesAnsprechpartners": {
           "type": "array",
           "description": "distribution channels of clerk at creation date of application",
-          "items": {
-            "$ref": "#/definitions/Vertrieb"
-          }
+          "items": { "$ref": "#/definitions/Vertrieb" }
         },
         "vertriebeDesVermittlers": {
           "type": "array",
           "description": "distribution channels of advisor at creation date of application",
-          "items": {
-            "$ref": "#/definitions/Vertrieb"
-          }
+          "items": { "$ref": "#/definitions/Vertrieb" }
         }
       },
       "title": "VertriebsStruktur",
@@ -4777,40 +2849,17 @@
     },
     "Violation": {
       "type": "object",
-      "properties": {
-        "field": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
+      "properties": { "field": { "type": "string" }, "message": { "type": "string" } },
       "title": "Violation"
     },
     "Vorhaben": {
       "type": "object",
       "properties": {
-        "eigenleistungWennNeubauOderModernisierungsmassnahmen": {
-          "type": "number"
-        },
-        "externeBausparAngebote": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BausparAngebot"
-          }
-        },
-        "finanzbedarf": {
-          "$ref": "#/definitions/Finanzbedarf"
-        },
-        "nachfinanzierung": {
-          "type": "boolean"
-        },
-        "nachrangigeExterneDarlehen": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/NachrangigesExternesDarlehen"
-          }
-        },
+        "eigenleistungWennNeubauOderModernisierungsmassnahmen": { "type": "number" },
+        "externeBausparAngebote": { "type": "array", "items": { "$ref": "#/definitions/BausparAngebot" } },
+        "finanzbedarf": { "$ref": "#/definitions/Finanzbedarf" },
+        "nachfinanzierung": { "type": "boolean" },
+        "nachrangigeExterneDarlehen": { "type": "array", "items": { "$ref": "#/definitions/NachrangigesExternesDarlehen" } },
         "verwendungszweck": {
           "type": "string",
           "enum": [
@@ -4828,15 +2877,9 @@
     "Wertpapiere": {
       "type": "object",
       "properties": {
-        "aktuellerWert": {
-          "type": "number"
-        },
-        "dividendenJaehrlich": {
-          "type": "number"
-        },
-        "maximalAufzuloesenderWert": {
-          "type": "number"
-        },
+        "aktuellerWert": { "type": "number" },
+        "dividendenJaehrlich": { "type": "number" },
+        "maximalAufzuloesenderWert": { "type": "number" },
         "vermoegensTyp": {
           "type": "string",
           "description": "asset type, redundant entry serves as an additional filter criterion",
@@ -4853,88 +2896,41 @@
     "Zahlungsplaene": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
-        "zahlungsplaene": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/zahlungsplan"
-          }
-        }
+        "_links": { "$ref": "#/definitions/Links" },
+        "zahlungsplaene": { "type": "array", "items": { "$ref": "#/definitions/zahlungsplan" } }
       },
       "title": "Zahlungsplaene"
     },
     "ZinsBindung": {
       "type": "object",
       "properties": {
-        "endetAm": {
-          "type": "string",
-          "format": "date"
-        },
-        "jahre": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "monate": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "restschuldNachZinsBindungsEnde": {
-          "type": "number"
-        }
+        "endetAm": { "type": "string", "format": "date" },
+        "jahre": { "type": "integer", "format": "int32" },
+        "monate": { "type": "integer", "format": "int32" },
+        "restschuldNachZinsBindungsEnde": { "type": "number" }
       },
       "title": "ZinsBindung"
     },
     "ZugrundeliegendeDatenZumAntrag": {
       "type": "object",
       "properties": {
-        "_links": {
-          "$ref": "#/definitions/Links"
-        },
-        "bankverbindung": {
-          "$ref": "#/definitions/Bankverbindung"
-        },
-        "finanzierungsObjekt": {
-          "$ref": "#/definitions/FinanzierungsObjekt"
-        },
-        "haushalte": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Haushalt"
-          }
-        },
-        "vorhaben": {
-          "$ref": "#/definitions/Vorhaben"
-        }
+        "_links": { "$ref": "#/definitions/Links" },
+        "bankverbindung": { "$ref": "#/definitions/Bankverbindung" },
+        "finanzierungsObjekt": { "$ref": "#/definitions/FinanzierungsObjekt" },
+        "haushalte": { "type": "array", "items": { "$ref": "#/definitions/Haushalt" } },
+        "vorhaben": { "$ref": "#/definitions/Vorhaben" }
       },
       "title": "ZugrundeliegendeDatenZumAntrag"
     },
     "zahlungsplan": {
       "type": "object",
       "properties": {
-        "bausteinId": {
-          "type": "string"
-        },
-        "eintraege": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Eintrag"
-          }
-        },
-        "gesamtSumme": {
-          "$ref": "#/definitions/Eintrag"
-        },
-        "sparplanSummenEintragZumZuteilungsZeitpunkt": {
-          "$ref": "#/definitions/Eintrag"
-        },
-        "summeEndeDerZinsbindung": {
-          "$ref": "#/definitions/Eintrag"
-        },
-        "typ": {
-          "type": "string",
-          "enum": ["TILGUNGSPLAN"]
-        }
+        "bausteinId": { "type": "string" },
+        "eintraege": { "type": "array", "items": { "$ref": "#/definitions/Eintrag" } },
+        "gesamtSumme": { "$ref": "#/definitions/Eintrag" },
+        "sparplanSummenEintragZumZuteilungsZeitpunkt": { "$ref": "#/definitions/Eintrag" },
+        "summeEndeDerZinsbindung": { "$ref": "#/definitions/Eintrag" },
+        "typ": { "type": "string", "enum": ["TILGUNGSPLAN"] }
       },
       "title": "zahlungsplan",
       "description": "redemption plan"
