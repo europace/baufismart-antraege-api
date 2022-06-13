@@ -332,7 +332,7 @@ Requirement:
 
 example request:
 ``` http
-POST /v2/antraege/ABC12F/1/1/status HTTP/1.1
+PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
