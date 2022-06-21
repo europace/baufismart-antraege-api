@@ -5,8 +5,6 @@ As a loan provider get all the data of your applications for highly effective va
 ![loanProvider](https://img.shields.io/badge/-loanProvider-lightblue)
 ![mortgageLoan](https://img.shields.io/badge/-mortgageLoan-lightblue)
 
-[API Referenz](https://europace.github.io/baufismart-antraege-api/docs/index.html)
-[Release Notes](https://github.com/europace/baufismart-antraege-api/releases/)
 [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://docs.api.europace.de/common/authentifizierung/authorization-api/)
 [![YAML](https://img.shields.io/badge/OAS-YAML-lightblue)](https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.yaml)
 [![YAML](https://img.shields.io/badge/OAS-HTML-lightblue)](https://europace.github.io/baufismart-antraege-api/docs/index.html)
@@ -476,6 +474,12 @@ What events lead to the setting of the `lastChange` field?
 * changing state of application
 * changing loan office on application
 * new proof is shared
+
+### Where can i get more details about the API?
+You can use our reference HTML and read through the latest release notes:
+
+- [Complete API reference](https://europace.github.io/baufismart-antraege-api/docs/index.html)
+- [API release notes](https://github.com/europace/baufismart-antraege-api/releases/)
 
 ## Terms of use
 The APIs are provided under the following [Terms of Use](https://docs.api.europace.de/nutzungsbedingungen).
