@@ -475,6 +475,12 @@ What events lead to the setting of the `lastChange` field?
 * changing loan office on application
 * new proof is shared
 
+### Where can i get more details about the API?
+You can use our reference HTML and read through the latest release notes:
+
+- [Complete API reference](https://europace.github.io/baufismart-antraege-api/docs/index.html)
+- [API release notes](https://github.com/europace/baufismart-antraege-api/releases/)
+
 ## Terms of use
 The APIs are provided under the following [Terms of Use](https://docs.api.europace.de/nutzungsbedingungen).
 
