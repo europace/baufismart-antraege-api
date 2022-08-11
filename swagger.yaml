@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.49"
+  version: "2.50"
   title: Anträge API
   contact:
     name: Europace AG
@@ -968,8 +968,8 @@ definitions:
             type: integer
             format: int32
         title: AnnuitaetenDarlehen
-        description: extends loan of counteroffer
-    description: extends loan of counteroffer
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   Anschrift:
     type: object
     properties:
@@ -2313,8 +2313,8 @@ definitions:
             type: integer
             format: int32
         title: ForwardDarlehen
-        description: extends loan of counteroffer
-    description: extends loan of counteroffer
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   Gebaeude:
     type: object
     properties:
@@ -2733,8 +2733,8 @@ definitions:
             type: integer
             format: int32
         title: KfwDarlehen
-        description: Erweitert GegenangebotDarlehen
-    description: Erweitert GegenangebotDarlehen
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   KfwKonditionsReservierung:
     type: object
     properties:
@@ -3130,8 +3130,8 @@ definitions:
             type: integer
             format: int32
         title: PrivatDarlehen
-        description: extends loan of counteroffer
-    description: extends loan of counteroffer
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   Problem:
     type: object
     properties:
@@ -3307,8 +3307,8 @@ definitions:
             type: integer
             format: int32
         title: RegionalFoerderDarlehen
-        description: extends loan of counteroffer
-    description: extends loan of counteroffer
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   RisikoAbsicherung:
     type: object
     properties:
@@ -3555,8 +3555,8 @@ definitions:
             type: number
             description: "sum of sales commission (advisor and overhead), europace fee is excluded"
         title: VariablesDarlehen
-        description: extends loan of counteroffer
-    description: extends loan of counteroffer
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   Verbindlichkeit:
     type: object
     properties:
