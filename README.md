@@ -338,13 +338,17 @@ Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 165
 
-{ "op": "replace", "path": "/status", "value":
+[
   {
-    "produktAnbieter": "ABGELEHNT",
-    "ablehnungsgrund": "FINANZIELLE_SITUATION",
-    "kommentar": "message to advisor"
+    "op": "replace",
+    "path": "/status",
+    "value": {
+                "produktAnbieter": "UNTERSCHRIEBEN",
+                "antragsteller": "WIDERRUFEN",
+                "kommentar": "{{comment}}"
+              }
   }
-}
+]
 ```
 
 The values of Ablehnungsgrund can be:
