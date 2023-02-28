@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.52"
+  version: "2.53"
   title: Anträge API
   contact:
     name: Europace AG
@@ -1921,10 +1921,10 @@ definitions:
         description: "KfW-energy-reference-groups, only with darlehensTyp==KFW_DARLEHEN. (allowed values: STANDARD, NEUBAU, SANIERUNG)Only relevant with KfW-Programm 153, 261, 262. If new energy-reference-groups will follow, more values can be attached.)"
       kfwEnergieEffizienzStandard:
         type: string
-        description: "KfW-energy-standards, only with darlehensTyp==KFW_DARLEHEN (allowed values: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_40_NH, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK) Only relevant with KfW-Programm 153, 261, 262. If new KfW-energy-standards will follow, more values can be attached."
+        description: "KfW-energy-standards, only with darlehensTyp==KFW_DARLEHEN (allowed values: STANDARD_40, STANDARD_40_PLUS, STANDARD_40_EEK, STANDARD_40_NH, STANDARD_55, STANDARD_55_EEK, STANDARD_70, STANDARD_70_EEK, STANDARD_85, STANDARD_85_EEK, STANDARD_100, STANDARD_100_EEK, STANDARD_DENKMAL, STANDARD_DENKMAL_EEK, KLIMAFREUNDLICH_STANDARD, KLIMAFREUNDLICH_QNG) Only relevant with KfW-Programm 153, 261, 262. If new KfW-energy-standards will follow, more values can be attached."
       kfwProgramm:
         type: string
-        description: "KfW-program, only with darlehensTyp==KFW_DARLEHEN (allowed values: PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262) If new KfW programs will follow, more values can be attached."
+        description: "KfW-program, only with darlehensTyp==KFW_DARLEHEN (allowed values: PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262, PROGRAMM_297, PROGRAMM_298) If new KfW programs will follow, more values can be attached."
       kfwSanierungsFahrplanLiegtVor:
         type: boolean
         description: "plan of refurbishment exists, with darlehensTyp==KFW_DARLEHEN and program 261, 262"
@@ -2691,6 +2691,8 @@ definitions:
             type: string
             description: "only with PROGRAMM_153, PROGRAMM_261, PROGRAMM_262"
             enum:
+              - KLIMAFREUNDLICH_QNG
+              - KLIMAFREUNDLICH_STANDARD
               - STANDARD_100
               - STANDARD_100_EEK
               - STANDARD_40
@@ -2716,6 +2718,8 @@ definitions:
               - PROGRAMM_167
               - PROGRAMM_261
               - PROGRAMM_262
+              - PROGRAMM_297
+              - PROGRAMM_298
           kfwSanierungsFahrplanLiegtVor:
             type: boolean
             description: "only with PROGRAMM_261, PROGRAMM_262"
