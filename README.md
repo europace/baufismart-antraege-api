@@ -332,7 +332,7 @@ Requirement:
 
 example request:
 ``` http
-PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
+POST /v2/antraege/ABC12F/1/1/status HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
@@ -340,16 +340,26 @@ Content-Length: 165
 
 [
   {
-    "op": "replace",
-    "path": "/status",
-    "value": {
-                "produktAnbieter": "UNTERSCHRIEBEN",
-                "antragsteller": "WIDERRUFEN",
-                "kommentar": "{{comment}}"
-              }
+     "produktAnbieter": "UNTERSCHRIEBEN",
+     "antragsteller": "WIDERRUFEN",
+     "kommentar": "{{comment}}"
   }
 ]
 ```
+
+The values for the state of produktAnbieter can be:
+
+* `NICHT_BEARBEITET`
+* `UNTERSCHRIEBEN`
+* `ABGELEHNT`
+* `ZURUECKGESTELLT`
+
+The values for the state of antragsteller can be:
+
+* `BEANTRAGT`
+* `UNTERSCHRIEBEN`
+* `NICHT_ANGENOMMEN`
+* `WIDERRUFEN`
 
 The values of Ablehnungsgrund can be:
 
