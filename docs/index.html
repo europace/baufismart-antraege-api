@@ -594,7 +594,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_version_information">Version information</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.55</p>
+<p><em>Version</em> : 2.56</p>
 </div>
 </div>
 <div class="sect2">
@@ -2870,7 +2870,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p>A counteroffer is an adjusted offer based on the application set by the loan provider.</p>
 </div>
 <div class="paragraph">
-<p>If a counteroffer is created, the original offer will be marked as 'ABGELEHNT' and a new offer will be created. The new offer is automatically marked as <code>UNTERSCHRIEBEN</code> from the loan provider.</p>
+<p>If a counteroffer is created, the original offer will be marked as 'ABGELEHNT' and a new offer will be created. The new offer is automatically marked as `UNTERSCHRIEBEN ` from the loan provider.</p>
 </div>
 <div class="paragraph">
 <p>A single loan or a combination of loans can be offered as a counteroffer.</p>
@@ -6185,7 +6185,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>only with art==FREIBERUFLER,SELBSTAENDIGER. allowed values: ALTENPFLEGER, AMBULANTER_KRANKENPFLEGER, ANWALT, APOTHEKER, ARCHITEKT, ARZT, BESTATTER, DATENSCHUTZBEAUFTRAGTER, DEKORATEUR, DIAETASSISTENT, DOLMETSCHER, EDV_BERATER, ERGOTHERAPEUT, ERNAEHRUNGSBERATER, FOTOGRAF, GEOGRAF, GRAFIKDESIGNER, GRAFIKER, HEBAMME, HEILMASSEUR, HEILPRAKTIKER, HISTORIKER, INFORMATIKER, INGENIEUR, INSOLVENZVERWALTER, JOURNALIST, KLASSISCHER_KONZERTMUSIKER, KONSTRUKTEUR, KRANKENGYMNAST, KRANKENPFLEGER, KRANKENSCHWESTER, LOGOPAEDE, MEDIZINISCH_TECHN_ASSISTENT, NOTAR, OPERNSAENGER, PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER, SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT, UNTERNEHMENSBERATER, VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES.</p>
+<p>only with art==FREIBERUFLER,SELBSTAENDIGER. allowed values:  ALTENPFLEGER, AMBULANTER_KRANKENPFLEGER, ANWALT, APOTHEKER, ARCHITEKT, ARZT, BESTATTER, DATENSCHUTZBEAUFTRAGTER, DEKORATEUR, DIAETASSISTENT, DOLMETSCHER, EDV_BERATER, ERGOTHERAPEUT, ERNAEHRUNGSBERATER, FOTOGRAF, GEOGRAF, GRAFIKDESIGNER, GRAFIKER, HEBAMME, HEILMASSEUR, HEILPRAKTIKER, HISTORIKER, INFORMATIKER, INGENIEUR, INSOLVENZVERWALTER, JOURNALIST, KLASSISCHER_KONZERTMUSIKER, KONSTRUKTEUR, KRANKENGYMNAST, KRANKENPFLEGER, KRANKENSCHWESTER, LOGOPAEDE, MEDIZINISCH_TECHN_ASSISTENT, NOTAR, OPERNSAENGER, PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER, SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT, UNTERNEHMENSBERATER, VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -7615,6 +7615,18 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>produktAnbieterSpezifischeDarlehensMerkmale</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Additional lender-specific data. Only populated in specific use cases when you sell your own credit products.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>&lt; string, object &gt; map</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>provision</strong><br>
 <em>optional</em></p>
 </div></div></td>
@@ -8311,7 +8323,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>'true' -&gt; land already paid, 'false' - land not yet paid, 'null' if not 'Neubau'</p>
+<p>'true' &#8594; land already paid, 'false' - land not yet paid, 'null' if not 'Neubau'</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>boolean</p>
@@ -10730,7 +10742,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>allowed values: GERING,MITTEL,HOCH. (More values can be attached)</p>
+<p>allowed values: GERING,MITTEL,HOCH.  (More values can be attached)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -11187,7 +11199,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <div class="sect2">
 <h3 id="_patchoperation">PatchOperation</h3>
 <div class="paragraph">
-<p>A JSONPatch document as defined by RFC 6902 (see <a href="http://jsonpatch.com/" class="bare">http://jsonpatch.com/</a>). Beispiel: { "op": "replace", "path": "/antragsReferenz", "value": "123-ABC"&quot; }</p>
+<p>A JSONPatch document as defined by RFC 6902 (see <a href="http://jsonpatch.com/" class="bare">http://jsonpatch.com/</a>). Beispiel: { "op": "replace", "path": "/antragsReferenz", "value": "123-ABC"" }</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -13630,7 +13642,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-02 17:21:26 +0100
+Last updated 2023-03-20 17:06:34 +0100
 </div>
 </div>
 </body>
