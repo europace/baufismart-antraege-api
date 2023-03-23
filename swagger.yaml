@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.56"
+  version: "2.57"
   title: Anträge API
   contact:
     name: Europace AG
@@ -1039,6 +1039,10 @@ definitions:
         type: string
         format: date-time
         description: last changed date
+      letztesEreignis:
+        type: string
+        format: date-time
+        description: last event date. For example for messages from the advisors.
       produktAnbieter:
         $ref: "#/definitions/ProduktAnbieter"
       prolongation:
