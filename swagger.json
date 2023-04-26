@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.57",
+    "version": "2.58",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -2540,6 +2540,10 @@
           "additionalProperties": {
             "type": "object"
           }
+        },
+        "produktId": {
+          "type": "string",
+          "description": "lender-specific identifier of the credit product"
         },
         "provision": {
           "description": "commission",
