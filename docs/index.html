@@ -578,6 +578,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_zahlungsplaene">Zahlungsplaene</a></li>
 <li><a href="#_zinsbindung">ZinsBindung</a></li>
 <li><a href="#_zugrundeliegendedatenzumantrag">ZugrundeliegendeDatenZumAntrag</a></li>
+<li><a href="#_zwischenfinanzierung">ZwischenFinanzierung</a></li>
 <li><a href="#_zahlungsplan">zahlungsplan</a></li>
 </ul>
 </li>
@@ -594,7 +595,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_version_information">Version information</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.59</p>
+  <p><em>Version</em> : 2.60</p>
 </div>
 </div>
 <div class="sect2">
@@ -9311,7 +9312,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN)</p>
+  <p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -13567,43 +13568,273 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>haushalte</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>&lt; <a href="#_haushalt">Haushalt</a> &gt; array</p>
-</div></div></td>
+  <td class="tableblock halign-left valign-middle">
+    <div class="content">
+      <div class="paragraph">
+        <p><strong>haushalte</strong><br>
+          <em>optional</em></p>
+      </div>
+    </div>
+  </td>
+  <td class="tableblock halign-left valign-middle">
+    <div class="content">
+      <div class="paragraph">
+        <p>&lt; <a href="#_haushalt">Haushalt</a> &gt; array</p>
+      </div>
+    </div>
+  </td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>vorhaben</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><a href="#_vorhaben">Vorhaben</a></p>
-</div></div></td>
+  <td class="tableblock halign-left valign-middle">
+    <div class="content">
+      <div class="paragraph">
+        <p><strong>vorhaben</strong><br>
+          <em>optional</em></p>
+      </div>
+    </div>
+  </td>
+  <td class="tableblock halign-left valign-middle">
+    <div class="content">
+      <div class="paragraph">
+        <p><a href="#_vorhaben">Vorhaben</a></p>
+      </div>
+    </div>
+  </td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_zahlungsplan">zahlungsplan</h3>
-<div class="paragraph">
-<p>redemption plan</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 42.8571%;">
-<col style="width: 57.1429%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-middle">Name</th>
-<th class="tableblock halign-left valign-middle">Schema</th>
-</tr>
-</thead>
-<tbody>
+  <div class="sect2">
+    <h3 id="_zwischenfinanzierung">ZwischenFinanzierung</h3>
+    <div class="paragraph">
+      <p>extends GegenangebotDarlehen</p>
+    </div>
+    <div class="paragraph">
+      <p><em>Polymorphism</em> : Inheritance<br>
+        <em>Discriminator</em> : darlehensTyp</p>
+    </div>
+    <table class="tableblock frame-all grid-all stretch">
+      <colgroup>
+        <col style="width: 16.6666%;">
+        <col style="width: 61.1111%;">
+        <col style="width: 22.2223%;">
+      </colgroup>
+      <thead>
+      <tr>
+        <th class="tableblock halign-left valign-middle">Name</th>
+        <th class="tableblock halign-left valign-middle">Description</th>
+        <th class="tableblock halign-left valign-middle">Schema</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>anfaenglicheTilgung</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>number</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>darlehensBetrag</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>number</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>darlehensTyp</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>enum (ZWISCHEN_FINANZIERUNG)</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>effektivZins</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>number</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>produktDetails</strong><br>
+                <em>optional</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>description for advisor</p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>string</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>rateMonatlich</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>number</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>sollZins</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>number</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>vertriebsProvisionGesamtAbsolut</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>sum of sales commission (advisor and overhead), europace fee is excluded</p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>number</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p><strong>maximaleLaufzeitInMonaten</strong><br>
+                <em>required</em></p>
+            </div>
+          </div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content"></div>
+        </td>
+        <td class="tableblock halign-left valign-middle">
+          <div class="content">
+            <div class="paragraph">
+              <p>integer (int32)</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sect2">
+    <h3 id="_zahlungsplan">zahlungsplan</h3>
+    <div class="paragraph">
+      <p>redemption plan</p>
+    </div>
+    <table class="tableblock frame-all grid-all stretch">
+      <colgroup>
+        <col style="width: 42.8571%;">
+        <col style="width: 57.1429%;">
+      </colgroup>
+      <thead>
+      <tr>
+        <th class="tableblock halign-left valign-middle">Name</th>
+        <th class="tableblock halign-left valign-middle">Schema</th>
+      </tr>
+      </thead>
+      <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>bausteinId</strong><br>
@@ -13666,7 +13897,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-03 15:47:39 +0200
+  Last updated 2023-05-08 16:49:59 +0200
 </div>
 </div>
 </body>
