@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.59"
+  version: "2.60"
   title: Anträge API
   contact:
     name: Europace AG
@@ -2446,6 +2446,7 @@ definitions:
           - PRIVAT_DARLEHEN
           - REGIONAL_FOERDER_DARLEHEN
           - VARIABLES_DARLEHEN
+          - ZWISCHEN_FINANZIERUNG
       effektivZins:
         type: number
       produktDetails:
@@ -3761,6 +3762,48 @@ definitions:
       vorhaben:
         $ref: "#/definitions/Vorhaben"
     title: ZugrundeliegendeDatenZumAntrag
+  ZwischenFinanzierung:
+    title: ZwischenFinanzierung
+    allOf:
+      - $ref: "#/definitions/GegenangebotDarlehen"
+      - type: object
+        required:
+          - anfaenglicheTilgung
+          - darlehensBetrag
+          - darlehensTyp
+          - effektivZins
+          - maximaleLaufzeitInMonaten
+          - rateMonatlich
+          - sollZins
+          - vertriebsProvisionGesamtAbsolut
+        discriminator: darlehensTyp
+        properties:
+          anfaenglicheTilgung:
+            type: number
+          darlehensBetrag:
+            type: number
+          darlehensTyp:
+            type: string
+            enum:
+              - ZWISCHEN_FINANZIERUNG
+          effektivZins:
+            type: number
+          maximaleLaufzeitInMonaten:
+            type: integer
+            format: int32
+          produktDetails:
+            type: string
+            description: description for advisor
+          rateMonatlich:
+            type: number
+          sollZins:
+            type: number
+          vertriebsProvisionGesamtAbsolut:
+            type: number
+            description: "sum of sales commission (advisor and overhead), europace fee is excluded"
+        title: ZwischenFinanzierung
+        description: extends GegenangebotDarlehen
+    description: extends GegenangebotDarlehen
   zahlungsplan:
     type: object
     properties:
