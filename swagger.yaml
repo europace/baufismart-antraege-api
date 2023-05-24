@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.60"
+  version: "2.61"
   title: Anträge API
   contact:
     name: Europace AG
@@ -2103,6 +2103,42 @@ definitions:
       zinsen:
         type: number
     title: Eintrag
+  EndEnergie:
+    type: object
+    properties:
+      aktuell:
+        type: number
+        format: double
+        description: current energy consumption
+      geplant:
+        type: number
+        format: double
+        description: planned energy consumption
+    title: EndEnergie
+  EnergieEffizienzAusweis:
+    type: object
+    properties:
+      ausweisTyp:
+        type: string
+        enum:
+          - ENDENERGIEBEDARF
+          - ENDENERGIEVERBRAUCH
+      endEnergie:
+        $ref: "#/definitions/EndEnergie"
+      primaerEnergieTyp:
+        type: string
+        enum:
+          - ABFAELLE
+          - BRAUNKOHLE
+          - HOLZ
+          - NETZSTROM
+          - OEL_GAS
+          - PHOTOVOLTAIK_WINDKRAFT
+          - SONSTIGES
+          - STEINKOHLE
+          - VERDRAENGUNGSSTROM
+          - WAERME_KAELTE
+    title: EnergieEffizienzAusweis
   Erbbaurecht:
     type: object
     properties:
@@ -2351,6 +2387,8 @@ definitions:
       einliegerwohnungVorhanden:
         type: boolean
         description: only with ObjektArt == HAUS.
+      energieEffizienzAusweis:
+        $ref: "#/definitions/EnergieEffizienzAusweis"
       gewerbeflaeche:
         $ref: "#/definitions/GebaeudeFlaeche"
       hausAnordnung:
@@ -3772,7 +3810,6 @@ definitions:
           - darlehensBetrag
           - darlehensTyp
           - effektivZins
-          - maximaleLaufzeitInMonaten
           - rateMonatlich
           - sollZins
           - vertriebsProvisionGesamtAbsolut
