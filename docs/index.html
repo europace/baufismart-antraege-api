@@ -597,7 +597,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_version_information">Version information</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.61</p>
+<p><em>Version</em> : 2.62</p>
 </div>
 </div>
 <div class="sect2">
@@ -4053,9 +4053,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (ANNUITAETEN_DARLEHEN)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -8898,9 +8900,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (FORWARD_DARLEHEN)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -9409,7 +9413,9 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
@@ -10045,9 +10051,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (KFW_DARLEHEN)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -10155,7 +10163,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262, PROGRAMM_297, PROGRAMM_298)</p>
+<p>enum (PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159, PROGRAMM_167, PROGRAMM_261, PROGRAMM_262, PROGRAMM_297, PROGRAMM_298, PROGRAMM_300)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -11504,9 +11512,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (PRIVAT_DARLEHEN)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -12044,9 +12054,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (REGIONAL_FOERDER_DARLEHEN)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -12819,9 +12831,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (VARIABLES_DARLEHEN)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -13735,9 +13749,11 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>darlehensTyp</strong><br>
 <em>required</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (ZWISCHEN_FINANZIERUNG)</p>
+<p>The value of this enum determines which class is being used. See the implementing classes for more details.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, KFW_DARLEHEN, PRIVAT_DARLEHEN, REGIONAL_FOERDER_DARLEHEN, VARIABLES_DARLEHEN, ZWISCHEN_FINANZIERUNG)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -13886,7 +13902,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-05-17 14:52:59 +0200
+Last updated 2023-06-15 09:29:04 +0200
 </div>
 </div>
 </body>
