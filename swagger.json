@@ -4517,7 +4517,8 @@
       "type": "object",
       "properties": {
         "isoCountryCode": {
-          "type": "string"
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 code"
         },
         "name": {
           "type": "string"
