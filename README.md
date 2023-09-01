@@ -148,7 +148,7 @@ Content-Type: application/json
 Authorization: Bearer {{access-token}}
 ```
 
-Example resonse: \
+Example response: \
 see above
 
 ### Get data of an application
