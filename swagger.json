@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.62",
+    "version": "2.63",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
