@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.63"
+  version: "2.64"
   title: Anträge API
   contact:
     name: Europace AG
@@ -2177,6 +2177,10 @@ definitions:
   Finanzbedarf:
     type: object
     properties:
+      anzahlTeilzahlungen:
+        type: integer
+        format: int32
+        description: Anzahl der Auszahlungen Kauf vom Bauträger oder einer Modernisierung
       aussenAnlagen:
         type: number
         description: costs for gardening
