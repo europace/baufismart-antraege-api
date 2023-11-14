@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.63",
+    "version": "2.64",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -1914,6 +1914,13 @@
           "type": "number",
           "description": "sum of mortgage values"
         },
+        "objektbewertungen": {
+          "type": "array",
+          "description": "list of property valuations",
+          "items": {
+            "$ref": "#/definitions/Objektbewertung"
+          }
+        },
         "produktAnbieter": {
           "$ref": "#/definitions/ProduktAnbieter"
         }
@@ -2814,6 +2821,11 @@
     "Finanzbedarf": {
       "type": "object",
       "properties": {
+        "anzahlTeilzahlungen": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of payouts for purchase from a property developer or a renovation"
+        },
         "aussenAnlagen": {
           "type": "number",
           "description": "costs for gardening"
@@ -3925,6 +3937,40 @@
         }
       },
       "title": "NachrichtDTO"
+    },
+    "Objektbewertung": {
+      "type": "object",
+      "properties": {
+        "immobilie": {
+          "description": "property",
+          "$ref": "#/definitions/ImmobilieVerknuepfung"
+        },
+        "marktwert": {
+          "type": "number",
+          "description": "market value"
+        },
+        "quelle": {
+          "description": "source",
+          "$ref": "#/definitions/ObjektbewertungsQuelle"
+        }
+      },
+      "title": "Objektbewertung",
+      "description": "property valuation"
+    },
+    "ObjektbewertungsQuelle": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "name of source; currently known names: 'Value', 'VDP', 'BaufiSmart-Wertermittlung'"
+        },
+        "referenz": {
+          "type": "string",
+          "description": "reference of source; optional; may reference additional valuation data from external valuation sources, like e.g. Value"
+        }
+      },
+      "title": "ObjektbewertungsQuelle",
+      "description": "source of property valuation"
     },
     "PaginationLinks": {
       "type": "object",
