@@ -602,7 +602,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_version_information">Version information</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.66</p>
+<p><em>Version</em> : 2.67</p>
 </div>
 </div>
 <div class="sect2">
@@ -4590,18 +4590,6 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>ablehnungsgrund</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>reason for rejection</p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (FINANZIELLE_SITUATION, GEGENANGEBOT, KEINE_ANGABE, KRITERIEN, NEGATIV_MERKMAL, UNTERLAGEN_UNVOLLSTAENDIG, WERTERMITTLUNG)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>antragsteller</strong><br>
 <em>optional</em></p>
 </div></div></td>
@@ -4610,6 +4598,18 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>enum (BEANTRAGT, NICHT_ANGENOMMEN, UNTERSCHRIEBEN, WIDERRUFEN)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>antragstellerAblehnungsgrund</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>reason for rejection by customer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANDERER_GRUND, ANDERES_ANGEBOT_ANGENOMMEN, ANGEBOT_WETTBEWERBER, BEARBEITUNGSZEIT, FINANZIERUNG_WIRD_ANGEPASST, KONDITIONEN_UNPASSEND, KUNDE_NICHT_ERREICHBAR, OBJEKT_NICHT_INTERESSANT, OBJEKT_NICHT_VERFUEGBAR)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4634,6 +4634,18 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>enum (ABGELEHNT, NICHT_BEARBEITET, UNTERSCHRIEBEN, ZURUECKGESTELLT)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>produktanbieterAblehnungsgrund</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>reason for rejection by loan provider</p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (FINANZIELLE_SITUATION, GEGENANGEBOT, KEINE_ANGABE, KRITERIEN, NEGATIV_MERKMAL, UNTERLAGEN_UNVOLLSTAENDIG, WERTERMITTLUNG)</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -12709,20 +12721,20 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p><strong>ablehnungsgrund</strong><br>
-<em>optional</em></p>
-</div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>enum (FINANZIELLE_SITUATION, GEGENANGEBOT, KEINE_ANGABE, KRITERIEN, NEGATIV_MERKMAL, UNTERLAGEN_UNVOLLSTAENDIG, WERTERMITTLUNG)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><strong>antragsteller</strong><br>
 <em>required</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>enum (BEANTRAGT, NICHT_ANGENOMMEN, UNTERSCHRIEBEN, WIDERRUFEN)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>antragstellerAblehnungsgrund</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (ANDERER_GRUND, ANDERES_ANGEBOT_ANGENOMMEN, ANGEBOT_WETTBEWERBER, BEARBEITUNGSZEIT, FINANZIERUNG_WIRD_ANGEPASST, KONDITIONEN_UNPASSEND, KUNDE_NICHT_ERREICHBAR, OBJEKT_NICHT_INTERESSANT, OBJEKT_NICHT_VERFUEGBAR)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -12741,6 +12753,15 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>enum (ABGELEHNT, NICHT_BEARBEITET, UNTERSCHRIEBEN, ZURUECKGESTELLT)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p><strong>produktanbieterAblehnungsgrund</strong><br>
+<em>optional</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>enum (FINANZIELLE_SITUATION, GEGENANGEBOT, KEINE_ANGABE, KRITERIEN, NEGATIV_MERKMAL, UNTERLAGEN_UNVOLLSTAENDIG, WERTERMITTLUNG)</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -14042,7 +14063,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <div id="footer">
 <div id="footer-text">
 Version unspecified<br>
-Last updated 2024-01-17 10:41:42 +0100
+Last updated 2024-02-23 16:32:12 +0100
 </div>
 </div>
 </body>

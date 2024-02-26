@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.66",
+    "version": "2.67",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -1187,19 +1187,6 @@
     "AntragsStatus": {
       "type": "object",
       "properties": {
-        "ablehnungsgrund": {
-          "type": "string",
-          "description": "reason for rejection",
-          "enum": [
-            "FINANZIELLE_SITUATION",
-            "GEGENANGEBOT",
-            "KEINE_ANGABE",
-            "KRITERIEN",
-            "NEGATIV_MERKMAL",
-            "UNTERLAGEN_UNVOLLSTAENDIG",
-            "WERTERMITTLUNG"
-          ]
-        },
         "antragsteller": {
           "type": "string",
           "description": "application state advisor-side",
@@ -1208,6 +1195,21 @@
             "NICHT_ANGENOMMEN",
             "UNTERSCHRIEBEN",
             "WIDERRUFEN"
+          ]
+        },
+        "antragstellerAblehnungsgrund": {
+          "type": "string",
+          "description": "reason for rejection by customer",
+          "enum": [
+            "ANDERER_GRUND",
+            "ANDERES_ANGEBOT_ANGENOMMEN",
+            "ANGEBOT_WETTBEWERBER",
+            "BEARBEITUNGSZEIT",
+            "FINANZIERUNG_WIRD_ANGEPASST",
+            "KONDITIONEN_UNPASSEND",
+            "KUNDE_NICHT_ERREICHBAR",
+            "OBJEKT_NICHT_INTERESSANT",
+            "OBJEKT_NICHT_VERFUEGBAR"
           ]
         },
         "bearbeitungsFortschritt": {
@@ -1229,6 +1231,19 @@
             "NICHT_BEARBEITET",
             "UNTERSCHRIEBEN",
             "ZURUECKGESTELLT"
+          ]
+        },
+        "produktanbieterAblehnungsgrund": {
+          "type": "string",
+          "description": "reason for rejection by loan provider",
+          "enum": [
+            "FINANZIELLE_SITUATION",
+            "GEGENANGEBOT",
+            "KEINE_ANGABE",
+            "KRITERIEN",
+            "NEGATIV_MERKMAL",
+            "UNTERLAGEN_UNVOLLSTAENDIG",
+            "WERTERMITTLUNG"
           ]
         }
       },
@@ -3704,18 +3719,6 @@
       "type": "object",
       "required": ["antragsteller", "produktAnbieter"],
       "properties": {
-        "ablehnungsgrund": {
-          "type": "string",
-          "enum": [
-            "FINANZIELLE_SITUATION",
-            "GEGENANGEBOT",
-            "KEINE_ANGABE",
-            "KRITERIEN",
-            "NEGATIV_MERKMAL",
-            "UNTERLAGEN_UNVOLLSTAENDIG",
-            "WERTERMITTLUNG"
-          ]
-        },
         "antragsteller": {
           "type": "string",
           "enum": [
@@ -3723,6 +3726,20 @@
             "NICHT_ANGENOMMEN",
             "UNTERSCHRIEBEN",
             "WIDERRUFEN"
+          ]
+        },
+        "antragstellerAblehnungsgrund": {
+          "type": "string",
+          "enum": [
+            "ANDERER_GRUND",
+            "ANDERES_ANGEBOT_ANGENOMMEN",
+            "ANGEBOT_WETTBEWERBER",
+            "BEARBEITUNGSZEIT",
+            "FINANZIERUNG_WIRD_ANGEPASST",
+            "KONDITIONEN_UNPASSEND",
+            "KUNDE_NICHT_ERREICHBAR",
+            "OBJEKT_NICHT_INTERESSANT",
+            "OBJEKT_NICHT_VERFUEGBAR"
           ]
         },
         "kommentar": { "type": "string" },
@@ -3733,6 +3750,18 @@
             "NICHT_BEARBEITET",
             "UNTERSCHRIEBEN",
             "ZURUECKGESTELLT"
+          ]
+        },
+        "produktanbieterAblehnungsgrund": {
+          "type": "string",
+          "enum": [
+            "FINANZIELLE_SITUATION",
+            "GEGENANGEBOT",
+            "KEINE_ANGABE",
+            "KRITERIEN",
+            "NEGATIV_MERKMAL",
+            "UNTERLAGEN_UNVOLLSTAENDIG",
+            "WERTERMITTLUNG"
           ]
         }
       },
