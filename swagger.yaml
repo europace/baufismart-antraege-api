@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.67"
+  version: "2.68"
   title: Anträge API
   contact:
     name: Europace AG
@@ -3166,7 +3166,7 @@ definitions:
           - test
       path:
         type: string
-        description: "JSON-Path in Antrag. valid pathes: '/antragsReferenz', '/weitereAntragsReferenzen', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung', '/ansprechpartner/externerPartner'."
+        description: "JSON-Path in Antrag. valid pathes: '/antragsReferenz', '/weitereAntragsReferenzen', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung', '/ansprechpartner/externerPartner', '/status/produktanbieterAblehnungsgrund', '/status/antragstellerAblehnungsgrund'."
       value:
         type: object
         example: '"ABC123", 1234, {"antragsteller": "BEANTRAGT"}'
