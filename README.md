@@ -9,7 +9,7 @@ As a loan provider get all the data of your applications for highly effective va
 [![YAML](https://img.shields.io/badge/OAS-YAML-lightblue)](https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.yaml)
 [![YAML](https://img.shields.io/badge/OAS-HTML-lightblue)](https://europace.github.io/baufismart-antraege-api/docs/index.html)
 
-[![Github](https://img.shields.io/badge/-Github-black?logo=github)]((https://github.com/https://github.com/europace/baufismart-antraege-api))
+[![Github](https://img.shields.io/badge/-Github-black?logo=github)](https://github.com/europace/baufismart-antraege-api)
 
 [![GitHub release](https://img.shields.io/github/v/release/europace/baufismart-antraege-api)](https://github.com/europace/baufismart-antraege-api/releases)
 
