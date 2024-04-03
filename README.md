@@ -235,9 +235,11 @@ example response:
 ```
 
 ### Set loan officer
-As loan provider, update the loan officer for well informed advisors and easy conversations with sales.
+
+As loan provider, update the loan officer for well-informed advisors and easy conversations with sales.
 
 If you set the loan officer, she/he can edit the application and the contact information will be automatically shared with the advisor in BaufiSmart.
+
 Requirement:
 - the caller is loan officer for the application
 - the caller has scope `baufinanzierung:antrag:schreiben`
@@ -248,10 +250,14 @@ PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
-Content-Length: 66
+Content-Length: 116
 
 [
-	{ "op": "replace", "path": "/ansprechpartner/partnerId", "value": "XYZ55" }
+    {
+        "op": "replace",
+        "path": "/kreditSachbearbeiter/partnerId",
+        "value": "XYZ55"
+    }
 ]
 ```
 
@@ -261,7 +267,8 @@ example response:
 ```
 
 ### Set loan officer contact details
-As loan provider, update the the loan officer contact details for well informed advisors and easy conversations with sales.
+
+As loan provider, update the  loan officer contact details for well-informed advisors and easy conversations with sales.
 
 If you don't use different europace users for loan officers identity, it is helpful to set contact details for the advisors as information.
 
@@ -277,16 +284,21 @@ PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
-Content-Length: 66
+Content-Length: 263
 
-{ "op": "replace", "path": "/ansprechpartner/externerPartner", 	"value": 
-          {
-             "kreditBetriebPartnerId":"MYID03",
-             "name":"Frau Angela Anaconda", 
-             "telefonnummer":"0170 7717789"
-          }
-}
+[
+    {
+        "op": "replace",
+        "path": "/kreditSachbearbeiter/externerPartner",
+        "value": {
+            "kreditBetriebPartnerId": "MYID03",
+            "name": "Frau Angela Anaconda", 
+            "telefonnummer": "0170 7717789"
+        }
+    }
+]
 ```
+
 `kreditBetriebPartnerId` is the partnerId of the loan office (can be an organization).
 
 example response:
