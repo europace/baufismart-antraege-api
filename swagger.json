@@ -574,8 +574,8 @@
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/ansprechpartner": {
       "get": {
         "tags": ["Antraege"],
-        "summary": "get advisor",
-        "description": "As loan provider, you'll get the contact details of the advisor for communication.",
+        "summary": "get clerk",
+        "description": "As loan provider, you'll get the contact details of the clerk for communication.",
         "operationId": "getAnsprechpartner",
         "produces": ["application/json;charset=UTF-8"],
         "parameters": [
@@ -3338,7 +3338,7 @@
         },
         "path": {
           "type": "string",
-          "description": "JSON-Path in Antrag. valid pathes: '/antragsReferenz', '/weitereAntragsReferenzen', '/status', '/status/antragsteller', '/ansprechpartner/partnerId', '/status/produktAnbieter', '/voraussichtlicheBearbeitung', '/ansprechpartner/externerPartner', '/status/produktanbieterAblehnungsgrund', '/status/antragstellerAblehnungsgrund'."
+          "description": "JSON-Path in Antrag. Valid pathes: '/antragsReferenz', '/weitereAntragsReferenzen', '/status', '/status/antragsteller', '/status/produktAnbieter', '/status/antragstellerAblehnungsgrund', '/status/produktanbieterAblehnungsgrund', '/kreditSachbearbeiter/partnerId', '/kreditSachbearbeiter/externerPartner', '/voraussichtlicheBearbeitung'."
         },
         "value": {
           "type": "object",
