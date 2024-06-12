@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.72",
+    "version": "2.73",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -23,7 +23,7 @@
     "/v2/antraege": {
       "get": {
         "tags": ["Antraege"],
-        "summary": "get all applications",
+        "summary": "get list of all applications",
         "description": "As loan provider, you'll get a list of all your applications, sorted by lastChanged, paged and filterable.",
         "operationId": "getAntraegeList",
         "produces": ["application/json;charset=UTF-8"],
@@ -153,8 +153,8 @@
     "/v2/antraege/{vorgang}": {
       "get": {
         "tags": ["Antraege"],
-        "summary": "get applications of a case",
-        "description": "As advisor, you'll get all applications of your case. ",
+        "summary": "get list of all applications of a case",
+        "description": "As advisor, you'll get a list of all applications of your case. ",
         "operationId": "getAntraegeByVorgangNummer",
         "produces": ["application/json;charset=UTF-8"],
         "parameters": [
@@ -210,7 +210,7 @@
     "/v2/antraege/{vorgang}/{antrag}": {
       "get": {
         "tags": ["Antraege"],
-        "summary": "get approvals of an application",
+        "summary": "get list of approvals of an application",
         "description": "As loan Provider, you'll get a list of approvals with data for validation and decision.",
         "operationId": "getAntrag",
         "produces": ["application/json;charset=UTF-8"],
@@ -1098,11 +1098,11 @@
       "properties": {
         "_links": { "$ref": "#/definitions/Links" },
         "angebot": {
-          "description": "The offer on which the application is based on.",
+          "description": "The offer on which the application is based on. Not returned in the list of all applications.",
           "$ref": "#/definitions/AngebotZumAntrag"
         },
         "ansprechpartner": {
-          "description": "clerk",
+          "description": "clerk. Not returned in the list of all applications.",
           "$ref": "#/definitions/Partner"
         },
         "antragsNummer": { "type": "string", "description": "application-id" },
@@ -1111,7 +1111,7 @@
           "description": "loan providers reference for application"
         },
         "beratung": {
-          "description": "information about advisor type",
+          "description": "information about advisor type. Not returned in the list of all applications.",
           "$ref": "#/definitions/Beratung"
         },
         "datenKontext": {
@@ -1121,7 +1121,7 @@
         },
         "dokumente": {
           "type": "array",
-          "description": "all generated documents, shared proofs and documents uploaded by loan provider",
+          "description": "all generated documents, shared proofs and documents uploaded by loan provider. Not returned in the list of all applications.",
           "uniqueItems": true,
           "items": { "$ref": "#/definitions/Dokument" }
         },
@@ -1130,7 +1130,7 @@
           "description": "advisor-mark of final state for approving"
         },
         "kreditSachbearbeiter": {
-          "description": "loan officer",
+          "description": "loan officer. Not returned in the list of all applications.",
           "$ref": "#/definitions/Partner"
         },
         "letzteAenderung": {
@@ -1143,32 +1143,38 @@
           "format": "date-time",
           "description": "last event date. For example for messages from the advisors."
         },
-        "produktAnbieter": { "$ref": "#/definitions/ProduktAnbieter" },
-        "prolongation": { "type": "boolean" },
+        "produktAnbieter": {
+          "description": "Not returned in the list of all applications.",
+          "$ref": "#/definitions/ProduktAnbieter"
+        },
+        "prolongation": {
+          "type": "boolean",
+          "description": "Not returned in the list of all applications."
+        },
         "status": {
-          "description": "state of application",
+          "description": "state of application. Not returned in the list of all applications.",
           "$ref": "#/definitions/AntragsStatus"
         },
         "vermittler": {
-          "description": "advisor",
+          "description": "advisor. Not returned in the list of all applications.",
           "$ref": "#/definitions/Partner"
         },
         "vertriebsStrukturZumZeitpunktDerAnnahme": {
-          "description": "distribution channels of advisor and/or clerk at creation date of application",
+          "description": "distribution channels of advisor and/or clerk at creation date of application. Not returned in the list of all applications.",
           "$ref": "#/definitions/VertriebsStruktur"
         },
         "voraussichtlicheBearbeitung": {
           "type": "string",
           "format": "date",
-          "description": "estimated approval date"
+          "description": "estimated approval date. Not returned in the list of all applications."
         },
         "vorgangsReferenz": {
           "type": "string",
-          "description": "advisors reference for case"
+          "description": "advisors reference for case. Not returned in the list of all applications."
         },
         "weitereAntragsReferenzen": {
           "type": "object",
-          "description": "additional loan providers references. Will be visible to the advisor.",
+          "description": "additional loan providers references. Will be visible to the advisor. Not returned in the list of all applications.",
           "additionalProperties": { "type": "string" }
         },
         "zeitpunktDerAnnahme": {
@@ -1177,7 +1183,7 @@
           "description": "creation date of application"
         },
         "zugrundeliegendeDaten": {
-          "description": "data of applicants, property and project, wich is the source for application",
+          "description": "data of applicants, property and project, wich is the source for application. Not returned in the list of all applications.",
           "$ref": "#/definitions/ZugrundeliegendeDatenZumAntrag"
         }
       },

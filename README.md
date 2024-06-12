@@ -51,7 +51,8 @@ To start tests begin with [Get a list of applications](#get-a-list-of-applicatio
 
 ## Segments of Antragsnummer
 
-Europace is a multi-lender plattform. For this case antragsnummer is segmented by / for different solutions and applications
+Europace is a multi-lender plattform.
+For this case antragsnummer is segmented by / for different solutions and applications.
 
 Example: `ABC12F/2/1`
 
@@ -89,7 +90,7 @@ Furthermore maybe: \
 
 ## Get all the data you need for approval
 
-### Get a list of applications
+### Get a list of all applications
 
 As loan provider, you'll get a list of all your applications, sorted by lastChanged, paged and filterable.
 
@@ -159,6 +160,16 @@ You can filter the results by using the following parameters:
 - antragsReferenz (filer by your own reference)
 - aenderungSeit (lastChangeUntil for getting all changes after the last call)
 - and many more - see documentation
+
+Please note that in the list of all applications only the following fields are filled in (if data is available):
+
+- `antragsNummer`
+- `antragsReferenz`
+- `datenKontext`
+- `entscheidungsreifeVomVertriebSignalisiert`
+- `letzteAenderung`
+- `letztesEreignis`
+- `zeitpunktDerAnnahme`
 
 #### Get all applications changed since
 

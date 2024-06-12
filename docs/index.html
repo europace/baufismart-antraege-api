@@ -463,9 +463,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_antraege_resource">Antraege</a>
 <ul class="sectlevel3">
-<li><a href="#_getantraegelist">get all applications</a></li>
-<li><a href="#_getantraegebyvorgangnummer">get applications of a case</a></li>
-<li><a href="#_getantrag">get approvals of an application</a></li>
+<li><a href="#_getantraegelist">get list of all applications</a></li>
+<li><a href="#_getantraegebyvorgangnummer">get list of all applications of a case</a></li>
+<li><a href="#_getantrag">get list of approvals of an application</a></li>
 <li><a href="#_getantrag_1">get application</a></li>
 <li><a href="#_updateantrag">patch application</a></li>
 <li><a href="#_getangebot">get offer</a></li>
@@ -602,7 +602,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_version_information">Version information</h3>
 <div class="paragraph">
-<p><em>Version</em> : 2.72</p>
+<p><em>Version</em> : 2.73</p>
 </div>
 </div>
 <div class="sect2">
@@ -700,7 +700,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>All about mortage-applications and -approvals.</p>
 </div>
 <div class="sect3">
-<h4 id="_getantraegelist">get all applications</h4>
+<h4 id="_getantraegelist">get list of all applications</h4>
 <div class="literalblock">
 <div class="content">
 <pre>GET /v2/antraege</pre>
@@ -1090,7 +1090,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getantraegebyvorgangnummer">get applications of a case</h4>
+<h4 id="_getantraegebyvorgangnummer">get list of all applications of a case</h4>
 <div class="literalblock">
 <div class="content">
 <pre>GET /v2/antraege/{vorgang}</pre>
@@ -1099,7 +1099,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <div class="sect4">
 <h5 id="_description_2">Description</h5>
 <div class="paragraph">
-<p>As advisor, you&#8217;ll get all applications of your case.</p>
+<p>As advisor, you&#8217;ll get a list of all applications of your case.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1322,7 +1322,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 </div>
 </div>
 <div class="sect3">
-<h4 id="_getantrag">get approvals of an application</h4>
+<h4 id="_getantrag">get list of approvals of an application</h4>
 <div class="literalblock">
 <div class="content">
 <pre>GET /v2/antraege/{vorgang}/{antrag}</pre>
@@ -4324,7 +4324,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>The offer on which the application is based on.</p>
+<p>The offer on which the application is based on. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_angebotzumantrag">AngebotZumAntrag</a></p>
@@ -4336,7 +4336,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>clerk</p>
+<p>clerk. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_partner">Partner</a></p>
@@ -4372,7 +4372,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>information about advisor type</p>
+<p>information about advisor type. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_beratung">Beratung</a></p>
@@ -4396,7 +4396,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>all generated documents, shared proofs and documents uploaded by loan provider</p>
+<p>all generated documents, shared proofs and documents uploaded by loan provider. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>&lt; <a href="#_dokument">Dokument</a> &gt; array</p>
@@ -4420,7 +4420,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>loan officer</p>
+<p>loan officer. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_partner">Partner</a></p>
@@ -4455,7 +4455,9 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>produktAnbieter</strong><br>
 <em>optional</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Not returned in the list of all applications.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_produktanbieter">ProduktAnbieter</a></p>
 </div></div></td>
@@ -4465,7 +4467,9 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <p><strong>prolongation</strong><br>
 <em>optional</em></p>
 </div></div></td>
-<td class="tableblock halign-left valign-middle"><div class="content"></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>Not returned in the list of all applications.</p>
+</div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>boolean</p>
 </div></div></td>
@@ -4476,7 +4480,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>state of application</p>
+<p>state of application. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_antragsstatus">AntragsStatus</a></p>
@@ -4488,7 +4492,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>advisor</p>
+<p>advisor. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_partner">Partner</a></p>
@@ -4500,7 +4504,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>distribution channels of advisor and/or clerk at creation date of application</p>
+<p>distribution channels of advisor and/or clerk at creation date of application. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_vertriebsstruktur">VertriebsStruktur</a></p>
@@ -4512,7 +4516,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>estimated approval date</p>
+<p>estimated approval date. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string (date)</p>
@@ -4524,7 +4528,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>advisors reference for case</p>
+<p>advisors reference for case. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>string</p>
@@ -4536,7 +4540,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>additional loan providers references. Will be visible to the advisor.</p>
+<p>additional loan providers references. Will be visible to the advisor. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p>&lt; string, string &gt; map</p>
@@ -4560,7 +4564,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <em>optional</em></p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
-<p>data of applicants, property and project, wich is the source for application</p>
+<p>data of applicants, property and project, wich is the source for application. Not returned in the list of all applications.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
 <p><a href="#_zugrundeliegendedatenzumantrag">ZugrundeliegendeDatenZumAntrag</a></p>
@@ -14087,7 +14091,7 @@ Pls use <a href="https://docs.api.europace.de/common/authentifizierung/authoriza
 <div id="footer">
 <div id="footer-text">
 Version unspecified<br>
-Last updated 2024-05-22 09:24:43 +0200
+Last updated 2024-06-12 11:06:57 +0200
 </div>
 </div>
 </body>
