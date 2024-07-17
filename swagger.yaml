@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: As a loan provider get all the data of your applications for highly effective validations and approvals.
-  version: "2.73"
+  version: "2.74"
   title: Anträge API
   contact:
     name: Europace AG
@@ -1157,6 +1157,7 @@ definitions:
         description: only with non-EU nationality
         enum:
           - AUFENTHALTS_ERLAUBNIS
+          - BLAUE_KARTE_EU
           - DAUERAUFENTHALT_EU
           - NIEDERLASSUNGS_ERLAUBNIS
           - VISUM
