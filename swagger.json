@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
-    "version": "2.75",
+    "version": "2.76",
     "title": "Anträge API",
     "contact": {
       "name": "Europace AG",
@@ -3302,6 +3302,10 @@
           "description": "external loan officer id"
         },
         "firmierung": { "type": "string", "description": "company" },
+        "mitarbeiterKreditinstitut": {
+          "type": "boolean",
+          "description": "the partner works for a banking institute"
+        },
         "nachname": { "type": "string", "description": "sur name" },
         "partnerId": { "type": "string" },
         "partnerKennzeichen": {
@@ -3467,6 +3471,10 @@
           "description": "external loan officer id"
         },
         "firmierung": { "type": "string", "description": "company" },
+        "mitarbeiterKreditinstitut": {
+          "type": "boolean",
+          "description": "the partner works for a banking institute"
+        },
         "nachname": { "type": "string", "description": "sur name" },
         "partnerId": { "type": "string" },
         "partnerKennzeichen": {
