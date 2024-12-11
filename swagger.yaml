@@ -3012,16 +3012,26 @@ components:
     Link:
       type: "object"
       properties:
+        deprecation:
+          type: "string"
         href:
           type: "string"
-          format: "uri"
+        hreflang:
+          type: "string"
+        name:
+          type: "string"
+        profile:
+          type: "string"
+        templated:
+          type: "boolean"
+        title:
+          type: "string"
         type:
-          $ref: "#/components/schemas/MediaType"
+          type: "string"
     Links:
       type: "object"
-      properties:
-        self:
-          $ref: "#/components/schemas/Link"
+      additionalProperties:
+        $ref: "#/components/schemas/Link"
     MediaType:
       type: "object"
       properties:
