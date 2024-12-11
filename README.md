@@ -103,7 +103,7 @@ Requirement:
 Example request:
 
 ``` http
-GET /v2/antraege/ HTTP/1.1
+GET /v2/antraege HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
@@ -176,7 +176,7 @@ Please note that in the list of all applications only the following fields are f
 Example request:
 
 ```http
-GET /v2/antraege/?aenderungSeit=2022-02-10 HTTP/1.1
+GET /v2/antraege?aenderungSeit=2022-02-10 HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
