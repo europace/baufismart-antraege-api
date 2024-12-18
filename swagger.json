@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.77"
+    "version": "2.78"
   },
   "servers": [{ "url": "baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2988,13 +2988,19 @@
       "Link": {
         "type": "object",
         "properties": {
-          "href": { "type": "string", "format": "uri" },
-          "type": { "$ref": "#/components/schemas/MediaType" }
+          "deprecation": { "type": "string" },
+          "href": { "type": "string" },
+          "hreflang": { "type": "string" },
+          "name": { "type": "string" },
+          "profile": { "type": "string" },
+          "templated": { "type": "boolean" },
+          "title": { "type": "string" },
+          "type": { "type": "string" }
         }
       },
       "Links": {
         "type": "object",
-        "properties": { "self": { "$ref": "#/components/schemas/Link" } }
+        "additionalProperties": { "$ref": "#/components/schemas/Link" }
       },
       "MediaType": {
         "type": "object",
