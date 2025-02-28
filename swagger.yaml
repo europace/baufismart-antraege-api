@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.78"
+  version: "2.79"
 servers:
   - url: "baufismart.api.europace.de"
 security:
@@ -822,11 +822,17 @@ paths:
 components:
   headers:
     Authorization:
-      description: "your request id, https://docs.api.europace.de/common/tracing/"
+      description: "Your authorization token. See https://docs.api.europace.de/common/authentifizierung/authorization-api/"
+      schema:
+        type: "string"
     X-Authentication:
-      description: "Deprecated.\nPlease use https://docs.api.europace.de/common/authentifizierung/authorization-api/"
+      description: "Deprecated. Please use https://docs.api.europace.de/common/authentifizierung/authorization-api/"
+      schema:
+        type: "string"
     X-TraceId:
-      description: "your request id, https://docs.api.europace.de/common/tracing/"
+      description: "Your request ID. See https://docs.api.europace.de/common/tracing/"
+      schema:
+        type: "string"
   schemas:
     Absicherung:
       type: "object"
@@ -1362,8 +1368,6 @@ components:
           enum:
             - "SOFORTZAHLUNG"
             - "VERRECHNUNG"
-            - "SOFORTZAHLUNG"
-            - "VERRECHNUNG"
         angebotsHinweisFuerAntragsteller:
           type: "string"
           description: "only with external building society saving loans an counteroffers"
@@ -1422,8 +1426,6 @@ components:
         abschlussGebuehrenVerrechnung:
           type: "string"
           enum:
-            - "SOFORTZAHLUNG"
-            - "VERRECHNUNG"
             - "SOFORTZAHLUNG"
             - "VERRECHNUNG"
         angebotsHinweisFuerAntragsteller:
