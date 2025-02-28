@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.78"
+    "version": "2.79"
   },
   "servers": [{ "url": "baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -854,13 +854,16 @@
   "components": {
     "headers": {
       "Authorization": {
-        "description": "your request id, https://docs.api.europace.de/common/tracing/"
+        "description": "Your authorization token. See https://docs.api.europace.de/common/authentifizierung/authorization-api/",
+        "schema": { "type": "string" }
       },
       "X-Authentication": {
-        "description": "Deprecated.\nPlease use https://docs.api.europace.de/common/authentifizierung/authorization-api/"
+        "description": "Deprecated. Please use https://docs.api.europace.de/common/authentifizierung/authorization-api/",
+        "schema": { "type": "string" }
       },
       "X-TraceId": {
-        "description": "your request id, https://docs.api.europace.de/common/tracing/"
+        "description": "Your request ID. See https://docs.api.europace.de/common/tracing/",
+        "schema": { "type": "string" }
       }
     },
     "schemas": {
@@ -1369,12 +1372,7 @@
           "abschlussGebuehr": { "type": "number" },
           "abschlussGebuehrenVerrechnung": {
             "type": "string",
-            "enum": [
-              "SOFORTZAHLUNG",
-              "VERRECHNUNG",
-              "SOFORTZAHLUNG",
-              "VERRECHNUNG"
-            ]
+            "enum": ["SOFORTZAHLUNG", "VERRECHNUNG"]
           },
           "angebotsHinweisFuerAntragsteller": {
             "type": "string",
@@ -1428,12 +1426,7 @@
           "abschlussGebuehr": { "type": "number" },
           "abschlussGebuehrenVerrechnung": {
             "type": "string",
-            "enum": [
-              "SOFORTZAHLUNG",
-              "VERRECHNUNG",
-              "SOFORTZAHLUNG",
-              "VERRECHNUNG"
-            ]
+            "enum": ["SOFORTZAHLUNG", "VERRECHNUNG"]
           },
           "angebotsHinweisFuerAntragsteller": {
             "type": "string",
