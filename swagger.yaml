@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.79"
+  version: "2.80"
 servers:
   - url: "baufismart.api.europace.de"
 security:
@@ -1950,6 +1950,17 @@ components:
             \ VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN,\
             \ SONSTIGE"
       description: "sector"
+    Co2Emissionen:
+      type: "object"
+      properties:
+        aktuell:
+          type: "number"
+          description: "current CO2 emissions in kg per year and square meter"
+          format: "double"
+        geplant:
+          type: "number"
+          description: "planned CO2 emissions in kg per year and square meter"
+          format: "double"
     Darlehen:
       type: "object"
       properties:
@@ -2253,11 +2264,11 @@ components:
       properties:
         aktuell:
           type: "number"
-          description: "current energy consumption"
+          description: "current energy consumption in kWh per year and square meter"
           format: "double"
         geplant:
           type: "number"
-          description: "planned energy consumption"
+          description: "planned energy consumption in kWh per year and square meter"
           format: "double"
     EnergieEffizienzAusweis:
       type: "object"
@@ -2268,6 +2279,8 @@ components:
           enum:
             - "ENDENERGIEBEDARF"
             - "ENDENERGIEVERBRAUCH"
+        co2Emissionen:
+          $ref: "#/components/schemas/Co2Emissionen"
         endEnergie:
           $ref: "#/components/schemas/EndEnergie"
         primaerEnergieTyp:
