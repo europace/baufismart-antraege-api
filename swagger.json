@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.80"
+    "version": "2.81"
   },
   "servers": [{ "url": "baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2008,7 +2008,7 @@
             "description": "forward period in month, only with darlehensTyp==FORWARD_DARLEHEN",
             "format": "int32"
           },
-          "getkalkulatorischesLaufzeitEnde": {
+          "kalkulatorischesLaufzeitEnde": {
             "type": "string",
             "description": "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG",
             "format": "date"
