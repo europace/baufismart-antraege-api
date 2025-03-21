@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.81"
+    "version": "2.82"
   },
   "servers": [{ "url": "baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2486,6 +2486,7 @@
             "type": "string",
             "description": "only with ObjektArt == HAUS. allowed values: FLACHDACH,NICHT_AUSGEBAUT,TEILWEISE_AUSGEBAUT,VOLL_AUSGEBAUT (More values can be attached)"
           },
+          "denkmalschutz": { "type": "boolean" },
           "einliegerwohnungVorhanden": {
             "type": "boolean",
             "description": "only with ObjektArt == HAUS."
