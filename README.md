@@ -435,6 +435,14 @@ Content-Length: 227
 ]
 ```
 
+The values of antragsteller can be:
+* `BEANTRAGT`
+* `UNTERSCHRIEBEN`
+* `NICHT_ANGENOMMEN`
+* `WIDERRUFEN`
+
+
+
 The values of Ablehnungsgrund can be:
 
 * `FINANZIELLE_SITUATION`
