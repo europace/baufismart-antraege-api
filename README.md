@@ -408,6 +408,8 @@ As loan provider, you can set a state with message for an application to inform 
 If you set a state for an application the advisor will be automatically informed by your decision and message.
 You can use it, to send the advisor a message if you choose the right state and use the property `kommentar`.
 
+In case of rejection by the applicant or loan provider, a reason can be provided for each.
+
 Requirement:
 
 - the caller is loan officer for the application
@@ -420,22 +422,50 @@ PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
 Host: baufismart.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
-Content-Length: 227
+Content-Length: 372
 
 [
     {
         "op": "replace",
         "path": "/status",
         "value": {
-            "produktAnbieter": "UNTERSCHRIEBEN",
             "antragsteller": "WIDERRUFEN",
+            "antragstellerAblehnungsgrund": "ANGEBOT_WETTBEWERBER",
+            "produktAnbieter": "ABGELEHNT",
+            "produktanbieterAblehungsgrund": "FINANZIELLE_SITUATION",
             "kommentar": "{{comment}}"
         }
     }
 ]
 ```
 
-The values of Ablehnungsgrund can be:
+The values of antragsteller can be:
+
+* `BEANTRAGT`
+* `UNTERSCHRIEBEN`
+* `NICHT_ANGENOMMEN`
+* `WIDERRUFEN`
+
+The values of antragstellerAblehnungsgrund can be:
+
+* `ANGEBOT_WETTBEWERBER`
+* `KONDITIONEN_UNPASSEND`
+* `KUNDE_NICHT_ERREICHBAR`
+* `OBJEKT_NICHT_INTERESSANT`
+* `OBJEKT_NICHT_VERFUEGBAR`
+* `FINANZIERUNG_WIRD_ANGEPASST`
+* `ANDERES_ANGEBOT_ANGENOMMEN`
+* `ANDERER_GRUND`
+* `BEARBEITUNGSZEIT`
+
+The values of produktAnbieter can be:
+
+* `NICHT_BEARBEITET`
+* `UNTERSCHRIEBEN`
+* `ABGELEHNT`
+* `ZURUECKGESTELLT`
+
+The values of produktanbieterAblehungsgrund can be:
 
 * `FINANZIELLE_SITUATION`
 * `NEGATIV_MERKMAL`
