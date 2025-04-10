@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.82"
+  version: "2.83"
 servers:
   - url: "baufismart.api.europace.de"
 security:
@@ -938,21 +938,7 @@ components:
           type: "string"
       description: "result of europace-offer-validation"
     AnnuitaetenDarlehen:
-      required:
-        - "anfaenglicheTilgung"
-        - "bereitstellungsZinsFreieZeitInMonaten"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "laufzeitKalkulatorischInJahren"
-        - "rateMonatlich"
-        - "sollZins"
-        - "sonderTilgungJaehrlich"
-        - "vertriebsProvisionGesamtAbsolut"
-        - "zinsBindungInJahren"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -973,6 +959,19 @@ components:
             zinsBindungInJahren:
               type: "integer"
               format: "int32"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "bereitstellungsZinsFreieZeitInMonaten"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "laufzeitKalkulatorischInJahren"
+        - "rateMonatlich"
+        - "sollZins"
+        - "sonderTilgungJaehrlich"
+        - "vertriebsProvisionGesamtAbsolut"
+        - "zinsBindungInJahren"
     Anschrift:
       type: "object"
       properties:
@@ -2449,22 +2448,7 @@ components:
           description: "area dimension in square meter"
       description: "plot of land"
     ForwardDarlehen:
-      required:
-        - "anfaenglicheTilgung"
-        - "bereitstellungsZinsFreieZeitInMonaten"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "forwardPeriodeInMonaten"
-        - "laufzeitKalkulatorischInJahren"
-        - "rateMonatlich"
-        - "sollZins"
-        - "sonderTilgungJaehrlich"
-        - "vertriebsProvisionGesamtAbsolut"
-        - "zinsBindungInJahren"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -2488,6 +2472,20 @@ components:
             zinsBindungInJahren:
               type: "integer"
               format: "int32"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "bereitstellungsZinsFreieZeitInMonaten"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "forwardPeriodeInMonaten"
+        - "laufzeitKalkulatorischInJahren"
+        - "rateMonatlich"
+        - "sollZins"
+        - "sonderTilgungJaehrlich"
+        - "vertriebsProvisionGesamtAbsolut"
+        - "zinsBindungInJahren"
     Gebaeude:
       type: "object"
       properties:
@@ -2599,15 +2597,7 @@ components:
         darlehen:
           type: "array"
           items:
-            oneOf:
-              - $ref: "#/components/schemas/GegenangebotDarlehen"
-              - $ref: "#/components/schemas/AnnuitaetenDarlehen"
-              - $ref: "#/components/schemas/ForwardDarlehen"
-              - $ref: "#/components/schemas/KfwDarlehen"
-              - $ref: "#/components/schemas/PrivatDarlehen"
-              - $ref: "#/components/schemas/RegionalFoerderDarlehen"
-              - $ref: "#/components/schemas/VariablesDarlehen"
-              - $ref: "#/components/schemas/ZwischenFinanzierung"
+            $ref: "#/components/schemas/GegenangebotDarlehen"
         kennung:
           type: "string"
           description: "name of offer, visible in advisors offerlist, eg. 'Sonderangebot' "
@@ -2615,6 +2605,7 @@ components:
       required:
         - "anfaenglicheTilgung"
         - "darlehensBetrag"
+        - "darlehensTyp"
         - "effektivZins"
         - "rateMonatlich"
         - "sollZins"
@@ -2632,15 +2623,12 @@ components:
             \ See the implementing classes for more details."
           enum:
             - "ANNUITAETEN_DARLEHEN"
-            - "BAUSPAR_DARLEHEN"
             - "FORWARD_DARLEHEN"
+            - "PRIVAT_DARLEHEN"
+            - "VARIABLES_DARLEHEN"
             - "KFW_DARLEHEN"
             - "REGIONAL_FOERDER_DARLEHEN"
-            - "PRIVAT_DARLEHEN"
             - "ZWISCHEN_FINANZIERUNG"
-            - "VARIABLES_DARLEHEN"
-            - "ANNUITAETEN_DARLEHEN, FORWARD_DARLEHEN, PRIVAT_DARLEHEN,VARIABLES_DARLEHEN,\
-              \ KFW_DARLEHEN, REGIONAL_FOERDER_DARLEHEN,ZWISCHEN_FINANZIERUNG"
         effektivZins:
           type: "number"
         produktDetails:
@@ -2655,7 +2643,16 @@ components:
           description:
             "sum of sales commission (advisor and overhead), europace fee\
             \ is excluded"
+      description: "Base class for counter offers"
       discriminator:
+        mapping:
+          ANNUITAETEN_DARLEHEN: "#/components/schemas/AnnuitaetenDarlehen"
+          FORWARD_DARLEHEN: "#/components/schemas/ForwardDarlehen"
+          KFW_DARLEHEN: "#/components/schemas/KfwDarlehen"
+          PRIVAT_DARLEHEN: "#/components/schemas/PrivatDarlehen"
+          REGIONAL_FOERDER_DARLEHEN: "#/components/schemas/RegionalFoerderDarlehen"
+          VARIABLES_DARLEHEN: "#/components/schemas/VariablesDarlehen"
+          ZWISCHEN_FINANZIERUNG: "#/components/schemas/ZwischenFinanzierung"
         propertyName: "darlehensTyp"
     GrundbuchAngabe:
       type: "object"
@@ -2830,24 +2827,7 @@ components:
           type: "string"
       description: "property"
     KfwDarlehen:
-      required:
-        - "anfaenglicheTilgung"
-        - "bereitstellungsZins"
-        - "bereitstellungsZinsFreieZeitInMonaten"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "kfwProgramm"
-        - "laufzeitKalkulatorischInJahren"
-        - "rateMonatlich"
-        - "rateMonatlichInDerTilgungsfreienAnlaufzeit"
-        - "sollZins"
-        - "tilgungsFreieAnlaufJahre"
-        - "vertriebsProvisionGesamtAbsolut"
-        - "zinsBindungInJahren"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -2915,6 +2895,22 @@ components:
             zinsBindungInJahren:
               type: "integer"
               format: "int32"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "bereitstellungsZins"
+        - "bereitstellungsZinsFreieZeitInMonaten"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "kfwProgramm"
+        - "laufzeitKalkulatorischInJahren"
+        - "rateMonatlich"
+        - "rateMonatlichInDerTilgungsfreienAnlaufzeit"
+        - "sollZins"
+        - "tilgungsFreieAnlaufJahre"
+        - "vertriebsProvisionGesamtAbsolut"
+        - "zinsBindungInJahren"
     KfwKonditionsReservierung:
       type: "object"
       properties:
@@ -3341,19 +3337,7 @@ components:
           description: "street"
       description: "adress of property"
     PrivatDarlehen:
-      required:
-        - "anfaenglicheTilgung"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "laufzeitKalkulatorischInMonaten"
-        - "rateMonatlich"
-        - "sollZins"
-        - "vertriebsProvisionGesamtAbsolut"
-        - "zinsBindungInMonaten"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3364,6 +3348,17 @@ components:
             zinsBindungInMonaten:
               type: "integer"
               format: "int32"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "laufzeitKalkulatorischInMonaten"
+        - "rateMonatlich"
+        - "sollZins"
+        - "vertriebsProvisionGesamtAbsolut"
+        - "zinsBindungInMonaten"
     ProduktAnbieter:
       type: "object"
       properties:
@@ -3456,24 +3451,7 @@ components:
         "Encumbrances and restrictions on the usability of the property.\
         \ Pipeline rights, waivers of distance areas, rights of way, insolvency notices."
     RegionalFoerderDarlehen:
-      required:
-        - "anfaenglicheTilgung"
-        - "bereitstellungsZins"
-        - "bereitstellungsZinsFreieZeitInMonaten"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "laufzeitKalkulatorischInJahren"
-        - "rateMonatlich"
-        - "rateMonatlichInDerTilgungsfreienAnlaufzeit"
-        - "regionalFoerderbankProgramm"
-        - "sollZins"
-        - "tilgungsFreieAnlaufJahre"
-        - "vertriebsProvisionGesamtAbsolut"
-        - "zinsBindungInJahren"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3502,6 +3480,22 @@ components:
             zinsBindungInJahren:
               type: "integer"
               format: "int32"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "bereitstellungsZins"
+        - "bereitstellungsZinsFreieZeitInMonaten"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "laufzeitKalkulatorischInJahren"
+        - "rateMonatlich"
+        - "rateMonatlichInDerTilgungsfreienAnlaufzeit"
+        - "regionalFoerderbankProgramm"
+        - "sollZins"
+        - "tilgungsFreieAnlaufJahre"
+        - "vertriebsProvisionGesamtAbsolut"
+        - "zinsBindungInJahren"
     RisikoAbsicherung:
       type: "object"
       properties:
@@ -3705,18 +3699,7 @@ components:
           type: "integer"
           format: "int32"
     VariablesDarlehen:
-      required:
-        - "anfaenglicheTilgung"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "laufzeitKalkulatorischInJahren"
-        - "rateMonatlich"
-        - "sollZins"
-        - "vertriebsProvisionGesamtAbsolut"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3732,6 +3715,16 @@ components:
             tilgungsBeginnAm:
               type: "string"
               format: "date-time"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "laufzeitKalkulatorischInJahren"
+        - "rateMonatlich"
+        - "sollZins"
+        - "vertriebsProvisionGesamtAbsolut"
     Verbindlichkeit:
       type: "object"
       properties:
@@ -3951,17 +3944,7 @@ components:
         "data of applicants, property and project, wich is the source for\
         \ application. Not returned in the list of all applications."
     ZwischenFinanzierung:
-      required:
-        - "anfaenglicheTilgung"
-        - "darlehensBetrag"
-        - "effektivZins"
-        - "rateMonatlich"
-        - "sollZins"
-        - "vertriebsProvisionGesamtAbsolut"
       type: "object"
-      description: "extends GegenangebotDarlehen"
-      discriminator:
-        propertyName: "darlehensTyp"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3969,6 +3952,15 @@ components:
             maximaleLaufzeitInMonaten:
               type: "integer"
               format: "int32"
+      description: "extends GegenangebotDarlehen"
+      required:
+        - "anfaenglicheTilgung"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "rateMonatlich"
+        - "sollZins"
+        - "vertriebsProvisionGesamtAbsolut"
     zahlungsplan:
       type: "object"
       properties:
