@@ -9,9 +9,9 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.83"
+  version: "2.84"
 servers:
-  - url: "baufismart.api.europace.de"
+  - url: "https://baufismart.api.europace.de"
 security:
   - oauth_security: []
 tags:
@@ -2000,6 +2000,7 @@ components:
             - "PRIVAT_DARLEHEN"
             - "ZWISCHEN_FINANZIERUNG"
             - "VARIABLES_DARLEHEN"
+            - "MODERNISIERUNGSDARLEHEN"
         detailsZurVerwendung:
           type: "string"
           description: "only with darlehensTyp==ZWISCHEN_FINANZIERUNG"
@@ -2166,7 +2167,10 @@ components:
           type: "string"
           description: "document name"
         type:
-          $ref: "#/components/schemas/MediaType"
+          type: "string"
+          description:
+            "mediatype of document, see <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\"\
+            >HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
       description:
         "all generated documents, shared proofs and documents uploaded\
         \ by loan provider. Not returned in the list of all applications."
@@ -3045,30 +3049,6 @@ components:
       type: "object"
       additionalProperties:
         $ref: "#/components/schemas/Link"
-    MediaType:
-      type: "object"
-      properties:
-        charset:
-          type: "string"
-        concrete:
-          type: "boolean"
-        parameters:
-          type: "object"
-          additionalProperties:
-            type: "string"
-        qualityValue:
-          type: "number"
-          format: "double"
-        subtype:
-          type: "string"
-        subtypeSuffix:
-          type: "string"
-        type:
-          type: "string"
-        wildcardSubtype:
-          type: "boolean"
-        wildcardType:
-          type: "boolean"
     Meldung:
       type: "object"
       properties:
@@ -3983,13 +3963,7 @@ components:
       description: "redemption plan"
   securitySchemes:
     oauth_security:
-      flows:
-        clientCredentials:
-          scopes:
-            baufinanzierung:antrag:lesen: "to get application information"
-            baufinanzierung:antrag:schreiben:
-              "to update application data (eg state,\
-              \ loan office and own reference)"
-            baufinanzierung:echtgeschaeft: "to use api in production mode"
-          tokenUrl: "https://api.europace.de/auth/access-token"
-      type: "oauth2"
+      bearerFormat: "JWT"
+      in: "header"
+      scheme: "bearer"
+      type: "http"
