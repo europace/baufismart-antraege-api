@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.0",
   "info": {
     "contact": {
       "email": "devsupport@europace2.de",
@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.84"
+    "version": "2.85"
   },
   "servers": [{ "url": "https://baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -698,14 +698,16 @@
             "name": "teilantrag",
             "required": true,
             "schema": { "type": "integer", "format": "int32" }
-          },
-          {
-            "in": "query",
-            "name": "nachrichtDTO",
-            "required": true,
-            "schema": { "$ref": "#/components/schemas/NachrichtDTO" }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NachrichtDTO" }
+            }
+          },
+          "required": true
+        },
         "responses": { "201": { "description": "CREATED" } },
         "security": [
           { "oauth_security": ["baufinanzierung:antrag:schreiben"] },
@@ -788,14 +790,16 @@
             "name": "teilantrag",
             "required": true,
             "schema": { "type": "integer", "format": "int32" }
-          },
-          {
-            "in": "query",
-            "name": "statusDTO",
-            "required": true,
-            "schema": { "$ref": "#/components/schemas/StatusDTO" }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/StatusDTO" }
+            }
+          },
+          "required": true
+        },
         "responses": { "202": { "description": "ACCEPTED" } },
         "security": [
           { "oauth_security": ["baufinanzierung:antrag:schreiben"] },
@@ -894,8 +898,7 @@
           "versicherungsZeitraum": {
             "$ref": "#/components/schemas/VersicherungsZeitraum"
           }
-        },
-        "description": "payment protection insurance"
+        }
       },
       "AbsicherungsAngaben": {
         "type": "object",
@@ -908,6 +911,7 @@
       },
       "AngebotZumAntrag": {
         "type": "object",
+        "description": "offer details",
         "properties": {
           "_links": { "$ref": "#/components/schemas/Links" },
           "absicherungen": {
@@ -920,7 +924,8 @@
             "items": { "$ref": "#/components/schemas/Bausparvertrag" }
           },
           "beleihungsRechnung": {
-            "$ref": "#/components/schemas/BeleihungsRechnung"
+            "$ref": "#/components/schemas/BeleihungsRechnung",
+            "description": "mortgage value calculation"
           },
           "bewertungDesAngebots": {
             "type": "string",
@@ -941,8 +946,8 @@
           },
           "erzeugtAm": {
             "type": "string",
-            "description": "date offer created",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "date offer created"
           },
           "kennung": {
             "type": "string",
@@ -964,8 +969,7 @@
               "$ref": "#/components/schemas/AngebotsPruefungsErgebnis"
             }
           }
-        },
-        "description": "offer details"
+        }
       },
       "AngebotsPruefungsErgebnis": {
         "type": "object",
@@ -977,11 +981,9 @@
             "$ref": "#/components/schemas/KfwKonditionsReservierung"
           },
           "produktAnbieterId": { "type": "string" }
-        },
-        "description": "result of europace-offer-validation"
+        }
       },
       "AnnuitaetenDarlehen": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -997,7 +999,11 @@
                 "format": "int32"
               },
               "sonderTilgungJaehrlich": { "type": "number" },
-              "tilgungsBeginnAm": { "type": "string", "format": "date-time" },
+              "tilgungsBeginnAm": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2020-03-28"
+              },
               "zinsBindungInJahren": { "type": "integer", "format": "int32" }
             }
           }
@@ -1024,26 +1030,32 @@
           "ort": { "type": "string", "description": "place" },
           "plz": { "type": "string", "description": "zip-code" },
           "strasse": { "type": "string", "description": "street" }
-        },
-        "description": "adress"
+        }
       },
       "Antraege": {
         "type": "object",
+        "description": "list of applications",
         "properties": {
           "_links": { "$ref": "#/components/schemas/PaginationLinks" },
           "antraege": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/Antrag" }
           }
-        },
-        "description": "list of applications"
+        }
       },
       "Antrag": {
         "type": "object",
+        "description": "application for a loan provider to approve",
         "properties": {
           "_links": { "$ref": "#/components/schemas/Links" },
-          "angebot": { "$ref": "#/components/schemas/AngebotZumAntrag" },
-          "ansprechpartner": { "$ref": "#/components/schemas/Partner" },
+          "angebot": {
+            "$ref": "#/components/schemas/AngebotZumAntrag",
+            "description": "The offer on which the application is based on. Not returned in the list of all applications."
+          },
+          "ansprechpartner": {
+            "$ref": "#/components/schemas/Partner",
+            "description": "clerk. Not returned in the list of all applications."
+          },
           "antragsNummer": {
             "type": "string",
             "description": "application-id"
@@ -1052,47 +1064,63 @@
             "type": "string",
             "description": "loan providers reference for application"
           },
-          "beratung": { "$ref": "#/components/schemas/Beratung" },
+          "beratung": {
+            "$ref": "#/components/schemas/Beratung",
+            "description": "information about advisor type. Not returned in the list of all applications."
+          },
           "datenKontext": {
             "type": "string",
             "description": "usage mode of the api for production or testmode",
             "enum": ["TEST_MODUS", "ECHT_GESCHAEFT"]
           },
           "dokumente": {
-            "uniqueItems": true,
             "type": "array",
             "description": "all generated documents, shared proofs and documents uploaded by loan provider. Not returned in the list of all applications.",
-            "items": { "$ref": "#/components/schemas/Dokument" }
+            "items": { "$ref": "#/components/schemas/Dokument" },
+            "uniqueItems": true
           },
           "entscheidungsreifeVomVertriebSignalisiert": {
             "type": "boolean",
             "description": "advisor-mark of final state for approving"
           },
-          "kreditSachbearbeiter": { "$ref": "#/components/schemas/Partner" },
+          "kreditSachbearbeiter": {
+            "$ref": "#/components/schemas/Partner",
+            "description": "loan officer. Not returned in the list of all applications."
+          },
           "letzteAenderung": {
             "type": "string",
-            "description": "last changed date",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "last changed date"
           },
           "letztesEreignis": {
             "type": "string",
-            "description": "last event date. For example for messages from the advisors.",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "last event date. For example for messages from the advisors."
           },
-          "produktAnbieter": { "$ref": "#/components/schemas/ProduktAnbieter" },
+          "produktAnbieter": {
+            "$ref": "#/components/schemas/ProduktAnbieter",
+            "description": "Not returned in the list of all applications."
+          },
           "prolongation": {
             "type": "boolean",
             "description": "Not returned in the list of all applications."
           },
-          "status": { "$ref": "#/components/schemas/AntragsStatus" },
-          "vermittler": { "$ref": "#/components/schemas/Partner" },
+          "status": {
+            "$ref": "#/components/schemas/AntragsStatus",
+            "description": "state of application. Not returned in the list of all applications."
+          },
+          "vermittler": {
+            "$ref": "#/components/schemas/Partner",
+            "description": "advisor. Not returned in the list of all applications."
+          },
           "vertriebsStrukturZumZeitpunktDerAnnahme": {
-            "$ref": "#/components/schemas/VertriebsStruktur"
+            "$ref": "#/components/schemas/VertriebsStruktur",
+            "description": "distribution channels of advisor and/or clerk at creation date of application. Not returned in the list of all applications."
           },
           "voraussichtlicheBearbeitung": {
             "type": "string",
-            "description": "estimated approval date. Not returned in the list of all applications.",
-            "format": "date"
+            "format": "date",
+            "description": "estimated approval date. Not returned in the list of all applications."
           },
           "vorgangsReferenz": {
             "type": "string",
@@ -1100,25 +1128,23 @@
           },
           "weitereAntragsReferenzen": {
             "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "description": "additional loan providers references. Will be visible to the advisor. Not returned in the list of all applications."
-            },
+            "additionalProperties": { "type": "string" },
             "description": "additional loan providers references. Will be visible to the advisor. Not returned in the list of all applications."
           },
           "zeitpunktDerAnnahme": {
             "type": "string",
-            "description": "creation date of application",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "creation date of application"
           },
           "zugrundeliegendeDaten": {
-            "$ref": "#/components/schemas/ZugrundeliegendeDatenZumAntrag"
+            "$ref": "#/components/schemas/ZugrundeliegendeDatenZumAntrag",
+            "description": "data of applicants, property and project, wich is the source for application. Not returned in the list of all applications."
           }
-        },
-        "description": "application for a loan provider to approve"
+        }
       },
       "AntragsStatus": {
         "type": "object",
+        "description": "application state",
         "properties": {
           "antragsteller": {
             "type": "string",
@@ -1179,11 +1205,11 @@
               "KEINE_ANGABE"
             ]
           }
-        },
-        "description": "application state"
+        }
       },
       "Antragsteller": {
         "type": "object",
+        "description": "customer",
         "properties": {
           "absicherungsAngaben": {
             "$ref": "#/components/schemas/AbsicherungsAngaben"
@@ -1200,8 +1226,8 @@
           },
           "arbeitserlaubnisBefristetBis": {
             "type": "string",
-            "description": "only with restricted work permit",
-            "format": "date"
+            "format": "date",
+            "description": "only with restricted work permit"
           },
           "aufenthaltsTitel": {
             "type": "string",
@@ -1216,8 +1242,8 @@
           },
           "aufenthaltsTitelBefristetBis": {
             "type": "string",
-            "description": "date of restricted residence permisson",
-            "format": "date"
+            "format": "date",
+            "description": "date of restricted residence permisson"
           },
           "berufsgruppeBeiIngDiba": {
             "type": "string",
@@ -1232,18 +1258,18 @@
           },
           "brancheBeiIngDiba": {
             "type": "string",
-            "description": "Deprecated. Pls use property 'branche'. sector (ING) loan provider specific data (optional). allowed values: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR.(More value can be attached)",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. Pls use property 'branche'. sector (ING) loan provider specific data (optional). allowed values: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR.(More value can be attached)"
           },
           "brancheBeiMhb": {
             "type": "string",
-            "description": "Deprecated. Pls use property 'branche'. sector (MHB) loan provider specific data (optional). allowed values: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES.(More value can be attached)",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. Pls use property 'branche'. sector (MHB) loan provider specific data (optional). allowed values: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES.(More value can be attached)"
           },
           "brancheBeiSRating": {
             "type": "string",
-            "description": "Deprecated. Pls use property 'branche'. sector (Sparkassen) loan provider specific data (optional). allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE.(More value can be attached)",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. Pls use property 'branche'. sector (Sparkassen) loan provider specific data (optional). allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE.(More value can be attached)"
           },
           "bruttoJahresEinkommenErwartet": { "type": "number" },
           "bruttoVorjahresEinkommen": { "type": "number" },
@@ -1272,11 +1298,12 @@
           "id": { "type": "string" },
           "inDeutschlandSeit": {
             "type": "string",
-            "description": "only with non-EU nationality",
-            "format": "date"
+            "format": "date",
+            "description": "only with non-EU nationality"
           },
           "legitimationsDaten": {
-            "$ref": "#/components/schemas/LegitimationsDaten"
+            "$ref": "#/components/schemas/LegitimationsDaten",
+            "description": "loan provider specific data (optional)"
           },
           "nachname": { "type": "string" },
           "schufaErgebnis": { "$ref": "#/components/schemas/SchufaErgebnis" },
@@ -1288,14 +1315,14 @@
           "titelDoktor": { "type": "boolean" },
           "titelProfessor": { "type": "boolean" },
           "verheiratetMitAntragsteller": {
-            "$ref": "#/components/schemas/AntragstellerVerknuepfung"
+            "$ref": "#/components/schemas/AntragstellerVerknuepfung",
+            "description": "Deprecated. only if married"
           },
           "vorAnschrift": { "$ref": "#/components/schemas/Postadresse" },
           "vorname": { "type": "string" },
           "weitereKontaktMoeglichkeiten": { "type": "string" },
           "wohnhaftSeit": { "type": "string", "format": "date" }
-        },
-        "description": "customer"
+        }
       },
       "AntragstellerVerknuepfung": {
         "type": "object",
@@ -1305,8 +1332,7 @@
             "type": "string",
             "description": "only for better readability, pls use antragsteller-ressource"
           }
-        },
-        "description": "only with external building society saving loans"
+        }
       },
       "AusgabenMonatlich": {
         "type": "object",
@@ -1356,6 +1382,7 @@
       },
       "Bankverbindung": {
         "type": "object",
+        "description": "bank account",
         "properties": {
           "bic": { "type": "string" },
           "iban": { "type": "string" },
@@ -1363,8 +1390,7 @@
           "kontoinhaberIds": { "type": "array", "items": { "type": "string" } },
           "kontoinhaberName": { "type": "string" },
           "kreditinstitut": { "type": "string" }
-        },
-        "description": "bank account"
+        }
       },
       "BausparAngebot": {
         "type": "object",
@@ -1381,13 +1407,13 @@
           "bausparSumme": { "type": "number" },
           "einmalzahlung": {
             "type": "number",
-            "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen.",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
           },
           "gesamtLaufzeitInJahren": {
             "type": "integer",
-            "description": "only with external building society saving loans",
-            "format": "int32"
+            "format": "int32",
+            "description": "only with external building society saving loans"
           },
           "id": { "type": "string" },
           "produktAnbieter": { "$ref": "#/components/schemas/ProduktAnbieter" },
@@ -1402,8 +1428,8 @@
           "typ": { "type": "string" },
           "vertragsBeginn": {
             "type": "string",
-            "description": "contract start",
-            "format": "date"
+            "format": "date",
+            "description": "contract start"
           },
           "vertragsNummer": {
             "type": "string",
@@ -1422,6 +1448,7 @@
       },
       "Bausparvertrag": {
         "type": "object",
+        "description": "building society savings contract details",
         "properties": {
           "abschlussGebuehr": { "type": "number" },
           "abschlussGebuehrenVerrechnung": {
@@ -1435,13 +1462,13 @@
           "bausparSumme": { "type": "number" },
           "einmalzahlung": {
             "type": "number",
-            "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen.",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
           },
           "gesamtLaufzeitInJahren": {
             "type": "integer",
-            "description": "only with external building society saving loans",
-            "format": "int32"
+            "format": "int32",
+            "description": "only with external building society saving loans"
           },
           "id": { "type": "string" },
           "produktAnbieter": { "$ref": "#/components/schemas/ProduktAnbieter" },
@@ -1460,8 +1487,8 @@
           "typ": { "type": "string" },
           "vertragsBeginn": {
             "type": "string",
-            "description": "contract start",
-            "format": "date"
+            "format": "date",
+            "description": "contract start"
           },
           "vertragsNummer": {
             "type": "string",
@@ -1476,8 +1503,7 @@
           },
           "verwaltungsgebuehrenJaehrlich": { "type": "number" },
           "zuteilungsDatum": { "type": "string", "format": "date" }
-        },
-        "description": "building society savings contract details"
+        }
       },
       "BeleihungsRechnung": {
         "type": "object",
@@ -1501,20 +1527,24 @@
             "items": { "$ref": "#/components/schemas/Objektbewertung" }
           },
           "produktAnbieter": { "$ref": "#/components/schemas/ProduktAnbieter" }
-        },
-        "description": "mortgage value calculation"
+        }
       },
       "BeleihungsWert": {
         "type": "object",
         "properties": {
-          "adresse": { "$ref": "#/components/schemas/Postadresse" },
+          "adresse": {
+            "$ref": "#/components/schemas/Postadresse",
+            "description": "adress of property"
+          },
           "beleihungsWert": {
             "type": "number",
             "description": "mortgage value"
           },
-          "immobilie": { "$ref": "#/components/schemas/ImmobilieVerknuepfung" }
-        },
-        "description": "list of mortgage values"
+          "immobilie": {
+            "$ref": "#/components/schemas/ImmobilieVerknuepfung",
+            "description": "property"
+          }
+        }
       },
       "Beratung": {
         "type": "object",
@@ -1536,8 +1566,7 @@
             "type": "boolean",
             "description": "true, if advisor is estate agent in this case too"
           }
-        },
-        "description": "information about advisor type. Not returned in the list of all applications."
+        }
       },
       "Bereitstellung": {
         "type": "object",
@@ -1548,19 +1577,19 @@
           },
           "bereitstellungsZinsFreieZeitInMonaten": {
             "type": "integer",
-            "description": "time of no commitment interest in month",
-            "format": "int32"
+            "format": "int32",
+            "description": "time of no commitment interest in month"
           }
-        },
-        "description": "not with darlehensTyp==PRIVAT_DARLEHEN"
+        }
       },
       "Beschaeftigung": {
         "type": "object",
+        "description": "profession",
         "properties": {
           "anzahlGehaelterProJahr": {
             "type": "number",
-            "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER",
-            "format": "double"
+            "format": "double",
+            "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
           },
           "arbeitgeber": {
             "type": "string",
@@ -1594,8 +1623,8 @@
           },
           "beschaeftigtSeit": {
             "type": "string",
-            "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTAENDIGER",
-            "format": "date"
+            "format": "date",
+            "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTAENDIGER"
           },
           "einkommenNettoJaehrlich": {
             "type": "number",
@@ -1610,7 +1639,8 @@
             "description": "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
           },
           "situationNachRenteneintritt": {
-            "$ref": "#/components/schemas/SituationNachRenteneintritt"
+            "$ref": "#/components/schemas/SituationNachRenteneintritt",
+            "description": "only with art!=RENTNER"
           },
           "sonstigesRegelmaessigesEinkommenNettoMonatlich": {
             "type": "number",
@@ -1624,11 +1654,11 @@
             "type": "string",
             "description": "only with art==FREIBERUFLER,SELBSTAENDIGER. allowed values:  ALTENPFLEGER, AMBULANTER_KRANKENPFLEGER, ANWALT, APOTHEKER, ARCHITEKT, ARZT, BESTATTER, DATENSCHUTZBEAUFTRAGTER, DEKORATEUR, DIAETASSISTENT, DOLMETSCHER, EDV_BERATER, ERGOTHERAPEUT, ERNAEHRUNGSBERATER, FOTOGRAF, GEOGRAF, GRAFIKDESIGNER, GRAFIKER, HEBAMME, HEILMASSEUR, HEILPRAKTIKER, HISTORIKER, INFORMATIKER, INGENIEUR, INSOLVENZVERWALTER, JOURNALIST, KLASSISCHER_KONZERTMUSIKER, KONSTRUKTEUR, KRANKENGYMNAST, KRANKENPFLEGER, KRANKENSCHWESTER, LOGOPAEDE, MEDIZINISCH_TECHN_ASSISTENT, NOTAR, OPERNSAENGER, PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER, SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT, UNTERNEHMENSBERATER, VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES."
           }
-        },
-        "description": "profession"
+        }
       },
       "BestehendeImmobilie": {
         "type": "object",
+        "description": "existing property",
         "properties": {
           "adresse": { "$ref": "#/components/schemas/Postadresse" },
           "autostellplaetze": {
@@ -1682,8 +1712,7 @@
             "type": "string",
             "description": "loan provider specific data (optional). allowed values: GEHOBEN,MITTEL,EINFACH. (More values can be attached)"
           }
-        },
-        "description": "existing property"
+        }
       },
       "BestehenderBausparvertrag": {
         "type": "object",
@@ -1693,8 +1722,8 @@
           "bausparSumme": { "type": "number" },
           "einmalzahlung": {
             "type": "number",
-            "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen.",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
           },
           "id": { "type": "string" },
           "maximalAufzuloesenderBetrag": { "type": "number" },
@@ -1717,8 +1746,8 @@
           },
           "vertragsBeginn": {
             "type": "string",
-            "description": "contract start",
-            "format": "date"
+            "format": "date",
+            "description": "contract start"
           },
           "vertragsNummer": {
             "type": "string",
@@ -1738,13 +1767,13 @@
         "properties": {
           "abzuloesendeRestschuld": {
             "type": "number",
-            "description": "Deprecated.",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated."
           },
           "aktuelleRestschuldWennNichtAbzuloesen": {
             "type": "number",
-            "description": "Deprecated. only with wirdAbgeloest==true",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. only with wirdAbgeloest==true"
           },
           "bausteinId": { "type": "string" },
           "darlehensArt": {
@@ -1805,13 +1834,13 @@
         "properties": {
           "abzuloesendeRestschuld": {
             "type": "number",
-            "description": "Deprecated.",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated."
           },
           "aktuelleRestschuldWennNichtAbzuloesen": {
             "type": "number",
-            "description": "Deprecated. only with wirdAbgeloest==true",
-            "deprecated": true
+            "deprecated": true,
+            "description": "Deprecated. only with wirdAbgeloest==true"
           },
           "bausteinId": { "type": "string" },
           "darlehensArt": {
@@ -1886,6 +1915,7 @@
       },
       "Bonitaet": {
         "type": "object",
+        "description": "creditworthiness",
         "properties": {
           "angerechneteLebensHaltungsKosten": {
             "type": "number",
@@ -1904,44 +1934,48 @@
             "description": "budget surplus"
           },
           "kreditEntscheider": {
-            "$ref": "#/components/schemas/ProduktAnbieter"
+            "$ref": "#/components/schemas/ProduktAnbieter",
+            "description": "loan officer"
           },
           "nebenkostenAllerEigengenutzterWohnflaechen": {
             "type": "number",
             "description": "ancillary costs for all own-used properties"
           },
-          "produktAnbieter": { "$ref": "#/components/schemas/ProduktAnbieter" }
-        },
-        "description": "creditworthiness"
+          "produktAnbieter": {
+            "$ref": "#/components/schemas/ProduktAnbieter",
+            "description": "loan provider"
+          }
+        }
       },
       "Branche": {
         "type": "object",
+        "description": "sector",
         "properties": {
           "typ": { "type": "string", "enum": ["ING", "MHB", "S_RATING"] },
           "wert": {
             "type": "string",
             "description": "diffrent values depended on type:\n\nsector ING allowed values: BANKEN_VERSICHERUNGEN, BAUGEWERBE, DIENSTLEISTUNGEN_SONSTIGE, EDV_BERATUNG, ENERGIE, ERZIEHUNG_UNTERRICHT, GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT, OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR\n\nsector MHB allowed values: VERARBEITENDES_GEWERBE, BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES\n\nsector S_RATING allowed values: BAUGEWERBE, DIENSTLEISTUNGEN, ENERGIE_UND_WASSERVERSORGUNG_BERGBAU, GEBIETSKOERPERSCHAFTEN_UND_SOZIALVERSICHERUNGEN, GESUNDHEITSWESEN, HANDEL, HOTEL_UND_GASTRONOMIE, KREDITINSTITUTE, LAND_UND_FORSTWIRTSCHAFT_FISCHEREI, OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE, VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN, SONSTIGE"
           }
-        },
-        "description": "sector"
+        }
       },
       "Co2Emissionen": {
         "type": "object",
         "properties": {
           "aktuell": {
             "type": "number",
-            "description": "current CO2 emissions in kg per year and square meter",
-            "format": "double"
+            "format": "double",
+            "description": "current CO2 emissions in kg per year and square meter"
           },
           "geplant": {
             "type": "number",
-            "description": "planned CO2 emissions in kg per year and square meter",
-            "format": "double"
+            "format": "double",
+            "description": "planned CO2 emissions in kg per year and square meter"
           }
         }
       },
       "Darlehen": {
         "type": "object",
+        "description": "loan details",
         "properties": {
           "auszahlungsBetrag": {
             "type": "number",
@@ -1950,8 +1984,8 @@
           },
           "auszahlungsDatum": {
             "type": "string",
-            "description": "disbursement date",
-            "format": "date"
+            "format": "date",
+            "description": "disbursement date"
           },
           "auszahlungsKurs": {
             "type": "number",
@@ -1967,7 +2001,10 @@
             "description": "building savings tariff, only with darlehensTyp==BAUSPAR_DARLEHEN"
           },
           "bausteinId": { "type": "string" },
-          "bereitstellung": { "$ref": "#/components/schemas/Bereitstellung" },
+          "bereitstellung": {
+            "$ref": "#/components/schemas/Bereitstellung",
+            "description": "not with darlehensTyp==PRIVAT_DARLEHEN"
+          },
           "darlehensBetrag": {
             "type": "number",
             "description": "loan amount",
@@ -1997,22 +2034,23 @@
             "example": 2.35
           },
           "effektivZinsRelevanteKosten": {
-            "$ref": "#/components/schemas/EffektivZinsKosten"
+            "$ref": "#/components/schemas/EffektivZinsKosten",
+            "description": "costs for calculation of actual interest"
           },
           "einstandsDatum": {
             "type": "string",
-            "description": "debit interest date",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "debit interest date"
           },
           "forwardPeriodeInMonaten": {
             "type": "integer",
-            "description": "forward period in month, only with darlehensTyp==FORWARD_DARLEHEN",
-            "format": "int32"
+            "format": "int32",
+            "description": "forward period in month, only with darlehensTyp==FORWARD_DARLEHEN"
           },
           "kalkulatorischesLaufzeitEnde": {
             "type": "string",
-            "description": "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG",
-            "format": "date"
+            "format": "date",
+            "description": "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
           },
           "kfwEnergieEffizienzGruppe": {
             "type": "string",
@@ -2045,42 +2083,41 @@
           },
           "laufZeitInJahren": {
             "type": "integer",
-            "description": "only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN",
-            "format": "int32"
+            "format": "int32",
+            "description": "only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
           },
           "laufzeitInMonaten": {
             "type": "integer",
-            "description": "redemption period in month, only with darlehensTyp==PRIVAT_DARLEHEN",
-            "format": "int32"
+            "format": "int32",
+            "description": "redemption period in month, only with darlehensTyp==PRIVAT_DARLEHEN"
           },
           "maximaleLaufzeitInMonaten": {
             "type": "integer",
-            "description": "only with darlehensTyp==ZWISCHEN_FINANZIERUNG",
-            "format": "int32"
+            "format": "int32",
+            "description": "only with darlehensTyp==ZWISCHEN_FINANZIERUNG"
           },
-          "produktAnbieter": { "$ref": "#/components/schemas/ProduktAnbieter" },
+          "produktAnbieter": {
+            "$ref": "#/components/schemas/ProduktAnbieter",
+            "description": "loan provider"
+          },
           "produktAnbieterSpezifischeDarlehensMerkmale": {
             "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "description": "Additional lender-specific data. Only populated in specific use cases when you sell your own credit products."
-            },
+            "additionalProperties": { "type": "object" },
             "description": "Additional lender-specific data. Only populated in specific use cases when you sell your own credit products."
           },
           "produktFeatures": {
             "type": "array",
             "description": "list of features specific to the credit product",
-            "items": {
-              "type": "string",
-              "description": "list of features specific to the credit product",
-              "enum": ["ONE_CLICK", "KONTO_CHECK"]
-            }
+            "items": { "type": "string", "enum": ["ONE_CLICK", "KONTO_CHECK"] }
           },
           "produktId": {
             "type": "string",
             "description": "lender-specific identifier of the credit product"
           },
-          "provision": { "$ref": "#/components/schemas/Provision" },
+          "provision": {
+            "$ref": "#/components/schemas/Provision",
+            "description": "commission"
+          },
           "rateMonatlich": {
             "type": "number",
             "description": "rate for redemption",
@@ -2099,11 +2136,14 @@
             "description": "debit interest",
             "example": 2.05
           },
-          "tilgung": { "$ref": "#/components/schemas/Tilgung" },
+          "tilgung": {
+            "$ref": "#/components/schemas/Tilgung",
+            "description": "not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
+          },
           "tilgungsFreieAnlaufJahre": {
             "type": "integer",
-            "description": "beginning years of no redemption, only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN",
-            "format": "int32"
+            "format": "int32",
+            "description": "beginning years of no redemption, only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
           },
           "vertragsPartner": {
             "type": "array",
@@ -2121,14 +2161,16 @@
               "SONSTIGE_VERWENDUNG"
             ]
           },
-          "zinsBindung": { "$ref": "#/components/schemas/ZinsBindung" },
+          "zinsBindung": {
+            "$ref": "#/components/schemas/ZinsBindung",
+            "description": "not with darlehensTyp IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]"
+          },
           "zinsZahlungsBeginnAm": {
             "type": "string",
-            "description": "start of payment of interest (begins with loan disbursement or reaching the end time of no commitment interest)",
-            "format": "date"
+            "format": "date",
+            "description": "start of payment of interest (begins with loan disbursement or reaching the end time of no commitment interest)"
           }
-        },
-        "description": "loan details"
+        }
       },
       "Dokument": {
         "type": "object",
@@ -2144,8 +2186,7 @@
             "type": "string",
             "description": "mediatype of document, see <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\">HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
           }
-        },
-        "description": "all generated documents, shared proofs and documents uploaded by loan provider. Not returned in the list of all applications."
+        }
       },
       "EffektivZinsKosten": {
         "type": "object",
@@ -2158,8 +2199,7 @@
           "wohnGebaeudeVersicherungsKosten": { "type": "number" },
           "zinsabsicherungsKosten": { "type": "number" },
           "zusatzSicherheitsKosten": { "type": "number" }
-        },
-        "description": "costs for calculation of actual interest"
+        }
       },
       "EinkuenfteAusNebentaetigkeit": {
         "type": "object",
@@ -2182,8 +2222,7 @@
             "description": "payment type, redundant entry serves as an additional filter criterion",
             "enum": ["EINNAHME", "AUSGABE"]
           }
-        },
-        "description": "read-only. Will be calculated based on children-data. One entry per child."
+        }
       },
       "Eintrag": {
         "type": "object",
@@ -2217,13 +2256,13 @@
         "properties": {
           "aktuell": {
             "type": "number",
-            "description": "current energy consumption in kWh per year and square meter",
-            "format": "double"
+            "format": "double",
+            "description": "current energy consumption in kWh per year and square meter"
           },
           "geplant": {
             "type": "number",
-            "description": "planned energy consumption in kWh per year and square meter",
-            "format": "double"
+            "format": "double",
+            "description": "planned energy consumption in kWh per year and square meter"
           }
         }
       },
@@ -2265,8 +2304,8 @@
           },
           "laufzeitBisJahr": {
             "type": "integer",
-            "description": "4-digit year",
             "format": "int32",
+            "description": "4-digit year",
             "example": 2022
           }
         }
@@ -2276,8 +2315,8 @@
         "properties": {
           "anzahlTeilzahlungen": {
             "type": "integer",
-            "description": "Number of payouts for purchase from a property developer or a renovation",
-            "format": "int32"
+            "format": "int32",
+            "description": "Number of payouts for purchase from a property developer or a renovation"
           },
           "aussenAnlagen": {
             "type": "number",
@@ -2400,7 +2439,10 @@
       "Flurstueck": {
         "type": "object",
         "properties": {
-          "anteil": { "$ref": "#/components/schemas/MiteigentumsAnteil" },
+          "anteil": {
+            "$ref": "#/components/schemas/MiteigentumsAnteil",
+            "description": "owning part"
+          },
           "flur": { "type": "string", "description": "plot area" },
           "flurstuecksNummer": {
             "type": "string",
@@ -2410,11 +2452,9 @@
             "type": "number",
             "description": "area dimension in square meter"
           }
-        },
-        "description": "plot of land"
+        }
       },
       "ForwardDarlehen": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -2434,7 +2474,11 @@
                 "format": "int32"
               },
               "sonderTilgungJaehrlich": { "type": "number" },
-              "tilgungsBeginnAm": { "type": "string", "format": "date-time" },
+              "tilgungsBeginnAm": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2020-03-28"
+              },
               "zinsBindungInJahren": { "type": "integer", "format": "int32" }
             }
           }
@@ -2460,8 +2504,8 @@
         "properties": {
           "anzahlDerGewerbeeinheiten": {
             "type": "integer",
-            "description": "only with ObjektArt == HAUS.",
-            "format": "int32"
+            "format": "int32",
+            "description": "only with ObjektArt == HAUS."
           },
           "anzahlDerWohneinheitenImGebaeude": {
             "type": "integer",
@@ -2474,8 +2518,8 @@
           },
           "baujahr": {
             "type": "integer",
-            "description": "construction year of property. Only with verwendungsZweck != NEUBAU4-digit year",
             "format": "int32",
+            "description": "construction year of property. Only with verwendungsZweck != NEUBAU4-digit year",
             "example": 2022
           },
           "bauweise": {
@@ -2523,7 +2567,8 @@
             "description": "Angabe in Kubikmetern. loan provider specific data (optional)"
           },
           "miteigentumsAnteil": {
-            "$ref": "#/components/schemas/MiteigentumsAnteil"
+            "$ref": "#/components/schemas/MiteigentumsAnteil",
+            "description": "only with ObjektArt == EIGENTUMSWOHNUNG."
           },
           "modernisierungen": {
             "type": "array",
@@ -2531,7 +2576,9 @@
             "items": { "$ref": "#/components/schemas/Modernisierung" }
           },
           "modernisierungsAngaben": {
-            "$ref": "#/components/schemas/ModernisierungsAngaben"
+            "$ref": "#/components/schemas/ModernisierungsAngaben",
+            "deprecated": true,
+            "description": "Deprecated. Pls use list of refurbishment."
           },
           "unterkellerung": {
             "type": "string",
@@ -2555,7 +2602,6 @@
         }
       },
       "Gegenangebot": {
-        "required": ["darlehen"],
         "type": "object",
         "properties": {
           "darlehen": {
@@ -2566,19 +2612,24 @@
             "type": "string",
             "description": "name of offer, visible in advisors offerlist, eg. 'Sonderangebot' "
           }
-        }
+        },
+        "required": ["darlehen"]
       },
       "GegenangebotDarlehen": {
-        "required": [
-          "anfaenglicheTilgung",
-          "darlehensBetrag",
-          "darlehensTyp",
-          "effektivZins",
-          "rateMonatlich",
-          "sollZins",
-          "vertriebsProvisionGesamtAbsolut"
-        ],
         "type": "object",
+        "description": "Base class for counter offers",
+        "discriminator": {
+          "mapping": {
+            "ANNUITAETEN_DARLEHEN": "#/components/schemas/AnnuitaetenDarlehen",
+            "FORWARD_DARLEHEN": "#/components/schemas/ForwardDarlehen",
+            "KFW_DARLEHEN": "#/components/schemas/KfwDarlehen",
+            "PRIVAT_DARLEHEN": "#/components/schemas/PrivatDarlehen",
+            "REGIONAL_FOERDER_DARLEHEN": "#/components/schemas/RegionalFoerderDarlehen",
+            "VARIABLES_DARLEHEN": "#/components/schemas/VariablesDarlehen",
+            "ZWISCHEN_FINANZIERUNG": "#/components/schemas/ZwischenFinanzierung"
+          },
+          "propertyName": "darlehensTyp"
+        },
         "properties": {
           "anfaenglicheTilgung": { "type": "number" },
           "darlehensBetrag": { "type": "number" },
@@ -2607,19 +2658,15 @@
             "description": "sum of sales commission (advisor and overhead), europace fee is excluded"
           }
         },
-        "description": "Base class for counter offers",
-        "discriminator": {
-          "mapping": {
-            "ANNUITAETEN_DARLEHEN": "#/components/schemas/AnnuitaetenDarlehen",
-            "FORWARD_DARLEHEN": "#/components/schemas/ForwardDarlehen",
-            "KFW_DARLEHEN": "#/components/schemas/KfwDarlehen",
-            "PRIVAT_DARLEHEN": "#/components/schemas/PrivatDarlehen",
-            "REGIONAL_FOERDER_DARLEHEN": "#/components/schemas/RegionalFoerderDarlehen",
-            "VARIABLES_DARLEHEN": "#/components/schemas/VariablesDarlehen",
-            "ZWISCHEN_FINANZIERUNG": "#/components/schemas/ZwischenFinanzierung"
-          },
-          "propertyName": "darlehensTyp"
-        }
+        "required": [
+          "anfaenglicheTilgung",
+          "darlehensBetrag",
+          "darlehensTyp",
+          "effektivZins",
+          "rateMonatlich",
+          "sollZins",
+          "vertriebsProvisionGesamtAbsolut"
+        ]
       },
       "GrundbuchAngabe": {
         "type": "object",
@@ -2640,12 +2687,14 @@
             "description": "place of the local court responsible as the land registry office"
           },
           "rechteInAbteilung2": {
-            "$ref": "#/components/schemas/RechteAbteilung2"
+            "$ref": "#/components/schemas/RechteAbteilung2",
+            "description": "Encumbrances and restrictions on the usability of the property. Pipeline rights, waivers of distance areas, rights of way, insolvency notices."
           }
         }
       },
       "Grundstueck": {
         "type": "object",
+        "description": "plot",
         "properties": {
           "groesse": {
             "type": "number",
@@ -2662,11 +2711,11 @@
               "SONSTIGES_GRUNDSTUECK"
             ]
           }
-        },
-        "description": "plot"
+        }
       },
       "Haushalt": {
         "type": "object",
+        "description": "household",
         "properties": {
           "antragsteller": {
             "type": "array",
@@ -2674,13 +2723,13 @@
           },
           "anzahlErwachseneImHaushalt": {
             "type": "integer",
-            "description": "loan provider specific data (optional)",
-            "format": "int32"
+            "format": "int32",
+            "description": "loan provider specific data (optional)"
           },
           "anzahlKinderNichtImHaushalt": {
             "type": "integer",
-            "description": "loan provider specific data (optional)",
-            "format": "int32"
+            "format": "int32",
+            "description": "loan provider specific data (optional)"
           },
           "bestehendeImmobilien": {
             "type": "array",
@@ -2693,8 +2742,8 @@
           "id": { "type": "string" },
           "kfzAnzahl": {
             "type": "integer",
-            "description": "loan provider specific data (optional)",
-            "format": "int32"
+            "format": "int32",
+            "description": "loan provider specific data (optional)"
           },
           "kinder": {
             "type": "array",
@@ -2708,8 +2757,7 @@
             "$ref": "#/components/schemas/VermoegenVerbindlichkeiten"
           },
           "positionen": { "$ref": "#/components/schemas/HaushaltsPositionen" }
-        },
-        "description": "household"
+        }
       },
       "HaushaltsPositionen": {
         "type": "object",
@@ -2805,11 +2853,9 @@
       },
       "ImmobilieVerknuepfung": {
         "type": "object",
-        "properties": { "id": { "type": "string" } },
-        "description": "property"
+        "properties": { "id": { "type": "string" } }
       },
       "KfwDarlehen": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -2912,8 +2958,8 @@
           },
           "gueltigBis": {
             "type": "string",
-            "description": "end of reservation date",
-            "format": "date"
+            "format": "date",
+            "description": "end of reservation date"
           },
           "reservierungsMeldung": {
             "type": "string",
@@ -2965,8 +3011,8 @@
           "versicherungsSumme": { "type": "number" },
           "vertragsBeginn": {
             "type": "string",
-            "description": "contract start",
-            "format": "date"
+            "format": "date",
+            "description": "contract start"
           },
           "vertragsEnde": { "type": "string", "format": "date" },
           "vertragsNummer": {
@@ -2996,8 +3042,7 @@
             "description": "only with ausweisArt = ANDERE"
           },
           "ausweisNummer": { "type": "string" }
-        },
-        "description": "loan provider specific data (optional)"
+        }
       },
       "Link": {
         "type": "object",
@@ -3047,8 +3092,7 @@
         "properties": {
           "anteil": { "type": "number", "format": "double" },
           "gesamt": { "type": "integer", "format": "int32" }
-        },
-        "description": "only with ObjektArt == EIGENTUMSWOHNUNG."
+        }
       },
       "Modernisierung": {
         "type": "object",
@@ -3074,11 +3118,11 @@
               "RAUMAUFTEILUNG"
             ]
           }
-        },
-        "description": "loan provider specific data (optional)"
+        }
       },
       "ModernisierungsAngaben": {
         "type": "object",
+        "deprecated": true,
         "properties": {
           "modernisierungsGrad": {
             "type": "string",
@@ -3086,13 +3130,11 @@
           },
           "modernisierungsJahr": {
             "type": "integer",
-            "description": "year of refurbishment of the property. 4-digit year",
             "format": "int32",
+            "description": "year of refurbishment of the property. 4-digit year",
             "example": 2022
           }
-        },
-        "description": "Deprecated. Pls use list of refurbishment.",
-        "deprecated": true
+        }
       },
       "NachrangigesExternesDarlehen": {
         "type": "object",
@@ -3113,28 +3155,35 @@
         }
       },
       "NachrichtDTO": {
-        "required": ["text"],
         "type": "object",
         "properties": {
           "text": {
-            "maxLength": 2000,
-            "minLength": 1,
             "type": "string",
-            "description": "content of message"
+            "description": "content of message",
+            "maxLength": 2000,
+            "minLength": 1
           }
-        }
+        },
+        "required": ["text"]
       },
       "Objektbewertung": {
         "type": "object",
+        "description": "property valuation",
         "properties": {
-          "immobilie": { "$ref": "#/components/schemas/ImmobilieVerknuepfung" },
+          "immobilie": {
+            "$ref": "#/components/schemas/ImmobilieVerknuepfung",
+            "description": "property"
+          },
           "marktwert": { "type": "number", "description": "market value" },
-          "quelle": { "$ref": "#/components/schemas/ObjektbewertungsQuelle" }
-        },
-        "description": "property valuation"
+          "quelle": {
+            "$ref": "#/components/schemas/ObjektbewertungsQuelle",
+            "description": "source"
+          }
+        }
       },
       "ObjektbewertungsQuelle": {
         "type": "object",
+        "description": "source of property valuation",
         "properties": {
           "name": {
             "type": "string",
@@ -3144,8 +3193,7 @@
             "type": "string",
             "description": "reference of source; optional; may reference additional valuation data from external valuation sources, like e.g. Value"
           }
-        },
-        "description": "source of property valuation"
+        }
       },
       "PaginationLinks": {
         "type": "object",
@@ -3157,10 +3205,14 @@
       },
       "Partner": {
         "type": "object",
+        "description": "information about partner, for more use Partner API",
         "properties": {
           "_links": { "$ref": "#/components/schemas/Links" },
           "anrede": { "type": "string", "description": "salutation" },
-          "anschrift": { "$ref": "#/components/schemas/Anschrift" },
+          "anschrift": {
+            "$ref": "#/components/schemas/Anschrift",
+            "description": "adress"
+          },
           "aufsichtsBehoerde": {
             "type": "string",
             "description": "regulating authority"
@@ -3201,8 +3253,7 @@
           },
           "vorname": { "type": "string", "description": "first name" },
           "webseite": { "type": "string" }
-        },
-        "description": "information about partner, for more use Partner API"
+        }
       },
       "PartnerKennzeichen": {
         "type": "object",
@@ -3215,11 +3266,11 @@
             "type": "string",
             "description": "value of partner-identifier"
           }
-        },
-        "description": "list of partner-identifiers"
+        }
       },
       "PatchOperation": {
         "type": "object",
+        "description": "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/). Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\": \"123-ABC\"\" }",
         "properties": {
           "from": { "type": "string" },
           "op": {
@@ -3234,10 +3285,9 @@
           "value": {
             "type": "object",
             "description": "Value to be set or replaced. Allows: string, number or JSON object",
-            "example": "\"ABC123\", 1234, {\"antragsteller\": \"BEANTRAGT\"}"
+            "example": "ABC123"
           }
-        },
-        "description": "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/). Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\": \"123-ABC\"\" }"
+        }
       },
       "Postadresse": {
         "type": "object",
@@ -3246,11 +3296,9 @@
           "ort": { "type": "string", "description": "place" },
           "postleitzahl": { "type": "string", "description": "zip-code" },
           "strasse": { "type": "string", "description": "street" }
-        },
-        "description": "adress of property"
+        }
       },
       "PrivatDarlehen": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -3279,9 +3327,13 @@
       },
       "ProduktAnbieter": {
         "type": "object",
+        "description": "loan provider",
         "properties": {
           "anrede": { "type": "string", "description": "salutation" },
-          "anschrift": { "$ref": "#/components/schemas/Anschrift" },
+          "anschrift": {
+            "$ref": "#/components/schemas/Anschrift",
+            "description": "adress"
+          },
           "aufsichtsBehoerde": {
             "type": "string",
             "description": "regulating authority"
@@ -3330,8 +3382,7 @@
           },
           "vorname": { "type": "string", "description": "first name" },
           "webseite": { "type": "string" }
-        },
-        "description": "loan provider"
+        }
       },
       "Provision": {
         "type": "object",
@@ -3356,19 +3407,16 @@
             "type": "number",
             "description": "sum of sales commissions"
           }
-        },
-        "description": "commission"
+        }
       },
       "RechteAbteilung2": {
         "type": "object",
         "properties": {
           "beschreibung": { "type": "string" },
           "betrag": { "type": "number" }
-        },
-        "description": "Encumbrances and restrictions on the usability of the property. Pipeline rights, waivers of distance areas, rights of way, insolvency notices."
+        }
       },
       "RegionalFoerderDarlehen": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -3472,8 +3520,7 @@
           "privateRenteMonatlich": { "type": "number" },
           "rentenBeginn": { "type": "string", "format": "date" },
           "sonstigesEinkommenMonatlich": { "type": "number" }
-        },
-        "description": "only with art!=RENTNER"
+        }
       },
       "SonderZahlung": {
         "type": "object",
@@ -3530,7 +3577,6 @@
         }
       },
       "StatusDTO": {
-        "required": ["antragsteller", "produktAnbieter"],
         "type": "object",
         "properties": {
           "antragsteller": {
@@ -3578,7 +3624,8 @@
               "KEINE_ANGABE"
             ]
           }
-        }
+        },
+        "required": ["antragsteller", "produktAnbieter"]
       },
       "Tilgung": {
         "type": "object",
@@ -3593,17 +3640,19 @@
           },
           "tilgungsBeginnAm": {
             "type": "string",
-            "description": "redemption date",
-            "format": "date"
+            "format": "date",
+            "description": "redemption date"
           },
-          "tilgungsErsatz": { "$ref": "#/components/schemas/TilgungsErsatz" },
+          "tilgungsErsatz": {
+            "$ref": "#/components/schemas/TilgungsErsatz",
+            "description": "not with PRIVAT_DARLEHEN"
+          },
           "volltilgerDarlehen": {
             "type": "boolean",
             "description": "only with darlehensArt IN [ANNUITAETEN_DARLEHEN,FORWARD_DARLEHEN]",
             "example": true
           }
-        },
-        "description": "not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
+        }
       },
       "TilgungsErsatz": {
         "type": "object",
@@ -3616,8 +3665,7 @@
             "type": "string",
             "description": "redemption substitute type, eg BAUSPARVERTRAG or KAPITALBILDENDE_LEBENSVERSICHERUNG"
           }
-        },
-        "description": "not with PRIVAT_DARLEHEN"
+        }
       },
       "TilgungsPhase": {
         "type": "object",
@@ -3629,7 +3677,6 @@
         }
       },
       "VariablesDarlehen": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -3644,7 +3691,11 @@
                 "type": "integer",
                 "format": "int32"
               },
-              "tilgungsBeginnAm": { "type": "string", "format": "date-time" }
+              "tilgungsBeginnAm": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2020-03-28"
+              }
             }
           }
         ],
@@ -3662,6 +3713,7 @@
       },
       "Verbindlichkeit": {
         "type": "object",
+        "description": "liability",
         "properties": {
           "glaeubiger": { "type": "string" },
           "laufzeitEnde": { "type": "string", "format": "date" },
@@ -3678,8 +3730,7 @@
             "description": "payment type, redundant entry serves as an additional filter criterion",
             "enum": ["EINNAHME", "AUSGABE"]
           }
-        },
-        "description": "liability"
+        }
       },
       "VermietungsInformationen": {
         "type": "object",
@@ -3736,16 +3787,17 @@
       },
       "Vertrieb": {
         "type": "object",
+        "description": "information about distribution channel, for more use Partner API",
         "properties": {
           "_links": { "$ref": "#/components/schemas/Links" },
           "orderid": { "type": "integer", "format": "int32" },
           "organisationsName": { "type": "string" },
           "partnerId": { "type": "string" }
-        },
-        "description": "information about distribution channel, for more use Partner API"
+        }
       },
       "VertriebsStruktur": {
         "type": "object",
+        "description": "distribution channels of advisor and/or clerk at creation date of application",
         "properties": {
           "_links": { "$ref": "#/components/schemas/Links" },
           "vertriebeDesAnsprechpartners": {
@@ -3758,8 +3810,7 @@
             "description": "distribution channels of advisor at creation date of application",
             "items": { "$ref": "#/components/schemas/Vertrieb" }
           }
-        },
-        "description": "distribution channels of advisor and/or clerk at creation date of application"
+        }
       },
       "Vorhaben": {
         "type": "object",
@@ -3827,8 +3878,7 @@
           "jahre": { "type": "integer", "format": "int32" },
           "monate": { "type": "integer", "format": "int32" },
           "restschuldNachZinsBindungsEnde": { "type": "number" }
-        },
-        "description": "not with darlehensTyp IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]"
+        }
       },
       "ZugrundeliegendeDatenZumAntrag": {
         "type": "object",
@@ -3843,11 +3893,9 @@
             "items": { "$ref": "#/components/schemas/Haushalt" }
           },
           "vorhaben": { "$ref": "#/components/schemas/Vorhaben" }
-        },
-        "description": "data of applicants, property and project, wich is the source for application. Not returned in the list of all applications."
+        }
       },
       "ZwischenFinanzierung": {
-        "type": "object",
         "allOf": [
           { "$ref": "#/components/schemas/GegenangebotDarlehen" },
           {
@@ -3873,6 +3921,7 @@
       },
       "zahlungsplan": {
         "type": "object",
+        "description": "redemption plan",
         "properties": {
           "bausteinId": { "type": "string" },
           "eintraege": {
@@ -3885,8 +3934,7 @@
           },
           "summeEndeDerZinsbindung": { "$ref": "#/components/schemas/Eintrag" },
           "typ": { "type": "string", "enum": ["TILGUNGSPLAN"] }
-        },
-        "description": "redemption plan"
+        }
       }
     },
     "securitySchemes": {
