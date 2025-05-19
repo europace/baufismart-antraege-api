@@ -1,5 +1,5 @@
 ---
-openapi: "3.0.1"
+openapi: "3.1.0"
 info:
   contact:
     email: "devsupport@europace2.de"
@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.84"
+  version: "2.85"
 servers:
   - url: "https://baufismart.api.europace.de"
 security:
@@ -661,11 +661,12 @@ paths:
           schema:
             type: "integer"
             format: "int32"
-        - in: "query"
-          name: "nachrichtDTO"
-          required: true
-          schema:
-            $ref: "#/components/schemas/NachrichtDTO"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NachrichtDTO"
+        required: true
       responses:
         "201":
           description: "CREATED"
@@ -756,11 +757,12 @@ paths:
           schema:
             type: "integer"
             format: "int32"
-        - in: "query"
-          name: "statusDTO"
-          required: true
-          schema:
-            $ref: "#/components/schemas/StatusDTO"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StatusDTO"
+        required: true
       responses:
         "202":
           description: "ACCEPTED"
@@ -865,7 +867,6 @@ components:
           type: "string"
         versicherungsZeitraum:
           $ref: "#/components/schemas/VersicherungsZeitraum"
-      description: "payment protection insurance"
     AbsicherungsAngaben:
       type: "object"
       properties:
@@ -874,6 +875,7 @@ components:
           description: "TRUE if the weekly working time is at least 15 hours"
     AngebotZumAntrag:
       type: "object"
+      description: "offer details"
       properties:
         _links:
           $ref: "#/components/schemas/Links"
@@ -888,6 +890,7 @@ components:
             $ref: "#/components/schemas/Bausparvertrag"
         beleihungsRechnung:
           $ref: "#/components/schemas/BeleihungsRechnung"
+          description: "mortgage value calculation"
         bewertungDesAngebots:
           type: "string"
           description: "type of advisory responsability"
@@ -905,8 +908,8 @@ components:
             $ref: "#/components/schemas/Darlehen"
         erzeugtAm:
           type: "string"
-          description: "date offer created"
           format: "date-time"
+          description: "date offer created"
         kennung:
           type: "string"
           description: "additional offer name"
@@ -926,7 +929,6 @@ components:
           description: "result of europace-offer-validation"
           items:
             $ref: "#/components/schemas/AngebotsPruefungsErgebnis"
-      description: "offer details"
     AngebotsPruefungsErgebnis:
       type: "object"
       properties:
@@ -936,9 +938,7 @@ components:
           $ref: "#/components/schemas/KfwKonditionsReservierung"
         produktAnbieterId:
           type: "string"
-      description: "result of europace-offer-validation"
     AnnuitaetenDarlehen:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -956,6 +956,7 @@ components:
             tilgungsBeginnAm:
               type: "string"
               format: "date-time"
+              example: "2020-03-28"
             zinsBindungInJahren:
               type: "integer"
               format: "int32"
@@ -987,9 +988,9 @@ components:
         strasse:
           type: "string"
           description: "street"
-      description: "adress"
     Antraege:
       type: "object"
+      description: "list of applications"
       properties:
         _links:
           $ref: "#/components/schemas/PaginationLinks"
@@ -997,16 +998,20 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/Antrag"
-      description: "list of applications"
     Antrag:
       type: "object"
+      description: "application for a loan provider to approve"
       properties:
         _links:
           $ref: "#/components/schemas/Links"
         angebot:
           $ref: "#/components/schemas/AngebotZumAntrag"
+          description:
+            "The offer on which the application is based on. Not returned\
+            \ in the list of all applications."
         ansprechpartner:
           $ref: "#/components/schemas/Partner"
+          description: "clerk. Not returned in the list of all applications."
         antragsNummer:
           type: "string"
           description: "application-id"
@@ -1015,6 +1020,9 @@ components:
           description: "loan providers reference for application"
         beratung:
           $ref: "#/components/schemas/Beratung"
+          description:
+            "information about advisor type. Not returned in the list of\
+            \ all applications."
         datenKontext:
           type: "string"
           description: "usage mode of the api for production or testmode"
@@ -1022,41 +1030,48 @@ components:
             - "TEST_MODUS"
             - "ECHT_GESCHAEFT"
         dokumente:
-          uniqueItems: true
           type: "array"
           description:
             "all generated documents, shared proofs and documents uploaded\
             \ by loan provider. Not returned in the list of all applications."
           items:
             $ref: "#/components/schemas/Dokument"
+          uniqueItems: true
         entscheidungsreifeVomVertriebSignalisiert:
           type: "boolean"
           description: "advisor-mark of final state for approving"
         kreditSachbearbeiter:
           $ref: "#/components/schemas/Partner"
+          description: "loan officer. Not returned in the list of all applications."
         letzteAenderung:
           type: "string"
-          description: "last changed date"
           format: "date-time"
+          description: "last changed date"
         letztesEreignis:
           type: "string"
-          description: "last event date. For example for messages from the advisors."
           format: "date-time"
+          description: "last event date. For example for messages from the advisors."
         produktAnbieter:
           $ref: "#/components/schemas/ProduktAnbieter"
+          description: "Not returned in the list of all applications."
         prolongation:
           type: "boolean"
           description: "Not returned in the list of all applications."
         status:
           $ref: "#/components/schemas/AntragsStatus"
+          description: "state of application. Not returned in the list of all applications."
         vermittler:
           $ref: "#/components/schemas/Partner"
+          description: "advisor. Not returned in the list of all applications."
         vertriebsStrukturZumZeitpunktDerAnnahme:
           $ref: "#/components/schemas/VertriebsStruktur"
+          description:
+            "distribution channels of advisor and/or clerk at creation\
+            \ date of application. Not returned in the list of all applications."
         voraussichtlicheBearbeitung:
           type: "string"
-          description: "estimated approval date. Not returned in the list of all applications."
           format: "date"
+          description: "estimated approval date. Not returned in the list of all applications."
         vorgangsReferenz:
           type: "string"
           description:
@@ -1066,21 +1081,21 @@ components:
           type: "object"
           additionalProperties:
             type: "string"
-            description:
-              "additional loan providers references. Will be visible to\
-              \ the advisor. Not returned in the list of all applications."
           description:
             "additional loan providers references. Will be visible to the\
             \ advisor. Not returned in the list of all applications."
         zeitpunktDerAnnahme:
           type: "string"
-          description: "creation date of application"
           format: "date-time"
+          description: "creation date of application"
         zugrundeliegendeDaten:
           $ref: "#/components/schemas/ZugrundeliegendeDatenZumAntrag"
-      description: "application for a loan provider to approve"
+          description:
+            "data of applicants, property and project, wich is the source\
+            \ for application. Not returned in the list of all applications."
     AntragsStatus:
       type: "object"
+      description: "application state"
       properties:
         antragsteller:
           type: "string"
@@ -1131,9 +1146,9 @@ components:
             - "UNTERLAGEN_UNVOLLSTAENDIG"
             - "GEGENANGEBOT"
             - "KEINE_ANGABE"
-      description: "application state"
     Antragsteller:
       type: "object"
+      description: "customer"
       properties:
         absicherungsAngaben:
           $ref: "#/components/schemas/AbsicherungsAngaben"
@@ -1150,8 +1165,8 @@ components:
           description: "only with non-EU nationality"
         arbeitserlaubnisBefristetBis:
           type: "string"
-          description: "only with restricted work permit"
           format: "date"
+          description: "only with restricted work permit"
         aufenthaltsTitel:
           type: "string"
           description: "only with non-EU nationality"
@@ -1163,8 +1178,8 @@ components:
             - "BLAUE_KARTE_EU"
         aufenthaltsTitelBefristetBis:
           type: "string"
-          description: "date of restricted residence permisson"
           format: "date"
+          description: "date of restricted residence permisson"
         berufsgruppeBeiIngDiba:
           type: "string"
           description:
@@ -1185,6 +1200,7 @@ components:
             $ref: "#/components/schemas/Branche"
         brancheBeiIngDiba:
           type: "string"
+          deprecated: true
           description:
             "Deprecated. Pls use property 'branche'. sector (ING) loan\
             \ provider specific data (optional). allowed values: BANKEN_VERSICHERUNGEN,\
@@ -1192,17 +1208,17 @@ components:
             \ GESUNDHEITSWESEN, HANDEL, HANDWERK, HOTEL_GASTRONOMIE, LANDWIRTSCHAFT,\
             \ OEFFENTLICHER_DIENST, PRODUKTION_INDUSTRIE, VERKEHR.(More value can\
             \ be attached)"
-          deprecated: true
         brancheBeiMhb:
           type: "string"
+          deprecated: true
           description:
             "Deprecated. Pls use property 'branche'. sector (MHB) loan\
             \ provider specific data (optional). allowed values: VERARBEITENDES_GEWERBE,\
             \ BAU, HANDEL, VERKEHR_INFORMATION, DIENSTLEISTUNG, SONSTIGES.(More value\
             \ can be attached)"
-          deprecated: true
         brancheBeiSRating:
           type: "string"
+          deprecated: true
           description:
             "Deprecated. Pls use property 'branche'. sector (Sparkassen)\
             \ loan provider specific data (optional). allowed values: BAUGEWERBE,\
@@ -1211,7 +1227,6 @@ components:
             \ OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,\
             \ VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN,\
             \ SONSTIGE.(More value can be attached)"
-          deprecated: true
         bruttoJahresEinkommenErwartet:
           type: "number"
         bruttoVorjahresEinkommen:
@@ -1244,10 +1259,11 @@ components:
           type: "string"
         inDeutschlandSeit:
           type: "string"
-          description: "only with non-EU nationality"
           format: "date"
+          description: "only with non-EU nationality"
         legitimationsDaten:
           $ref: "#/components/schemas/LegitimationsDaten"
+          description: "loan provider specific data (optional)"
         nachname:
           type: "string"
         schufaErgebnis:
@@ -1268,6 +1284,7 @@ components:
           type: "boolean"
         verheiratetMitAntragsteller:
           $ref: "#/components/schemas/AntragstellerVerknuepfung"
+          description: "Deprecated. only if married"
         vorAnschrift:
           $ref: "#/components/schemas/Postadresse"
         vorname:
@@ -1277,7 +1294,6 @@ components:
         wohnhaftSeit:
           type: "string"
           format: "date"
-      description: "customer"
     AntragstellerVerknuepfung:
       type: "object"
       properties:
@@ -1286,7 +1302,6 @@ components:
         name:
           type: "string"
           description: "only for better readability, pls use antragsteller-ressource"
-      description: "only with external building society saving loans"
     AusgabenMonatlich:
       type: "object"
       properties:
@@ -1341,6 +1356,7 @@ components:
           type: "number"
     Bankverbindung:
       type: "object"
+      description: "bank account"
       properties:
         bic:
           type: "string"
@@ -1356,7 +1372,6 @@ components:
           type: "string"
         kreditinstitut:
           type: "string"
-      description: "bank account"
     BausparAngebot:
       type: "object"
       properties:
@@ -1374,12 +1389,12 @@ components:
           type: "number"
         einmalzahlung:
           type: "number"
-          description: "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
           deprecated: true
+          description: "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
         gesamtLaufzeitInJahren:
           type: "integer"
-          description: "only with external building society saving loans"
           format: "int32"
+          description: "only with external building society saving loans"
         id:
           type: "string"
         produktAnbieter:
@@ -1402,8 +1417,8 @@ components:
           type: "string"
         vertragsBeginn:
           type: "string"
-          description: "contract start"
           format: "date"
+          description: "contract start"
         vertragsNummer:
           type: "string"
           description: "contract number"
@@ -1419,6 +1434,7 @@ components:
           format: "date"
     Bausparvertrag:
       type: "object"
+      description: "building society savings contract details"
       properties:
         abschlussGebuehr:
           type: "number"
@@ -1434,12 +1450,12 @@ components:
           type: "number"
         einmalzahlung:
           type: "number"
-          description: "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
           deprecated: true
+          description: "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
         gesamtLaufzeitInJahren:
           type: "integer"
-          description: "only with external building society saving loans"
           format: "int32"
+          description: "only with external building society saving loans"
         id:
           type: "string"
         produktAnbieter:
@@ -1465,8 +1481,8 @@ components:
           type: "string"
         vertragsBeginn:
           type: "string"
-          description: "contract start"
           format: "date"
+          description: "contract start"
         vertragsNummer:
           type: "string"
           description: "contract number"
@@ -1480,7 +1496,6 @@ components:
         zuteilungsDatum:
           type: "string"
           format: "date"
-      description: "building society savings contract details"
     BeleihungsRechnung:
       type: "object"
       properties:
@@ -1502,18 +1517,18 @@ components:
             $ref: "#/components/schemas/Objektbewertung"
         produktAnbieter:
           $ref: "#/components/schemas/ProduktAnbieter"
-      description: "mortgage value calculation"
     BeleihungsWert:
       type: "object"
       properties:
         adresse:
           $ref: "#/components/schemas/Postadresse"
+          description: "adress of property"
         beleihungsWert:
           type: "number"
           description: "mortgage value"
         immobilie:
           $ref: "#/components/schemas/ImmobilieVerknuepfung"
-      description: "list of mortgage values"
+          description: "property"
     Beratung:
       type: "object"
       properties:
@@ -1530,9 +1545,6 @@ components:
         istKundenBetreuerVerkaeuferOderMaklerDerImmobilie:
           type: "boolean"
           description: "true, if advisor is estate agent in this case too"
-      description:
-        "information about advisor type. Not returned in the list of all\
-        \ applications."
     Bereitstellung:
       type: "object"
       properties:
@@ -1541,16 +1553,16 @@ components:
           description: "commitment interest"
         bereitstellungsZinsFreieZeitInMonaten:
           type: "integer"
-          description: "time of no commitment interest in month"
           format: "int32"
-      description: "not with darlehensTyp==PRIVAT_DARLEHEN"
+          description: "time of no commitment interest in month"
     Beschaeftigung:
       type: "object"
+      description: "profession"
       properties:
         anzahlGehaelterProJahr:
           type: "number"
-          description: "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
           format: "double"
+          description: "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
         arbeitgeber:
           type: "string"
           description: "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
@@ -1579,8 +1591,8 @@ components:
           description: "only with art!=RENTNER"
         beschaeftigtSeit:
           type: "string"
-          description: "only with art==ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTAENDIGER"
           format: "date"
+          description: "only with art==ANGESTELLTER,ARBEITER,BEAMTER,FREIBERUFLER,SELBSTAENDIGER"
         einkommenNettoJaehrlich:
           type: "number"
           description: "only with art==FREIBERUFLER,SELBSTAENDIGER"
@@ -1592,6 +1604,7 @@ components:
           description: "only with art==ANGESTELLTER,ARBEITER,BEAMTER"
         situationNachRenteneintritt:
           $ref: "#/components/schemas/SituationNachRenteneintritt"
+          description: "only with art!=RENTNER"
         sonstigesRegelmaessigesEinkommenNettoMonatlich:
           type: "number"
           description: "only with art==ARBEITSLOSER,HAUSFRAU"
@@ -1612,9 +1625,9 @@ components:
             \ PERSONALBERATER, PHYSIOTHERAPEUT, PSYCHOLOGE, RAUMAUSSTATTER, RUNDFUNKSPRECHER,\
             \ SACHVERSTAENDIGER, STADTPLANER, STATIKER, STEUERBERATER, TIERARZT, UNTERNEHMENSBERATER,\
             \ VERMITTLER, WIRTSCH_BUCHPRUEFER_REVISOR, ZAHNARZT, ZAHNTECHNIKER, SONSTIGES."
-      description: "profession"
     BestehendeImmobilie:
       type: "object"
+      description: "existing property"
       properties:
         adresse:
           $ref: "#/components/schemas/Postadresse"
@@ -1675,7 +1688,6 @@ components:
           description:
             "loan provider specific data (optional). allowed values: GEHOBEN,MITTEL,EINFACH.\
             \ (More values can be attached)"
-      description: "existing property"
     BestehenderBausparvertrag:
       type: "object"
       properties:
@@ -1687,8 +1699,8 @@ components:
           type: "number"
         einmalzahlung:
           type: "number"
-          description: "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
           deprecated: true
+          description: "Deprecated. Einmalzahlungen are part of Sonderzahlungen."
         id:
           type: "string"
         maximalAufzuloesenderBetrag:
@@ -1722,8 +1734,8 @@ components:
             - "VERBINDLICHKEIT"
         vertragsBeginn:
           type: "string"
-          description: "contract start"
           format: "date"
+          description: "contract start"
         vertragsNummer:
           type: "string"
           description: "contract number"
@@ -1745,12 +1757,12 @@ components:
       properties:
         abzuloesendeRestschuld:
           type: "number"
-          description: "Deprecated."
           deprecated: true
+          description: "Deprecated."
         aktuelleRestschuldWennNichtAbzuloesen:
           type: "number"
-          description: "Deprecated. only with wirdAbgeloest==true"
           deprecated: true
+          description: "Deprecated. only with wirdAbgeloest==true"
         bausteinId:
           type: "string"
         darlehensArt:
@@ -1820,12 +1832,12 @@ components:
       properties:
         abzuloesendeRestschuld:
           type: "number"
-          description: "Deprecated."
           deprecated: true
+          description: "Deprecated."
         aktuelleRestschuldWennNichtAbzuloesen:
           type: "number"
-          description: "Deprecated. only with wirdAbgeloest==true"
           deprecated: true
+          description: "Deprecated. only with wirdAbgeloest==true"
         bausteinId:
           type: "string"
         darlehensArt:
@@ -1904,6 +1916,7 @@ components:
           description: "only produktAnbieterId==DEUTSCHE_BANK"
     Bonitaet:
       type: "object"
+      description: "creditworthiness"
       properties:
         angerechneteLebensHaltungsKosten:
           type: "number"
@@ -1919,14 +1932,16 @@ components:
           description: "budget surplus"
         kreditEntscheider:
           $ref: "#/components/schemas/ProduktAnbieter"
+          description: "loan officer"
         nebenkostenAllerEigengenutzterWohnflaechen:
           type: "number"
           description: "ancillary costs for all own-used properties"
         produktAnbieter:
           $ref: "#/components/schemas/ProduktAnbieter"
-      description: "creditworthiness"
+          description: "loan provider"
     Branche:
       type: "object"
+      description: "sector"
       properties:
         typ:
           type: "string"
@@ -1948,20 +1963,20 @@ components:
             \ OEFFENTLICHER_DIENST, ORGANISATIONEN_OHNE_ERWERBSZWECK_PRIVATE_HAUSHALTE,\
             \ VERARBEITENDES_GEWERBE, VERKEHR_UND_NACHRICHTENUEBERMITTLUNG, VERSICHERUNGEN,\
             \ SONSTIGE"
-      description: "sector"
     Co2Emissionen:
       type: "object"
       properties:
         aktuell:
           type: "number"
-          description: "current CO2 emissions in kg per year and square meter"
           format: "double"
+          description: "current CO2 emissions in kg per year and square meter"
         geplant:
           type: "number"
-          description: "planned CO2 emissions in kg per year and square meter"
           format: "double"
+          description: "planned CO2 emissions in kg per year and square meter"
     Darlehen:
       type: "object"
+      description: "loan details"
       properties:
         auszahlungsBetrag:
           type: "number"
@@ -1969,8 +1984,8 @@ components:
           example: 365000.0
         auszahlungsDatum:
           type: "string"
-          description: "disbursement date"
           format: "date"
+          description: "disbursement date"
         auszahlungsKurs:
           type: "number"
           description: "disbursement ratio"
@@ -1985,6 +2000,7 @@ components:
           type: "string"
         bereitstellung:
           $ref: "#/components/schemas/Bereitstellung"
+          description: "not with darlehensTyp==PRIVAT_DARLEHEN"
         darlehensBetrag:
           type: "number"
           description: "loan amount"
@@ -2010,18 +2026,19 @@ components:
           example: 2.35
         effektivZinsRelevanteKosten:
           $ref: "#/components/schemas/EffektivZinsKosten"
+          description: "costs for calculation of actual interest"
         einstandsDatum:
           type: "string"
-          description: "debit interest date"
           format: "date-time"
+          description: "debit interest date"
         forwardPeriodeInMonaten:
           type: "integer"
-          description: "forward period in month, only with darlehensTyp==FORWARD_DARLEHEN"
           format: "int32"
+          description: "forward period in month, only with darlehensTyp==FORWARD_DARLEHEN"
         kalkulatorischesLaufzeitEnde:
           type: "string"
-          description: "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
           format: "date"
+          description: "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
         kfwEnergieEffizienzGruppe:
           type: "string"
           description:
@@ -2066,25 +2083,23 @@ components:
           example: -0.25
         laufZeitInJahren:
           type: "integer"
-          description: "only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
           format: "int32"
+          description: "only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
         laufzeitInMonaten:
           type: "integer"
-          description: "redemption period in month, only with darlehensTyp==PRIVAT_DARLEHEN"
           format: "int32"
+          description: "redemption period in month, only with darlehensTyp==PRIVAT_DARLEHEN"
         maximaleLaufzeitInMonaten:
           type: "integer"
-          description: "only with darlehensTyp==ZWISCHEN_FINANZIERUNG"
           format: "int32"
+          description: "only with darlehensTyp==ZWISCHEN_FINANZIERUNG"
         produktAnbieter:
           $ref: "#/components/schemas/ProduktAnbieter"
+          description: "loan provider"
         produktAnbieterSpezifischeDarlehensMerkmale:
           type: "object"
           additionalProperties:
             type: "object"
-            description:
-              "Additional lender-specific data. Only populated in specific\
-              \ use cases when you sell your own credit products."
           description:
             "Additional lender-specific data. Only populated in specific\
             \ use cases when you sell your own credit products."
@@ -2093,7 +2108,6 @@ components:
           description: "list of features specific to the credit product"
           items:
             type: "string"
-            description: "list of features specific to the credit product"
             enum:
               - "ONE_CLICK"
               - "KONTO_CHECK"
@@ -2102,6 +2116,7 @@ components:
           description: "lender-specific identifier of the credit product"
         provision:
           $ref: "#/components/schemas/Provision"
+          description: "commission"
         rateMonatlich:
           type: "number"
           description: "rate for redemption"
@@ -2124,12 +2139,13 @@ components:
           example: 2.05
         tilgung:
           $ref: "#/components/schemas/Tilgung"
+          description: "not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
         tilgungsFreieAnlaufJahre:
           type: "integer"
+          format: "int32"
           description:
             "beginning years of no redemption, only with darlehensTyp==KFW_DARLEHEN\
             \ or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
-          format: "int32"
         vertragsPartner:
           type: "array"
           description: "only with external building society saving loans"
@@ -2144,13 +2160,13 @@ components:
             - "SONSTIGE_VERWENDUNG"
         zinsBindung:
           $ref: "#/components/schemas/ZinsBindung"
+          description: "not with darlehensTyp IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]"
         zinsZahlungsBeginnAm:
           type: "string"
+          format: "date"
           description:
             "start of payment of interest (begins with loan disbursement\
             \ or reaching the end time of no commitment interest)"
-          format: "date"
-      description: "loan details"
     Dokument:
       type: "object"
       properties:
@@ -2171,9 +2187,6 @@ components:
           description:
             "mediatype of document, see <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\"\
             >HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
-      description:
-        "all generated documents, shared proofs and documents uploaded\
-        \ by loan provider. Not returned in the list of all applications."
     EffektivZinsKosten:
       type: "object"
       properties:
@@ -2193,7 +2206,6 @@ components:
           type: "number"
         zusatzSicherheitsKosten:
           type: "number"
-      description: "costs for calculation of actual interest"
     EinkuenfteAusNebentaetigkeit:
       type: "object"
       properties:
@@ -2223,9 +2235,6 @@ components:
           enum:
             - "EINNAHME"
             - "AUSGABE"
-      description:
-        "read-only. Will be calculated based on children-data. One entry\
-        \ per child."
     Eintrag:
       type: "object"
       properties:
@@ -2267,12 +2276,12 @@ components:
       properties:
         aktuell:
           type: "number"
-          description: "current energy consumption in kWh per year and square meter"
           format: "double"
+          description: "current energy consumption in kWh per year and square meter"
         geplant:
           type: "number"
-          description: "planned energy consumption in kWh per year and square meter"
           format: "double"
+          description: "planned energy consumption in kWh per year and square meter"
     EnergieEffizienzAusweis:
       type: "object"
       properties:
@@ -2312,18 +2321,18 @@ components:
             - "OEFFENTLICH_KIRCHLICH"
         laufzeitBisJahr:
           type: "integer"
-          description: "4-digit year"
           format: "int32"
+          description: "4-digit year"
           example: 2022
     Finanzbedarf:
       type: "object"
       properties:
         anzahlTeilzahlungen:
           type: "integer"
+          format: "int32"
           description:
             "Number of payouts for purchase from a property developer or\
             \ a renovation"
-          format: "int32"
         aussenAnlagen:
           type: "number"
           description: "costs for gardening"
@@ -2441,6 +2450,7 @@ components:
       properties:
         anteil:
           $ref: "#/components/schemas/MiteigentumsAnteil"
+          description: "owning part"
         flur:
           type: "string"
           description: "plot area"
@@ -2450,9 +2460,7 @@ components:
         groesse:
           type: "number"
           description: "area dimension in square meter"
-      description: "plot of land"
     ForwardDarlehen:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -2473,6 +2481,7 @@ components:
             tilgungsBeginnAm:
               type: "string"
               format: "date-time"
+              example: "2020-03-28"
             zinsBindungInJahren:
               type: "integer"
               format: "int32"
@@ -2495,8 +2504,8 @@ components:
       properties:
         anzahlDerGewerbeeinheiten:
           type: "integer"
-          description: "only with ObjektArt == HAUS."
           format: "int32"
+          description: "only with ObjektArt == HAUS."
         anzahlDerWohneinheitenImGebaeude:
           type: "integer"
           format: "int32"
@@ -2511,10 +2520,10 @@ components:
             \ (More values can be attached)"
         baujahr:
           type: "integer"
+          format: "int32"
           description:
             "construction year of property. Only with verwendungsZweck\
             \ != NEUBAU4-digit year"
-          format: "int32"
           example: 2022
         bauweise:
           type: "string"
@@ -2561,6 +2570,7 @@ components:
           description: "Angabe in Kubikmetern. loan provider specific data (optional)"
         miteigentumsAnteil:
           $ref: "#/components/schemas/MiteigentumsAnteil"
+          description: "only with ObjektArt == EIGENTUMSWOHNUNG."
         modernisierungen:
           type: "array"
           description: "loan provider specific data (optional)"
@@ -2568,6 +2578,8 @@ components:
             $ref: "#/components/schemas/Modernisierung"
         modernisierungsAngaben:
           $ref: "#/components/schemas/ModernisierungsAngaben"
+          deprecated: true
+          description: "Deprecated. Pls use list of refurbishment."
         unterkellerung:
           type: "string"
           description:
@@ -2594,8 +2606,6 @@ components:
         vermietungsInformationen:
           $ref: "#/components/schemas/VermietungsInformationen"
     Gegenangebot:
-      required:
-        - "darlehen"
       type: "object"
       properties:
         darlehen:
@@ -2605,16 +2615,21 @@ components:
         kennung:
           type: "string"
           description: "name of offer, visible in advisors offerlist, eg. 'Sonderangebot' "
-    GegenangebotDarlehen:
       required:
-        - "anfaenglicheTilgung"
-        - "darlehensBetrag"
-        - "darlehensTyp"
-        - "effektivZins"
-        - "rateMonatlich"
-        - "sollZins"
-        - "vertriebsProvisionGesamtAbsolut"
+        - "darlehen"
+    GegenangebotDarlehen:
       type: "object"
+      description: "Base class for counter offers"
+      discriminator:
+        mapping:
+          ANNUITAETEN_DARLEHEN: "#/components/schemas/AnnuitaetenDarlehen"
+          FORWARD_DARLEHEN: "#/components/schemas/ForwardDarlehen"
+          KFW_DARLEHEN: "#/components/schemas/KfwDarlehen"
+          PRIVAT_DARLEHEN: "#/components/schemas/PrivatDarlehen"
+          REGIONAL_FOERDER_DARLEHEN: "#/components/schemas/RegionalFoerderDarlehen"
+          VARIABLES_DARLEHEN: "#/components/schemas/VariablesDarlehen"
+          ZWISCHEN_FINANZIERUNG: "#/components/schemas/ZwischenFinanzierung"
+        propertyName: "darlehensTyp"
       properties:
         anfaenglicheTilgung:
           type: "number"
@@ -2647,17 +2662,14 @@ components:
           description:
             "sum of sales commission (advisor and overhead), europace fee\
             \ is excluded"
-      description: "Base class for counter offers"
-      discriminator:
-        mapping:
-          ANNUITAETEN_DARLEHEN: "#/components/schemas/AnnuitaetenDarlehen"
-          FORWARD_DARLEHEN: "#/components/schemas/ForwardDarlehen"
-          KFW_DARLEHEN: "#/components/schemas/KfwDarlehen"
-          PRIVAT_DARLEHEN: "#/components/schemas/PrivatDarlehen"
-          REGIONAL_FOERDER_DARLEHEN: "#/components/schemas/RegionalFoerderDarlehen"
-          VARIABLES_DARLEHEN: "#/components/schemas/VariablesDarlehen"
-          ZWISCHEN_FINANZIERUNG: "#/components/schemas/ZwischenFinanzierung"
-        propertyName: "darlehensTyp"
+      required:
+        - "anfaenglicheTilgung"
+        - "darlehensBetrag"
+        - "darlehensTyp"
+        - "effektivZins"
+        - "rateMonatlich"
+        - "sollZins"
+        - "vertriebsProvisionGesamtAbsolut"
     GrundbuchAngabe:
       type: "object"
       properties:
@@ -2682,8 +2694,13 @@ components:
             \ office"
         rechteInAbteilung2:
           $ref: "#/components/schemas/RechteAbteilung2"
+          description:
+            "Encumbrances and restrictions on the usability of the property.\
+            \ Pipeline rights, waivers of distance areas, rights of way, insolvency\
+            \ notices."
     Grundstueck:
       type: "object"
+      description: "plot"
       properties:
         groesse:
           type: "number"
@@ -2697,9 +2714,9 @@ components:
             - "UNBEBAUTES_GEWERBEGRUNDSTUECK"
             - "LANDWIRTSCHAFTLICHES_GRUNDSTUECK"
             - "SONSTIGES_GRUNDSTUECK"
-      description: "plot"
     Haushalt:
       type: "object"
+      description: "household"
       properties:
         antragsteller:
           type: "array"
@@ -2707,12 +2724,12 @@ components:
             $ref: "#/components/schemas/Antragsteller"
         anzahlErwachseneImHaushalt:
           type: "integer"
-          description: "loan provider specific data (optional)"
           format: "int32"
+          description: "loan provider specific data (optional)"
         anzahlKinderNichtImHaushalt:
           type: "integer"
-          description: "loan provider specific data (optional)"
           format: "int32"
+          description: "loan provider specific data (optional)"
         bestehendeImmobilien:
           type: "array"
           items:
@@ -2724,8 +2741,8 @@ components:
           type: "string"
         kfzAnzahl:
           type: "integer"
-          description: "loan provider specific data (optional)"
           format: "int32"
+          description: "loan provider specific data (optional)"
         kinder:
           type: "array"
           items:
@@ -2737,7 +2754,6 @@ components:
           $ref: "#/components/schemas/VermoegenVerbindlichkeiten"
         positionen:
           $ref: "#/components/schemas/HaushaltsPositionen"
-      description: "household"
     HaushaltsPositionen:
       type: "object"
       properties:
@@ -2829,9 +2845,7 @@ components:
       properties:
         id:
           type: "string"
-      description: "property"
     KfwDarlehen:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -2925,8 +2939,8 @@ components:
             \ occurs, null if no reservation was called"
         gueltigBis:
           type: "string"
-          description: "end of reservation date"
           format: "date"
+          description: "end of reservation date"
         reservierungsMeldung:
           type: "string"
           description: "error message, null if no error occured"
@@ -2987,8 +3001,8 @@ components:
           type: "number"
         vertragsBeginn:
           type: "string"
-          description: "contract start"
           format: "date"
+          description: "contract start"
         vertragsEnde:
           type: "string"
           format: "date"
@@ -3025,7 +3039,6 @@ components:
           description: "only with ausweisArt = ANDERE"
         ausweisNummer:
           type: "string"
-      description: "loan provider specific data (optional)"
     Link:
       type: "object"
       properties:
@@ -3087,7 +3100,6 @@ components:
         gesamt:
           type: "integer"
           format: "int32"
-      description: "only with ObjektArt == EIGENTUMSWOHNUNG."
     Modernisierung:
       type: "object"
       properties:
@@ -3120,20 +3132,18 @@ components:
             - "BAEDER"
             - "INNENAUSBAU"
             - "RAUMAUFTEILUNG"
-      description: "loan provider specific data (optional)"
     ModernisierungsAngaben:
       type: "object"
+      deprecated: true
       properties:
         modernisierungsGrad:
           type: "string"
           description: "allowed values: GERING,MITTEL,HOCH.  (More values can be attached)"
         modernisierungsJahr:
           type: "integer"
-          description: "year of refurbishment of the property. 4-digit year"
           format: "int32"
+          description: "year of refurbishment of the property. 4-digit year"
           example: 2022
-      description: "Deprecated. Pls use list of refurbishment."
-      deprecated: true
     NachrangigesExternesDarlehen:
       type: "object"
       properties:
@@ -3159,28 +3169,31 @@ components:
         zinsBindung:
           $ref: "#/components/schemas/ZinsBindung"
     NachrichtDTO:
-      required:
-        - "text"
       type: "object"
       properties:
         text:
-          maxLength: 2000
-          minLength: 1
           type: "string"
           description: "content of message"
+          maxLength: 2000
+          minLength: 1
+      required:
+        - "text"
     Objektbewertung:
       type: "object"
+      description: "property valuation"
       properties:
         immobilie:
           $ref: "#/components/schemas/ImmobilieVerknuepfung"
+          description: "property"
         marktwert:
           type: "number"
           description: "market value"
         quelle:
           $ref: "#/components/schemas/ObjektbewertungsQuelle"
-      description: "property valuation"
+          description: "source"
     ObjektbewertungsQuelle:
       type: "object"
+      description: "source of property valuation"
       properties:
         name:
           type: "string"
@@ -3190,7 +3203,6 @@ components:
           description:
             "reference of source; optional; may reference additional valuation\
             \ data from external valuation sources, like e.g. Value"
-      description: "source of property valuation"
     PaginationLinks:
       type: "object"
       properties:
@@ -3202,6 +3214,7 @@ components:
           $ref: "#/components/schemas/Link"
     Partner:
       type: "object"
+      description: "information about partner, for more use Partner API"
       properties:
         _links:
           $ref: "#/components/schemas/Links"
@@ -3210,6 +3223,7 @@ components:
           description: "salutation"
         anschrift:
           $ref: "#/components/schemas/Anschrift"
+          description: "adress"
         aufsichtsBehoerde:
           type: "string"
           description: "regulating authority"
@@ -3257,7 +3271,6 @@ components:
           description: "first name"
         webseite:
           type: "string"
-      description: "information about partner, for more use Partner API"
     PartnerKennzeichen:
       type: "object"
       properties:
@@ -3267,9 +3280,12 @@ components:
         wert:
           type: "string"
           description: "value of partner-identifier"
-      description: "list of partner-identifiers"
     PatchOperation:
       type: "object"
+      description:
+        "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/).\
+        \ Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\"\
+        : \"123-ABC\"\" }"
       properties:
         from:
           type: "string"
@@ -3295,11 +3311,7 @@ components:
           description:
             "Value to be set or replaced. Allows: string, number or JSON\
             \ object"
-          example: '"ABC123", 1234, {"antragsteller": "BEANTRAGT"}'
-      description:
-        "A JSONPatch document as defined by RFC 6902 (see http://jsonpatch.com/).\
-        \ Beispiel: { \"op\": \"replace\", \"path\": \"/antragsReferenz\", \"value\"\
-        : \"123-ABC\"\" }"
+          example: "ABC123"
     Postadresse:
       type: "object"
       properties:
@@ -3315,9 +3327,7 @@ components:
         strasse:
           type: "string"
           description: "street"
-      description: "adress of property"
     PrivatDarlehen:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3341,12 +3351,14 @@ components:
         - "zinsBindungInMonaten"
     ProduktAnbieter:
       type: "object"
+      description: "loan provider"
       properties:
         anrede:
           type: "string"
           description: "salutation"
         anschrift:
           $ref: "#/components/schemas/Anschrift"
+          description: "adress"
         aufsichtsBehoerde:
           type: "string"
           description: "regulating authority"
@@ -3400,7 +3412,6 @@ components:
           description: "first name"
         webseite:
           type: "string"
-      description: "loan provider"
     Provision:
       type: "object"
       properties:
@@ -3419,7 +3430,6 @@ components:
         vertriebsProvisionGesamt:
           type: "number"
           description: "sum of sales commissions"
-      description: "commission"
     RechteAbteilung2:
       type: "object"
       properties:
@@ -3427,11 +3437,7 @@ components:
           type: "string"
         betrag:
           type: "number"
-      description:
-        "Encumbrances and restrictions on the usability of the property.\
-        \ Pipeline rights, waivers of distance areas, rights of way, insolvency notices."
     RegionalFoerderDarlehen:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3525,7 +3531,6 @@ components:
           format: "date"
         sonstigesEinkommenMonatlich:
           type: "number"
-      description: "only with art!=RENTNER"
     SonderZahlung:
       type: "object"
       properties:
@@ -3589,9 +3594,6 @@ components:
         name:
           type: "string"
     StatusDTO:
-      required:
-        - "antragsteller"
-        - "produktAnbieter"
       type: "object"
       properties:
         antragsteller:
@@ -3632,6 +3634,9 @@ components:
             - "UNTERLAGEN_UNVOLLSTAENDIG"
             - "GEGENANGEBOT"
             - "KEINE_ANGABE"
+      required:
+        - "antragsteller"
+        - "produktAnbieter"
     Tilgung:
       type: "object"
       properties:
@@ -3645,15 +3650,15 @@ components:
             \ and NO redemption substitute"
         tilgungsBeginnAm:
           type: "string"
-          description: "redemption date"
           format: "date"
+          description: "redemption date"
         tilgungsErsatz:
           $ref: "#/components/schemas/TilgungsErsatz"
+          description: "not with PRIVAT_DARLEHEN"
         volltilgerDarlehen:
           type: "boolean"
           description: "only with darlehensArt IN [ANNUITAETEN_DARLEHEN,FORWARD_DARLEHEN]"
           example: true
-      description: "not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
     TilgungsErsatz:
       type: "object"
       properties:
@@ -3665,7 +3670,6 @@ components:
         typ:
           type: "string"
           description: "redemption substitute type, eg BAUSPARVERTRAG or KAPITALBILDENDE_LEBENSVERSICHERUNG"
-      description: "not with PRIVAT_DARLEHEN"
     TilgungsPhase:
       type: "object"
       properties:
@@ -3679,7 +3683,6 @@ components:
           type: "integer"
           format: "int32"
     VariablesDarlehen:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3695,6 +3698,7 @@ components:
             tilgungsBeginnAm:
               type: "string"
               format: "date-time"
+              example: "2020-03-28"
       description: "extends GegenangebotDarlehen"
       required:
         - "anfaenglicheTilgung"
@@ -3707,6 +3711,7 @@ components:
         - "vertriebsProvisionGesamtAbsolut"
     Verbindlichkeit:
       type: "object"
+      description: "liability"
       properties:
         glaeubiger:
           type: "string"
@@ -3735,7 +3740,6 @@ components:
           enum:
             - "EINNAHME"
             - "AUSGABE"
-      description: "liability"
     VermietungsInformationen:
       type: "object"
       properties:
@@ -3801,6 +3805,7 @@ components:
           format: "date"
     Vertrieb:
       type: "object"
+      description: "information about distribution channel, for more use Partner API"
       properties:
         _links:
           $ref: "#/components/schemas/Links"
@@ -3811,9 +3816,11 @@ components:
           type: "string"
         partnerId:
           type: "string"
-      description: "information about distribution channel, for more use Partner API"
     VertriebsStruktur:
       type: "object"
+      description:
+        "distribution channels of advisor and/or clerk at creation date\
+        \ of application"
       properties:
         _links:
           $ref: "#/components/schemas/Links"
@@ -3827,9 +3834,6 @@ components:
           description: "distribution channels of advisor at creation date of application"
           items:
             $ref: "#/components/schemas/Vertrieb"
-      description:
-        "distribution channels of advisor and/or clerk at creation date\
-        \ of application"
     Vorhaben:
       type: "object"
       properties:
@@ -3904,7 +3908,6 @@ components:
           format: "int32"
         restschuldNachZinsBindungsEnde:
           type: "number"
-      description: "not with darlehensTyp IN [VARIABLES_DARLEHEN,ZWISCHEN_FINANZIERUNG]"
     ZugrundeliegendeDatenZumAntrag:
       type: "object"
       properties:
@@ -3920,11 +3923,7 @@ components:
             $ref: "#/components/schemas/Haushalt"
         vorhaben:
           $ref: "#/components/schemas/Vorhaben"
-      description:
-        "data of applicants, property and project, wich is the source for\
-        \ application. Not returned in the list of all applications."
     ZwischenFinanzierung:
-      type: "object"
       allOf:
         - $ref: "#/components/schemas/GegenangebotDarlehen"
         - type: "object"
@@ -3943,6 +3942,7 @@ components:
         - "vertriebsProvisionGesamtAbsolut"
     zahlungsplan:
       type: "object"
+      description: "redemption plan"
       properties:
         bausteinId:
           type: "string"
@@ -3960,7 +3960,6 @@ components:
           type: "string"
           enum:
             - "TILGUNGSPLAN"
-      description: "redemption plan"
   securitySchemes:
     oauth_security:
       bearerFormat: "JWT"
