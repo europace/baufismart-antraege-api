@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.85"
+  version: "2.86"
 servers:
   - url: "https://baufismart.api.europace.de"
 security:
@@ -2039,6 +2039,8 @@ components:
           type: "string"
           format: "date"
           description: "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
+        kennung:
+          type: "string"
         kfwEnergieEffizienzGruppe:
           type: "string"
           description:
@@ -2098,8 +2100,7 @@ components:
           description: "loan provider"
         produktAnbieterSpezifischeDarlehensMerkmale:
           type: "object"
-          additionalProperties:
-            type: "object"
+          additionalProperties: {}
           description:
             "Additional lender-specific data. Only populated in specific\
             \ use cases when you sell your own credit products."
@@ -3307,7 +3308,6 @@ components:
             \ '/status/produktanbieterAblehnungsgrund', '/kreditSachbearbeiter/partnerId',\
             \ '/kreditSachbearbeiter/externerPartner', '/voraussichtlicheBearbeitung'."
         value:
-          type: "object"
           description:
             "Value to be set or replaced. Allows: string, number or JSON\
             \ object"

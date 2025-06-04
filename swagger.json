@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.85"
+    "version": "2.86"
   },
   "servers": [{ "url": "https://baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2052,6 +2052,7 @@
             "format": "date",
             "description": "calculated end of redemption period, not with darlehensTyp==ZWISCHEN_FINANZIERUNG"
           },
+          "kennung": { "type": "string" },
           "kfwEnergieEffizienzGruppe": {
             "type": "string",
             "description": "KfW-energy-reference-groups, only with darlehensTyp==KFW_DARLEHEN. (allowed values: STANDARD, NEUBAU, SANIERUNG)Only relevant with KfW-Programm 153, 261, 262. If new energy-reference-groups will follow, more values can be attached.)"
@@ -2102,7 +2103,7 @@
           },
           "produktAnbieterSpezifischeDarlehensMerkmale": {
             "type": "object",
-            "additionalProperties": { "type": "object" },
+            "additionalProperties": {},
             "description": "Additional lender-specific data. Only populated in specific use cases when you sell your own credit products."
           },
           "produktFeatures": {
@@ -3283,7 +3284,6 @@
             "description": "JSON-Path in Antrag. Valid pathes: '/antragsReferenz', '/weitereAntragsReferenzen', '/status', '/status/antragsteller', '/status/produktAnbieter', '/status/antragstellerAblehnungsgrund', '/status/produktanbieterAblehnungsgrund', '/kreditSachbearbeiter/partnerId', '/kreditSachbearbeiter/externerPartner', '/voraussichtlicheBearbeitung'."
           },
           "value": {
-            "type": "object",
             "description": "Value to be set or replaced. Allows: string, number or JSON object",
             "example": "ABC123"
           }
