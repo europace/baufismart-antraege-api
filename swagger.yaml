@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.86"
+  version: "2.87"
 servers:
   - url: "https://baufismart.api.europace.de"
 security:
@@ -3962,7 +3962,13 @@ components:
             - "TILGUNGSPLAN"
   securitySchemes:
     oauth_security:
-      bearerFormat: "JWT"
-      in: "header"
-      scheme: "bearer"
-      type: "http"
+      flows:
+        clientCredentials:
+          scopes:
+            baufinanzierung:antrag:lesen: "to get application information"
+            baufinanzierung:antrag:schreiben:
+              "to update application data (eg state,\
+              \ loan office and own reference)"
+            baufinanzierung:echtgeschaeft: "to use api in production mode"
+          tokenUrl: "https://api.europace.de/auth/access-token"
+      type: "oauth2"
