@@ -6,8 +6,10 @@ As a loan provider get all the data of your applications for highly effective va
 ![mortgageLoan](https://img.shields.io/badge/-mortgageLoan-lightblue)
 
 [![Authentication](https://img.shields.io/badge/Auth-OAuth2-green)](https://docs.api.europace.de/common/authentifizierung/authorization-api/)
+[![Swagger](https://img.shields.io/badge/Swagger-UI-green)](https://europace.github.io/europace-api-docs/?urls.primaryName=Antr%C3%A4ge+API)
+
 [![YAML](https://img.shields.io/badge/OAS-YAML-lightblue)](https://raw.githubusercontent.com/europace/baufismart-antraege-api/master/swagger.yaml)
-[![YAML](https://img.shields.io/badge/OAS-HTML-lightblue)](https://europace.github.io/baufismart-antraege-api/docs/index.html)
+[![HTML](https://img.shields.io/badge/OAS-HTML-lightblue)](https://europace.github.io/baufismart-antraege-api/docs/index.html)
 
 [![Github](https://img.shields.io/badge/-Github-black?logo=github)](https://github.com/europace/baufismart-antraege-api)
 
