@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.87"
+    "version": "2.88"
   },
   "servers": [{ "url": "https://baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -1672,6 +1672,9 @@
           "bodenRichtwert": {
             "type": "number",
             "description": "loan provider specific data (optional)"
+          },
+          "einzusetzenderBetragBeiEinsatzAlsZusatzsicherheit": {
+            "type": "number"
           },
           "erbbaurecht": { "$ref": "#/components/schemas/Erbbaurecht" },
           "gebaeude": { "$ref": "#/components/schemas/Gebaeude" },
