@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.88"
+    "version": "2.89"
   },
   "servers": [{ "url": "https://baufismart.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -1546,6 +1546,19 @@
           }
         }
       },
+      "BeleihungswertAnpassungen": {
+        "type": "object",
+        "properties": {
+          "erweiterteObjektwertAngaben": {
+            "$ref": "#/components/schemas/ErweiterteObjektwertAngaben",
+            "description": "loan provider specific data (optional) (Genopace (Volks- und Raiffeisenbanken))"
+          },
+          "referenzAdresse": {
+            "$ref": "#/components/schemas/ReferenzAdresse",
+            "description": "loan provider specific data (optional) (Genopace (Volks- und Raiffeisenbanken))"
+          }
+        }
+      },
       "Beratung": {
         "type": "object",
         "properties": {
@@ -1664,6 +1677,10 @@
           "autostellplaetze": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/Autostellplatz" }
+          },
+          "beleihungswertAnpassungen": {
+            "$ref": "#/components/schemas/BeleihungswertAnpassungen",
+            "description": "loan provider specific data (optional)(Genopace (Volks- und Raiffeisenbanken)"
           },
           "bestehendeDarlehen": {
             "type": "array",
@@ -2314,6 +2331,43 @@
           }
         }
       },
+      "ErweiterteObjektwertAngaben": {
+        "type": "object",
+        "properties": {
+          "altlasten": {
+            "type": "string",
+            "enum": [
+              "KEIN_VERDACHT_AUF_ALTLASTEN",
+              "KEINE_ALTLASTEN_GEMAESS_AUSKUNFT",
+              "ALTLASTEN_GEMAESS_AUSKUNFT"
+            ]
+          },
+          "altlastenGemaessAuskunft": { "type": "string" },
+          "baulasten": {
+            "type": "string",
+            "enum": [
+              "KEIN_VERDACHT_AUF_BAULASTEN_OHNE_BESICHTIGUNG",
+              "KEIN_VERDACHT_AUF_BAULASTEN_BESICHTIGUNG_ERFOLGT",
+              "KEINE_BAULASTEN_GEMAESS_AUSKUNFT",
+              "BAULASTEN_GEMAESS_AUSKUNFT"
+            ]
+          },
+          "baulastenGemaessAuskunft": { "type": "string" },
+          "einschraenkungenDerVerwertbarkeit": { "type": "string" },
+          "gebiet": {
+            "type": "string",
+            "enum": ["WOHNGEBIET", "MISCHGEBIET", "GEWERBEGEBIET"]
+          },
+          "lageImOrt": {
+            "type": "string",
+            "enum": ["ORTSKERN", "ORTSRAND", "TEILORT", "AUSSENBEREICH"]
+          },
+          "verwertbarkeit": {
+            "type": "string",
+            "enum": ["GEGEBEN", "EINGESCHRAENKT"]
+          }
+        }
+      },
       "Finanzbedarf": {
         "type": "object",
         "properties": {
@@ -2390,6 +2444,10 @@
           "autostellplaetze": {
             "type": "array",
             "items": { "$ref": "#/components/schemas/Autostellplatz" }
+          },
+          "beleihungswertAnpassungen": {
+            "$ref": "#/components/schemas/BeleihungswertAnpassungen",
+            "description": "loan provider specific data (optional)(Genopace (Volks- und Raiffeisenbanken)"
           },
           "bestehendeDarlehen": {
             "type": "array",
@@ -3417,6 +3475,13 @@
         "properties": {
           "beschreibung": { "type": "string" },
           "betrag": { "type": "number" }
+        }
+      },
+      "ReferenzAdresse": {
+        "type": "object",
+        "properties": {
+          "adresse": { "$ref": "#/components/schemas/Postadresse" },
+          "anmerkung": { "type": "string" }
         }
       },
       "RegionalFoerderDarlehen": {
