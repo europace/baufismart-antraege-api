@@ -106,7 +106,7 @@ Example request:
 
 ``` http
 GET /v2/antraege HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 ```
@@ -119,17 +119,17 @@ Example response:
 {
     "_links": {
         "next": {
-            "href": "https://baufismart.api.europace.de/v2/antraege?datenKontext=ECHT_GESCHAEFT&sort=absteigend&page=1&limit=10"
+            "href": "https://baufinanzierung.api.europace.de/v2/antraege?datenKontext=ECHT_GESCHAEFT&sort=absteigend&page=1&limit=10"
         },
         "self": {
-            "href": "https://baufismart.api.europace.de/v2/antraege?datenKontext=ECHT_GESCHAEFT&sort=absteigend&page=0&limit=10"
+            "href": "https://baufinanzierung.api.europace.de/v2/antraege?datenKontext=ECHT_GESCHAEFT&sort=absteigend&page=0&limit=10"
         }
     },
     "antraege": [
         {
             "_links": {
                 "self": {
-                    "href": "https://baufismart.api.europace.de/v2/antraege/N19ABC/1/%7Bteilantrag%7D"
+                    "href": "https://baufinanzierung.api.europace.de/v2/antraege/N19ABC/1/%7Bteilantrag%7D"
                 }
             },
             "antragsNummer": "N19ABC/1",
@@ -141,7 +141,7 @@ Example response:
         {
             "_links": {
                 "self": {
-                    "href": "https://baufismart.api.europace.de/v2/antraege/AB2U4Z/2/%7Bteilantrag%7D"
+                    "href": "https://baufinanzierung.api.europace.de/v2/antraege/AB2U4Z/2/%7Bteilantrag%7D"
                 }
             },
             "antragsNummer": "AB2U4Z/2",
@@ -179,7 +179,7 @@ Example request:
 
 ```http
 GET /v2/antraege?aenderungSeit=2022-02-10 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 ```
@@ -201,7 +201,7 @@ Example request:
 
 ``` http
 GET /v2/antraege/ABC12F/1/1 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 ```
@@ -238,7 +238,7 @@ You will receive a list of antraege with all the data.
   },
   "_links": {
       "self": {
-          "href": "https://baufismart.api.europace.de/v2/antraege/ABC12F/1/1"
+          "href": "https://baufinanzierung.api.europace.de/v2/antraege/ABC12F/1/1"
       }
   }
 }
@@ -266,7 +266,7 @@ Example request:
 
 ``` http
 PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 66
@@ -302,7 +302,7 @@ Example request:
 
 ``` http
 PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 116
@@ -341,7 +341,7 @@ Example request:
 
 ``` http
 PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 263
@@ -383,7 +383,7 @@ Example request:
 
 ``` http
 PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 97
@@ -421,7 +421,7 @@ Example request:
 
 ``` http
 PATCH /v2/antraege/ABC12F/1/1 HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 372
@@ -499,7 +499,7 @@ Example request:
 
 ``` http
 POST /v2/antraege/ABC12F/1/1/nachricht HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Content-Type: application/json
 Authorization: Bearer {{access-token}}
 Content-Length: 42
@@ -532,7 +532,7 @@ Example request:
 
 ``` json
 POST /v2/antraege/ABC12F/1/1/gegenangebot HTTP/1.1
-Host: baufismart.api.europace.de
+Host: baufinanzierung.api.europace.de
 Authorization: Bearer {{access-token}}
 Content-Type: application/json
 Content-Length: 1324
@@ -583,7 +583,7 @@ Example response:
 201 created
 {
     "antragsNummer": "ABC12F/2/1/",
-    "_links": "https://baufismart.api.europace.de/v2/antraege/ABC12F/2/1/"
+    "_links": "https://baufinanzierung.api.europace.de/v2/antraege/ABC12F/2/1/"
 }
 ```
 
