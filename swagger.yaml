@@ -9,9 +9,9 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.89"
+  version: "2.90"
 servers:
-  - url: "https://baufismart.api.europace.de"
+  - url: "https://baufinanzierung.api.europace.de"
 security:
   - oauth_security: []
 tags:
