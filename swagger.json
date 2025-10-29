@@ -10,7 +10,7 @@
     "title": "Anträge API",
     "version": "2.89"
   },
-  "servers": [{ "url": "https://baufismart.api.europace.de" }],
+  "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
   "tags": [
     {
