@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.90"
+    "version": "2.91"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2166,9 +2166,13 @@
             "format": "int32",
             "description": "beginning years of no redemption, only with darlehensTyp==KFW_DARLEHEN or darlehensTyp==REGIONAL_FOERDER_DARLEHEN"
           },
+          "vertragsNummer": {
+            "type": "string",
+            "description": "building savings contract number, only with darlehensTyp==BAUSPAR_DARLEHEN"
+          },
           "vertragsPartner": {
             "type": "array",
-            "description": "only with external building society saving loans",
+            "description": "only with external building society saving loans, only with darlehensTyp==BAUSPAR_DARLEHEN",
             "items": {
               "$ref": "#/components/schemas/AntragstellerVerknuepfung"
             }
