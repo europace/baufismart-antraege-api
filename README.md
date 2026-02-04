@@ -35,6 +35,21 @@ As a loan provider get all the data of your applications for highly effective va
 To test our APIs and your use cases as quickly as possible, we have created
 a [Postman Collection](https://github.com/europace/api-quickstart) for you.
 
+### ⚠️ Important: URL Migration and Trailing Slashes
+
+New Base URL: `https://baufinanzierung.api.europace.de` \
+Old Base URL: `https://baufismart.api.europace.de` (deprecated, but still functional)
+
+**Important behavioral differences:**
+
+1. Trailing Slashes are NOT supported with the new URL
+   - ✅ Correct: `GET /v2/antraege?datenKontext=...`
+   - ❌ Wrong: `GET /v2/antraege/?datenKontext=...` (returns 404)
+
+2. Old URL behavior (for migration period):
+   - The old URL still accepts trailing slashes
+   - This is temporary - all clients should migrate to the new URL without trailing slashes
+
 ### Authentication
 
 Please
@@ -583,7 +598,7 @@ Example response:
 201 created
 {
     "antragsNummer": "ABC12F/2/1/",
-    "_links": "https://baufinanzierung.api.europace.de/v2/antraege/ABC12F/2/1/"
+    "_links": "https://baufinanzierung.api.europace.de/v2/antraege/ABC12F/2/1"
 }
 ```
 
