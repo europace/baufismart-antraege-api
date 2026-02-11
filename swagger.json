@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.91"
+    "version": "2.92"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -671,54 +671,9 @@
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/nachricht": {
-      "get": {
-        "description": "As loan provider, you can send a message to the advisor to communicate without a denied-state. \n\nImportant! Please prefer `set state` for communication with advisor, because states are more helpful for process reporting. \n\nThis method should be your last choice.",
-        "operationId": "addNachricht",
-        "parameters": [
-          {
-            "description": "case-id",
-            "example": "AB1234",
-            "in": "path",
-            "name": "vorgang",
-            "required": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "description": "iterator-solution",
-            "example": 3,
-            "in": "path",
-            "name": "antrag",
-            "required": true,
-            "schema": { "type": "integer", "format": "int32" }
-          },
-          {
-            "description": "iterator-application",
-            "example": 1,
-            "in": "path",
-            "name": "teilantrag",
-            "required": true,
-            "schema": { "type": "integer", "format": "int32" }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/NachrichtDTO" }
-            }
-          },
-          "required": true
-        },
-        "responses": { "201": { "description": "CREATED" } },
-        "security": [
-          { "oauth_security": ["baufinanzierung:antrag:schreiben"] },
-          { "oauth_security": [] }
-        ],
-        "summary": "send message",
-        "tags": ["Antraege"]
-      },
       "post": {
         "description": "As loan provider, you can send a message to the advisor to communicate without a denied-state. \n\nImportant! Please prefer `set state` for communication with advisor, because states are more helpful for process reporting. \n\nThis method should be your last choice.",
-        "operationId": "addNachricht_1",
+        "operationId": "addNachricht",
         "parameters": [
           {
             "description": "case-id",
@@ -763,54 +718,10 @@
       }
     },
     "/v2/antraege/{vorgang}/{antrag}/{teilantrag}/status": {
-      "get": {
-        "description": "As loan provider, you can set a state for an application to inform the advisor about your decision.\n\nIf you set a state for an application the adivsor will be automatically informed by your descision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`.",
-        "operationId": "setStatus",
-        "parameters": [
-          {
-            "description": "case-id",
-            "example": "AB1234",
-            "in": "path",
-            "name": "vorgang",
-            "required": true,
-            "schema": { "type": "string" }
-          },
-          {
-            "description": "iterator-solution",
-            "example": 3,
-            "in": "path",
-            "name": "antrag",
-            "required": true,
-            "schema": { "type": "integer", "format": "int32" }
-          },
-          {
-            "description": "iterator-application",
-            "example": 1,
-            "in": "path",
-            "name": "teilantrag",
-            "required": true,
-            "schema": { "type": "integer", "format": "int32" }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/StatusDTO" }
-            }
-          },
-          "required": true
-        },
-        "responses": { "202": { "description": "ACCEPTED" } },
-        "security": [
-          { "oauth_security": ["baufinanzierung:antrag:schreiben"] },
-          { "oauth_security": [] }
-        ],
-        "summary": "set state",
-        "tags": ["Antraege"]
-      },
       "post": {
-        "description": "As loan provider, you can set a state for an application to inform the advisor about your decision.\n\nIf you set a state for an application the adivsor will be automatically informed by your descision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`.",
-        "operationId": "setStatus_1",
+        "deprecated": true,
+        "description": "As loan provider, you can set a state for an application to inform the advisor about your decision.\n\nIf you set a state for an application the advisor will be automatically informed by your decision and message. You can use it, to send advisor a message if you choose the right state and use the property `kommentar`.\n\n**Deprecated**: Please use the PATCH endpoint instead: PATCH /v2/antraege/{vorgang}/{antrag}/{teilantrag} with JSON Patch operations to update the status.",
+        "operationId": "setStatus",
         "parameters": [
           {
             "description": "case-id",
