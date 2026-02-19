@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.92"
+  version: "2.93"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -781,6 +781,24 @@ components:
         betraegtWoechentlicheArbeitsZeitMindestens15Stunden:
           type: "boolean"
           description: "TRUE if the weekly working time is at least 15 hours"
+    AngabenZurGewerkeVergabe:
+      type: "object"
+      description: "Information about trade assignment for construction"
+      properties:
+        baufirma:
+          $ref: "#/components/schemas/Baufirma"
+          description: "Construction company data"
+        gewerkeVergabe:
+          type: "string"
+          enum:
+            - "EINZELVERGABE_ARCHITEKT"
+            - "GESAMTVERGABE_BAUFIRMA"
+        zahlungsabwicklungParagraf3:
+          type: "boolean"
+          description: "Payment processing according to paragraph 3 MaBV"
+        zahlungsabwicklungParagraf7:
+          type: "boolean"
+          description: "Payment processing according to paragraph 7 MaBV"
     AngebotZumAntrag:
       type: "object"
       description: "offer details"
@@ -1174,6 +1192,9 @@ components:
           description: "loan provider specific data (optional)"
         nachname:
           type: "string"
+        politischExponiertePerson:
+          $ref: "#/components/schemas/PolitischExponiertePerson"
+          description: "Information about politically exposed person status"
         schufaErgebnis:
           $ref: "#/components/schemas/SchufaErgebnis"
         sozialversicherungsnummer:
@@ -1280,6 +1301,16 @@ components:
           type: "string"
         kreditinstitut:
           type: "string"
+    Baufirma:
+      type: "object"
+      description: "Construction company information"
+      properties:
+        adresse:
+          $ref: "#/components/schemas/Postadresse"
+          description: "Address of the construction company"
+        name:
+          type: "string"
+          description: "Name of the construction company"
     BausparAngebot:
       type: "object"
       properties:
@@ -1552,10 +1583,18 @@ components:
       properties:
         adresse:
           $ref: "#/components/schemas/Postadresse"
+        angabenZurGewerkeVergabe:
+          $ref: "#/components/schemas/AngabenZurGewerkeVergabe"
+          description: "Information about trade assignment for construction"
         autostellplaetze:
           type: "array"
           items:
             $ref: "#/components/schemas/Autostellplatz"
+        baujahrHeizung:
+          type: "integer"
+          format: "int32"
+          description: "Construction year of heating system"
+          example: 2022
         beleihungswertAnpassungen:
           $ref: "#/components/schemas/BeleihungswertAnpassungen"
           description:
@@ -2367,10 +2406,18 @@ components:
       properties:
         adresse:
           $ref: "#/components/schemas/Postadresse"
+        angabenZurGewerkeVergabe:
+          $ref: "#/components/schemas/AngabenZurGewerkeVergabe"
+          description: "Information about trade assignment for construction"
         autostellplaetze:
           type: "array"
           items:
             $ref: "#/components/schemas/Autostellplatz"
+        baujahrHeizung:
+          type: "integer"
+          format: "int32"
+          description: "Construction year of heating system"
+          example: 2022
         beleihungswertAnpassungen:
           $ref: "#/components/schemas/BeleihungswertAnpassungen"
           description:
@@ -3290,6 +3337,30 @@ components:
             "Value to be set or replaced. Allows: string, number or JSON\
             \ object"
           example: "ABC123"
+    PolitischExponiertePerson:
+      type: "object"
+      description: "Information about politically exposed persons (PEP)"
+      properties:
+        ausgeuebtesAmt:
+          type: "string"
+          description: "The office held by the politically exposed person"
+        nahestehendePerson:
+          $ref: "#/components/schemas/PolitischExponiertePersonNahestehendePerson"
+          description: "Close person of a politically exposed person"
+        status:
+          type: "string"
+          enum:
+            - "POLITISCH_EXPONIERTE_PERSON_SELBST"
+            - "POLITISCH_EXPONIERTE_PERSON_NAHESTEHEND"
+            - "NICHT_EXPONIERT"
+    PolitischExponiertePersonNahestehendePerson:
+      type: "object"
+      description: "Close person of a politically exposed person"
+      properties:
+        nachname:
+          type: "string"
+        vorname:
+          type: "string"
     Postadresse:
       type: "object"
       properties:
