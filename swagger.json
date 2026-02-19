@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.93"
+    "version": "2.94"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -3342,7 +3342,7 @@
             "enum": [
               "POLITISCH_EXPONIERTE_PERSON_SELBST",
               "POLITISCH_EXPONIERTE_PERSON_NAHESTEHEND",
-              "NICHT_EXPONIERT"
+              "POLITISCH_EXPONIERTE_PERSON_KEIN_BEZUG"
             ]
           }
         }
