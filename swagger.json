@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.94"
+    "version": "2.95"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2111,7 +2111,7 @@
           },
           "regionalFoerderbankProgramm": {
             "type": "string",
-            "description": "regional support program, only with darlehensTyp==REGIONAL_FOERDER_DARLEHEN (allowed values: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, NRW_BANK_WOHNEIGENTUM, NRW_BANK_GEBAEUDESANIERUNG, NRW_BANK_NACHHALTIG_WOHNEN. If new program will follow, more values can be attached.)"
+            "description": "regional support program, only with darlehensTyp==REGIONAL_FOERDER_DARLEHEN (allowed values: L_BANK_KOMBI_DARLEHEN_WOHNEN, L_BANK_WOHNEN_MIT_KIND, NRW_BANK_WOHNEIGENTUM, NRW_BANK_GEBAEUDESANIERUNG, NRW_BANK_NACHHALTIG_WOHNEN, IBSH_IMMOEIGENTUM, IBSH_IMMOFIX, IBSH_IMMOFLEX, IBSH_IMMOKONSTANT. If new program will follow, more values can be attached.)"
           },
           "sollZins": {
             "type": "number",
@@ -3514,7 +3514,11 @@
                   "L_BANK_WOHNEN_MIT_KIND",
                   "NRW_BANK_WOHNEIGENTUM",
                   "NRW_BANK_GEBAEUDESANIERUNG",
-                  "NRW_BANK_NACHHALTIG_WOHNEN"
+                  "NRW_BANK_NACHHALTIG_WOHNEN",
+                  "IBSH_IMMOEIGENTUM",
+                  "IBSH_IMMOFIX",
+                  "IBSH_IMMOFLEX",
+                  "IBSH_IMMOKONSTANT"
                 ]
               },
               "tilgungsFreieAnlaufJahre": {
