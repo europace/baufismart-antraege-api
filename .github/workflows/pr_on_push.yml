@@ -16,5 +16,4 @@ jobs:
           source_branch: ""                                 # If blank, default: triggered branch
           destination_branch: "master"                      # If blank, default: master
           pr_template: ".github/pull_request_template.md"
-          pr_assignee: ${{ env.GIT_COMMIT_COMMITTER_NAME }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
