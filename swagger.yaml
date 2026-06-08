@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.95"
+  version: "2.96"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -3070,21 +3070,33 @@ components:
       type: "object"
       properties:
         deprecation:
-          type: "string"
+          type:
+            - "string"
+            - "null"
         href:
           type: "string"
         hreflang:
-          type: "string"
+          type:
+            - "string"
+            - "null"
         name:
-          type: "string"
+          type:
+            - "string"
+            - "null"
         profile:
-          type: "string"
+          type:
+            - "string"
+            - "null"
         templated:
           type: "boolean"
         title:
-          type: "string"
+          type:
+            - "string"
+            - "null"
         type:
-          type: "string"
+          type:
+            - "string"
+            - "null"
     Links:
       type: "object"
       additionalProperties:
@@ -3337,7 +3349,7 @@ components:
           description:
             "Value to be set or replaced. Allows: string, number or JSON\
             \ object"
-          example: "ABC123"
+          example: '"ABC123", 1234, {"antragsteller": "BEANTRAGT"}'
     PolitischExponiertePerson:
       type: "object"
       description: "Information about politically exposed persons (PEP)"
@@ -3980,6 +3992,11 @@ components:
           $ref: "#/components/schemas/FinanzierungsObjekt"
         haushalte:
           type: "array"
+          items:
+            $ref: "#/components/schemas/Haushalt"
+        sicherungsgeberHaushalte:
+          type: "array"
+          description: "list of households of security providers (Sicherungsgeberhaushalte)"
           items:
             $ref: "#/components/schemas/Haushalt"
         vorhaben:

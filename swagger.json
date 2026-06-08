@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.95"
+    "version": "2.96"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -3084,14 +3084,14 @@
       "Link": {
         "type": "object",
         "properties": {
-          "deprecation": { "type": "string" },
+          "deprecation": { "type": ["string", "null"] },
           "href": { "type": "string" },
-          "hreflang": { "type": "string" },
-          "name": { "type": "string" },
-          "profile": { "type": "string" },
+          "hreflang": { "type": ["string", "null"] },
+          "name": { "type": ["string", "null"] },
+          "profile": { "type": ["string", "null"] },
           "templated": { "type": "boolean" },
-          "title": { "type": "string" },
-          "type": { "type": "string" }
+          "title": { "type": ["string", "null"] },
+          "type": { "type": ["string", "null"] }
         }
       },
       "Links": {
@@ -3321,7 +3321,7 @@
           },
           "value": {
             "description": "Value to be set or replaced. Allows: string, number or JSON object",
-            "example": "ABC123"
+            "example": "\"ABC123\", 1234, {\"antragsteller\": \"BEANTRAGT\"}"
           }
         }
       },
@@ -3967,6 +3967,11 @@
           },
           "haushalte": {
             "type": "array",
+            "items": { "$ref": "#/components/schemas/Haushalt" }
+          },
+          "sicherungsgeberHaushalte": {
+            "type": "array",
+            "description": "list of households of security providers (Sicherungsgeberhaushalte)",
             "items": { "$ref": "#/components/schemas/Haushalt" }
           },
           "vorhaben": { "$ref": "#/components/schemas/Vorhaben" }
