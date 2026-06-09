@@ -3,17 +3,44 @@ on:
   push:
     branches:
       - "publish/*"
+
+permissions: {}
+
 jobs:
-  pull-request:
+  ensure-pinned:
+    name: Ensure SHA-pinned actions
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v6
-      - name: Expose git commit data
-        uses: rlespinasse/git-commit-data-action@v1.x
-      - name: pull-request
-        uses: repo-sync/pull-request@v2
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          source_branch: ""                                 # If blank, default: triggered branch
-          destination_branch: "master"                      # If blank, default: master
-          pr_template: ".github/pull_request_template.md"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: zgosalvez/github-actions-ensure-sha-pinned-actions@ca46236c6ce584ae24bc6283ba8dcf4b3ec8a066 # v5.0.4
+        with:
+          allowlist: |
+            europace/
+
+  pull-request:
+    needs: ensure-pinned
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+        with:
+          app-id: ${{ vars.BEV_CODE_COMMITTER_APP_ID }}
+          private-key: ${{ secrets.BEV_CODE_COMMITTER_PRIVATE_KEY }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          base: master
+          title: ${{ github.event.head_commit.message }}
+          author: bev-code-committer[bot] <bev-code-committer[bot]@users.noreply.github.com>
