@@ -38,11 +38,14 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           BRANCH: ${{ github.ref_name }}
-          TITLE: ${{ github.event.head_commit.message }}
         run: |
+          LAST_VERSION=$(gh api repos/${{ github.repository }}/tags --jq '.[0].name | ltrimstr("v")')
+          MAJOR=$(echo "$LAST_VERSION" | cut -d. -f1)
+          MINOR=$(echo "$LAST_VERSION" | cut -d. -f2)
+          NEXT_VERSION="$MAJOR.$((MINOR + 1))"
           gh pr create \
             --repo "${{ github.repository }}" \
             --head "$BRANCH" \
             --base master \
-            --title "$TITLE" \
-            --body ""
+            --title "Release $NEXT_VERSION - " \
+            --body "> Describe the new feature or API change here."
