@@ -2793,7 +2793,11 @@
           "obligo": {
             "$ref": "#/components/schemas/VermoegenVerbindlichkeiten"
           },
-          "positionen": { "$ref": "#/components/schemas/HaushaltsPositionen" }
+          "positionen": { "$ref": "#/components/schemas/HaushaltsPositionen" },
+          "sicherungsgeber": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Antragsteller" }
+          }
         }
       },
       "HaushaltsPositionen": {
