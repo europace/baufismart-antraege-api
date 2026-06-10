@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.96"
+  version: "2.97"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
