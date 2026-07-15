@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.97"
+  version: "2.98"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -2770,6 +2770,11 @@ components:
           type: "integer"
           format: "int32"
           description: "loan provider specific data (optional)"
+        kfzKostenMonatlich:
+          type: "number"
+          description:
+            "loan provider specific data (optional) (BHW, Deutsche Bank,\
+            \ DSL Bank)"
         kinder:
           type: "array"
           items:
@@ -3073,38 +3078,19 @@ components:
     Link:
       type: "object"
       properties:
-        deprecation:
-          type:
-            - "string"
-            - "null"
         href:
           type: "string"
-        hreflang:
-          type:
-            - "string"
-            - "null"
-        name:
-          type:
-            - "string"
-            - "null"
-        profile:
-          type:
-            - "string"
-            - "null"
-        templated:
-          type: "boolean"
-        title:
-          type:
-            - "string"
-            - "null"
+          format: "uri"
         type:
-          type:
-            - "string"
-            - "null"
+          type: "string"
+          description:
+            "mediatype of the linked resource, see <a href=\"http://tools.ietf.org/html/rfc7231#section-3.1.1.1\"\
+            >HTTP 1.1: Semantics and Content, section 3.1.1.1</a>"
     Links:
       type: "object"
-      additionalProperties:
-        $ref: "#/components/schemas/Link"
+      properties:
+        self:
+          $ref: "#/components/schemas/Link"
     Meldung:
       type: "object"
       properties:
