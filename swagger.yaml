@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.98"
+  version: "2.99"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -2030,9 +2030,9 @@ components:
           description:
             "KfW-program, only with darlehensTyp==KFW_DARLEHEN (allowed\
             \ values: PROGRAMM_124, PROGRAMM_151, PROGRAMM_152, PROGRAMM_153, PROGRAMM_159,\
-            \ PROGRAMM_167, PROGRAMM_261, PROGRAMM_262, PROGRAMM_297, PROGRAMM_298,\
-            \ PROGRAMM_300, PROGRAMM_308, PROGRAMM_358, PROGRAMM_359) If new KfW programs\
-            \ will follow, more values can be attached."
+            \ PROGRAMM_167, PROGRAMM_261, PROGRAMM_262, PROGRAMM_296, PROGRAMM_297,\
+            \ PROGRAMM_298, PROGRAMM_300, PROGRAMM_308, PROGRAMM_358, PROGRAMM_359)\
+            \ If new KfW programs will follow, more values can be attached."
         kfwSanierungsFahrplanLiegtVor:
           type: "boolean"
           description:
@@ -2929,6 +2929,7 @@ components:
                 - "PROGRAMM_167"
                 - "PROGRAMM_261"
                 - "PROGRAMM_262"
+                - "PROGRAMM_296"
                 - "PROGRAMM_297"
                 - "PROGRAMM_298"
                 - "PROGRAMM_300"
