@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.99"
+    "version": "2.100"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2296,6 +2296,36 @@
           }
         }
       },
+      "Erlaubnis": {
+        "type": "object",
+        "properties": {
+          "aufsichtsBehoerde": {
+            "type": "string",
+            "description": "regulating authority"
+          },
+          "registrierungsNummer": {
+            "type": "string",
+            "description": "registration number"
+          }
+        }
+      },
+      "Erlaubnisse": {
+        "type": "object",
+        "properties": {
+          "gewoParagraph34d": {
+            "$ref": "#/components/schemas/Erlaubnis",
+            "description": "permission as insurance broker (§ 34d GewO)"
+          },
+          "gewoParagraph34i": {
+            "$ref": "#/components/schemas/Erlaubnis",
+            "description": "permission as mortgage loan broker (§ 34i GewO)"
+          },
+          "gewoParagraph34k": {
+            "$ref": "#/components/schemas/Erlaubnis",
+            "description": "permission as consumer loan broker (§ 34k GewO)"
+          }
+        }
+      },
       "ErweiterteObjektwertAngaben": {
         "type": "object",
         "properties": {
@@ -3258,9 +3288,14 @@
           },
           "aufsichtsBehoerde": {
             "type": "string",
+            "deprecated": true,
             "description": "regulating authority"
           },
           "email": { "type": "string", "description": "email" },
+          "erlaubnisse": {
+            "$ref": "#/components/schemas/Erlaubnisse",
+            "description": "trade permissions according to GewO"
+          },
           "externerKreditSachbearbeiterId": {
             "type": "string",
             "description": "external loan officer id"
@@ -3279,6 +3314,7 @@
           },
           "registrierungsNummer": {
             "type": "string",
+            "deprecated": true,
             "description": "registration number"
           },
           "telefonnummer": { "type": "string", "description": "phone number" },
@@ -3408,9 +3444,14 @@
           },
           "aufsichtsBehoerde": {
             "type": "string",
+            "deprecated": true,
             "description": "regulating authority"
           },
           "email": { "type": "string", "description": "email" },
+          "erlaubnisse": {
+            "$ref": "#/components/schemas/Erlaubnisse",
+            "description": "trade permissions according to GewO"
+          },
           "externerKreditSachbearbeiterId": {
             "type": "string",
             "description": "external loan officer id"
@@ -3437,6 +3478,7 @@
           },
           "registrierungsNummer": {
             "type": "string",
+            "deprecated": true,
             "description": "registration number"
           },
           "telefonnummer": { "type": "string", "description": "phone number" },
