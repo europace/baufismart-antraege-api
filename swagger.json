@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.100"
+    "version": "2.101"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -3630,6 +3630,10 @@
           "antragstellerUnbekannt": {
             "type": "boolean",
             "description": "TRUE if customer is not identifiable by schufa"
+          },
+          "auskunftAlsHtml": {
+            "type": "string",
+            "description": "complete schufa report as HTML fragment"
           },
           "inManuellerNachbehandlung": {
             "type": "boolean",
