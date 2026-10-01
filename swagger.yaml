@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.101"
+  version: "2.102"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -2562,10 +2562,10 @@ components:
           format: "int32"
         ausstattung:
           type: "string"
+          deprecated: true
           description:
-            "equipment of property for the automatic mortage evaluation\
-            \ (VDP), not ING, allowed values: EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN\
-            \ (More values can be attached)"
+            "Deprecated: Please use belWertVAusstattung. Allowed values:\
+            \ EINFACH, MITTEL, GEHOBEN, STARK_GEHOBEN"
         baujahr:
           type: "integer"
           format: "int32"
@@ -2578,6 +2578,15 @@ components:
           description:
             "allowed values: FACHWERK_MIT_STROH_LEHM,FACHWERK_MIT_ZIEGELN,GLAS_STAHL,HOLZ,MASSIV\
             \ (More values can be attached)"
+        belWertVAusstattung:
+          type: "string"
+          description: "equipment of property, allowed values: SEHR_EINFACH,EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN"
+          enum:
+            - "SEHR_EINFACH"
+            - "EINFACH"
+            - "MITTEL"
+            - "GEHOBEN"
+            - "STARK_GEHOBEN"
         bezeichnungWohneinheit:
           type: "string"
           description: "only with ObjektArt == EIGENTUMSWOHNUNG."
@@ -2593,6 +2602,9 @@ components:
           description: "only with ObjektArt == HAUS."
         energieEffizienzAusweis:
           $ref: "#/components/schemas/EnergieEffizienzAusweis"
+        geplanteModernisierungsAngaben:
+          $ref: "#/components/schemas/GeplanteModernisierungsAngaben"
+          description: "planned refurbishment information for the property"
         gewerbeflaeche:
           $ref: "#/components/schemas/GebaeudeFlaeche"
         hausAnordnung:
@@ -2626,8 +2638,6 @@ components:
             $ref: "#/components/schemas/Modernisierung"
         modernisierungsAngaben:
           $ref: "#/components/schemas/ModernisierungsAngaben"
-          deprecated: true
-          description: "Deprecated. Pls use list of refurbishment."
         unterkellerung:
           type: "string"
           description:
@@ -2718,6 +2728,46 @@ components:
         - "rateMonatlich"
         - "sollZins"
         - "vertriebsProvisionGesamtAbsolut"
+    GeplanteModernisierungsAngaben:
+      type: "object"
+      properties:
+        belWertVAusstattung:
+          type: "string"
+          description:
+            "planned equipment of property, allowed values: SEHR_EINFACH,\
+            \ EINFACH, MITTEL, GEHOBEN, STARK_GEHOBEN"
+          enum:
+            - "SEHR_EINFACH"
+            - "EINFACH"
+            - "MITTEL"
+            - "GEHOBEN"
+            - "STARK_GEHOBEN"
+        belWertVModernisierungsGrad:
+          type: "string"
+          description:
+            "allowed values: KERNSANIERUNG, UMFASSEND, UEBERWIEGEND, MITTEL,\
+            \ GERING, UNERHEBLICH."
+          enum:
+            - "KERNSANIERUNG"
+            - "UMFASSEND"
+            - "UEBERWIEGEND"
+            - "MITTEL"
+            - "GERING"
+            - "UNERHEBLICH"
+        modernisierungsJahr:
+          type: "integer"
+          format: "int32"
+          description: "planned year of refurbishment of the property. 4-digit year"
+          example: 2022
+        zustand:
+          type: "string"
+          description: "planned condition of the property"
+          enum:
+            - "SEHR_GUT"
+            - "GUT"
+            - "MITTEL"
+            - "MAESSIG"
+            - "SCHLECHT"
     GrundbuchAngabe:
       type: "object"
       properties:
@@ -3185,8 +3235,19 @@ components:
             - "RAUMAUFTEILUNG"
     ModernisierungsAngaben:
       type: "object"
-      deprecated: true
       properties:
+        belWertVModernisierungsGrad:
+          type: "string"
+          description:
+            " allowed values: KERNSANIERUNG, UMFASSEND, UEBERWIEGEND, MITTEL,\
+            \ GERING, UNERHEBLICH."
+          enum:
+            - "KERNSANIERUNG"
+            - "UMFASSEND"
+            - "UEBERWIEGEND"
+            - "MITTEL"
+            - "GERING"
+            - "UNERHEBLICH"
         modernisierungsGrad:
           type: "string"
           description: "allowed values: GERING,MITTEL,HOCH.  (More values can be attached)"
