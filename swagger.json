@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.102"
+    "version": "2.103"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2780,6 +2780,10 @@
             "format": "int32",
             "description": "planned year of refurbishment of the property. 4-digit year",
             "example": 2022
+          },
+          "wirdModernisiert": {
+            "type": "boolean",
+            "description": "indicates whether a refurbishment of the property is planned"
           },
           "zustand": {
             "type": "string",
