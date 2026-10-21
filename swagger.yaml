@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.103"
+  version: "2.104"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -2580,7 +2580,10 @@ components:
             \ (More values can be attached)"
         belWertVAusstattung:
           type: "string"
-          description: "equipment of property, allowed values: SEHR_EINFACH,EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN"
+          description:
+            "equipment of property, allowed values: SEHR_EINFACH, EINFACH,\
+            \ MITTEL, GEHOBEN, STARK_GEHOBEN. (further values may be added in the\
+            \ future)"
           enum:
             - "SEHR_EINFACH"
             - "EINFACH"
@@ -3243,7 +3246,7 @@ components:
           type: "string"
           description:
             " allowed values: KERNSANIERUNG, UMFASSEND, UEBERWIEGEND, MITTEL,\
-            \ GERING, UNERHEBLICH."
+            \ GERING, UNERHEBLICH. (further values may be added in the future)"
           enum:
             - "KERNSANIERUNG"
             - "UMFASSEND"
@@ -3253,7 +3256,8 @@ components:
             - "UNERHEBLICH"
         modernisierungsGrad:
           type: "string"
-          description: "allowed values: GERING,MITTEL,HOCH.  (More values can be attached)"
+          deprecated: true
+          description: "Please use belWertVModernisierungsGrad. Allowed values: GERING,MITTEL,HOCH."
         modernisierungsJahr:
           type: "integer"
           format: "int32"
