@@ -2596,7 +2596,7 @@
           },
           "belWertVAusstattung": {
             "type": "string",
-            "description": "equipment of property, allowed values: SEHR_EINFACH, EINFACH, MITTEL, GEHOBEN, STARK_GEHOBEN. (further values may be added in the future)",
+            "description": "equipment of property, allowed values: SEHR_EINFACH,EINFACH,MITTEL,GEHOBEN,STARK_GEHOBEN",
             "enum": [
               "SEHR_EINFACH",
               "EINFACH",
@@ -2780,10 +2780,6 @@
             "format": "int32",
             "description": "planned year of refurbishment of the property. 4-digit year",
             "example": 2022
-          },
-          "wirdModernisiert": {
-            "type": "boolean",
-            "description": "indicates whether a refurbishment of the property is planned"
           },
           "zustand": {
             "type": "string",
@@ -3255,7 +3251,7 @@
         "properties": {
           "belWertVModernisierungsGrad": {
             "type": "string",
-            "description": " allowed values: KERNSANIERUNG, UMFASSEND, UEBERWIEGEND, MITTEL, GERING, UNERHEBLICH. (further values may be added in the future)",
+            "description": " allowed values: KERNSANIERUNG, UMFASSEND, UEBERWIEGEND, MITTEL, GERING, UNERHEBLICH.",
             "enum": [
               "KERNSANIERUNG",
               "UMFASSEND",
@@ -3267,8 +3263,7 @@
           },
           "modernisierungsGrad": {
             "type": "string",
-            "deprecated": true,
-            "description": "Please use belWertVModernisierungsGrad. Allowed values: GERING,MITTEL,HOCH."
+            "description": "allowed values: GERING,MITTEL,HOCH.  (More values can be attached)"
           },
           "modernisierungsJahr": {
             "type": "integer",
