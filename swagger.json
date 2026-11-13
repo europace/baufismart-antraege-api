@@ -8,7 +8,7 @@
     },
     "description": "As a loan provider get all the data of your applications for highly effective validations and approvals.",
     "title": "Anträge API",
-    "version": "2.104"
+    "version": "2.105"
   },
   "servers": [{ "url": "https://baufinanzierung.api.europace.de" }],
   "security": [{ "oauth_security": [] }],
@@ -2435,6 +2435,11 @@
       "FinanzierungsObjekt": {
         "type": "object",
         "properties": {
+          "abweichendeEigentuemer": {
+            "type": "boolean",
+            "description": "true if the owners of the property deviate from the applicants. Absent: all applicants are owners. true: exactly the applicants in eigentuemerIds plus the persons in weitereEigentuemer are owners; if both are absent, no owners are specified.",
+            "example": true
+          },
           "adresse": { "$ref": "#/components/schemas/Postadresse" },
           "angabenZurGewerkeVergabe": {
             "$ref": "#/components/schemas/AngabenZurGewerkeVergabe",
@@ -2463,6 +2468,12 @@
           "bodenRichtwert": {
             "type": "number",
             "description": "loan provider specific data (optional)"
+          },
+          "eigentuemerIds": {
+            "type": "array",
+            "description": "IDs of the applicants (antragsteller.id) who will be owners of the property. Only present if abweichendeEigentuemer is true.",
+            "example": ["5f1a2b3c4d5e6f7a8b9c0d1e"],
+            "items": { "type": "string" }
           },
           "erbbaurecht": { "$ref": "#/components/schemas/Erbbaurecht" },
           "gebaeude": { "$ref": "#/components/schemas/Gebaeude" },
@@ -2496,6 +2507,11 @@
           "vorlaeufigerVerkehrswert": {
             "type": "number",
             "description": "loan provider specific data (optional)"
+          },
+          "weitereEigentuemer": {
+            "type": "string",
+            "description": "Free text naming further owners of the property who are not applicants. May contain several names, e.g. \"Erika und Hans Mustermann\". Only present if abweichendeEigentuemer is true.",
+            "example": "Erika Mustermann"
           },
           "wohnlage": {
             "type": "string",
