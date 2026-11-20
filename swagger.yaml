@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.105"
+  version: "2.106"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -1937,10 +1937,15 @@ components:
           type: "number"
           format: "double"
           description: "current CO2 emissions in kg per year and square meter"
+          example: 48.0
         geplant:
           type: "number"
           format: "double"
-          description: "planned CO2 emissions in kg per year and square meter"
+          deprecated: true
+          description:
+            "planned CO2 emissions in kg per year and square meter. Use\
+            \ geplanteModernisierungsAngaben.geplanterCo2Wert instead."
+          example: 10.8
     Darlehen:
       type: "object"
       description: "loan details"
@@ -2252,10 +2257,15 @@ components:
           type: "number"
           format: "double"
           description: "current energy consumption in kWh per year and square meter"
+          example: 200.0
         geplant:
           type: "number"
           format: "double"
-          description: "planned energy consumption in kWh per year and square meter"
+          deprecated: true
+          description:
+            "planned energy consumption in kWh per year and square meter.\
+            \ Use geplanteModernisierungsAngaben.geplanteEnergie instead."
+          example: 45.0
     EnergieEffizienzAusweis:
       type: "object"
       properties:
@@ -2267,6 +2277,8 @@ components:
             - "ENDENERGIEVERBRAUCH"
         co2Emissionen:
           $ref: "#/components/schemas/Co2Emissionen"
+        effizienzklasse:
+          $ref: "#/components/schemas/EnergieEffizienzklasse"
         endEnergie:
           $ref: "#/components/schemas/EndEnergie"
         primaerEnergieTyp:
@@ -2283,6 +2295,40 @@ components:
             - "HOLZ"
             - "ABFAELLE"
             - "SONSTIGES"
+    EnergieEffizienzklasse:
+      type: "object"
+      properties:
+        aktuell:
+          type: "string"
+          description: "current energy efficiency class"
+          enum:
+            - "A_PLUS"
+            - "A"
+            - "B"
+            - "C"
+            - "D"
+            - "E"
+            - "F"
+            - "G"
+            - "H"
+          example: "D"
+        geplant:
+          type: "string"
+          deprecated: true
+          description:
+            "planned energy efficiency class. Use geplanteModernisierungsAngaben.energieEffizienzklasse\
+            \ instead."
+          enum:
+            - "A_PLUS"
+            - "A"
+            - "B"
+            - "C"
+            - "D"
+            - "E"
+            - "F"
+            - "G"
+            - "H"
+          example: "A"
     Erbbaurecht:
       type: "object"
       properties:
@@ -2781,6 +2827,44 @@ components:
             - "MITTEL"
             - "GERING"
             - "UNERHEBLICH"
+        energieEffizienzklasse:
+          type: "string"
+          description: "calculated energy efficiency class after the planned refurbishment"
+          enum:
+            - "A_PLUS"
+            - "A"
+            - "B"
+            - "C"
+            - "D"
+            - "E"
+            - "F"
+            - "G"
+            - "H"
+          example: "A"
+        geaenderteEnergiekennwerte:
+          type: "boolean"
+          description:
+            "indicates whether the energy values change due to the planned\
+            \ refurbishment"
+        geaenderterZustandOderAusstattung:
+          type: "boolean"
+          description:
+            "indicates whether the condition or equipment changes due to\
+            \ the planned refurbishment"
+        geplanteEnergie:
+          type: "number"
+          format: "double"
+          description:
+            "energy consumption after the planned refurbishment in kWh\
+            \ per year and square meter. Also available as energieEffizienzAusweis.endEnergie.geplant."
+          example: 45.0
+        geplanterCo2Wert:
+          type: "number"
+          format: "double"
+          description:
+            "calculated CO2 emissions after the planned refurbishment in\
+            \ kg per year and square meter. Also available as energieEffizienzAusweis.co2Emissionen.geplant."
+          example: 10.8
         modernisierungsJahr:
           type: "integer"
           format: "int32"
@@ -3287,6 +3371,9 @@ components:
           format: "int32"
           description: "year of refurbishment of the property. 4-digit year"
           example: 2022
+        wurdeModernisiert:
+          type: "boolean"
+          description: "indicates whether the property has been refurbished"
     NachrangigesExternesDarlehen:
       type: "object"
       properties:
