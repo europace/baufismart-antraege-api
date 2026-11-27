@@ -9,7 +9,7 @@ info:
     "As a loan provider get all the data of your applications for highly\
     \ effective validations and approvals."
   title: "Anträge API"
-  version: "2.106"
+  version: "2.107"
 servers:
   - url: "https://baufinanzierung.api.europace.de"
 security:
@@ -1117,6 +1117,13 @@ components:
           $ref: "#/components/schemas/Beschaeftigung"
         beschaeftigungImOeffentlichenDienstBeiDsl:
           type: "boolean"
+        bhwKonzernEinwilligung:
+          type: "string"
+          description: "BHW group consent, loan provider specific data (optional)"
+          enum:
+            - "JA"
+            - "NEIN"
+            - "KEINE_ANGABE"
         branche:
           type: "array"
           description:
